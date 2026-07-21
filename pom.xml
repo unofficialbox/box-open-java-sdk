@@ -7,7 +7,7 @@
 
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.2</version>
   <packaging>jar</packaging>
 
   <name>box-open-sdk</name>
@@ -105,4 +105,43 @@
       </plugin>
     </plugins>
   </build>
+
+  <!-- `mvn -P release deploy` signs the artifacts and publishes to
+       the Maven Central Portal. Kept in a profile so a plain
+       `mvn package` needs no GPG key. Requires a Central Portal user
+       token under server id `central` in settings.xml, and a GPG
+       secret key on the keyring. -->
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.7</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals><goal>sign</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.11.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <!-- false: the deployment is validated and staged, then
+                   released by hand from the Portal. Set true to auto-release. -->
+              <autoPublish>false</autoPublish>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
