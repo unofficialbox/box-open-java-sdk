@@ -32,4 +32,54 @@ public record ClassificationTemplateFields(
             dev.unofficialbox.core.Json.decodeList(_m.get("options"), _x0 -> (_x0 == null ? null : FieldsOptions2.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private FieldsType type;
+        private FieldsKey key;
+        private ClassificationTemplateDisplayName displayName;
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private List<FieldsOptions2> options;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(FieldsType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder key(FieldsKey key) {
+            this.key = key;
+            return this;
+        }
+        public Builder displayName(ClassificationTemplateDisplayName displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder options(List<FieldsOptions2> options) {
+            this.options = options;
+            return this;
+        }
+
+        public ClassificationTemplateFields build() {
+            return new ClassificationTemplateFields(
+                id,
+                type,
+                key,
+                displayName,
+                hidden,
+                options
+            );
+        }
+    }
 }

@@ -31,4 +31,42 @@ public record SignRequestPrefillTag(
             !_m.containsKey("date_value") ? dev.unofficialbox.core.Tristate.<LocalDate>absent() : (_m.get("date_value") == null ? dev.unofficialbox.core.Tristate.<LocalDate>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("date_value") == null ? null : java.time.LocalDate.parse(dev.unofficialbox.core.Json.asString(_m.get("date_value"))))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> documentTagId;
+        private Tristate<String> textValue;
+        private Tristate<Boolean> checkboxValue;
+        private Tristate<LocalDate> dateValue;
+
+        public Builder documentTagId(Tristate<String> documentTagId) {
+            this.documentTagId = documentTagId;
+            return this;
+        }
+        public Builder textValue(Tristate<String> textValue) {
+            this.textValue = textValue;
+            return this;
+        }
+        public Builder checkboxValue(Tristate<Boolean> checkboxValue) {
+            this.checkboxValue = checkboxValue;
+            return this;
+        }
+        public Builder dateValue(Tristate<LocalDate> dateValue) {
+            this.dateValue = dateValue;
+            return this;
+        }
+
+        public SignRequestPrefillTag build() {
+            return new SignRequestPrefillTag(
+                documentTagId,
+                textValue,
+                checkboxValue,
+                dateValue
+            );
+        }
+    }
 }

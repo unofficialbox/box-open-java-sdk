@@ -17,6 +17,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SignRequest`
 
+**Example**
+
+```java
+var result = client.signRequests.cancel("SIGN_REQUEST_ID", new SignRequestCancelRequest(/* … */));
+```
+
 ## resend
 
 `POST /sign_requests/{sign_request_id}/resend`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** no content (`void`)
 
+**Example**
+
+```java
+client.signRequests.resend("SIGN_REQUEST_ID");
+```
+
 ## get
 
 `GET /sign_requests/{sign_request_id}`
@@ -36,6 +48,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `sign_request_id` | path | `String` | yes |
 
 **Returns:** `SignRequest`
+
+**Example**
+
+```java
+var result = client.signRequests.get("SIGN_REQUEST_ID");
+```
 
 ## list
 
@@ -50,6 +68,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SignRequests`
 
+**Example**
+
+```java
+for (var item : client.signRequests.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -61,4 +87,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `SignRequestCreateRequest`
 
 **Returns:** `SignRequest`
+
+**Example**
+
+```java
+var result = client.signRequests.create(new SignRequestCreateRequest(/* … */));
+```
 

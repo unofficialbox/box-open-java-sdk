@@ -27,4 +27,42 @@ public record HubDocumentPage(
             dev.unofficialbox.core.Json.asString(_m.get("title_fragment"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private String type;
+        private Tristate<String> parentId;
+        private String titleFragment;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+        public Builder parentId(Tristate<String> parentId) {
+            this.parentId = parentId;
+            return this;
+        }
+        public Builder titleFragment(String titleFragment) {
+            this.titleFragment = titleFragment;
+            return this;
+        }
+
+        public HubDocumentPage build() {
+            return new HubDocumentPage(
+                id,
+                type,
+                parentId,
+                titleFragment
+            );
+        }
+    }
 }

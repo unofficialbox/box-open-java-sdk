@@ -88,4 +88,144 @@ public record TrashFolder(
             (_m.get("item_status") == null ? null : FileItemStatus.fromJson(_m.get("item_status")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private FolderType type;
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private String name;
+        private Tristate<OffsetDateTime> createdAt;
+        private Tristate<OffsetDateTime> modifiedAt;
+        private String description;
+        private Long size;
+        private TrashFilePathCollection pathCollection;
+        private UserMini createdBy;
+        private UserMini modifiedBy;
+        private Tristate<OffsetDateTime> trashedAt;
+        private Tristate<OffsetDateTime> purgedAt;
+        private Tristate<OffsetDateTime> contentCreatedAt;
+        private Tristate<OffsetDateTime> contentModifiedAt;
+        private UserMini ownedBy;
+        private Tristate<String> sharedLink;
+        private Tristate<String> folderUploadEmail;
+        private Tristate<FolderMini> parent;
+        private FileItemStatus itemStatus;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(FolderType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder createdAt(Tristate<OffsetDateTime> createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder modifiedAt(Tristate<OffsetDateTime> modifiedAt) {
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = size;
+            return this;
+        }
+        public Builder pathCollection(TrashFilePathCollection pathCollection) {
+            this.pathCollection = pathCollection;
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = createdBy;
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = modifiedBy;
+            return this;
+        }
+        public Builder trashedAt(Tristate<OffsetDateTime> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<OffsetDateTime> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder contentCreatedAt(Tristate<OffsetDateTime> contentCreatedAt) {
+            this.contentCreatedAt = contentCreatedAt;
+            return this;
+        }
+        public Builder contentModifiedAt(Tristate<OffsetDateTime> contentModifiedAt) {
+            this.contentModifiedAt = contentModifiedAt;
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = ownedBy;
+            return this;
+        }
+        public Builder sharedLink(Tristate<String> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder folderUploadEmail(Tristate<String> folderUploadEmail) {
+            this.folderUploadEmail = folderUploadEmail;
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = itemStatus;
+            return this;
+        }
+
+        public TrashFolder build() {
+            return new TrashFolder(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                createdAt,
+                modifiedAt,
+                description,
+                size,
+                pathCollection,
+                createdBy,
+                modifiedBy,
+                trashedAt,
+                purgedAt,
+                contentCreatedAt,
+                contentModifiedAt,
+                ownedBy,
+                sharedLink,
+                folderUploadEmail,
+                parent,
+                itemStatus
+            );
+        }
+    }
 }

@@ -5,7 +5,7 @@ Reach these methods through the `uploads` field on `dev.unofficialbox.Client`.
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## createFileContent
+## uploadFileVersion
 
 `POST /files/{file_id}/content`
 
@@ -20,7 +20,13 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Files`
 
-## createFileContent2
+**Example**
+
+```java
+var result = client.uploads.uploadFileVersion("FILE_ID", new FileIdContentCreateRequest(/* … */), null);
+```
+
+## uploadFile
 
 `POST /files/content`
 
@@ -33,6 +39,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Files`
 
+**Example**
+
+```java
+var result = client.uploads.uploadFile(new FileContentCreateRequest(/* … */), null);
+```
+
 ## optionFileContent
 
 `OPTIONS /files/content`
@@ -40,4 +52,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `OptionFileContentRequest`
 
 **Returns:** `UploadUrl`
+
+**Example**
+
+```java
+var result = client.uploads.optionFileContent(new OptionFileContentRequest(/* … */));
+```
 

@@ -17,4 +17,24 @@ public record AdditionalInfoRequired(
             (!_m.containsKey("signers") || _m.get("signers") == null) ? java.util.Optional.<List<List<SignRequestSignerInputEmailValidationValidationType>>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("signers"), _x0 -> dev.unofficialbox.core.Json.decodeList(_x0, _x1 -> (_x1 == null ? null : SignRequestSignerInputEmailValidationValidationType.fromJson(_x1)))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<List<SignRequestSignerInputEmailValidationValidationType>>> signers = java.util.Optional.empty();
+
+        public Builder signers(List<List<SignRequestSignerInputEmailValidationValidationType>> signers) {
+            this.signers = java.util.Optional.ofNullable(signers);
+            return this;
+        }
+
+        public AdditionalInfoRequired build() {
+            return new AdditionalInfoRequired(
+                signers
+            );
+        }
+    }
 }

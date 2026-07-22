@@ -20,4 +20,36 @@ public record NodesCreateRequest(String displayName, Long level, Optional<String
             (!_m.containsKey("parentId") || _m.get("parentId") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("parentId")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String displayName;
+        private Long level;
+        private Optional<String> parentId = java.util.Optional.empty();
+
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder level(Long level) {
+            this.level = level;
+            return this;
+        }
+        public Builder parentId(String parentId) {
+            this.parentId = java.util.Optional.ofNullable(parentId);
+            return this;
+        }
+
+        public NodesCreateRequest build() {
+            return new NodesCreateRequest(
+                displayName,
+                level,
+                parentId
+            );
+        }
+    }
 }

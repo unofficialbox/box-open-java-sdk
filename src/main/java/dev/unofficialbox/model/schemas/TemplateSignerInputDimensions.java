@@ -18,4 +18,30 @@ public record TemplateSignerInputDimensions(Optional<Double> width, Optional<Dou
             (!_m.containsKey("height") || _m.get("height") == null) ? java.util.Optional.<Double>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asDouble(_m.get("height")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Double> width = java.util.Optional.empty();
+        private Optional<Double> height = java.util.Optional.empty();
+
+        public Builder width(Double width) {
+            this.width = java.util.Optional.ofNullable(width);
+            return this;
+        }
+        public Builder height(Double height) {
+            this.height = java.util.Optional.ofNullable(height);
+            return this;
+        }
+
+        public TemplateSignerInputDimensions build() {
+            return new TemplateSignerInputDimensions(
+                width,
+                height
+            );
+        }
+    }
 }

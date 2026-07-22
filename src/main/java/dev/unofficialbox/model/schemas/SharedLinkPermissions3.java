@@ -23,4 +23,36 @@ public record SharedLinkPermissions3(
             (!_m.containsKey("can_edit") || _m.get("can_edit") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_edit")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> canDownload = java.util.Optional.empty();
+        private Optional<Boolean> canPreview = java.util.Optional.empty();
+        private Optional<Boolean> canEdit = java.util.Optional.empty();
+
+        public Builder canDownload(Boolean canDownload) {
+            this.canDownload = java.util.Optional.ofNullable(canDownload);
+            return this;
+        }
+        public Builder canPreview(Boolean canPreview) {
+            this.canPreview = java.util.Optional.ofNullable(canPreview);
+            return this;
+        }
+        public Builder canEdit(Boolean canEdit) {
+            this.canEdit = java.util.Optional.ofNullable(canEdit);
+            return this;
+        }
+
+        public SharedLinkPermissions3 build() {
+            return new SharedLinkPermissions3(
+                canDownload,
+                canPreview,
+                canEdit
+            );
+        }
+    }
 }

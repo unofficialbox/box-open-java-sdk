@@ -67,4 +67,120 @@ public record User(
             !_m.containsKey("notification_email") ? dev.unofficialbox.core.Tristate.<UserNotificationEmail>absent() : (_m.get("notification_email") == null ? dev.unofficialbox.core.Tristate.<UserNotificationEmail>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("notification_email") == null ? null : UserNotificationEmail.fromJson(_m.get("notification_email")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private VariableValueType type;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> login = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<String> language = java.util.Optional.empty();
+        private Optional<String> timezone = java.util.Optional.empty();
+        private Optional<Long> spaceAmount = java.util.Optional.empty();
+        private Optional<Long> spaceUsed = java.util.Optional.empty();
+        private Optional<Long> maxUploadSize = java.util.Optional.empty();
+        private Optional<UserStatus> status = java.util.Optional.empty();
+        private Optional<String> jobTitle = java.util.Optional.empty();
+        private Optional<String> phone = java.util.Optional.empty();
+        private Optional<String> address = java.util.Optional.empty();
+        private Optional<String> avatarUrl = java.util.Optional.empty();
+        private Tristate<UserNotificationEmail> notificationEmail;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(VariableValueType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder login(String login) {
+            this.login = java.util.Optional.ofNullable(login);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder language(String language) {
+            this.language = java.util.Optional.ofNullable(language);
+            return this;
+        }
+        public Builder timezone(String timezone) {
+            this.timezone = java.util.Optional.ofNullable(timezone);
+            return this;
+        }
+        public Builder spaceAmount(Long spaceAmount) {
+            this.spaceAmount = java.util.Optional.ofNullable(spaceAmount);
+            return this;
+        }
+        public Builder spaceUsed(Long spaceUsed) {
+            this.spaceUsed = java.util.Optional.ofNullable(spaceUsed);
+            return this;
+        }
+        public Builder maxUploadSize(Long maxUploadSize) {
+            this.maxUploadSize = java.util.Optional.ofNullable(maxUploadSize);
+            return this;
+        }
+        public Builder status(UserStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder jobTitle(String jobTitle) {
+            this.jobTitle = java.util.Optional.ofNullable(jobTitle);
+            return this;
+        }
+        public Builder phone(String phone) {
+            this.phone = java.util.Optional.ofNullable(phone);
+            return this;
+        }
+        public Builder address(String address) {
+            this.address = java.util.Optional.ofNullable(address);
+            return this;
+        }
+        public Builder avatarUrl(String avatarUrl) {
+            this.avatarUrl = java.util.Optional.ofNullable(avatarUrl);
+            return this;
+        }
+        public Builder notificationEmail(Tristate<UserNotificationEmail> notificationEmail) {
+            this.notificationEmail = notificationEmail;
+            return this;
+        }
+
+        public User build() {
+            return new User(
+                id,
+                type,
+                name,
+                login,
+                createdAt,
+                modifiedAt,
+                language,
+                timezone,
+                spaceAmount,
+                spaceUsed,
+                maxUploadSize,
+                status,
+                jobTitle,
+                phone,
+                address,
+                avatarUrl,
+                notificationEmail
+            );
+        }
+    }
 }

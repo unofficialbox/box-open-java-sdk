@@ -18,4 +18,30 @@ public record PutSkillInvocationIdUsage(Optional<String> unit, Optional<Double> 
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<Double>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asDouble(_m.get("value")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> unit = java.util.Optional.empty();
+        private Optional<Double> value = java.util.Optional.empty();
+
+        public Builder unit(String unit) {
+            this.unit = java.util.Optional.ofNullable(unit);
+            return this;
+        }
+        public Builder value(Double value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public PutSkillInvocationIdUsage build() {
+            return new PutSkillInvocationIdUsage(
+                unit,
+                value
+            );
+        }
+    }
 }

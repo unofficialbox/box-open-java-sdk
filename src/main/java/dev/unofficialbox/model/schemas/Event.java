@@ -41,4 +41,72 @@ public record Event(
             (!_m.containsKey("additional_details") || _m.get("additional_details") == null) ? java.util.Optional.<Map<String, Object>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeMap(_m.get("additional_details"), _x0 -> _x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> recordedAt = java.util.Optional.empty();
+        private Optional<String> eventId = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<EventEventType> eventType = java.util.Optional.empty();
+        private Optional<String> sessionId = java.util.Optional.empty();
+        private Optional<EventSourceResource> source = java.util.Optional.empty();
+        private Optional<Map<String, Object>> additionalDetails = java.util.Optional.empty();
+
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder recordedAt(OffsetDateTime recordedAt) {
+            this.recordedAt = java.util.Optional.ofNullable(recordedAt);
+            return this;
+        }
+        public Builder eventId(String eventId) {
+            this.eventId = java.util.Optional.ofNullable(eventId);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder eventType(EventEventType eventType) {
+            this.eventType = java.util.Optional.ofNullable(eventType);
+            return this;
+        }
+        public Builder sessionId(String sessionId) {
+            this.sessionId = java.util.Optional.ofNullable(sessionId);
+            return this;
+        }
+        public Builder source(EventSourceResource source) {
+            this.source = java.util.Optional.ofNullable(source);
+            return this;
+        }
+        public Builder additionalDetails(Map<String, Object> additionalDetails) {
+            this.additionalDetails = java.util.Optional.ofNullable(additionalDetails);
+            return this;
+        }
+
+        public Event build() {
+            return new Event(
+                type,
+                createdAt,
+                recordedAt,
+                eventId,
+                createdBy,
+                eventType,
+                sessionId,
+                source,
+                additionalDetails
+            );
+        }
+    }
 }

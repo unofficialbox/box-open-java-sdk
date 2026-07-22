@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SkillCardsMetadata`
 
+**Example**
+
+```java
+var result = client.skills.get("FILE_ID");
+```
+
 ## update
 
 `PUT /files/{file_id}/metadata/global/boxSkillsCards`
@@ -26,6 +32,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json-patch+json`): `List<SkillUpdateRequest>`
 
 **Returns:** `SkillCardsMetadata`
+
+**Example**
+
+```java
+var result = client.skills.update("FILE_ID", java.util.List.of());
+```
 
 ## create
 
@@ -39,6 +51,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SkillCardsMetadata`
 
+**Example**
+
+```java
+var result = client.skills.create("FILE_ID", new SkillCreateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /files/{file_id}/metadata/global/boxSkillsCards`
@@ -48,6 +66,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `file_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.skills.delete("FILE_ID");
+```
 
 ## updateSkillInvocation
 
@@ -60,4 +84,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `SkillInvocationUpdateRequest`
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.skills.updateSkillInvocation("SKILL_ID", new SkillInvocationUpdateRequest(/* … */));
+```
 

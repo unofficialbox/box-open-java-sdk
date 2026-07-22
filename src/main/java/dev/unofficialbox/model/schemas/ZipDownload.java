@@ -26,4 +26,42 @@ public record ZipDownload(
             (!_m.containsKey("name_conflicts") || _m.get("name_conflicts") == null) ? java.util.Optional.<List<List<ZipDownloadNameConflicts>>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("name_conflicts"), _x0 -> dev.unofficialbox.core.Json.decodeList(_x0, _x1 -> (_x1 == null ? null : ZipDownloadNameConflicts.fromJson(_x1)))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> downloadUrl = java.util.Optional.empty();
+        private Optional<String> statusUrl = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+        private Optional<List<List<ZipDownloadNameConflicts>>> nameConflicts = java.util.Optional.empty();
+
+        public Builder downloadUrl(String downloadUrl) {
+            this.downloadUrl = java.util.Optional.ofNullable(downloadUrl);
+            return this;
+        }
+        public Builder statusUrl(String statusUrl) {
+            this.statusUrl = java.util.Optional.ofNullable(statusUrl);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+        public Builder nameConflicts(List<List<ZipDownloadNameConflicts>> nameConflicts) {
+            this.nameConflicts = java.util.Optional.ofNullable(nameConflicts);
+            return this;
+        }
+
+        public ZipDownload build() {
+            return new ZipDownload(
+                downloadUrl,
+                statusUrl,
+                expiresAt,
+                nameConflicts
+            );
+        }
+    }
 }

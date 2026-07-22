@@ -23,4 +23,36 @@ public record PutIdLock(
             (!_m.containsKey("is_download_prevented") || _m.get("is_download_prevented") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_download_prevented")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<LockType> access = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+        private Optional<Boolean> isDownloadPrevented = java.util.Optional.empty();
+
+        public Builder access(LockType access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+        public Builder isDownloadPrevented(Boolean isDownloadPrevented) {
+            this.isDownloadPrevented = java.util.Optional.ofNullable(isDownloadPrevented);
+            return this;
+        }
+
+        public PutIdLock build() {
+            return new PutIdLock(
+                access,
+                expiresAt,
+                isDownloadPrevented
+            );
+        }
+    }
 }

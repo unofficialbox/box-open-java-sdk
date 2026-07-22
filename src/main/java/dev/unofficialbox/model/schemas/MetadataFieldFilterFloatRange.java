@@ -18,4 +18,30 @@ public record MetadataFieldFilterFloatRange(Optional<Double> lt, Optional<Double
             (!_m.containsKey("gt") || _m.get("gt") == null) ? java.util.Optional.<Double>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asDouble(_m.get("gt")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Double> lt = java.util.Optional.empty();
+        private Optional<Double> gt = java.util.Optional.empty();
+
+        public Builder lt(Double lt) {
+            this.lt = java.util.Optional.ofNullable(lt);
+            return this;
+        }
+        public Builder gt(Double gt) {
+            this.gt = java.util.Optional.ofNullable(gt);
+            return this;
+        }
+
+        public MetadataFieldFilterFloatRange build() {
+            return new MetadataFieldFilterFloatRange(
+                lt,
+                gt
+            );
+        }
+    }
 }

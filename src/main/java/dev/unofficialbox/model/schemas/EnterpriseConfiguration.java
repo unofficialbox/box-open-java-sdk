@@ -32,4 +32,54 @@ public record EnterpriseConfiguration(
             (!_m.containsKey("shield") || _m.get("shield") == null) ? java.util.Optional.<EnterpriseConfigurationShield2>empty() : java.util.Optional.of((_m.get("shield") == null ? null : EnterpriseConfigurationShield2.fromJson(_m.get("shield"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationType> type = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurity2> security = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharing2> contentAndSharing = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationUserSettings2> userSettings = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationShield2> shield = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(EnterpriseConfigurationType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder security(EnterpriseConfigurationSecurity2 security) {
+            this.security = java.util.Optional.ofNullable(security);
+            return this;
+        }
+        public Builder contentAndSharing(EnterpriseConfigurationContentAndSharing2 contentAndSharing) {
+            this.contentAndSharing = java.util.Optional.ofNullable(contentAndSharing);
+            return this;
+        }
+        public Builder userSettings(EnterpriseConfigurationUserSettings2 userSettings) {
+            this.userSettings = java.util.Optional.ofNullable(userSettings);
+            return this;
+        }
+        public Builder shield(EnterpriseConfigurationShield2 shield) {
+            this.shield = java.util.Optional.ofNullable(shield);
+            return this;
+        }
+
+        public EnterpriseConfiguration build() {
+            return new EnterpriseConfiguration(
+                id,
+                type,
+                security,
+                contentAndSharing,
+                userSettings,
+                shield
+            );
+        }
+    }
 }

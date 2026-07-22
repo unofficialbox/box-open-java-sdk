@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Workflows`
 
+**Example**
+
+```java
+for (var item : client.workflows.list("FOLDER_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -33,4 +41,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `WorkflowStartRequest`
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.workflows.start("WORKFLOW_ID", new WorkflowStartRequest(/* … */));
+```
 

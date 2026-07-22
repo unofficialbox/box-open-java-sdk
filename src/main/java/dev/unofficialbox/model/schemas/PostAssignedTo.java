@@ -16,4 +16,30 @@ public record PostAssignedTo(GetResolvedForType type, String id) {
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private GetResolvedForType type;
+        private String id;
+
+        public Builder type(GetResolvedForType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public PostAssignedTo build() {
+            return new PostAssignedTo(
+                type,
+                id
+            );
+        }
+    }
 }

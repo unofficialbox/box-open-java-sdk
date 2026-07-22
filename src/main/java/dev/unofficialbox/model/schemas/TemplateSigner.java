@@ -54,4 +54,84 @@ public record TemplateSigner(
             !_m.containsKey("login_required") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("login_required") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("login_required"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<TemplateSignerInput>> inputs = java.util.Optional.empty();
+        private Tristate<String> email;
+        private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
+        private Optional<Boolean> isInPerson = java.util.Optional.empty();
+        private Optional<Long> order = java.util.Optional.empty();
+        private Tristate<String> signerGroupId;
+        private Tristate<String> label;
+        private Optional<String> publicId = java.util.Optional.empty();
+        private Tristate<Boolean> isPasswordRequired;
+        private Tristate<Boolean> isPhoneNumberRequired;
+        private Tristate<Boolean> loginRequired;
+
+        public Builder inputs(List<TemplateSignerInput> inputs) {
+            this.inputs = java.util.Optional.ofNullable(inputs);
+            return this;
+        }
+        public Builder email(Tristate<String> email) {
+            this.email = email;
+            return this;
+        }
+        public Builder role(SignRequestCreateSignerRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder isInPerson(Boolean isInPerson) {
+            this.isInPerson = java.util.Optional.ofNullable(isInPerson);
+            return this;
+        }
+        public Builder order(Long order) {
+            this.order = java.util.Optional.ofNullable(order);
+            return this;
+        }
+        public Builder signerGroupId(Tristate<String> signerGroupId) {
+            this.signerGroupId = signerGroupId;
+            return this;
+        }
+        public Builder label(Tristate<String> label) {
+            this.label = label;
+            return this;
+        }
+        public Builder publicId(String publicId) {
+            this.publicId = java.util.Optional.ofNullable(publicId);
+            return this;
+        }
+        public Builder isPasswordRequired(Tristate<Boolean> isPasswordRequired) {
+            this.isPasswordRequired = isPasswordRequired;
+            return this;
+        }
+        public Builder isPhoneNumberRequired(Tristate<Boolean> isPhoneNumberRequired) {
+            this.isPhoneNumberRequired = isPhoneNumberRequired;
+            return this;
+        }
+        public Builder loginRequired(Tristate<Boolean> loginRequired) {
+            this.loginRequired = loginRequired;
+            return this;
+        }
+
+        public TemplateSigner build() {
+            return new TemplateSigner(
+                inputs,
+                email,
+                role,
+                isInPerson,
+                order,
+                signerGroupId,
+                label,
+                publicId,
+                isPasswordRequired,
+                isPhoneNumberRequired,
+                loginRequired
+            );
+        }
+    }
 }

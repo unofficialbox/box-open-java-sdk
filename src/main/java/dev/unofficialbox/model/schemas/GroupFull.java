@@ -50,4 +50,90 @@ public record GroupFull(
             (!_m.containsKey("permissions") || _m.get("permissions") == null) ? java.util.Optional.<GroupFullPermissions>empty() : java.util.Optional.of((_m.get("permissions") == null ? null : GroupFullPermissions.fromJson(_m.get("permissions"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private GroupType type;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<GroupGroupType> groupType = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<String> provenance = java.util.Optional.empty();
+        private Optional<String> externalSyncIdentifier = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<GroupFullInvitabilityLevel> invitabilityLevel = java.util.Optional.empty();
+        private Optional<GroupFullInvitabilityLevel> memberViewabilityLevel = java.util.Optional.empty();
+        private Optional<GroupFullPermissions> permissions = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(GroupType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder groupType(GroupGroupType groupType) {
+            this.groupType = java.util.Optional.ofNullable(groupType);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder provenance(String provenance) {
+            this.provenance = java.util.Optional.ofNullable(provenance);
+            return this;
+        }
+        public Builder externalSyncIdentifier(String externalSyncIdentifier) {
+            this.externalSyncIdentifier = java.util.Optional.ofNullable(externalSyncIdentifier);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder invitabilityLevel(GroupFullInvitabilityLevel invitabilityLevel) {
+            this.invitabilityLevel = java.util.Optional.ofNullable(invitabilityLevel);
+            return this;
+        }
+        public Builder memberViewabilityLevel(GroupFullInvitabilityLevel memberViewabilityLevel) {
+            this.memberViewabilityLevel = java.util.Optional.ofNullable(memberViewabilityLevel);
+            return this;
+        }
+        public Builder permissions(GroupFullPermissions permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+
+        public GroupFull build() {
+            return new GroupFull(
+                id,
+                type,
+                name,
+                groupType,
+                createdAt,
+                modifiedAt,
+                provenance,
+                externalSyncIdentifier,
+                description,
+                invitabilityLevel,
+                memberViewabilityLevel,
+                permissions
+            );
+        }
+    }
 }

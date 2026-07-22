@@ -72,4 +72,126 @@ public record WebLink(
             (!_m.containsKey("item_status") || _m.get("item_status") == null) ? java.util.Optional.<FileItemStatus>empty() : java.util.Optional.of((_m.get("item_status") == null ? null : FileItemStatus.fromJson(_m.get("item_status"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TrashWebLinkType type;
+        private Optional<String> etag = java.util.Optional.empty();
+        private Optional<String> url = java.util.Optional.empty();
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<FolderMini> parent = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> trashedAt;
+        private Tristate<OffsetDateTime> purgedAt;
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<UserMini> modifiedBy = java.util.Optional.empty();
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+        private Tristate<FileSharedLink> sharedLink;
+        private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TrashWebLinkType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder etag(String etag) {
+            this.etag = java.util.Optional.ofNullable(etag);
+            return this;
+        }
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder parent(FolderMini parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder pathCollection(FilePathCollection pathCollection) {
+            this.pathCollection = java.util.Optional.ofNullable(pathCollection);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder trashedAt(Tristate<OffsetDateTime> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<OffsetDateTime> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+        public Builder sharedLink(Tristate<FileSharedLink> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = java.util.Optional.ofNullable(itemStatus);
+            return this;
+        }
+
+        public WebLink build() {
+            return new WebLink(
+                id,
+                type,
+                etag,
+                url,
+                sequenceId,
+                name,
+                parent,
+                description,
+                pathCollection,
+                createdAt,
+                modifiedAt,
+                trashedAt,
+                purgedAt,
+                createdBy,
+                modifiedBy,
+                ownedBy,
+                sharedLink,
+                itemStatus
+            );
+        }
+    }
 }

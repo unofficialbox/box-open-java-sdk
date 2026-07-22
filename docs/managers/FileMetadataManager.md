@@ -16,6 +16,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Metadatas`
 
+**Example**
+
+```java
+var result = client.fileMetadata.listFileMetadata("FILE_ID", null);
+```
+
 ## getFileMetadata
 
 `GET /files/{file_id}/metadata/{scope}/{template_key}`
@@ -28,6 +34,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `view` | query | `String` | no |
 
 **Returns:** `MetadataFull`
+
+**Example**
+
+```java
+var result = client.fileMetadata.getFileMetadata("FILE_ID", null, "TEMPLATE_KEY", null);
+```
 
 ## updateFileMetadata
 
@@ -43,6 +55,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataFull`
 
+**Example**
+
+```java
+var result = client.fileMetadata.updateFileMetadata("FILE_ID", null, "TEMPLATE_KEY", java.util.List.of());
+```
+
 ## createFileMetadata
 
 `POST /files/{file_id}/metadata/{scope}/{template_key}`
@@ -57,6 +75,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataFull`
 
+**Example**
+
+```java
+var result = client.fileMetadata.createFileMetadata("FILE_ID", null, "TEMPLATE_KEY", java.util.Map.of());
+```
+
 ## deleteFileMetadata
 
 `DELETE /files/{file_id}/metadata/{scope}/{template_key}`
@@ -68,4 +92,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `template_key` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.fileMetadata.deleteFileMetadata("FILE_ID", null, "TEMPLATE_KEY");
+```
 

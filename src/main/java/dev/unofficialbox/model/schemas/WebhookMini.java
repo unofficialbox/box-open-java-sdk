@@ -23,4 +23,36 @@ public record WebhookMini(
             (!_m.containsKey("target") || _m.get("target") == null) ? java.util.Optional.<WebhookTarget>empty() : java.util.Optional.of((_m.get("target") == null ? null : WebhookTarget.fromJson(_m.get("target"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<WebhookType> type = java.util.Optional.empty();
+        private Optional<WebhookTarget> target = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(WebhookType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder target(WebhookTarget target) {
+            this.target = java.util.Optional.ofNullable(target);
+            return this;
+        }
+
+        public WebhookMini build() {
+            return new WebhookMini(
+                id,
+                type,
+                target
+            );
+        }
+    }
 }

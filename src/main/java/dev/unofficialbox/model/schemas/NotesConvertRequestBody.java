@@ -24,4 +24,42 @@ public record NotesConvertRequestBody(
             dev.unofficialbox.core.Json.asString(_m.get("name"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String content;
+        private NotesConvertRequestBodyContentFormat contentFormat;
+        private FolderReference parent;
+        private String name;
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+        public Builder contentFormat(NotesConvertRequestBodyContentFormat contentFormat) {
+            this.contentFormat = contentFormat;
+            return this;
+        }
+        public Builder parent(FolderReference parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public NotesConvertRequestBody build() {
+            return new NotesConvertRequestBody(
+                content,
+                contentFormat,
+                parent,
+                name
+            );
+        }
+    }
 }

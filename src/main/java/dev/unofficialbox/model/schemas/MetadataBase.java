@@ -26,4 +26,42 @@ public record MetadataBase(
             (!_m.containsKey("$version") || _m.get("$version") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("$version")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> parent = java.util.Optional.empty();
+        private Optional<String> template = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<Long> version = java.util.Optional.empty();
+
+        public Builder parent(String parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder template(String template) {
+            this.template = java.util.Optional.ofNullable(template);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder version(Long version) {
+            this.version = java.util.Optional.ofNullable(version);
+            return this;
+        }
+
+        public MetadataBase build() {
+            return new MetadataBase(
+                parent,
+                template,
+                scope,
+                version
+            );
+        }
+    }
 }

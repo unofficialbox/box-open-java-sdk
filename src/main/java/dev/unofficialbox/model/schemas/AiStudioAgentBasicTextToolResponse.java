@@ -35,4 +35,60 @@ public record AiStudioAgentBasicTextToolResponse(
             (!_m.containsKey("warnings") || _m.get("warnings") == null) ? java.util.Optional.<List<String>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("warnings"), _x0 -> dev.unofficialbox.core.Json.asString(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<Long> numTokensForCompletion = java.util.Optional.empty();
+        private Optional<AiLlmEndpointParams> llmEndpointParams = java.util.Optional.empty();
+        private Optional<String> systemMessage = java.util.Optional.empty();
+        private Optional<String> promptTemplate = java.util.Optional.empty();
+        private Optional<Boolean> isCustomInstructionsIncluded = java.util.Optional.empty();
+        private Optional<List<String>> warnings = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder numTokensForCompletion(Long numTokensForCompletion) {
+            this.numTokensForCompletion = java.util.Optional.ofNullable(numTokensForCompletion);
+            return this;
+        }
+        public Builder llmEndpointParams(AiLlmEndpointParams llmEndpointParams) {
+            this.llmEndpointParams = java.util.Optional.ofNullable(llmEndpointParams);
+            return this;
+        }
+        public Builder systemMessage(String systemMessage) {
+            this.systemMessage = java.util.Optional.ofNullable(systemMessage);
+            return this;
+        }
+        public Builder promptTemplate(String promptTemplate) {
+            this.promptTemplate = java.util.Optional.ofNullable(promptTemplate);
+            return this;
+        }
+        public Builder isCustomInstructionsIncluded(Boolean isCustomInstructionsIncluded) {
+            this.isCustomInstructionsIncluded = java.util.Optional.ofNullable(isCustomInstructionsIncluded);
+            return this;
+        }
+        public Builder warnings(List<String> warnings) {
+            this.warnings = java.util.Optional.ofNullable(warnings);
+            return this;
+        }
+
+        public AiStudioAgentBasicTextToolResponse build() {
+            return new AiStudioAgentBasicTextToolResponse(
+                model,
+                numTokensForCompletion,
+                llmEndpointParams,
+                systemMessage,
+                promptTemplate,
+                isCustomInstructionsIncluded,
+                warnings
+            );
+        }
+    }
 }

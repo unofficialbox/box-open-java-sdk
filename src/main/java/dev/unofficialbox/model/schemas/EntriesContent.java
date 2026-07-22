@@ -16,4 +16,24 @@ public record EntriesContent(Optional<String> urlTemplate) {
             (!_m.containsKey("url_template") || _m.get("url_template") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("url_template")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> urlTemplate = java.util.Optional.empty();
+
+        public Builder urlTemplate(String urlTemplate) {
+            this.urlTemplate = java.util.Optional.ofNullable(urlTemplate);
+            return this;
+        }
+
+        public EntriesContent build() {
+            return new EntriesContent(
+                urlTemplate
+            );
+        }
+    }
 }

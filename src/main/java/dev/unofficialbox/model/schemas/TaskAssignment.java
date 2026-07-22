@@ -44,4 +44,78 @@ public record TaskAssignment(
             (!_m.containsKey("assigned_by") || _m.get("assigned_by") == null) ? java.util.Optional.<UserMini>empty() : java.util.Optional.of((_m.get("assigned_by") == null ? null : UserMini.fromJson(_m.get("assigned_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<TaskAssignmentType> type = java.util.Optional.empty();
+        private Optional<FileMini> item = java.util.Optional.empty();
+        private Optional<UserMini> assignedTo = java.util.Optional.empty();
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<OffsetDateTime> completedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> assignedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> remindedAt = java.util.Optional.empty();
+        private Optional<TaskAssignmentResolutionState> resolutionState = java.util.Optional.empty();
+        private Optional<UserMini> assignedBy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(TaskAssignmentType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder item(FileMini item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+        public Builder assignedTo(UserMini assignedTo) {
+            this.assignedTo = java.util.Optional.ofNullable(assignedTo);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder completedAt(OffsetDateTime completedAt) {
+            this.completedAt = java.util.Optional.ofNullable(completedAt);
+            return this;
+        }
+        public Builder assignedAt(OffsetDateTime assignedAt) {
+            this.assignedAt = java.util.Optional.ofNullable(assignedAt);
+            return this;
+        }
+        public Builder remindedAt(OffsetDateTime remindedAt) {
+            this.remindedAt = java.util.Optional.ofNullable(remindedAt);
+            return this;
+        }
+        public Builder resolutionState(TaskAssignmentResolutionState resolutionState) {
+            this.resolutionState = java.util.Optional.ofNullable(resolutionState);
+            return this;
+        }
+        public Builder assignedBy(UserMini assignedBy) {
+            this.assignedBy = java.util.Optional.ofNullable(assignedBy);
+            return this;
+        }
+
+        public TaskAssignment build() {
+            return new TaskAssignment(
+                id,
+                type,
+                item,
+                assignedTo,
+                message,
+                completedAt,
+                assignedAt,
+                remindedAt,
+                resolutionState,
+                assignedBy
+            );
+        }
+    }
 }

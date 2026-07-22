@@ -20,4 +20,30 @@ public record TranscriptSkillCardEntries(
             (!_m.containsKey("appears") || _m.get("appears") == null) ? java.util.Optional.<List<EntriesAppears2>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("appears"), _x0 -> (_x0 == null ? null : EntriesAppears2.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> text = java.util.Optional.empty();
+        private Optional<List<EntriesAppears2>> appears = java.util.Optional.empty();
+
+        public Builder text(String text) {
+            this.text = java.util.Optional.ofNullable(text);
+            return this;
+        }
+        public Builder appears(List<EntriesAppears2> appears) {
+            this.appears = java.util.Optional.ofNullable(appears);
+            return this;
+        }
+
+        public TranscriptSkillCardEntries build() {
+            return new TranscriptSkillCardEntries(
+                text,
+                appears
+            );
+        }
+    }
 }

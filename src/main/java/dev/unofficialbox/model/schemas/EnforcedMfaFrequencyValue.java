@@ -20,4 +20,30 @@ public record EnforcedMfaFrequencyValue(Tristate<Long> days, Tristate<Long> hour
             !_m.containsKey("hours") ? dev.unofficialbox.core.Tristate.<Long>absent() : (_m.get("hours") == null ? dev.unofficialbox.core.Tristate.<Long>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asLong(_m.get("hours"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<Long> days;
+        private Tristate<Long> hours;
+
+        public Builder days(Tristate<Long> days) {
+            this.days = days;
+            return this;
+        }
+        public Builder hours(Tristate<Long> hours) {
+            this.hours = hours;
+            return this;
+        }
+
+        public EnforcedMfaFrequencyValue build() {
+            return new EnforcedMfaFrequencyValue(
+                days,
+                hours
+            );
+        }
+    }
 }

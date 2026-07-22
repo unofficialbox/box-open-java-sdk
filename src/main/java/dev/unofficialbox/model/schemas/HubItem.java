@@ -18,4 +18,36 @@ public record HubItem(String id, HubItemType type, String name) {
             dev.unofficialbox.core.Json.asString(_m.get("name"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private HubItemType type;
+        private String name;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(HubItemType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public HubItem build() {
+            return new HubItem(
+                id,
+                type,
+                name
+            );
+        }
+    }
 }

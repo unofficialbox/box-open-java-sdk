@@ -36,4 +36,54 @@ public record SignTemplateReadySignLink(
             (!_m.containsKey("is_active") || _m.get("is_active") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_active")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> url = java.util.Optional.empty();
+        private Tristate<String> name;
+        private Tristate<String> instructions;
+        private Tristate<String> folderId;
+        private Optional<Boolean> isNotificationDisabled = java.util.Optional.empty();
+        private Optional<Boolean> isActive = java.util.Optional.empty();
+
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+        public Builder name(Tristate<String> name) {
+            this.name = name;
+            return this;
+        }
+        public Builder instructions(Tristate<String> instructions) {
+            this.instructions = instructions;
+            return this;
+        }
+        public Builder folderId(Tristate<String> folderId) {
+            this.folderId = folderId;
+            return this;
+        }
+        public Builder isNotificationDisabled(Boolean isNotificationDisabled) {
+            this.isNotificationDisabled = java.util.Optional.ofNullable(isNotificationDisabled);
+            return this;
+        }
+        public Builder isActive(Boolean isActive) {
+            this.isActive = java.util.Optional.ofNullable(isActive);
+            return this;
+        }
+
+        public SignTemplateReadySignLink build() {
+            return new SignTemplateReadySignLink(
+                url,
+                name,
+                instructions,
+                folderId,
+                isNotificationDisabled,
+                isActive
+            );
+        }
+    }
 }

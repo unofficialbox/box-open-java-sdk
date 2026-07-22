@@ -18,4 +18,30 @@ public record PostFilterFields(Optional<String> field, Optional<String> value) {
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("value")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> field = java.util.Optional.empty();
+        private Optional<String> value = java.util.Optional.empty();
+
+        public Builder field(String field) {
+            this.field = java.util.Optional.ofNullable(field);
+            return this;
+        }
+        public Builder value(String value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public PostFilterFields build() {
+            return new PostFilterFields(
+                field,
+                value
+            );
+        }
+    }
 }

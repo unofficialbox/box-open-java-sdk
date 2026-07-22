@@ -22,6 +22,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FolderFull`
 
+**Example**
+
+```java
+var result = client.folders.get("FOLDER_ID", null);
+```
+
 ## update
 
 `PUT /folders/{folder_id}`
@@ -36,6 +42,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FolderFull`
 
+**Example**
+
+```java
+var result = client.folders.update("FOLDER_ID", new FolderUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /folders/{folder_id}`
@@ -47,6 +59,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `recursive` | query | `Boolean` | no |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.folders.delete("FOLDER_ID", null);
+```
 
 ## listItems
 
@@ -66,6 +84,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Items`
 
+**Example**
+
+```java
+for (var item : client.folders.listItems("FOLDER_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listItems(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -82,6 +108,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `FolderFull`
 
+**Example**
+
+```java
+var result = client.folders.create(new FolderCreateRequest(/* … */), null);
+```
+
 ## copy
 
 `POST /folders/{folder_id}/copy`
@@ -94,4 +126,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `FolderCopyRequest`
 
 **Returns:** `FolderFull`
+
+**Example**
+
+```java
+var result = client.folders.copy("FOLDER_ID", new FolderCopyRequest(/* … */), null);
+```
 

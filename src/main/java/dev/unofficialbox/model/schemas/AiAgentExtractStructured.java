@@ -26,4 +26,42 @@ public record AiAgentExtractStructured(
             (!_m.containsKey("basic_image") || _m.get("basic_image") == null) ? java.util.Optional.<AiAgentBasicTextTool>empty() : java.util.Optional.of((_m.get("basic_image") == null ? null : AiAgentBasicTextTool.fromJson(_m.get("basic_image"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentExtractStructuredType type;
+        private Optional<AiAgentLongTextTool> longText = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicText = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicImage = java.util.Optional.empty();
+
+        public Builder type(AiAgentExtractStructuredType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder longText(AiAgentLongTextTool longText) {
+            this.longText = java.util.Optional.ofNullable(longText);
+            return this;
+        }
+        public Builder basicText(AiAgentBasicTextTool basicText) {
+            this.basicText = java.util.Optional.ofNullable(basicText);
+            return this;
+        }
+        public Builder basicImage(AiAgentBasicTextTool basicImage) {
+            this.basicImage = java.util.Optional.ofNullable(basicImage);
+            return this;
+        }
+
+        public AiAgentExtractStructured build() {
+            return new AiAgentExtractStructured(
+                type,
+                longText,
+                basicText,
+                basicImage
+            );
+        }
+    }
 }

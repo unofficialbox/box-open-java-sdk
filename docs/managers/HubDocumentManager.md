@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `HubDocumentPages`
 
+**Example**
+
+```java
+for (var item : client.hubDocument.listPages("HUB_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listPages(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -33,6 +41,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `HubDocumentBlocks`
+
+**Example**
+
+```java
+for (var item : client.hubDocument.listBlocks("HUB_ID", "PAGE_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listBlocks(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

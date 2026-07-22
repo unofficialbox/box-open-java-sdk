@@ -38,4 +38,66 @@ public record AiStudioAgentBasicGenTool(
             (!_m.containsKey("is_custom_instructions_included") || _m.get("is_custom_instructions_included") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_custom_instructions_included")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<Long> numTokensForCompletion = java.util.Optional.empty();
+        private Optional<AiLlmEndpointParams> llmEndpointParams = java.util.Optional.empty();
+        private Optional<String> systemMessage = java.util.Optional.empty();
+        private Optional<String> promptTemplate = java.util.Optional.empty();
+        private Optional<AiAgentBasicGenToolEmbeddings> embeddings = java.util.Optional.empty();
+        private Optional<String> contentTemplate = java.util.Optional.empty();
+        private Optional<Boolean> isCustomInstructionsIncluded = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder numTokensForCompletion(Long numTokensForCompletion) {
+            this.numTokensForCompletion = java.util.Optional.ofNullable(numTokensForCompletion);
+            return this;
+        }
+        public Builder llmEndpointParams(AiLlmEndpointParams llmEndpointParams) {
+            this.llmEndpointParams = java.util.Optional.ofNullable(llmEndpointParams);
+            return this;
+        }
+        public Builder systemMessage(String systemMessage) {
+            this.systemMessage = java.util.Optional.ofNullable(systemMessage);
+            return this;
+        }
+        public Builder promptTemplate(String promptTemplate) {
+            this.promptTemplate = java.util.Optional.ofNullable(promptTemplate);
+            return this;
+        }
+        public Builder embeddings(AiAgentBasicGenToolEmbeddings embeddings) {
+            this.embeddings = java.util.Optional.ofNullable(embeddings);
+            return this;
+        }
+        public Builder contentTemplate(String contentTemplate) {
+            this.contentTemplate = java.util.Optional.ofNullable(contentTemplate);
+            return this;
+        }
+        public Builder isCustomInstructionsIncluded(Boolean isCustomInstructionsIncluded) {
+            this.isCustomInstructionsIncluded = java.util.Optional.ofNullable(isCustomInstructionsIncluded);
+            return this;
+        }
+
+        public AiStudioAgentBasicGenTool build() {
+            return new AiStudioAgentBasicGenTool(
+                model,
+                numTokensForCompletion,
+                llmEndpointParams,
+                systemMessage,
+                promptTemplate,
+                embeddings,
+                contentTemplate,
+                isCustomInstructionsIncluded
+            );
+        }
+    }
 }

@@ -60,4 +60,102 @@ public record FileVersion(
             (!_m.containsKey("uploader_display_name") || _m.get("uploader_display_name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("uploader_display_name")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private FileVersionType type;
+        private Optional<String> sha1 = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<UserMini> modifiedBy = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> trashedAt;
+        private Optional<UserMini> trashedBy = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> restoredAt;
+        private Optional<UserMini> restoredBy = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> purgedAt;
+        private Optional<String> uploaderDisplayName = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(FileVersionType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = java.util.Optional.ofNullable(sha1);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder trashedAt(Tristate<OffsetDateTime> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder trashedBy(UserMini trashedBy) {
+            this.trashedBy = java.util.Optional.ofNullable(trashedBy);
+            return this;
+        }
+        public Builder restoredAt(Tristate<OffsetDateTime> restoredAt) {
+            this.restoredAt = restoredAt;
+            return this;
+        }
+        public Builder restoredBy(UserMini restoredBy) {
+            this.restoredBy = java.util.Optional.ofNullable(restoredBy);
+            return this;
+        }
+        public Builder purgedAt(Tristate<OffsetDateTime> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder uploaderDisplayName(String uploaderDisplayName) {
+            this.uploaderDisplayName = java.util.Optional.ofNullable(uploaderDisplayName);
+            return this;
+        }
+
+        public FileVersion build() {
+            return new FileVersion(
+                id,
+                type,
+                sha1,
+                name,
+                size,
+                createdAt,
+                modifiedAt,
+                modifiedBy,
+                trashedAt,
+                trashedBy,
+                restoredAt,
+                restoredBy,
+                purgedAt,
+                uploaderDisplayName
+            );
+        }
+    }
 }

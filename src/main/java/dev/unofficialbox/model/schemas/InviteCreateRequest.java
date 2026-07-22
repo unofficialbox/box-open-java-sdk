@@ -16,4 +16,30 @@ public record InviteCreateRequest(AttributesParent enterprise, PostActionableBy 
             (_m.get("actionable_by") == null ? null : PostActionableBy.fromJson(_m.get("actionable_by")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AttributesParent enterprise;
+        private PostActionableBy actionableBy;
+
+        public Builder enterprise(AttributesParent enterprise) {
+            this.enterprise = enterprise;
+            return this;
+        }
+        public Builder actionableBy(PostActionableBy actionableBy) {
+            this.actionableBy = actionableBy;
+            return this;
+        }
+
+        public InviteCreateRequest build() {
+            return new InviteCreateRequest(
+                enterprise,
+                actionableBy
+            );
+        }
+    }
 }

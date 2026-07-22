@@ -21,4 +21,36 @@ public record SignRequestSignerInputCustomValidation(
             _m.get("custom_error_message") == null ? null : dev.unofficialbox.core.Json.asString(_m.get("custom_error_message"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private SignRequestSignerInputCustomValidationValidationType validationType;
+        private String customRegex;
+        private String customErrorMessage;
+
+        public Builder validationType(SignRequestSignerInputCustomValidationValidationType validationType) {
+            this.validationType = validationType;
+            return this;
+        }
+        public Builder customRegex(String customRegex) {
+            this.customRegex = customRegex;
+            return this;
+        }
+        public Builder customErrorMessage(String customErrorMessage) {
+            this.customErrorMessage = customErrorMessage;
+            return this;
+        }
+
+        public SignRequestSignerInputCustomValidation build() {
+            return new SignRequestSignerInputCustomValidation(
+                validationType,
+                customRegex,
+                customErrorMessage
+            );
+        }
+    }
 }

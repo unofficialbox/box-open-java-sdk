@@ -40,4 +40,66 @@ public record RetentionPolicyAssignment(
             (!_m.containsKey("start_date_field") || _m.get("start_date_field") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("start_date_field")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private RetentionPolicyAssignmentType type;
+        private Optional<RetentionPolicyMini> retentionPolicy = java.util.Optional.empty();
+        private Optional<RetentionPolicyAssignmentAssignedTo> assignedTo = java.util.Optional.empty();
+        private Tristate<List<RetentionPolicyAssignmentFilterFields>> filterFields;
+        private Optional<UserMini> assignedBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> assignedAt = java.util.Optional.empty();
+        private Optional<String> startDateField = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(RetentionPolicyAssignmentType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder retentionPolicy(RetentionPolicyMini retentionPolicy) {
+            this.retentionPolicy = java.util.Optional.ofNullable(retentionPolicy);
+            return this;
+        }
+        public Builder assignedTo(RetentionPolicyAssignmentAssignedTo assignedTo) {
+            this.assignedTo = java.util.Optional.ofNullable(assignedTo);
+            return this;
+        }
+        public Builder filterFields(Tristate<List<RetentionPolicyAssignmentFilterFields>> filterFields) {
+            this.filterFields = filterFields;
+            return this;
+        }
+        public Builder assignedBy(UserMini assignedBy) {
+            this.assignedBy = java.util.Optional.ofNullable(assignedBy);
+            return this;
+        }
+        public Builder assignedAt(OffsetDateTime assignedAt) {
+            this.assignedAt = java.util.Optional.ofNullable(assignedAt);
+            return this;
+        }
+        public Builder startDateField(String startDateField) {
+            this.startDateField = java.util.Optional.ofNullable(startDateField);
+            return this;
+        }
+
+        public RetentionPolicyAssignment build() {
+            return new RetentionPolicyAssignment(
+                id,
+                type,
+                retentionPolicy,
+                assignedTo,
+                filterFields,
+                assignedBy,
+                assignedAt,
+                startDateField
+            );
+        }
+    }
 }

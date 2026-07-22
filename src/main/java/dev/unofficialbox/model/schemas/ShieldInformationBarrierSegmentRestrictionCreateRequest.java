@@ -26,4 +26,42 @@ public record ShieldInformationBarrierSegmentRestrictionCreateRequest(
             (_m.get("restricted_segment") == null ? null : ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment.fromJson(_m.get("restricted_segment")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldInformationBarrierSegmentRestrictionType type;
+        private Optional<ShieldInformationBarrierBase> shieldInformationBarrier = java.util.Optional.empty();
+        private ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment shieldInformationBarrierSegment;
+        private ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment restrictedSegment;
+
+        public Builder type(ShieldInformationBarrierSegmentRestrictionType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder shieldInformationBarrier(ShieldInformationBarrierBase shieldInformationBarrier) {
+            this.shieldInformationBarrier = java.util.Optional.ofNullable(shieldInformationBarrier);
+            return this;
+        }
+        public Builder shieldInformationBarrierSegment(ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment shieldInformationBarrierSegment) {
+            this.shieldInformationBarrierSegment = shieldInformationBarrierSegment;
+            return this;
+        }
+        public Builder restrictedSegment(ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment restrictedSegment) {
+            this.restrictedSegment = restrictedSegment;
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentRestrictionCreateRequest build() {
+            return new ShieldInformationBarrierSegmentRestrictionCreateRequest(
+                type,
+                shieldInformationBarrier,
+                shieldInformationBarrierSegment,
+                restrictedSegment
+            );
+        }
+    }
 }

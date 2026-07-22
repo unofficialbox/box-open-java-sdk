@@ -23,4 +23,36 @@ public record RetentionPolicyAssignmentCounts(
             (!_m.containsKey("metadata_template") || _m.get("metadata_template") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("metadata_template")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> enterprise = java.util.Optional.empty();
+        private Optional<Long> folder = java.util.Optional.empty();
+        private Optional<Long> metadataTemplate = java.util.Optional.empty();
+
+        public Builder enterprise(Long enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder folder(Long folder) {
+            this.folder = java.util.Optional.ofNullable(folder);
+            return this;
+        }
+        public Builder metadataTemplate(Long metadataTemplate) {
+            this.metadataTemplate = java.util.Optional.ofNullable(metadataTemplate);
+            return this;
+        }
+
+        public RetentionPolicyAssignmentCounts build() {
+            return new RetentionPolicyAssignmentCounts(
+                enterprise,
+                folder,
+                metadataTemplate
+            );
+        }
+    }
 }

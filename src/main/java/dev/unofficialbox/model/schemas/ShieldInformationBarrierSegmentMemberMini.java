@@ -23,4 +23,36 @@ public record ShieldInformationBarrierSegmentMemberMini(
             (!_m.containsKey("user") || _m.get("user") == null) ? java.util.Optional.<UserBase>empty() : java.util.Optional.of((_m.get("user") == null ? null : UserBase.fromJson(_m.get("user"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierSegmentMemberType> type = java.util.Optional.empty();
+        private Optional<UserBase> user = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldInformationBarrierSegmentMemberType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder user(UserBase user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentMemberMini build() {
+            return new ShieldInformationBarrierSegmentMemberMini(
+                id,
+                type,
+                user
+            );
+        }
+    }
 }

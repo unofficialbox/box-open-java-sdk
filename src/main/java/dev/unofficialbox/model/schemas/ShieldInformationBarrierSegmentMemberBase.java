@@ -20,4 +20,30 @@ public record ShieldInformationBarrierSegmentMemberBase(
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<ShieldInformationBarrierSegmentMemberType>empty() : java.util.Optional.of((_m.get("type") == null ? null : ShieldInformationBarrierSegmentMemberType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierSegmentMemberType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldInformationBarrierSegmentMemberType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentMemberBase build() {
+            return new ShieldInformationBarrierSegmentMemberBase(
+                id,
+                type
+            );
+        }
+    }
 }

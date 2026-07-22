@@ -16,4 +16,24 @@ public record PutIdPermissions(Optional<PermissionsCanDownload> canDownload) {
             (!_m.containsKey("can_download") || _m.get("can_download") == null) ? java.util.Optional.<PermissionsCanDownload>empty() : java.util.Optional.of((_m.get("can_download") == null ? null : PermissionsCanDownload.fromJson(_m.get("can_download"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PermissionsCanDownload> canDownload = java.util.Optional.empty();
+
+        public Builder canDownload(PermissionsCanDownload canDownload) {
+            this.canDownload = java.util.Optional.ofNullable(canDownload);
+            return this;
+        }
+
+        public PutIdPermissions build() {
+            return new PutIdPermissions(
+                canDownload
+            );
+        }
+    }
 }

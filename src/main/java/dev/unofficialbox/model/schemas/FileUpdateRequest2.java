@@ -16,4 +16,24 @@ public record FileUpdateRequest2(Optional<PutFileIdAddSharedLinkSharedLink> shar
             (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFileIdAddSharedLinkSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFileIdAddSharedLinkSharedLink.fromJson(_m.get("shared_link"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PutFileIdAddSharedLinkSharedLink> sharedLink = java.util.Optional.empty();
+
+        public Builder sharedLink(PutFileIdAddSharedLinkSharedLink sharedLink) {
+            this.sharedLink = java.util.Optional.ofNullable(sharedLink);
+            return this;
+        }
+
+        public FileUpdateRequest2 build() {
+            return new FileUpdateRequest2(
+                sharedLink
+            );
+        }
+    }
 }

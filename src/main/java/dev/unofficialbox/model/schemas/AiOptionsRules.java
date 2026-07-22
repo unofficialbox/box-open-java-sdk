@@ -18,4 +18,30 @@ public record AiOptionsRules(Optional<Boolean> multiSelect, Optional<List<Long>>
             (!_m.containsKey("selectable_levels") || _m.get("selectable_levels") == null) ? java.util.Optional.<List<Long>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("selectable_levels"), _x0 -> dev.unofficialbox.core.Json.asLong(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> multiSelect = java.util.Optional.empty();
+        private Optional<List<Long>> selectableLevels = java.util.Optional.empty();
+
+        public Builder multiSelect(Boolean multiSelect) {
+            this.multiSelect = java.util.Optional.ofNullable(multiSelect);
+            return this;
+        }
+        public Builder selectableLevels(List<Long> selectableLevels) {
+            this.selectableLevels = java.util.Optional.ofNullable(selectableLevels);
+            return this;
+        }
+
+        public AiOptionsRules build() {
+            return new AiOptionsRules(
+                multiSelect,
+                selectableLevels
+            );
+        }
+    }
 }

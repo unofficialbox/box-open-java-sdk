@@ -25,4 +25,36 @@ public record SignRequestSignerSignerDecision(
             !_m.containsKey("additional_info") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("additional_info") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("additional_info"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SignerDecisionType> type = java.util.Optional.empty();
+        private Optional<OffsetDateTime> finalizedAt = java.util.Optional.empty();
+        private Tristate<String> additionalInfo;
+
+        public Builder type(SignerDecisionType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder finalizedAt(OffsetDateTime finalizedAt) {
+            this.finalizedAt = java.util.Optional.ofNullable(finalizedAt);
+            return this;
+        }
+        public Builder additionalInfo(Tristate<String> additionalInfo) {
+            this.additionalInfo = additionalInfo;
+            return this;
+        }
+
+        public SignRequestSignerSignerDecision build() {
+            return new SignRequestSignerSignerDecision(
+                type,
+                finalizedAt,
+                additionalInfo
+            );
+        }
+    }
 }

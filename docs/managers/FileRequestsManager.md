@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileRequest`
 
+**Example**
+
+```java
+var result = client.fileRequests.get("FILE_REQUEST_ID");
+```
+
 ## update
 
 `PUT /file_requests/{file_request_id}`
@@ -28,6 +34,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileRequest`
 
+**Example**
+
+```java
+var result = client.fileRequests.update("FILE_REQUEST_ID", new FileRequestUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /file_requests/{file_request_id}`
@@ -37,6 +49,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `file_request_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.fileRequests.delete("FILE_REQUEST_ID");
+```
 
 ## copy
 
@@ -49,4 +67,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `FileRequestCopyRequest`
 
 **Returns:** `FileRequest`
+
+**Example**
+
+```java
+var result = client.fileRequests.copy("FILE_REQUEST_ID", new FileRequestCopyRequest(/* … */));
+```
 

@@ -66,4 +66,102 @@ public record SignRequestBase(
             !_m.containsKey("request_flow") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("request_flow") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("request_flow"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isDocumentPreparationNeeded = java.util.Optional.empty();
+        private Tristate<String> redirectUrl;
+        private Tristate<String> declinedRedirectUrl;
+        private Optional<Boolean> areTextSignaturesEnabled = java.util.Optional.empty();
+        private Tristate<String> emailSubject;
+        private Tristate<String> emailMessage;
+        private Optional<Boolean> areRemindersEnabled = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<List<SignRequestPrefillTag>> prefillTags = java.util.Optional.empty();
+        private Tristate<Long> daysValid;
+        private Tristate<String> externalId;
+        private Tristate<String> templateId;
+        private Tristate<String> externalSystemName;
+        private Tristate<String> requestFlow;
+
+        public Builder isDocumentPreparationNeeded(Boolean isDocumentPreparationNeeded) {
+            this.isDocumentPreparationNeeded = java.util.Optional.ofNullable(isDocumentPreparationNeeded);
+            return this;
+        }
+        public Builder redirectUrl(Tristate<String> redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public Builder declinedRedirectUrl(Tristate<String> declinedRedirectUrl) {
+            this.declinedRedirectUrl = declinedRedirectUrl;
+            return this;
+        }
+        public Builder areTextSignaturesEnabled(Boolean areTextSignaturesEnabled) {
+            this.areTextSignaturesEnabled = java.util.Optional.ofNullable(areTextSignaturesEnabled);
+            return this;
+        }
+        public Builder emailSubject(Tristate<String> emailSubject) {
+            this.emailSubject = emailSubject;
+            return this;
+        }
+        public Builder emailMessage(Tristate<String> emailMessage) {
+            this.emailMessage = emailMessage;
+            return this;
+        }
+        public Builder areRemindersEnabled(Boolean areRemindersEnabled) {
+            this.areRemindersEnabled = java.util.Optional.ofNullable(areRemindersEnabled);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder prefillTags(List<SignRequestPrefillTag> prefillTags) {
+            this.prefillTags = java.util.Optional.ofNullable(prefillTags);
+            return this;
+        }
+        public Builder daysValid(Tristate<Long> daysValid) {
+            this.daysValid = daysValid;
+            return this;
+        }
+        public Builder externalId(Tristate<String> externalId) {
+            this.externalId = externalId;
+            return this;
+        }
+        public Builder templateId(Tristate<String> templateId) {
+            this.templateId = templateId;
+            return this;
+        }
+        public Builder externalSystemName(Tristate<String> externalSystemName) {
+            this.externalSystemName = externalSystemName;
+            return this;
+        }
+        public Builder requestFlow(Tristate<String> requestFlow) {
+            this.requestFlow = requestFlow;
+            return this;
+        }
+
+        public SignRequestBase build() {
+            return new SignRequestBase(
+                isDocumentPreparationNeeded,
+                redirectUrl,
+                declinedRedirectUrl,
+                areTextSignaturesEnabled,
+                emailSubject,
+                emailMessage,
+                areRemindersEnabled,
+                name,
+                prefillTags,
+                daysValid,
+                externalId,
+                templateId,
+                externalSystemName,
+                requestFlow
+            );
+        }
+    }
 }

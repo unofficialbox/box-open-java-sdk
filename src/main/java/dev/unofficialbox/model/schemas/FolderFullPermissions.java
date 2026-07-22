@@ -38,4 +38,66 @@ public record FolderFullPermissions(
             (!_m.containsKey("can_apply_watermark") || _m.get("can_apply_watermark") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_apply_watermark")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Boolean canDelete;
+        private Boolean canDownload;
+        private Boolean canInviteCollaborator;
+        private Boolean canRename;
+        private Boolean canSetShareAccess;
+        private Boolean canShare;
+        private Boolean canUpload;
+        private Optional<Boolean> canApplyWatermark = java.util.Optional.empty();
+
+        public Builder canDelete(Boolean canDelete) {
+            this.canDelete = canDelete;
+            return this;
+        }
+        public Builder canDownload(Boolean canDownload) {
+            this.canDownload = canDownload;
+            return this;
+        }
+        public Builder canInviteCollaborator(Boolean canInviteCollaborator) {
+            this.canInviteCollaborator = canInviteCollaborator;
+            return this;
+        }
+        public Builder canRename(Boolean canRename) {
+            this.canRename = canRename;
+            return this;
+        }
+        public Builder canSetShareAccess(Boolean canSetShareAccess) {
+            this.canSetShareAccess = canSetShareAccess;
+            return this;
+        }
+        public Builder canShare(Boolean canShare) {
+            this.canShare = canShare;
+            return this;
+        }
+        public Builder canUpload(Boolean canUpload) {
+            this.canUpload = canUpload;
+            return this;
+        }
+        public Builder canApplyWatermark(Boolean canApplyWatermark) {
+            this.canApplyWatermark = java.util.Optional.ofNullable(canApplyWatermark);
+            return this;
+        }
+
+        public FolderFullPermissions build() {
+            return new FolderFullPermissions(
+                canDelete,
+                canDownload,
+                canInviteCollaborator,
+                canRename,
+                canSetShareAccess,
+                canShare,
+                canUpload,
+                canApplyWatermark
+            );
+        }
+    }
 }

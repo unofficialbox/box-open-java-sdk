@@ -18,4 +18,30 @@ public record FolderCopyRequest(Optional<String> name, AttributesParent parent) 
             (_m.get("parent") == null ? null : AttributesParent.fromJson(_m.get("parent")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private AttributesParent parent;
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder parent(AttributesParent parent) {
+            this.parent = parent;
+            return this;
+        }
+
+        public FolderCopyRequest build() {
+            return new FolderCopyRequest(
+                name,
+                parent
+            );
+        }
+    }
 }

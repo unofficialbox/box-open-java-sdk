@@ -16,4 +16,24 @@ public record Watermark(Optional<WatermarkWatermark> watermark) {
             (!_m.containsKey("watermark") || _m.get("watermark") == null) ? java.util.Optional.<WatermarkWatermark>empty() : java.util.Optional.of((_m.get("watermark") == null ? null : WatermarkWatermark.fromJson(_m.get("watermark"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<WatermarkWatermark> watermark = java.util.Optional.empty();
+
+        public Builder watermark(WatermarkWatermark watermark) {
+            this.watermark = java.util.Optional.ofNullable(watermark);
+            return this;
+        }
+
+        public Watermark build() {
+            return new Watermark(
+                watermark
+            );
+        }
+    }
 }

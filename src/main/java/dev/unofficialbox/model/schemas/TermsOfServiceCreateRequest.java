@@ -23,4 +23,36 @@ public record TermsOfServiceCreateRequest(
             dev.unofficialbox.core.Json.asString(_m.get("text"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private TermsOfServiceStatus status;
+        private Optional<GetTosType> tosType = java.util.Optional.empty();
+        private String text;
+
+        public Builder status(TermsOfServiceStatus status) {
+            this.status = status;
+            return this;
+        }
+        public Builder tosType(GetTosType tosType) {
+            this.tosType = java.util.Optional.ofNullable(tosType);
+            return this;
+        }
+        public Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public TermsOfServiceCreateRequest build() {
+            return new TermsOfServiceCreateRequest(
+                status,
+                tosType,
+                text
+            );
+        }
+    }
 }

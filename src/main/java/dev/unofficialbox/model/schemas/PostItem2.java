@@ -18,4 +18,30 @@ public record PostItem2(Optional<String> id, Optional<AiCitationType> type) {
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<AiCitationType>empty() : java.util.Optional.of((_m.get("type") == null ? null : AiCitationType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<AiCitationType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public PostItem2 build() {
+            return new PostItem2(
+                id,
+                type
+            );
+        }
+    }
 }

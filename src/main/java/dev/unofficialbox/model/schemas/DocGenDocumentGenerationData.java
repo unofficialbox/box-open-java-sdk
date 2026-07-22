@@ -18,4 +18,30 @@ public record DocGenDocumentGenerationData(String generatedFileName, Map<String,
             dev.unofficialbox.core.Json.decodeMap(_m.get("user_input"), _x0 -> _x0)
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String generatedFileName;
+        private Map<String, Object> userInput;
+
+        public Builder generatedFileName(String generatedFileName) {
+            this.generatedFileName = generatedFileName;
+            return this;
+        }
+        public Builder userInput(Map<String, Object> userInput) {
+            this.userInput = userInput;
+            return this;
+        }
+
+        public DocGenDocumentGenerationData build() {
+            return new DocGenDocumentGenerationData(
+                generatedFileName,
+                userInput
+            );
+        }
+    }
 }

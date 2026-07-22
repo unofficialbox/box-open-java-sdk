@@ -23,4 +23,36 @@ public record MetadataQueryResults(
             (!_m.containsKey("next_marker") || _m.get("next_marker") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("next_marker")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<MetadataQueryResultItem>> entries = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Optional<String> nextMarker = java.util.Optional.empty();
+
+        public Builder entries(List<MetadataQueryResultItem> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(String nextMarker) {
+            this.nextMarker = java.util.Optional.ofNullable(nextMarker);
+            return this;
+        }
+
+        public MetadataQueryResults build() {
+            return new MetadataQueryResults(
+                entries,
+                limit,
+                nextMarker
+            );
+        }
+    }
 }

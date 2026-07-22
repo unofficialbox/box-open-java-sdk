@@ -104,4 +104,198 @@ public record EnterpriseConfigurationSecurity(
             (!_m.containsKey("enforced_mfa_frequency") || _m.get("enforced_mfa_frequency") == null) ? java.util.Optional.<EnterpriseConfigurationSecurityEnforcedMfaFrequency>empty() : java.util.Optional.of((_m.get("enforced_mfa_frequency") == null ? null : EnterpriseConfigurationSecurityEnforcedMfaFrequency.fromJson(_m.get("enforced_mfa_frequency"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<EnterpriseConfigurationItemBoolean> isManagedUserSignupEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isManagedUserSignupNotificationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isManagedUserSignupCorporateEmailEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isNewUserNotificationDailyDigestEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isManagedUserEmailChangeDisabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isMultiFactorAuthRequired = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isWeakPasswordPreventionEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isPasswordLeakDetectionEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurityLastPasswordResetAt> lastPasswordResetAt = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isPasswordRequestNotificationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isPasswordChangeNotificationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isStrongPasswordForExtCollabEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isManagedUserMigrationDisabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> joinLink = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> joinUrl = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> failedLoginAttemptsToTriggerAdminNotification = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> passwordMinLength = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> passwordMinUppercaseCharacters = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> passwordMinNumericCharacters = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> passwordMinSpecialCharacters = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> passwordResetFrequency = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> previousPasswordReuseLimit = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sessionDuration = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettings> externalCollabMultiFactorAuthSettings = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurityKeysafe> keysafe = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCustomSessionDurationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> customSessionDurationValue = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurityCustomSessionDurationGroups> customSessionDurationGroups = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> multiFactorAuthType = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationSecurityEnforcedMfaFrequency> enforcedMfaFrequency = java.util.Optional.empty();
+
+        public Builder isManagedUserSignupEnabled(EnterpriseConfigurationItemBoolean isManagedUserSignupEnabled) {
+            this.isManagedUserSignupEnabled = java.util.Optional.ofNullable(isManagedUserSignupEnabled);
+            return this;
+        }
+        public Builder isManagedUserSignupNotificationEnabled(EnterpriseConfigurationItemBoolean isManagedUserSignupNotificationEnabled) {
+            this.isManagedUserSignupNotificationEnabled = java.util.Optional.ofNullable(isManagedUserSignupNotificationEnabled);
+            return this;
+        }
+        public Builder isManagedUserSignupCorporateEmailEnabled(EnterpriseConfigurationItemBoolean isManagedUserSignupCorporateEmailEnabled) {
+            this.isManagedUserSignupCorporateEmailEnabled = java.util.Optional.ofNullable(isManagedUserSignupCorporateEmailEnabled);
+            return this;
+        }
+        public Builder isNewUserNotificationDailyDigestEnabled(EnterpriseConfigurationItemBoolean isNewUserNotificationDailyDigestEnabled) {
+            this.isNewUserNotificationDailyDigestEnabled = java.util.Optional.ofNullable(isNewUserNotificationDailyDigestEnabled);
+            return this;
+        }
+        public Builder isManagedUserEmailChangeDisabled(EnterpriseConfigurationItemBoolean isManagedUserEmailChangeDisabled) {
+            this.isManagedUserEmailChangeDisabled = java.util.Optional.ofNullable(isManagedUserEmailChangeDisabled);
+            return this;
+        }
+        public Builder isMultiFactorAuthRequired(EnterpriseConfigurationItemBoolean isMultiFactorAuthRequired) {
+            this.isMultiFactorAuthRequired = java.util.Optional.ofNullable(isMultiFactorAuthRequired);
+            return this;
+        }
+        public Builder isWeakPasswordPreventionEnabled(EnterpriseConfigurationItemBoolean isWeakPasswordPreventionEnabled) {
+            this.isWeakPasswordPreventionEnabled = java.util.Optional.ofNullable(isWeakPasswordPreventionEnabled);
+            return this;
+        }
+        public Builder isPasswordLeakDetectionEnabled(EnterpriseConfigurationItemBoolean isPasswordLeakDetectionEnabled) {
+            this.isPasswordLeakDetectionEnabled = java.util.Optional.ofNullable(isPasswordLeakDetectionEnabled);
+            return this;
+        }
+        public Builder lastPasswordResetAt(EnterpriseConfigurationSecurityLastPasswordResetAt lastPasswordResetAt) {
+            this.lastPasswordResetAt = java.util.Optional.ofNullable(lastPasswordResetAt);
+            return this;
+        }
+        public Builder isPasswordRequestNotificationEnabled(EnterpriseConfigurationItemBoolean isPasswordRequestNotificationEnabled) {
+            this.isPasswordRequestNotificationEnabled = java.util.Optional.ofNullable(isPasswordRequestNotificationEnabled);
+            return this;
+        }
+        public Builder isPasswordChangeNotificationEnabled(EnterpriseConfigurationItemBoolean isPasswordChangeNotificationEnabled) {
+            this.isPasswordChangeNotificationEnabled = java.util.Optional.ofNullable(isPasswordChangeNotificationEnabled);
+            return this;
+        }
+        public Builder isStrongPasswordForExtCollabEnabled(EnterpriseConfigurationItemBoolean isStrongPasswordForExtCollabEnabled) {
+            this.isStrongPasswordForExtCollabEnabled = java.util.Optional.ofNullable(isStrongPasswordForExtCollabEnabled);
+            return this;
+        }
+        public Builder isManagedUserMigrationDisabled(EnterpriseConfigurationItemBoolean isManagedUserMigrationDisabled) {
+            this.isManagedUserMigrationDisabled = java.util.Optional.ofNullable(isManagedUserMigrationDisabled);
+            return this;
+        }
+        public Builder joinLink(EnterpriseConfigurationItemString joinLink) {
+            this.joinLink = java.util.Optional.ofNullable(joinLink);
+            return this;
+        }
+        public Builder joinUrl(EnterpriseConfigurationItemString joinUrl) {
+            this.joinUrl = java.util.Optional.ofNullable(joinUrl);
+            return this;
+        }
+        public Builder failedLoginAttemptsToTriggerAdminNotification(EnterpriseConfigurationItemInteger failedLoginAttemptsToTriggerAdminNotification) {
+            this.failedLoginAttemptsToTriggerAdminNotification = java.util.Optional.ofNullable(failedLoginAttemptsToTriggerAdminNotification);
+            return this;
+        }
+        public Builder passwordMinLength(EnterpriseConfigurationItemInteger passwordMinLength) {
+            this.passwordMinLength = java.util.Optional.ofNullable(passwordMinLength);
+            return this;
+        }
+        public Builder passwordMinUppercaseCharacters(EnterpriseConfigurationItemInteger passwordMinUppercaseCharacters) {
+            this.passwordMinUppercaseCharacters = java.util.Optional.ofNullable(passwordMinUppercaseCharacters);
+            return this;
+        }
+        public Builder passwordMinNumericCharacters(EnterpriseConfigurationItemInteger passwordMinNumericCharacters) {
+            this.passwordMinNumericCharacters = java.util.Optional.ofNullable(passwordMinNumericCharacters);
+            return this;
+        }
+        public Builder passwordMinSpecialCharacters(EnterpriseConfigurationItemInteger passwordMinSpecialCharacters) {
+            this.passwordMinSpecialCharacters = java.util.Optional.ofNullable(passwordMinSpecialCharacters);
+            return this;
+        }
+        public Builder passwordResetFrequency(EnterpriseConfigurationItemString passwordResetFrequency) {
+            this.passwordResetFrequency = java.util.Optional.ofNullable(passwordResetFrequency);
+            return this;
+        }
+        public Builder previousPasswordReuseLimit(EnterpriseConfigurationItemString previousPasswordReuseLimit) {
+            this.previousPasswordReuseLimit = java.util.Optional.ofNullable(previousPasswordReuseLimit);
+            return this;
+        }
+        public Builder sessionDuration(EnterpriseConfigurationItemString sessionDuration) {
+            this.sessionDuration = java.util.Optional.ofNullable(sessionDuration);
+            return this;
+        }
+        public Builder externalCollabMultiFactorAuthSettings(EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettings externalCollabMultiFactorAuthSettings) {
+            this.externalCollabMultiFactorAuthSettings = java.util.Optional.ofNullable(externalCollabMultiFactorAuthSettings);
+            return this;
+        }
+        public Builder keysafe(EnterpriseConfigurationSecurityKeysafe keysafe) {
+            this.keysafe = java.util.Optional.ofNullable(keysafe);
+            return this;
+        }
+        public Builder isCustomSessionDurationEnabled(EnterpriseConfigurationItemBoolean isCustomSessionDurationEnabled) {
+            this.isCustomSessionDurationEnabled = java.util.Optional.ofNullable(isCustomSessionDurationEnabled);
+            return this;
+        }
+        public Builder customSessionDurationValue(EnterpriseConfigurationItemString customSessionDurationValue) {
+            this.customSessionDurationValue = java.util.Optional.ofNullable(customSessionDurationValue);
+            return this;
+        }
+        public Builder customSessionDurationGroups(EnterpriseConfigurationSecurityCustomSessionDurationGroups customSessionDurationGroups) {
+            this.customSessionDurationGroups = java.util.Optional.ofNullable(customSessionDurationGroups);
+            return this;
+        }
+        public Builder multiFactorAuthType(EnterpriseConfigurationItemString multiFactorAuthType) {
+            this.multiFactorAuthType = java.util.Optional.ofNullable(multiFactorAuthType);
+            return this;
+        }
+        public Builder enforcedMfaFrequency(EnterpriseConfigurationSecurityEnforcedMfaFrequency enforcedMfaFrequency) {
+            this.enforcedMfaFrequency = java.util.Optional.ofNullable(enforcedMfaFrequency);
+            return this;
+        }
+
+        public EnterpriseConfigurationSecurity build() {
+            return new EnterpriseConfigurationSecurity(
+                isManagedUserSignupEnabled,
+                isManagedUserSignupNotificationEnabled,
+                isManagedUserSignupCorporateEmailEnabled,
+                isNewUserNotificationDailyDigestEnabled,
+                isManagedUserEmailChangeDisabled,
+                isMultiFactorAuthRequired,
+                isWeakPasswordPreventionEnabled,
+                isPasswordLeakDetectionEnabled,
+                lastPasswordResetAt,
+                isPasswordRequestNotificationEnabled,
+                isPasswordChangeNotificationEnabled,
+                isStrongPasswordForExtCollabEnabled,
+                isManagedUserMigrationDisabled,
+                joinLink,
+                joinUrl,
+                failedLoginAttemptsToTriggerAdminNotification,
+                passwordMinLength,
+                passwordMinUppercaseCharacters,
+                passwordMinNumericCharacters,
+                passwordMinSpecialCharacters,
+                passwordResetFrequency,
+                previousPasswordReuseLimit,
+                sessionDuration,
+                externalCollabMultiFactorAuthSettings,
+                keysafe,
+                isCustomSessionDurationEnabled,
+                customSessionDurationValue,
+                customSessionDurationGroups,
+                multiFactorAuthType,
+                enforcedMfaFrequency
+            );
+        }
+    }
 }

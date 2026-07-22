@@ -38,4 +38,66 @@ public record AiAgentAsk(
             (!_m.containsKey("basic_image_multi") || _m.get("basic_image_multi") == null) ? java.util.Optional.<AiAgentBasicTextTool>empty() : java.util.Optional.of((_m.get("basic_image_multi") == null ? null : AiAgentBasicTextTool.fromJson(_m.get("basic_image_multi"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentAskType type;
+        private Optional<AiAgentLongTextTool> longText = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicText = java.util.Optional.empty();
+        private Optional<AiAgentSpreadsheetTool> spreadsheet = java.util.Optional.empty();
+        private Optional<AiAgentLongTextTool> longTextMulti = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicTextMulti = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicImage = java.util.Optional.empty();
+        private Optional<AiAgentBasicTextTool> basicImageMulti = java.util.Optional.empty();
+
+        public Builder type(AiAgentAskType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder longText(AiAgentLongTextTool longText) {
+            this.longText = java.util.Optional.ofNullable(longText);
+            return this;
+        }
+        public Builder basicText(AiAgentBasicTextTool basicText) {
+            this.basicText = java.util.Optional.ofNullable(basicText);
+            return this;
+        }
+        public Builder spreadsheet(AiAgentSpreadsheetTool spreadsheet) {
+            this.spreadsheet = java.util.Optional.ofNullable(spreadsheet);
+            return this;
+        }
+        public Builder longTextMulti(AiAgentLongTextTool longTextMulti) {
+            this.longTextMulti = java.util.Optional.ofNullable(longTextMulti);
+            return this;
+        }
+        public Builder basicTextMulti(AiAgentBasicTextTool basicTextMulti) {
+            this.basicTextMulti = java.util.Optional.ofNullable(basicTextMulti);
+            return this;
+        }
+        public Builder basicImage(AiAgentBasicTextTool basicImage) {
+            this.basicImage = java.util.Optional.ofNullable(basicImage);
+            return this;
+        }
+        public Builder basicImageMulti(AiAgentBasicTextTool basicImageMulti) {
+            this.basicImageMulti = java.util.Optional.ofNullable(basicImageMulti);
+            return this;
+        }
+
+        public AiAgentAsk build() {
+            return new AiAgentAsk(
+                type,
+                longText,
+                basicText,
+                spreadsheet,
+                longTextMulti,
+                basicTextMulti,
+                basicImage,
+                basicImageMulti
+            );
+        }
+    }
 }

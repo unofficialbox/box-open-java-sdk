@@ -21,4 +21,36 @@ public record RoleVariable(
             (_m.get("variable_value") == null ? null : FileFullAllowedInviteeRoles.fromJson(_m.get("variable_value")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private CollaboratorVariableType type;
+        private RoleVariableVariableType variableType;
+        private FileFullAllowedInviteeRoles variableValue;
+
+        public Builder type(CollaboratorVariableType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder variableType(RoleVariableVariableType variableType) {
+            this.variableType = variableType;
+            return this;
+        }
+        public Builder variableValue(FileFullAllowedInviteeRoles variableValue) {
+            this.variableValue = variableValue;
+            return this;
+        }
+
+        public RoleVariable build() {
+            return new RoleVariable(
+                type,
+                variableType,
+                variableValue
+            );
+        }
+    }
 }

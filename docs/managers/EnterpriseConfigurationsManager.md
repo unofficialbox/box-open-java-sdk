@@ -16,3 +16,9 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `EnterpriseConfiguration`
 
+**Example**
+
+```java
+var result = client.enterpriseConfigurations.get("ENTERPRISE_ID", null);
+```
+

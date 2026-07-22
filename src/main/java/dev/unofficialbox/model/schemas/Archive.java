@@ -34,4 +34,54 @@ public record Archive(
             (!_m.containsKey("owned_by") || _m.get("owned_by") == null) ? java.util.Optional.<ArchiveOwnedBy>empty() : java.util.Optional.of((_m.get("owned_by") == null ? null : ArchiveOwnedBy.fromJson(_m.get("owned_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private ArchiveType type;
+        private String name;
+        private Long size;
+        private Tristate<String> description;
+        private Optional<ArchiveOwnedBy> ownedBy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(ArchiveType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = size;
+            return this;
+        }
+        public Builder description(Tristate<String> description) {
+            this.description = description;
+            return this;
+        }
+        public Builder ownedBy(ArchiveOwnedBy ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+
+        public Archive build() {
+            return new Archive(
+                id,
+                type,
+                name,
+                size,
+                description,
+                ownedBy
+            );
+        }
+    }
 }

@@ -94,6 +94,7 @@ pom.xml
 src/main/java/dev/unofficialbox/BoxChunkedUpload.java
 src/main/java/dev/unofficialbox/BuildInfo.java
 src/main/java/dev/unofficialbox/Client.java
+src/main/java/dev/unofficialbox/auth/Auth.java
 src/main/java/dev/unofficialbox/core/Json.java
 src/main/java/dev/unofficialbox/core/Tristate.java
 src/main/java/dev/unofficialbox/internal/Internal.java

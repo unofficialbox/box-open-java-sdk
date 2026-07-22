@@ -20,4 +20,36 @@ public record ExternalUserDeletionResult(String userId, Long status, Optional<St
             (!_m.containsKey("detail") || _m.get("detail") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("detail")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String userId;
+        private Long status;
+        private Optional<String> detail = java.util.Optional.empty();
+
+        public Builder userId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+        public Builder status(Long status) {
+            this.status = status;
+            return this;
+        }
+        public Builder detail(String detail) {
+            this.detail = java.util.Optional.ofNullable(detail);
+            return this;
+        }
+
+        public ExternalUserDeletionResult build() {
+            return new ExternalUserDeletionResult(
+                userId,
+                status,
+                detail
+            );
+        }
+    }
 }

@@ -47,4 +47,84 @@ public record Task(
             (!_m.containsKey("completion_rule") || _m.get("completion_rule") == null) ? java.util.Optional.<TaskCompletionRule>empty() : java.util.Optional.of((_m.get("completion_rule") == null ? null : TaskCompletionRule.fromJson(_m.get("completion_rule"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<TaskType> type = java.util.Optional.empty();
+        private Optional<FileMini> item = java.util.Optional.empty();
+        private Optional<OffsetDateTime> dueAt = java.util.Optional.empty();
+        private Optional<TaskAction> action = java.util.Optional.empty();
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<TaskAssignments> taskAssignmentCollection = java.util.Optional.empty();
+        private Optional<Boolean> isCompleted = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<TaskCompletionRule> completionRule = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(TaskType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder item(FileMini item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+        public Builder dueAt(OffsetDateTime dueAt) {
+            this.dueAt = java.util.Optional.ofNullable(dueAt);
+            return this;
+        }
+        public Builder action(TaskAction action) {
+            this.action = java.util.Optional.ofNullable(action);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder taskAssignmentCollection(TaskAssignments taskAssignmentCollection) {
+            this.taskAssignmentCollection = java.util.Optional.ofNullable(taskAssignmentCollection);
+            return this;
+        }
+        public Builder isCompleted(Boolean isCompleted) {
+            this.isCompleted = java.util.Optional.ofNullable(isCompleted);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder completionRule(TaskCompletionRule completionRule) {
+            this.completionRule = java.util.Optional.ofNullable(completionRule);
+            return this;
+        }
+
+        public Task build() {
+            return new Task(
+                id,
+                type,
+                item,
+                dueAt,
+                action,
+                message,
+                taskAssignmentCollection,
+                isCompleted,
+                createdBy,
+                createdAt,
+                completionRule
+            );
+        }
+    }
 }

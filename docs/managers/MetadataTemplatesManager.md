@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataTemplates`
 
+**Example**
+
+```java
+for (var item : client.metadataTemplates.list("METADATA_INSTANCE_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTemplate`
 
+**Example**
+
+```java
+var result = client.metadataTemplates.getSchema(null, "TEMPLATE_KEY");
+```
+
 ## updateSchema
 
 `PUT /metadata_templates/{scope}/{template_key}/schema`
@@ -45,6 +59,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTemplate`
 
+**Example**
+
+```java
+var result = client.metadataTemplates.updateSchema(null, "TEMPLATE_KEY", java.util.List.of());
+```
+
 ## deleteSchema
 
 `DELETE /metadata_templates/{scope}/{template_key}/schema`
@@ -56,6 +76,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** no content (`void`)
 
+**Example**
+
+```java
+client.metadataTemplates.deleteSchema(null, "TEMPLATE_KEY");
+```
+
 ## get
 
 `GET /metadata_templates/{template_id}`
@@ -65,6 +91,12 @@ the [pagination guide](../pagination.md).
 | `template_id` | path | `String` | yes |
 
 **Returns:** `MetadataTemplate`
+
+**Example**
+
+```java
+var result = client.metadataTemplates.get("TEMPLATE_ID");
+```
 
 ## listGlobal
 
@@ -76,6 +108,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `MetadataTemplates`
+
+**Example**
+
+```java
+for (var item : client.metadataTemplates.listGlobal(null)) {
+  // use item
+}
+```
 
 Paginated — `listGlobal(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -92,6 +132,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTemplates`
 
+**Example**
+
+```java
+for (var item : client.metadataTemplates.listEnterprise(null)) {
+  // use item
+}
+```
+
 Paginated — `listEnterprise(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -103,4 +151,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `SchemaCreateRequest`
 
 **Returns:** `MetadataTemplate`
+
+**Example**
+
+```java
+var result = client.metadataTemplates.createSchema(new SchemaCreateRequest(/* … */));
+```
 

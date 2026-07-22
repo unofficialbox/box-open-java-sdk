@@ -16,4 +16,24 @@ public record SharedLinkPermissions2(Optional<Boolean> canDownload) {
             (!_m.containsKey("can_download") || _m.get("can_download") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_download")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> canDownload = java.util.Optional.empty();
+
+        public Builder canDownload(Boolean canDownload) {
+            this.canDownload = java.util.Optional.ofNullable(canDownload);
+            return this;
+        }
+
+        public SharedLinkPermissions2 build() {
+            return new SharedLinkPermissions2(
+                canDownload
+            );
+        }
+    }
 }

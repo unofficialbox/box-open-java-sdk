@@ -11,7 +11,7 @@ public final class SearchManager {
     }
 
     /** POST /metadata_queries/execute_read. */
-    public dev.unofficialbox.model.schemas.MetadataQueryResults createMetadataQueryExecuteRead(dev.unofficialbox.model.schemas.MetadataQuery body) {
+    public dev.unofficialbox.model.schemas.MetadataQueryResults queryByMetadata(dev.unofficialbox.model.schemas.MetadataQuery body) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));
         _url.append("/metadata_queries");
         _url.append("/execute_read");

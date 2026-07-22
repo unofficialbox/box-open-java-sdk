@@ -32,4 +32,54 @@ public record SchemaCreateRequest(
             (!_m.containsKey("copyInstanceOnItemCopy") || _m.get("copyInstanceOnItemCopy") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("copyInstanceOnItemCopy")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String scope;
+        private Optional<String> templateKey = java.util.Optional.empty();
+        private String displayName;
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private Optional<List<PostSchemaFields>> fields = java.util.Optional.empty();
+        private Optional<Boolean> copyInstanceOnItemCopy = java.util.Optional.empty();
+
+        public Builder scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+        public Builder templateKey(String templateKey) {
+            this.templateKey = java.util.Optional.ofNullable(templateKey);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder fields(List<PostSchemaFields> fields) {
+            this.fields = java.util.Optional.ofNullable(fields);
+            return this;
+        }
+        public Builder copyInstanceOnItemCopy(Boolean copyInstanceOnItemCopy) {
+            this.copyInstanceOnItemCopy = java.util.Optional.ofNullable(copyInstanceOnItemCopy);
+            return this;
+        }
+
+        public SchemaCreateRequest build() {
+            return new SchemaCreateRequest(
+                scope,
+                templateKey,
+                displayName,
+                hidden,
+                fields,
+                copyInstanceOnItemCopy
+            );
+        }
+    }
 }

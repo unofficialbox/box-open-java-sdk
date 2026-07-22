@@ -18,4 +18,30 @@ public record OAuth2Error(Optional<String> error, Optional<String> errorDescript
             (!_m.containsKey("error_description") || _m.get("error_description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("error_description")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> error = java.util.Optional.empty();
+        private Optional<String> errorDescription = java.util.Optional.empty();
+
+        public Builder error(String error) {
+            this.error = java.util.Optional.ofNullable(error);
+            return this;
+        }
+        public Builder errorDescription(String errorDescription) {
+            this.errorDescription = java.util.Optional.ofNullable(errorDescription);
+            return this;
+        }
+
+        public OAuth2Error build() {
+            return new OAuth2Error(
+                error,
+                errorDescription
+            );
+        }
+    }
 }

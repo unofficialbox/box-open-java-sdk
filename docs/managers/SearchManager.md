@@ -5,13 +5,19 @@ Reach these methods through the `search` field on `dev.unofficialbox.Client`.
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## createMetadataQueryExecuteRead
+## queryByMetadata
 
 `POST /metadata_queries/execute_read`
 
 **Request body** (`application/json`): `MetadataQuery`
 
 **Returns:** `MetadataQueryResults`
+
+**Example**
+
+```java
+var result = client.search.queryByMetadata(new MetadataQuery(/* … */));
+```
 
 ## get
 
@@ -42,4 +48,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `deleted_at_range` | query | `List<String>` | no |
 
 **Returns:** `SearchResultsResponse`
+
+**Example**
+
+```java
+var result = client.search.get(null);
+```
 

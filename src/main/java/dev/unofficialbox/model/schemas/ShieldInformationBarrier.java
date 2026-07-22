@@ -44,4 +44,78 @@ public record ShieldInformationBarrier(
             (!_m.containsKey("enabled_by") || _m.get("enabled_by") == null) ? java.util.Optional.<UserBase>empty() : java.util.Optional.of((_m.get("enabled_by") == null ? null : UserBase.fromJson(_m.get("enabled_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierType> type = java.util.Optional.empty();
+        private Optional<EnterpriseBase> enterprise = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierStatus> status = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> updatedAt = java.util.Optional.empty();
+        private Optional<UserBase> updatedBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> enabledAt = java.util.Optional.empty();
+        private Optional<UserBase> enabledBy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldInformationBarrierType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder enterprise(EnterpriseBase enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder status(ShieldInformationBarrierStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = java.util.Optional.ofNullable(updatedAt);
+            return this;
+        }
+        public Builder updatedBy(UserBase updatedBy) {
+            this.updatedBy = java.util.Optional.ofNullable(updatedBy);
+            return this;
+        }
+        public Builder enabledAt(OffsetDateTime enabledAt) {
+            this.enabledAt = java.util.Optional.ofNullable(enabledAt);
+            return this;
+        }
+        public Builder enabledBy(UserBase enabledBy) {
+            this.enabledBy = java.util.Optional.ofNullable(enabledBy);
+            return this;
+        }
+
+        public ShieldInformationBarrier build() {
+            return new ShieldInformationBarrier(
+                id,
+                type,
+                enterprise,
+                status,
+                createdAt,
+                createdBy,
+                updatedAt,
+                updatedBy,
+                enabledAt,
+                enabledBy
+            );
+        }
+    }
 }

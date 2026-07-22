@@ -16,4 +16,24 @@ public record PutSkillInvocationIdMetadata(Optional<List<SkillCard>> cards) {
             (!_m.containsKey("cards") || _m.get("cards") == null) ? java.util.Optional.<List<SkillCard>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("cards"), _x0 -> (_x0 == null ? null : SkillCard.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<SkillCard>> cards = java.util.Optional.empty();
+
+        public Builder cards(List<SkillCard> cards) {
+            this.cards = java.util.Optional.ofNullable(cards);
+            return this;
+        }
+
+        public PutSkillInvocationIdMetadata build() {
+            return new PutSkillInvocationIdMetadata(
+                cards
+            );
+        }
+    }
 }

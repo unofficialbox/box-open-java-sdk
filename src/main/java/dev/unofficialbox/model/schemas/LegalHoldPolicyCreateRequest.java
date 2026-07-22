@@ -29,4 +29,48 @@ public record LegalHoldPolicyCreateRequest(
             (!_m.containsKey("is_ongoing") || _m.get("is_ongoing") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_ongoing")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String policyName;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<OffsetDateTime> filterStartedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> filterEndedAt = java.util.Optional.empty();
+        private Optional<Boolean> isOngoing = java.util.Optional.empty();
+
+        public Builder policyName(String policyName) {
+            this.policyName = policyName;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder filterStartedAt(OffsetDateTime filterStartedAt) {
+            this.filterStartedAt = java.util.Optional.ofNullable(filterStartedAt);
+            return this;
+        }
+        public Builder filterEndedAt(OffsetDateTime filterEndedAt) {
+            this.filterEndedAt = java.util.Optional.ofNullable(filterEndedAt);
+            return this;
+        }
+        public Builder isOngoing(Boolean isOngoing) {
+            this.isOngoing = java.util.Optional.ofNullable(isOngoing);
+            return this;
+        }
+
+        public LegalHoldPolicyCreateRequest build() {
+            return new LegalHoldPolicyCreateRequest(
+                policyName,
+                description,
+                filterStartedAt,
+                filterEndedAt,
+                isOngoing
+            );
+        }
+    }
 }

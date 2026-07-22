@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `StoragePolicyAssignments`
 
+**Example**
+
+```java
+for (var item : client.storagePolicyAssignments.list(null, "RESOLVED_FOR_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -29,6 +37,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `StoragePolicyAssignment`
 
+**Example**
+
+```java
+var result = client.storagePolicyAssignments.create(new StoragePolicyAssignmentCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /storage_policy_assignments/{storage_policy_assignment_id}`
@@ -38,6 +52,12 @@ the [pagination guide](../pagination.md).
 | `storage_policy_assignment_id` | path | `String` | yes |
 
 **Returns:** `StoragePolicyAssignment`
+
+**Example**
+
+```java
+var result = client.storagePolicyAssignments.get("STORAGE_POLICY_ASSIGNMENT_ID");
+```
 
 ## update
 
@@ -51,6 +71,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `StoragePolicyAssignment`
 
+**Example**
+
+```java
+var result = client.storagePolicyAssignments.update("STORAGE_POLICY_ASSIGNMENT_ID", new StoragePolicyAssignmentUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /storage_policy_assignments/{storage_policy_assignment_id}`
@@ -60,4 +86,10 @@ the [pagination guide](../pagination.md).
 | `storage_policy_assignment_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.storagePolicyAssignments.delete("STORAGE_POLICY_ASSIGNMENT_ID");
+```
 

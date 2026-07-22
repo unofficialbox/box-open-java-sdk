@@ -18,4 +18,30 @@ public record KeywordSkillCardSkillCardTitle(Optional<String> code, String messa
             dev.unofficialbox.core.Json.asString(_m.get("message"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> code = java.util.Optional.empty();
+        private String message;
+
+        public Builder code(String code) {
+            this.code = java.util.Optional.ofNullable(code);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public KeywordSkillCardSkillCardTitle build() {
+            return new KeywordSkillCardSkillCardTitle(
+                code,
+                message
+            );
+        }
+    }
 }

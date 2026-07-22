@@ -11,6 +11,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ClassificationTemplate`
 
+**Example**
+
+```java
+var result = client.classifications.get();
+```
+
 ## updateAdd
 
 `PUT /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema`
@@ -18,6 +24,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `List<ClassificationUpdateRequest>`
 
 **Returns:** `ClassificationTemplate`
+
+**Example**
+
+```java
+var result = client.classifications.updateAdd(java.util.List.of());
+```
 
 ## updateUpdate
 
@@ -27,6 +39,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ClassificationTemplate`
 
+**Example**
+
+```java
+var result = client.classifications.updateUpdate(java.util.List.of());
+```
+
 ## createMetadataTemplateSchemaClassifications
 
 `POST /metadata_templates/schema`
@@ -34,4 +52,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `MetadataTemplateSchemaCreateRequest`
 
 **Returns:** `ClassificationTemplate`
+
+**Example**
+
+```java
+var result = client.classifications.createMetadataTemplateSchemaClassifications(new MetadataTemplateSchemaCreateRequest(/* … */));
+```
 

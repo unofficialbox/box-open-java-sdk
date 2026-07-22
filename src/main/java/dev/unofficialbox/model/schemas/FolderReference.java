@@ -16,4 +16,30 @@ public record FolderReference(FolderType type, String id) implements HubItemRefe
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FolderType type;
+        private String id;
+
+        public Builder type(FolderType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public FolderReference build() {
+            return new FolderReference(
+                type,
+                id
+            );
+        }
+    }
 }

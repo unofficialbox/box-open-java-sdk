@@ -29,4 +29,48 @@ public record UploadParts(
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<UploadPart>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : UploadPart.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> totalCount = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Optional<Long> offset = java.util.Optional.empty();
+        private Optional<List<CollectionsOrder>> order = java.util.Optional.empty();
+        private Optional<List<UploadPart>> entries = java.util.Optional.empty();
+
+        public Builder totalCount(Long totalCount) {
+            this.totalCount = java.util.Optional.ofNullable(totalCount);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder offset(Long offset) {
+            this.offset = java.util.Optional.ofNullable(offset);
+            return this;
+        }
+        public Builder order(List<CollectionsOrder> order) {
+            this.order = java.util.Optional.ofNullable(order);
+            return this;
+        }
+        public Builder entries(List<UploadPart> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public UploadParts build() {
+            return new UploadParts(
+                totalCount,
+                limit,
+                offset,
+                order,
+                entries
+            );
+        }
+    }
 }

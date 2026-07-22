@@ -16,4 +16,24 @@ public record EnterpriseConfigurationShield(Optional<List<ShieldRuleItem>> shiel
             (!_m.containsKey("shield_rules") || _m.get("shield_rules") == null) ? java.util.Optional.<List<ShieldRuleItem>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("shield_rules"), _x0 -> (_x0 == null ? null : ShieldRuleItem.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<ShieldRuleItem>> shieldRules = java.util.Optional.empty();
+
+        public Builder shieldRules(List<ShieldRuleItem> shieldRules) {
+            this.shieldRules = java.util.Optional.ofNullable(shieldRules);
+            return this;
+        }
+
+        public EnterpriseConfigurationShield build() {
+            return new EnterpriseConfigurationShield(
+                shieldRules
+            );
+        }
+    }
 }

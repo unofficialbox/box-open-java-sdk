@@ -26,4 +26,42 @@ public record DevicePinners(
             (!_m.containsKey("order") || _m.get("order") == null) ? java.util.Optional.<List<DevicePinnersOrder>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("order"), _x0 -> (_x0 == null ? null : DevicePinnersOrder.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<DevicePinner>> entries = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Optional<Long> nextMarker = java.util.Optional.empty();
+        private Optional<List<DevicePinnersOrder>> order = java.util.Optional.empty();
+
+        public Builder entries(List<DevicePinner> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(Long nextMarker) {
+            this.nextMarker = java.util.Optional.ofNullable(nextMarker);
+            return this;
+        }
+        public Builder order(List<DevicePinnersOrder> order) {
+            this.order = java.util.Optional.ofNullable(order);
+            return this;
+        }
+
+        public DevicePinners build() {
+            return new DevicePinners(
+                entries,
+                limit,
+                nextMarker,
+                order
+            );
+        }
+    }
 }

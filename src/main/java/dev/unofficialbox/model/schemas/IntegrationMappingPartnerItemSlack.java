@@ -28,4 +28,42 @@ public record IntegrationMappingPartnerItemSlack(
             !_m.containsKey("slack_org_id") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("slack_org_id") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("slack_org_id"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private IntegrationMappingPartnerItemSlackType type;
+        private String id;
+        private Tristate<String> slackWorkspaceId;
+        private Tristate<String> slackOrgId;
+
+        public Builder type(IntegrationMappingPartnerItemSlackType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder slackWorkspaceId(Tristate<String> slackWorkspaceId) {
+            this.slackWorkspaceId = slackWorkspaceId;
+            return this;
+        }
+        public Builder slackOrgId(Tristate<String> slackOrgId) {
+            this.slackOrgId = slackOrgId;
+            return this;
+        }
+
+        public IntegrationMappingPartnerItemSlack build() {
+            return new IntegrationMappingPartnerItemSlack(
+                type,
+                id,
+                slackWorkspaceId,
+                slackOrgId
+            );
+        }
+    }
 }

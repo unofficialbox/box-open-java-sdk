@@ -26,4 +26,42 @@ public record GroupMini(
             (!_m.containsKey("group_type") || _m.get("group_type") == null) ? java.util.Optional.<GroupGroupType>empty() : java.util.Optional.of((_m.get("group_type") == null ? null : GroupGroupType.fromJson(_m.get("group_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private GroupType type;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<GroupGroupType> groupType = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(GroupType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder groupType(GroupGroupType groupType) {
+            this.groupType = java.util.Optional.ofNullable(groupType);
+            return this;
+        }
+
+        public GroupMini build() {
+            return new GroupMini(
+                id,
+                type,
+                name,
+                groupType
+            );
+        }
+    }
 }

@@ -17,4 +17,24 @@ public record FileVersionUpdateRequest(Tristate<String> trashedAt) {
             !_m.containsKey("trashed_at") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("trashed_at") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("trashed_at"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> trashedAt;
+
+        public Builder trashedAt(Tristate<String> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+
+        public FileVersionUpdateRequest build() {
+            return new FileVersionUpdateRequest(
+                trashedAt
+            );
+        }
+    }
 }

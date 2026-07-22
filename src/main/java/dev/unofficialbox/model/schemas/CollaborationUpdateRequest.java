@@ -26,4 +26,42 @@ public record CollaborationUpdateRequest(
             (!_m.containsKey("can_view_path") || _m.get("can_view_path") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_view_path")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<CollaborationRole> role = java.util.Optional.empty();
+        private Optional<PutCollaborationIdStatus> status = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+        private Optional<Boolean> canViewPath = java.util.Optional.empty();
+
+        public Builder role(CollaborationRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder status(PutCollaborationIdStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+        public Builder canViewPath(Boolean canViewPath) {
+            this.canViewPath = java.util.Optional.ofNullable(canViewPath);
+            return this;
+        }
+
+        public CollaborationUpdateRequest build() {
+            return new CollaborationUpdateRequest(
+                role,
+                status,
+                expiresAt,
+                canViewPath
+            );
+        }
+    }
 }

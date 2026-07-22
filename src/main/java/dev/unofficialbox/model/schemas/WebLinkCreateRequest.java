@@ -26,4 +26,42 @@ public record WebLinkCreateRequest(
             (!_m.containsKey("description") || _m.get("description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("description")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String url;
+        private AttributesParent parent;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+        public Builder parent(AttributesParent parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+
+        public WebLinkCreateRequest build() {
+            return new WebLinkCreateRequest(
+                url,
+                parent,
+                name,
+                description
+            );
+        }
+    }
 }

@@ -20,4 +20,30 @@ public record EnterpriseConfigurationUserSettingsUserTrackingCodes(
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<List<UserTrackingCode>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("value"), _x0 -> (_x0 == null ? null : UserTrackingCode.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Optional<List<UserTrackingCode>> value = java.util.Optional.empty();
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(List<UserTrackingCode> value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public EnterpriseConfigurationUserSettingsUserTrackingCodes build() {
+            return new EnterpriseConfigurationUserSettingsUserTrackingCodes(
+                isUsed,
+                value
+            );
+        }
+    }
 }

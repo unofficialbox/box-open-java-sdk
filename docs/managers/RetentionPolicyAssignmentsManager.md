@@ -19,6 +19,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `RetentionPolicyAssignments`
 
+**Example**
+
+```java
+for (var item : client.retentionPolicyAssignments.listRetentionPolicyAssignments("RETENTION_POLICY_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listRetentionPolicyAssignments(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -31,6 +39,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `RetentionPolicyAssignment`
 
+**Example**
+
+```java
+var result = client.retentionPolicyAssignments.create(new RetentionPolicyAssignmentCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /retention_policy_assignments/{retention_policy_assignment_id}`
@@ -42,6 +56,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `RetentionPolicyAssignment`
 
+**Example**
+
+```java
+var result = client.retentionPolicyAssignments.get("RETENTION_POLICY_ASSIGNMENT_ID", null);
+```
+
 ## delete
 
 `DELETE /retention_policy_assignments/{retention_policy_assignment_id}`
@@ -51,6 +71,12 @@ the [pagination guide](../pagination.md).
 | `retention_policy_assignment_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.retentionPolicyAssignments.delete("RETENTION_POLICY_ASSIGNMENT_ID");
+```
 
 ## listFileUnderRetention
 
@@ -63,6 +89,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `FilesUnderRetention`
+
+**Example**
+
+```java
+for (var item : client.retentionPolicyAssignments.listFileUnderRetention("RETENTION_POLICY_ASSIGNMENT_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFileUnderRetention(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -79,6 +113,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `FilesUnderRetention`
+
+**Example**
+
+```java
+for (var item : client.retentionPolicyAssignments.listFileVersionUnderRetention("RETENTION_POLICY_ASSIGNMENT_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFileVersionUnderRetention(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

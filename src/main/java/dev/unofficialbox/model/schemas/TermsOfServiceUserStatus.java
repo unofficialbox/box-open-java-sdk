@@ -35,4 +35,60 @@ public record TermsOfServiceUserStatus(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TermsOfServiceUserStatusType type;
+        private Optional<TermsOfServiceBase> tos = java.util.Optional.empty();
+        private Optional<UserMini> user = java.util.Optional.empty();
+        private Optional<Boolean> isAccepted = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TermsOfServiceUserStatusType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder tos(TermsOfServiceBase tos) {
+            this.tos = java.util.Optional.ofNullable(tos);
+            return this;
+        }
+        public Builder user(UserMini user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder isAccepted(Boolean isAccepted) {
+            this.isAccepted = java.util.Optional.ofNullable(isAccepted);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public TermsOfServiceUserStatus build() {
+            return new TermsOfServiceUserStatus(
+                id,
+                type,
+                tos,
+                user,
+                isAccepted,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

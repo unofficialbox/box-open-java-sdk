@@ -16,4 +16,24 @@ public record ShieldInformationBarrierReportDetailsDetails(Optional<String> fold
             (!_m.containsKey("folder_id") || _m.get("folder_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("folder_id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> folderId = java.util.Optional.empty();
+
+        public Builder folderId(String folderId) {
+            this.folderId = java.util.Optional.ofNullable(folderId);
+            return this;
+        }
+
+        public ShieldInformationBarrierReportDetailsDetails build() {
+            return new ShieldInformationBarrierReportDetailsDetails(
+                folderId
+            );
+        }
+    }
 }

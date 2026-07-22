@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FolderLocks`
 
+**Example**
+
+```java
+var result = client.folderLocks.list("FOLDER_ID");
+```
+
 ## create
 
 `POST /folder_locks`
@@ -22,6 +28,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `FolderLockCreateRequest`
 
 **Returns:** `FolderLock`
+
+**Example**
+
+```java
+var result = client.folderLocks.create(new FolderLockCreateRequest(/* … */));
+```
 
 ## delete
 
@@ -32,4 +44,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `folder_lock_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.folderLocks.delete("FOLDER_LOCK_ID");
+```
 

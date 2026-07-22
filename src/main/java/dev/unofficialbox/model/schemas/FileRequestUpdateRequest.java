@@ -32,4 +32,54 @@ public record FileRequestUpdateRequest(
             (!_m.containsKey("expires_at") || _m.get("expires_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("expires_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("expires_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> title = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<FileRequestStatus> status = java.util.Optional.empty();
+        private Optional<Boolean> isEmailRequired = java.util.Optional.empty();
+        private Optional<Boolean> isDescriptionRequired = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+
+        public Builder title(String title) {
+            this.title = java.util.Optional.ofNullable(title);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder status(FileRequestStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder isEmailRequired(Boolean isEmailRequired) {
+            this.isEmailRequired = java.util.Optional.ofNullable(isEmailRequired);
+            return this;
+        }
+        public Builder isDescriptionRequired(Boolean isDescriptionRequired) {
+            this.isDescriptionRequired = java.util.Optional.ofNullable(isDescriptionRequired);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+
+        public FileRequestUpdateRequest build() {
+            return new FileRequestUpdateRequest(
+                title,
+                description,
+                status,
+                isEmailRequired,
+                isDescriptionRequired,
+                expiresAt
+            );
+        }
+    }
 }

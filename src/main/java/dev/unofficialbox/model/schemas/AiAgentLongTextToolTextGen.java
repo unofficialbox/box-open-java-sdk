@@ -32,4 +32,54 @@ public record AiAgentLongTextToolTextGen(
             (!_m.containsKey("embeddings") || _m.get("embeddings") == null) ? java.util.Optional.<AiAgentBasicGenToolEmbeddings>empty() : java.util.Optional.of((_m.get("embeddings") == null ? null : AiAgentBasicGenToolEmbeddings.fromJson(_m.get("embeddings"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<Long> numTokensForCompletion = java.util.Optional.empty();
+        private Optional<AiLlmEndpointParams> llmEndpointParams = java.util.Optional.empty();
+        private Optional<String> systemMessage = java.util.Optional.empty();
+        private Optional<String> promptTemplate = java.util.Optional.empty();
+        private Optional<AiAgentBasicGenToolEmbeddings> embeddings = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder numTokensForCompletion(Long numTokensForCompletion) {
+            this.numTokensForCompletion = java.util.Optional.ofNullable(numTokensForCompletion);
+            return this;
+        }
+        public Builder llmEndpointParams(AiLlmEndpointParams llmEndpointParams) {
+            this.llmEndpointParams = java.util.Optional.ofNullable(llmEndpointParams);
+            return this;
+        }
+        public Builder systemMessage(String systemMessage) {
+            this.systemMessage = java.util.Optional.ofNullable(systemMessage);
+            return this;
+        }
+        public Builder promptTemplate(String promptTemplate) {
+            this.promptTemplate = java.util.Optional.ofNullable(promptTemplate);
+            return this;
+        }
+        public Builder embeddings(AiAgentBasicGenToolEmbeddings embeddings) {
+            this.embeddings = java.util.Optional.ofNullable(embeddings);
+            return this;
+        }
+
+        public AiAgentLongTextToolTextGen build() {
+            return new AiAgentLongTextToolTextGen(
+                model,
+                numTokensForCompletion,
+                llmEndpointParams,
+                systemMessage,
+                promptTemplate,
+                embeddings
+            );
+        }
+    }
 }

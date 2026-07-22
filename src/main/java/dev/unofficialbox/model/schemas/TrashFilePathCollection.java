@@ -18,4 +18,30 @@ public record TrashFilePathCollection(Long totalCount, List<PathCollectionEntrie
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : PathCollectionEntries.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Long totalCount;
+        private List<PathCollectionEntries> entries;
+
+        public Builder totalCount(Long totalCount) {
+            this.totalCount = totalCount;
+            return this;
+        }
+        public Builder entries(List<PathCollectionEntries> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public TrashFilePathCollection build() {
+            return new TrashFilePathCollection(
+                totalCount,
+                entries
+            );
+        }
+    }
 }

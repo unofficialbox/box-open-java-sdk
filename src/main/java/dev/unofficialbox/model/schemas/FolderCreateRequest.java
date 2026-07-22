@@ -26,4 +26,42 @@ public record FolderCreateRequest(
             (!_m.containsKey("sync_state") || _m.get("sync_state") == null) ? java.util.Optional.<FolderFullSyncState>empty() : java.util.Optional.of((_m.get("sync_state") == null ? null : FolderFullSyncState.fromJson(_m.get("sync_state"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String name;
+        private AttributesParent parent;
+        private Optional<PutIdFolderUploadEmail> folderUploadEmail = java.util.Optional.empty();
+        private Optional<FolderFullSyncState> syncState = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder parent(AttributesParent parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder folderUploadEmail(PutIdFolderUploadEmail folderUploadEmail) {
+            this.folderUploadEmail = java.util.Optional.ofNullable(folderUploadEmail);
+            return this;
+        }
+        public Builder syncState(FolderFullSyncState syncState) {
+            this.syncState = java.util.Optional.ofNullable(syncState);
+            return this;
+        }
+
+        public FolderCreateRequest build() {
+            return new FolderCreateRequest(
+                name,
+                parent,
+                folderUploadEmail,
+                syncState
+            );
+        }
+    }
 }

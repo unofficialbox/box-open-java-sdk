@@ -14,4 +14,24 @@ public record AiExtractFieldOption(String key) {
             dev.unofficialbox.core.Json.asString(_m.get("key"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String key;
+
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+
+        public AiExtractFieldOption build() {
+            return new AiExtractFieldOption(
+                key
+            );
+        }
+    }
 }

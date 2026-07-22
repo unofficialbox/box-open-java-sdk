@@ -40,4 +40,60 @@ public record SharedLinkPermissions(
             !_m.containsKey("default_notes_shared_link_type") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("default_notes_shared_link_type") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("default_notes_shared_link_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> canDownload = java.util.Optional.empty();
+        private Optional<Boolean> canPreview = java.util.Optional.empty();
+        private Optional<Boolean> canEdit = java.util.Optional.empty();
+        private Tristate<String> sharedLinksOption;
+        private Tristate<String> defaultSharedLinkType;
+        private Tristate<String> notesSharedLinkOption;
+        private Tristate<String> defaultNotesSharedLinkType;
+
+        public Builder canDownload(Boolean canDownload) {
+            this.canDownload = java.util.Optional.ofNullable(canDownload);
+            return this;
+        }
+        public Builder canPreview(Boolean canPreview) {
+            this.canPreview = java.util.Optional.ofNullable(canPreview);
+            return this;
+        }
+        public Builder canEdit(Boolean canEdit) {
+            this.canEdit = java.util.Optional.ofNullable(canEdit);
+            return this;
+        }
+        public Builder sharedLinksOption(Tristate<String> sharedLinksOption) {
+            this.sharedLinksOption = sharedLinksOption;
+            return this;
+        }
+        public Builder defaultSharedLinkType(Tristate<String> defaultSharedLinkType) {
+            this.defaultSharedLinkType = defaultSharedLinkType;
+            return this;
+        }
+        public Builder notesSharedLinkOption(Tristate<String> notesSharedLinkOption) {
+            this.notesSharedLinkOption = notesSharedLinkOption;
+            return this;
+        }
+        public Builder defaultNotesSharedLinkType(Tristate<String> defaultNotesSharedLinkType) {
+            this.defaultNotesSharedLinkType = defaultNotesSharedLinkType;
+            return this;
+        }
+
+        public SharedLinkPermissions build() {
+            return new SharedLinkPermissions(
+                canDownload,
+                canPreview,
+                canEdit,
+                sharedLinksOption,
+                defaultSharedLinkType,
+                notesSharedLinkOption,
+                defaultNotesSharedLinkType
+            );
+        }
+    }
 }

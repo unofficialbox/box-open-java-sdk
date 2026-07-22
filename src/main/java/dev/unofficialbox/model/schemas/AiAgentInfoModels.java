@@ -23,4 +23,36 @@ public record AiAgentInfoModels(
             (!_m.containsKey("supported_purpose") || _m.get("supported_purpose") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("supported_purpose")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> provider = java.util.Optional.empty();
+        private Optional<String> supportedPurpose = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder provider(String provider) {
+            this.provider = java.util.Optional.ofNullable(provider);
+            return this;
+        }
+        public Builder supportedPurpose(String supportedPurpose) {
+            this.supportedPurpose = java.util.Optional.ofNullable(supportedPurpose);
+            return this;
+        }
+
+        public AiAgentInfoModels build() {
+            return new AiAgentInfoModels(
+                name,
+                provider,
+                supportedPurpose
+            );
+        }
+    }
 }

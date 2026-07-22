@@ -34,4 +34,54 @@ public record AiStudioAgentTextGen(
             (!_m.containsKey("basic_gen") || _m.get("basic_gen") == null) ? java.util.Optional.<AiStudioAgentBasicGenTool>empty() : java.util.Optional.of((_m.get("basic_gen") == null ? null : AiStudioAgentBasicGenTool.fromJson(_m.get("basic_gen"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentTextGenType type;
+        private String accessState;
+        private String description;
+        private Tristate<String> customInstructions;
+        private Optional<List<String>> suggestedQuestions = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicGenTool> basicGen = java.util.Optional.empty();
+
+        public Builder type(AiAgentTextGenType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder accessState(String accessState) {
+            this.accessState = accessState;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        public Builder customInstructions(Tristate<String> customInstructions) {
+            this.customInstructions = customInstructions;
+            return this;
+        }
+        public Builder suggestedQuestions(List<String> suggestedQuestions) {
+            this.suggestedQuestions = java.util.Optional.ofNullable(suggestedQuestions);
+            return this;
+        }
+        public Builder basicGen(AiStudioAgentBasicGenTool basicGen) {
+            this.basicGen = java.util.Optional.ofNullable(basicGen);
+            return this;
+        }
+
+        public AiStudioAgentTextGen build() {
+            return new AiStudioAgentTextGen(
+                type,
+                accessState,
+                description,
+                customInstructions,
+                suggestedQuestions,
+                basicGen
+            );
+        }
+    }
 }

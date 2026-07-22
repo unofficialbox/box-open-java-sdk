@@ -26,4 +26,42 @@ public record PostFileContentAttributes(
             (!_m.containsKey("content_modified_at") || _m.get("content_modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("content_modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("content_modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String name;
+        private AttributesParent parent;
+        private Optional<OffsetDateTime> contentCreatedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> contentModifiedAt = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder parent(AttributesParent parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder contentCreatedAt(OffsetDateTime contentCreatedAt) {
+            this.contentCreatedAt = java.util.Optional.ofNullable(contentCreatedAt);
+            return this;
+        }
+        public Builder contentModifiedAt(OffsetDateTime contentModifiedAt) {
+            this.contentModifiedAt = java.util.Optional.ofNullable(contentModifiedAt);
+            return this;
+        }
+
+        public PostFileContentAttributes build() {
+            return new PostFileContentAttributes(
+                name,
+                parent,
+                contentCreatedAt,
+                contentModifiedAt
+            );
+        }
+    }
 }

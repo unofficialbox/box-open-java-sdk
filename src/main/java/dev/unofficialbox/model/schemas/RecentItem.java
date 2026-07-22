@@ -29,4 +29,48 @@ public record RecentItem(
             (!_m.containsKey("interaction_shared_link") || _m.get("interaction_shared_link") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("interaction_shared_link")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<RecentItemResource> item = java.util.Optional.empty();
+        private Optional<RecentItemInteractionType> interactionType = java.util.Optional.empty();
+        private Optional<OffsetDateTime> interactedAt = java.util.Optional.empty();
+        private Optional<String> interactionSharedLink = java.util.Optional.empty();
+
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder item(RecentItemResource item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+        public Builder interactionType(RecentItemInteractionType interactionType) {
+            this.interactionType = java.util.Optional.ofNullable(interactionType);
+            return this;
+        }
+        public Builder interactedAt(OffsetDateTime interactedAt) {
+            this.interactedAt = java.util.Optional.ofNullable(interactedAt);
+            return this;
+        }
+        public Builder interactionSharedLink(String interactionSharedLink) {
+            this.interactionSharedLink = java.util.Optional.ofNullable(interactionSharedLink);
+            return this;
+        }
+
+        public RecentItem build() {
+            return new RecentItem(
+                type,
+                item,
+                interactionType,
+                interactedAt,
+                interactionSharedLink
+            );
+        }
+    }
 }

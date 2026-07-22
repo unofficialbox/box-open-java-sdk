@@ -25,4 +25,36 @@ public record AiLlmEndpointParamsAWS(
             !_m.containsKey("top_p") ? dev.unofficialbox.core.Tristate.<Double>absent() : (_m.get("top_p") == null ? dev.unofficialbox.core.Tristate.<Double>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asDouble(_m.get("top_p"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiLlmEndpointParamsAWSType type;
+        private Tristate<Double> temperature;
+        private Tristate<Double> topP;
+
+        public Builder type(AiLlmEndpointParamsAWSType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder temperature(Tristate<Double> temperature) {
+            this.temperature = temperature;
+            return this;
+        }
+        public Builder topP(Tristate<Double> topP) {
+            this.topP = topP;
+            return this;
+        }
+
+        public AiLlmEndpointParamsAWS build() {
+            return new AiLlmEndpointParamsAWS(
+                type,
+                temperature,
+                topP
+            );
+        }
+    }
 }

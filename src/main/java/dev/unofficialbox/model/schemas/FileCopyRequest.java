@@ -23,4 +23,36 @@ public record FileCopyRequest(
             (_m.get("parent") == null ? null : AttributesParent.fromJson(_m.get("parent")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> version = java.util.Optional.empty();
+        private AttributesParent parent;
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder version(String version) {
+            this.version = java.util.Optional.ofNullable(version);
+            return this;
+        }
+        public Builder parent(AttributesParent parent) {
+            this.parent = parent;
+            return this;
+        }
+
+        public FileCopyRequest build() {
+            return new FileCopyRequest(
+                name,
+                version,
+                parent
+            );
+        }
+    }
 }

@@ -41,4 +41,72 @@ public record ShieldInformationBarrierSegmentMember(
             (!_m.containsKey("updated_by") || _m.get("updated_by") == null) ? java.util.Optional.<UserBase>empty() : java.util.Optional.of((_m.get("updated_by") == null ? null : UserBase.fromJson(_m.get("updated_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierSegmentMemberType> type = java.util.Optional.empty();
+        private Optional<UserBase> user = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierBase> shieldInformationBarrier = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment> shieldInformationBarrierSegment = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> updatedAt = java.util.Optional.empty();
+        private Optional<UserBase> updatedBy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldInformationBarrierSegmentMemberType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder user(UserBase user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder shieldInformationBarrier(ShieldInformationBarrierBase shieldInformationBarrier) {
+            this.shieldInformationBarrier = java.util.Optional.ofNullable(shieldInformationBarrier);
+            return this;
+        }
+        public Builder shieldInformationBarrierSegment(ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment shieldInformationBarrierSegment) {
+            this.shieldInformationBarrierSegment = java.util.Optional.ofNullable(shieldInformationBarrierSegment);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = java.util.Optional.ofNullable(updatedAt);
+            return this;
+        }
+        public Builder updatedBy(UserBase updatedBy) {
+            this.updatedBy = java.util.Optional.ofNullable(updatedBy);
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentMember build() {
+            return new ShieldInformationBarrierSegmentMember(
+                id,
+                type,
+                user,
+                shieldInformationBarrier,
+                shieldInformationBarrierSegment,
+                createdAt,
+                createdBy,
+                updatedAt,
+                updatedBy
+            );
+        }
+    }
 }

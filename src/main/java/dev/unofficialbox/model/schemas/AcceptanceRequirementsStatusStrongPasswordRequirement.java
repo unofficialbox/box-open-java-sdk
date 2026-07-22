@@ -22,4 +22,30 @@ public record AcceptanceRequirementsStatusStrongPasswordRequirement(
             !_m.containsKey("user_has_strong_password") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("user_has_strong_password") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("user_has_strong_password"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> enterpriseHasStrongPasswordRequiredForExternalUsers = java.util.Optional.empty();
+        private Tristate<Boolean> userHasStrongPassword;
+
+        public Builder enterpriseHasStrongPasswordRequiredForExternalUsers(Boolean enterpriseHasStrongPasswordRequiredForExternalUsers) {
+            this.enterpriseHasStrongPasswordRequiredForExternalUsers = java.util.Optional.ofNullable(enterpriseHasStrongPasswordRequiredForExternalUsers);
+            return this;
+        }
+        public Builder userHasStrongPassword(Tristate<Boolean> userHasStrongPassword) {
+            this.userHasStrongPassword = userHasStrongPassword;
+            return this;
+        }
+
+        public AcceptanceRequirementsStatusStrongPasswordRequirement build() {
+            return new AcceptanceRequirementsStatusStrongPasswordRequirement(
+                enterpriseHasStrongPasswordRequiredForExternalUsers,
+                userHasStrongPassword
+            );
+        }
+    }
 }

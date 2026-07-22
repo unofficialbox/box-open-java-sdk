@@ -37,4 +37,60 @@ public record AiStudioAgentExtract(
             (!_m.containsKey("basic_image") || _m.get("basic_image") == null) ? java.util.Optional.<AiStudioAgentBasicTextTool>empty() : java.util.Optional.of((_m.get("basic_image") == null ? null : AiStudioAgentBasicTextTool.fromJson(_m.get("basic_image"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentExtractType type;
+        private String accessState;
+        private String description;
+        private Tristate<String> customInstructions;
+        private Optional<AiStudioAgentLongTextTool> longText = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicText = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicImage = java.util.Optional.empty();
+
+        public Builder type(AiAgentExtractType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder accessState(String accessState) {
+            this.accessState = accessState;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        public Builder customInstructions(Tristate<String> customInstructions) {
+            this.customInstructions = customInstructions;
+            return this;
+        }
+        public Builder longText(AiStudioAgentLongTextTool longText) {
+            this.longText = java.util.Optional.ofNullable(longText);
+            return this;
+        }
+        public Builder basicText(AiStudioAgentBasicTextTool basicText) {
+            this.basicText = java.util.Optional.ofNullable(basicText);
+            return this;
+        }
+        public Builder basicImage(AiStudioAgentBasicTextTool basicImage) {
+            this.basicImage = java.util.Optional.ofNullable(basicImage);
+            return this;
+        }
+
+        public AiStudioAgentExtract build() {
+            return new AiStudioAgentExtract(
+                type,
+                accessState,
+                description,
+                customInstructions,
+                longText,
+                basicText,
+                basicImage
+            );
+        }
+    }
 }

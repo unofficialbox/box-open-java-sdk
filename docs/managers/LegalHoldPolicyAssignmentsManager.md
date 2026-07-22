@@ -20,6 +20,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `LegalHoldPolicyAssignments`
 
+**Example**
+
+```java
+for (var item : client.legalHoldPolicyAssignments.list("POLICY_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `LegalHoldPolicyAssignment`
 
+**Example**
+
+```java
+var result = client.legalHoldPolicyAssignments.create(new LegalHoldPolicyAssignmentCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /legal_hold_policy_assignments/{legal_hold_policy_assignment_id}`
@@ -42,6 +56,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `LegalHoldPolicyAssignment`
 
+**Example**
+
+```java
+var result = client.legalHoldPolicyAssignments.get("LEGAL_HOLD_POLICY_ASSIGNMENT_ID");
+```
+
 ## delete
 
 `DELETE /legal_hold_policy_assignments/{legal_hold_policy_assignment_id}`
@@ -51,6 +71,12 @@ the [pagination guide](../pagination.md).
 | `legal_hold_policy_assignment_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.legalHoldPolicyAssignments.delete("LEGAL_HOLD_POLICY_ASSIGNMENT_ID");
+```
 
 ## listFileOnHold
 
@@ -64,6 +90,14 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `FilesOnHold`
+
+**Example**
+
+```java
+for (var item : client.legalHoldPolicyAssignments.listFileOnHold("LEGAL_HOLD_POLICY_ASSIGNMENT_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFileOnHold(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -81,6 +115,14 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `FileVersionsOnHold`
+
+**Example**
+
+```java
+for (var item : client.legalHoldPolicyAssignments.listFileVersionOnHold("LEGAL_HOLD_POLICY_ASSIGNMENT_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFileVersionOnHold(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

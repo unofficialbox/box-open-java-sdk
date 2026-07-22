@@ -23,4 +23,36 @@ public record Events(
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<Event>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : Event.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> chunkSize = java.util.Optional.empty();
+        private Optional<EventsNextStreamPosition> nextStreamPosition = java.util.Optional.empty();
+        private Optional<List<Event>> entries = java.util.Optional.empty();
+
+        public Builder chunkSize(Long chunkSize) {
+            this.chunkSize = java.util.Optional.ofNullable(chunkSize);
+            return this;
+        }
+        public Builder nextStreamPosition(EventsNextStreamPosition nextStreamPosition) {
+            this.nextStreamPosition = java.util.Optional.ofNullable(nextStreamPosition);
+            return this;
+        }
+        public Builder entries(List<Event> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public Events build() {
+            return new Events(
+                chunkSize,
+                nextStreamPosition,
+                entries
+            );
+        }
+    }
 }

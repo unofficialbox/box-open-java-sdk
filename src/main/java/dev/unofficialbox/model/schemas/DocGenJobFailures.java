@@ -18,4 +18,30 @@ public record DocGenJobFailures(List<String> errors, List<String> warnings) {
             dev.unofficialbox.core.Json.decodeList(_m.get("warnings"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<String> errors;
+        private List<String> warnings;
+
+        public Builder errors(List<String> errors) {
+            this.errors = errors;
+            return this;
+        }
+        public Builder warnings(List<String> warnings) {
+            this.warnings = warnings;
+            return this;
+        }
+
+        public DocGenJobFailures build() {
+            return new DocGenJobFailures(
+                errors,
+                warnings
+            );
+        }
+    }
 }

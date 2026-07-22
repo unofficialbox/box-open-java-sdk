@@ -14,4 +14,24 @@ public record UserIdCreateRequest(String email) {
             dev.unofficialbox.core.Json.asString(_m.get("email"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String email;
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UserIdCreateRequest build() {
+            return new UserIdCreateRequest(
+                email
+            );
+        }
+    }
 }

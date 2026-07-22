@@ -13,3 +13,9 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ExternalUsersSubmitDeleteJobResponse`
 
+**Example**
+
+```java
+var result = client.externalUsers.createSubmitDeleteJob(new ExternalUsersSubmitDeleteJobRequest(/* … */));
+```
+

@@ -16,4 +16,30 @@ public record IntegrationMappingBase(String id, IntegrationMappingType type) {
             (_m.get("type") == null ? null : IntegrationMappingType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private IntegrationMappingType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(IntegrationMappingType type) {
+            this.type = type;
+            return this;
+        }
+
+        public IntegrationMappingBase build() {
+            return new IntegrationMappingBase(
+                id,
+                type
+            );
+        }
+    }
 }

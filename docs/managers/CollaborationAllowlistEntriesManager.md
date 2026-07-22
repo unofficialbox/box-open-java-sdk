@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `CollaborationAllowlistEntries`
 
+**Example**
+
+```java
+for (var item : client.collaborationAllowlistEntries.listCollaborationWhitelistEntries(null)) {
+  // use item
+}
+```
+
 Paginated — `listCollaborationWhitelistEntries(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -28,6 +36,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CollaborationAllowlistEntry`
 
+**Example**
+
+```java
+var result = client.collaborationAllowlistEntries.createCollaborationWhitelistEntries(new CollaborationWhitelistEntriesCreateRequest(/* … */));
+```
+
 ## getCollaborationWhitelistEntry
 
 `GET /collaboration_whitelist_entries/{collaboration_whitelist_entry_id}`
@@ -38,6 +52,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CollaborationAllowlistEntry`
 
+**Example**
+
+```java
+var result = client.collaborationAllowlistEntries.getCollaborationWhitelistEntry("COLLABORATION_WHITELIST_ENTRY_ID");
+```
+
 ## deleteCollaborationWhitelistEntry
 
 `DELETE /collaboration_whitelist_entries/{collaboration_whitelist_entry_id}`
@@ -47,4 +67,10 @@ the [pagination guide](../pagination.md).
 | `collaboration_whitelist_entry_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntry("COLLABORATION_WHITELIST_ENTRY_ID");
+```
 

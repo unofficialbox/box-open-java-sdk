@@ -14,4 +14,24 @@ public record MetadataCascadePolicyApplyRequest(PostIdApplyConflictResolution co
             (_m.get("conflict_resolution") == null ? null : PostIdApplyConflictResolution.fromJson(_m.get("conflict_resolution")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostIdApplyConflictResolution conflictResolution;
+
+        public Builder conflictResolution(PostIdApplyConflictResolution conflictResolution) {
+            this.conflictResolution = conflictResolution;
+            return this;
+        }
+
+        public MetadataCascadePolicyApplyRequest build() {
+            return new MetadataCascadePolicyApplyRequest(
+                conflictResolution
+            );
+        }
+    }
 }

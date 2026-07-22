@@ -137,4 +137,240 @@ public record FolderFull(
             (!_m.containsKey("is_associated_with_app_item") || _m.get("is_associated_with_app_item") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_associated_with_app_item")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private FolderType type;
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> createdAt;
+        private Tristate<OffsetDateTime> modifiedAt;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+        private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<UserMini> modifiedBy = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> trashedAt;
+        private Tristate<OffsetDateTime> purgedAt;
+        private Tristate<OffsetDateTime> contentCreatedAt;
+        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+        private Tristate<FileSharedLink> sharedLink;
+        private Tristate<FolderFolderUploadEmail> folderUploadEmail;
+        private Tristate<FolderMini> parent;
+        private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
+        private Optional<Items> itemCollection = java.util.Optional.empty();
+        private Optional<FolderFullSyncState> syncState = java.util.Optional.empty();
+        private Optional<Boolean> hasCollaborations = java.util.Optional.empty();
+        private Optional<FolderFullPermissions> permissions = java.util.Optional.empty();
+        private Optional<List<String>> tags = java.util.Optional.empty();
+        private Optional<Boolean> canNonOwnersInvite = java.util.Optional.empty();
+        private Optional<Boolean> isExternallyOwned = java.util.Optional.empty();
+        private Optional<Map<String, Map<String, MetadataFull>>> metadata = java.util.Optional.empty();
+        private Optional<Boolean> isCollaborationRestrictedToEnterprise = java.util.Optional.empty();
+        private Optional<List<SharedLinkAccess>> allowedSharedLinkAccessLevels = java.util.Optional.empty();
+        private Optional<List<FileFullAllowedInviteeRoles>> allowedInviteeRoles = java.util.Optional.empty();
+        private Optional<FileFullWatermarkInfo> watermarkInfo = java.util.Optional.empty();
+        private Optional<Boolean> isAccessibleViaSharedLink = java.util.Optional.empty();
+        private Optional<Boolean> canNonOwnersViewCollaborators = java.util.Optional.empty();
+        private Tristate<FileFullClassification> classification;
+        private Optional<Boolean> isAssociatedWithAppItem = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(FolderType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder createdAt(Tristate<OffsetDateTime> createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder modifiedAt(Tristate<OffsetDateTime> modifiedAt) {
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+        public Builder pathCollection(FilePathCollection pathCollection) {
+            this.pathCollection = java.util.Optional.ofNullable(pathCollection);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder trashedAt(Tristate<OffsetDateTime> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<OffsetDateTime> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder contentCreatedAt(Tristate<OffsetDateTime> contentCreatedAt) {
+            this.contentCreatedAt = contentCreatedAt;
+            return this;
+        }
+        public Builder contentModifiedAt(Tristate<OffsetDateTime> contentModifiedAt) {
+            this.contentModifiedAt = contentModifiedAt;
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+        public Builder sharedLink(Tristate<FileSharedLink> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder folderUploadEmail(Tristate<FolderFolderUploadEmail> folderUploadEmail) {
+            this.folderUploadEmail = folderUploadEmail;
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = java.util.Optional.ofNullable(itemStatus);
+            return this;
+        }
+        public Builder itemCollection(Items itemCollection) {
+            this.itemCollection = java.util.Optional.ofNullable(itemCollection);
+            return this;
+        }
+        public Builder syncState(FolderFullSyncState syncState) {
+            this.syncState = java.util.Optional.ofNullable(syncState);
+            return this;
+        }
+        public Builder hasCollaborations(Boolean hasCollaborations) {
+            this.hasCollaborations = java.util.Optional.ofNullable(hasCollaborations);
+            return this;
+        }
+        public Builder permissions(FolderFullPermissions permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+        public Builder tags(List<String> tags) {
+            this.tags = java.util.Optional.ofNullable(tags);
+            return this;
+        }
+        public Builder canNonOwnersInvite(Boolean canNonOwnersInvite) {
+            this.canNonOwnersInvite = java.util.Optional.ofNullable(canNonOwnersInvite);
+            return this;
+        }
+        public Builder isExternallyOwned(Boolean isExternallyOwned) {
+            this.isExternallyOwned = java.util.Optional.ofNullable(isExternallyOwned);
+            return this;
+        }
+        public Builder metadata(Map<String, Map<String, MetadataFull>> metadata) {
+            this.metadata = java.util.Optional.ofNullable(metadata);
+            return this;
+        }
+        public Builder isCollaborationRestrictedToEnterprise(Boolean isCollaborationRestrictedToEnterprise) {
+            this.isCollaborationRestrictedToEnterprise = java.util.Optional.ofNullable(isCollaborationRestrictedToEnterprise);
+            return this;
+        }
+        public Builder allowedSharedLinkAccessLevels(List<SharedLinkAccess> allowedSharedLinkAccessLevels) {
+            this.allowedSharedLinkAccessLevels = java.util.Optional.ofNullable(allowedSharedLinkAccessLevels);
+            return this;
+        }
+        public Builder allowedInviteeRoles(List<FileFullAllowedInviteeRoles> allowedInviteeRoles) {
+            this.allowedInviteeRoles = java.util.Optional.ofNullable(allowedInviteeRoles);
+            return this;
+        }
+        public Builder watermarkInfo(FileFullWatermarkInfo watermarkInfo) {
+            this.watermarkInfo = java.util.Optional.ofNullable(watermarkInfo);
+            return this;
+        }
+        public Builder isAccessibleViaSharedLink(Boolean isAccessibleViaSharedLink) {
+            this.isAccessibleViaSharedLink = java.util.Optional.ofNullable(isAccessibleViaSharedLink);
+            return this;
+        }
+        public Builder canNonOwnersViewCollaborators(Boolean canNonOwnersViewCollaborators) {
+            this.canNonOwnersViewCollaborators = java.util.Optional.ofNullable(canNonOwnersViewCollaborators);
+            return this;
+        }
+        public Builder classification(Tristate<FileFullClassification> classification) {
+            this.classification = classification;
+            return this;
+        }
+        public Builder isAssociatedWithAppItem(Boolean isAssociatedWithAppItem) {
+            this.isAssociatedWithAppItem = java.util.Optional.ofNullable(isAssociatedWithAppItem);
+            return this;
+        }
+
+        public FolderFull build() {
+            return new FolderFull(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                createdAt,
+                modifiedAt,
+                description,
+                size,
+                pathCollection,
+                createdBy,
+                modifiedBy,
+                trashedAt,
+                purgedAt,
+                contentCreatedAt,
+                contentModifiedAt,
+                ownedBy,
+                sharedLink,
+                folderUploadEmail,
+                parent,
+                itemStatus,
+                itemCollection,
+                syncState,
+                hasCollaborations,
+                permissions,
+                tags,
+                canNonOwnersInvite,
+                isExternallyOwned,
+                metadata,
+                isCollaborationRestrictedToEnterprise,
+                allowedSharedLinkAccessLevels,
+                allowedInviteeRoles,
+                watermarkInfo,
+                isAccessibleViaSharedLink,
+                canNonOwnersViewCollaborators,
+                classification,
+                isAssociatedWithAppItem
+            );
+        }
+    }
 }

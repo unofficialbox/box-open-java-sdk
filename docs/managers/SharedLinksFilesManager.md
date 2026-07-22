@@ -17,6 +17,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileFull`
 
+**Example**
+
+```java
+var result = client.sharedLinksFiles.getSharedItems("BOXAPI", null);
+```
+
 ## getFileGetSharedLink
 
 `GET /files/{file_id}`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `fields` | query | `String` | yes |
 
 **Returns:** `FileFull`
+
+**Example**
+
+```java
+var result = client.sharedLinksFiles.getFileGetSharedLink("FILE_ID", "FIELDS");
+```
 
 ## updateFileAddSharedLink
 
@@ -41,6 +53,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileFull`
 
+**Example**
+
+```java
+var result = client.sharedLinksFiles.updateFileAddSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+```
+
 ## updateFileUpdateSharedLink
 
 `PUT /files/{file_id}`
@@ -54,6 +72,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileFull`
 
+**Example**
+
+```java
+var result = client.sharedLinksFiles.updateFileUpdateSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+```
+
 ## updateFileRemoveSharedLink
 
 `PUT /files/{file_id}`
@@ -66,4 +90,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `FileUpdateRequest3`
 
 **Returns:** `FileFull`
+
+**Example**
+
+```java
+var result = client.sharedLinksFiles.updateFileRemoveSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest3(/* … */));
+```
 

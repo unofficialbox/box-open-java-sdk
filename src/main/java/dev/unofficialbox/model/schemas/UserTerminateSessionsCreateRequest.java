@@ -18,4 +18,30 @@ public record UserTerminateSessionsCreateRequest(List<String> userIds, List<Stri
             dev.unofficialbox.core.Json.decodeList(_m.get("user_logins"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<String> userIds;
+        private List<String> userLogins;
+
+        public Builder userIds(List<String> userIds) {
+            this.userIds = userIds;
+            return this;
+        }
+        public Builder userLogins(List<String> userLogins) {
+            this.userLogins = userLogins;
+            return this;
+        }
+
+        public UserTerminateSessionsCreateRequest build() {
+            return new UserTerminateSessionsCreateRequest(
+                userIds,
+                userLogins
+            );
+        }
+    }
 }

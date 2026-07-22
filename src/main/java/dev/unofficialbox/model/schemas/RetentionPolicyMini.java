@@ -32,4 +32,54 @@ public record RetentionPolicyMini(
             (!_m.containsKey("max_extension_length") || _m.get("max_extension_length") == null) ? java.util.Optional.<RetentionPolicyMaxExtensionLengthResponse>empty() : java.util.Optional.of((_m.get("max_extension_length") == null ? null : RetentionPolicyMaxExtensionLengthResponse.fromJson(_m.get("max_extension_length"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private RetentionPolicyType type;
+        private Optional<String> policyName = java.util.Optional.empty();
+        private Optional<String> retentionLength = java.util.Optional.empty();
+        private Optional<RetentionPolicyDispositionAction> dispositionAction = java.util.Optional.empty();
+        private Optional<RetentionPolicyMaxExtensionLengthResponse> maxExtensionLength = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(RetentionPolicyType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder policyName(String policyName) {
+            this.policyName = java.util.Optional.ofNullable(policyName);
+            return this;
+        }
+        public Builder retentionLength(String retentionLength) {
+            this.retentionLength = java.util.Optional.ofNullable(retentionLength);
+            return this;
+        }
+        public Builder dispositionAction(RetentionPolicyDispositionAction dispositionAction) {
+            this.dispositionAction = java.util.Optional.ofNullable(dispositionAction);
+            return this;
+        }
+        public Builder maxExtensionLength(RetentionPolicyMaxExtensionLengthResponse maxExtensionLength) {
+            this.maxExtensionLength = java.util.Optional.ofNullable(maxExtensionLength);
+            return this;
+        }
+
+        public RetentionPolicyMini build() {
+            return new RetentionPolicyMini(
+                id,
+                type,
+                policyName,
+                retentionLength,
+                dispositionAction,
+                maxExtensionLength
+            );
+        }
+    }
 }

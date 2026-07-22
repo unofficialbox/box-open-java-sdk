@@ -88,4 +88,144 @@ public record TrashFolderRestored(
             (!_m.containsKey("item_status") || _m.get("item_status") == null) ? java.util.Optional.<FileItemStatus>empty() : java.util.Optional.of((_m.get("item_status") == null ? null : FileItemStatus.fromJson(_m.get("item_status"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Tristate<String> etag;
+        private Optional<FolderType> type = java.util.Optional.empty();
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> createdAt;
+        private Tristate<OffsetDateTime> modifiedAt;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+        private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<UserMini> modifiedBy = java.util.Optional.empty();
+        private Tristate<String> trashedAt;
+        private Tristate<String> purgedAt;
+        private Tristate<OffsetDateTime> contentCreatedAt;
+        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+        private Tristate<String> sharedLink;
+        private Tristate<String> folderUploadEmail;
+        private Tristate<FolderMini> parent;
+        private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(FolderType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder createdAt(Tristate<OffsetDateTime> createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder modifiedAt(Tristate<OffsetDateTime> modifiedAt) {
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+        public Builder pathCollection(FilePathCollection pathCollection) {
+            this.pathCollection = java.util.Optional.ofNullable(pathCollection);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder trashedAt(Tristate<String> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<String> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder contentCreatedAt(Tristate<OffsetDateTime> contentCreatedAt) {
+            this.contentCreatedAt = contentCreatedAt;
+            return this;
+        }
+        public Builder contentModifiedAt(Tristate<OffsetDateTime> contentModifiedAt) {
+            this.contentModifiedAt = contentModifiedAt;
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+        public Builder sharedLink(Tristate<String> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder folderUploadEmail(Tristate<String> folderUploadEmail) {
+            this.folderUploadEmail = folderUploadEmail;
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = java.util.Optional.ofNullable(itemStatus);
+            return this;
+        }
+
+        public TrashFolderRestored build() {
+            return new TrashFolderRestored(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                createdAt,
+                modifiedAt,
+                description,
+                size,
+                pathCollection,
+                createdBy,
+                modifiedBy,
+                trashedAt,
+                purgedAt,
+                contentCreatedAt,
+                contentModifiedAt,
+                ownedBy,
+                sharedLink,
+                folderUploadEmail,
+                parent,
+                itemStatus
+            );
+        }
+    }
 }

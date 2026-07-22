@@ -23,4 +23,36 @@ public record LegalHoldPolicyUpdateRequest(
             (!_m.containsKey("release_notes") || _m.get("release_notes") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("release_notes")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> policyName = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<String> releaseNotes = java.util.Optional.empty();
+
+        public Builder policyName(String policyName) {
+            this.policyName = java.util.Optional.ofNullable(policyName);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder releaseNotes(String releaseNotes) {
+            this.releaseNotes = java.util.Optional.ofNullable(releaseNotes);
+            return this;
+        }
+
+        public LegalHoldPolicyUpdateRequest build() {
+            return new LegalHoldPolicyUpdateRequest(
+                policyName,
+                description,
+                releaseNotes
+            );
+        }
+    }
 }

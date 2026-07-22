@@ -16,4 +16,24 @@ public record HubCollaborationUpdateRequest(Optional<String> role) {
             (!_m.containsKey("role") || _m.get("role") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("role")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> role = java.util.Optional.empty();
+
+        public Builder role(String role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+
+        public HubCollaborationUpdateRequest build() {
+            return new HubCollaborationUpdateRequest(
+                role
+            );
+        }
+    }
 }

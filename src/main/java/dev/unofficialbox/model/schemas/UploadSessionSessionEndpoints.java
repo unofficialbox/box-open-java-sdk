@@ -32,4 +32,54 @@ public record UploadSessionSessionEndpoints(
             (!_m.containsKey("log_event") || _m.get("log_event") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("log_event")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> uploadPart = java.util.Optional.empty();
+        private Optional<String> commit = java.util.Optional.empty();
+        private Optional<String> abort = java.util.Optional.empty();
+        private Optional<String> listParts = java.util.Optional.empty();
+        private Optional<String> status = java.util.Optional.empty();
+        private Optional<String> logEvent = java.util.Optional.empty();
+
+        public Builder uploadPart(String uploadPart) {
+            this.uploadPart = java.util.Optional.ofNullable(uploadPart);
+            return this;
+        }
+        public Builder commit(String commit) {
+            this.commit = java.util.Optional.ofNullable(commit);
+            return this;
+        }
+        public Builder abort(String abort) {
+            this.abort = java.util.Optional.ofNullable(abort);
+            return this;
+        }
+        public Builder listParts(String listParts) {
+            this.listParts = java.util.Optional.ofNullable(listParts);
+            return this;
+        }
+        public Builder status(String status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder logEvent(String logEvent) {
+            this.logEvent = java.util.Optional.ofNullable(logEvent);
+            return this;
+        }
+
+        public UploadSessionSessionEndpoints build() {
+            return new UploadSessionSessionEndpoints(
+                uploadPart,
+                commit,
+                abort,
+                listParts,
+                status,
+                logEvent
+            );
+        }
+    }
 }

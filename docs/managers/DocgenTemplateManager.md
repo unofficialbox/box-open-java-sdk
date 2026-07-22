@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `DocGenTemplates`
 
+**Example**
+
+```java
+for (var item : client.docgenTemplate.listDocgenTemplates(null)) {
+  // use item
+}
+```
+
 Paginated — `listDocgenTemplates(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -28,6 +36,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `DocGenTemplateBase`
 
+**Example**
+
+```java
+var result = client.docgenTemplate.createDocgenTemplates(new DocGenTemplateCreateRequest(/* … */));
+```
+
 ## getDocgenTemplate
 
 `GET /docgen_templates/{template_id}`
@@ -38,6 +52,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `DocGenTemplate`
 
+**Example**
+
+```java
+var result = client.docgenTemplate.getDocgenTemplate("TEMPLATE_ID");
+```
+
 ## deleteDocgenTemplate
 
 `DELETE /docgen_templates/{template_id}`
@@ -47,6 +67,12 @@ the [pagination guide](../pagination.md).
 | `template_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.docgenTemplate.deleteDocgenTemplate("TEMPLATE_ID");
+```
 
 ## listDocgenTemplateTags
 
@@ -60,6 +86,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `DocGenTags`
+
+**Example**
+
+```java
+for (var item : client.docgenTemplate.listDocgenTemplateTags("TEMPLATE_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listDocgenTemplateTags(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -76,6 +110,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `DocGenJobs`
+
+**Example**
+
+```java
+for (var item : client.docgenTemplate.listJob("TEMPLATE_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listJob(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

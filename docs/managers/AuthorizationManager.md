@@ -19,6 +19,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** text (`String`)
 
+**Example**
+
+```java
+var result = client.authorization.authorize(null, "CLIENT_ID", null);
+```
+
 ## createOauth2Token
 
 `POST /oauth2/token`
@@ -26,6 +32,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/x-www-form-urlencoded`): `PostOAuth2Token`
 
 **Returns:** `AccessToken`
+
+**Example**
+
+```java
+var result = client.authorization.createOauth2Token(new PostOAuth2Token(/* … */));
+```
 
 ## createOauth2TokenRefresh
 
@@ -35,6 +47,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AccessToken`
 
+**Example**
+
+```java
+var result = client.authorization.createOauth2TokenRefresh(new PostOAuth2TokenRefreshAccessToken(/* … */));
+```
+
 ## revokeOauth2
 
 `POST /oauth2/revoke`
@@ -42,4 +60,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/x-www-form-urlencoded`): `PostOAuth2Revoke`
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.authorization.revokeOauth2(new PostOAuth2Revoke(/* … */));
+```
 

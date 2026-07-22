@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `RecentItems`
 
+**Example**
+
+```java
+for (var item : client.recentItems.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).

@@ -16,4 +16,30 @@ public record PostTask(String id, TaskType type) {
             (_m.get("type") == null ? null : TaskType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TaskType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TaskType type) {
+            this.type = type;
+            return this;
+        }
+
+        public PostTask build() {
+            return new PostTask(
+                id,
+                type
+            );
+        }
+    }
 }

@@ -38,4 +38,66 @@ public record ShieldRuleItem(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldRuleItemType> type = java.util.Optional.empty();
+        private Optional<String> ruleCategory = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<ShieldRuleItemPriority> priority = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldRuleItemType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder ruleCategory(String ruleCategory) {
+            this.ruleCategory = java.util.Optional.ofNullable(ruleCategory);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder priority(ShieldRuleItemPriority priority) {
+            this.priority = java.util.Optional.ofNullable(priority);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public ShieldRuleItem build() {
+            return new ShieldRuleItem(
+                id,
+                type,
+                ruleCategory,
+                name,
+                description,
+                priority,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

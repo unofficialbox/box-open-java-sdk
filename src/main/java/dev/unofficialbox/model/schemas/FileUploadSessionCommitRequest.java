@@ -16,4 +16,24 @@ public record FileUploadSessionCommitRequest(List<UploadPart> parts) {
             dev.unofficialbox.core.Json.decodeList(_m.get("parts"), _x0 -> (_x0 == null ? null : UploadPart.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<UploadPart> parts;
+
+        public Builder parts(List<UploadPart> parts) {
+            this.parts = parts;
+            return this;
+        }
+
+        public FileUploadSessionCommitRequest build() {
+            return new FileUploadSessionCommitRequest(
+                parts
+            );
+        }
+    }
 }

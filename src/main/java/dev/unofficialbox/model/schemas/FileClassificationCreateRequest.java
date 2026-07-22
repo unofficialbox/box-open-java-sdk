@@ -16,4 +16,24 @@ public record FileClassificationCreateRequest(Optional<String> boxSecurityClassi
             (!_m.containsKey("Box__Security__Classification__Key") || _m.get("Box__Security__Classification__Key") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("Box__Security__Classification__Key")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> boxSecurityClassificationKey = java.util.Optional.empty();
+
+        public Builder boxSecurityClassificationKey(String boxSecurityClassificationKey) {
+            this.boxSecurityClassificationKey = java.util.Optional.ofNullable(boxSecurityClassificationKey);
+            return this;
+        }
+
+        public FileClassificationCreateRequest build() {
+            return new FileClassificationCreateRequest(
+                boxSecurityClassificationKey
+            );
+        }
+    }
 }

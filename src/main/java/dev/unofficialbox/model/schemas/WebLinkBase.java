@@ -23,4 +23,36 @@ public record WebLinkBase(
             (!_m.containsKey("etag") || _m.get("etag") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("etag")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TrashWebLinkType type;
+        private Optional<String> etag = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TrashWebLinkType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder etag(String etag) {
+            this.etag = java.util.Optional.ofNullable(etag);
+            return this;
+        }
+
+        public WebLinkBase build() {
+            return new WebLinkBase(
+                id,
+                type,
+                etag
+            );
+        }
+    }
 }

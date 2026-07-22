@@ -35,4 +35,60 @@ public record CollaborationPermissions(
             (!_m.containsKey("is_viewer_uploader_role_enabled") || _m.get("is_viewer_uploader_role_enabled") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_viewer_uploader_role_enabled")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isCoOwnerRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isEditorRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isPreviewerRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isPreviewerUploaderRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isUploaderRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isViewerRoleEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isViewerUploaderRoleEnabled = java.util.Optional.empty();
+
+        public Builder isCoOwnerRoleEnabled(Boolean isCoOwnerRoleEnabled) {
+            this.isCoOwnerRoleEnabled = java.util.Optional.ofNullable(isCoOwnerRoleEnabled);
+            return this;
+        }
+        public Builder isEditorRoleEnabled(Boolean isEditorRoleEnabled) {
+            this.isEditorRoleEnabled = java.util.Optional.ofNullable(isEditorRoleEnabled);
+            return this;
+        }
+        public Builder isPreviewerRoleEnabled(Boolean isPreviewerRoleEnabled) {
+            this.isPreviewerRoleEnabled = java.util.Optional.ofNullable(isPreviewerRoleEnabled);
+            return this;
+        }
+        public Builder isPreviewerUploaderRoleEnabled(Boolean isPreviewerUploaderRoleEnabled) {
+            this.isPreviewerUploaderRoleEnabled = java.util.Optional.ofNullable(isPreviewerUploaderRoleEnabled);
+            return this;
+        }
+        public Builder isUploaderRoleEnabled(Boolean isUploaderRoleEnabled) {
+            this.isUploaderRoleEnabled = java.util.Optional.ofNullable(isUploaderRoleEnabled);
+            return this;
+        }
+        public Builder isViewerRoleEnabled(Boolean isViewerRoleEnabled) {
+            this.isViewerRoleEnabled = java.util.Optional.ofNullable(isViewerRoleEnabled);
+            return this;
+        }
+        public Builder isViewerUploaderRoleEnabled(Boolean isViewerUploaderRoleEnabled) {
+            this.isViewerUploaderRoleEnabled = java.util.Optional.ofNullable(isViewerUploaderRoleEnabled);
+            return this;
+        }
+
+        public CollaborationPermissions build() {
+            return new CollaborationPermissions(
+                isCoOwnerRoleEnabled,
+                isEditorRoleEnabled,
+                isPreviewerRoleEnabled,
+                isPreviewerUploaderRoleEnabled,
+                isUploaderRoleEnabled,
+                isViewerRoleEnabled,
+                isViewerUploaderRoleEnabled
+            );
+        }
+    }
 }

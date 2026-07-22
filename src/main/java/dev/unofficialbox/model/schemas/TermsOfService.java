@@ -38,4 +38,66 @@ public record TermsOfService(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TermsOfServiceType type;
+        private Optional<TermsOfServiceStatus> status = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryEnterprise> enterprise = java.util.Optional.empty();
+        private Optional<TermsOfServiceTosType> tosType = java.util.Optional.empty();
+        private Optional<String> text = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TermsOfServiceType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder status(TermsOfServiceStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder enterprise(CollaborationAllowlistEntryEnterprise enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder tosType(TermsOfServiceTosType tosType) {
+            this.tosType = java.util.Optional.ofNullable(tosType);
+            return this;
+        }
+        public Builder text(String text) {
+            this.text = java.util.Optional.ofNullable(text);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public TermsOfService build() {
+            return new TermsOfService(
+                id,
+                type,
+                status,
+                enterprise,
+                tosType,
+                text,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

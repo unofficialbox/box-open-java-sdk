@@ -16,4 +16,30 @@ public record FileContentCreateRequest(PostFileContentAttributes attributes, byt
             (_m.get("file") == null ? null : java.util.Base64.getDecoder().decode(dev.unofficialbox.core.Json.asString(_m.get("file"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostFileContentAttributes attributes;
+        private byte[] file;
+
+        public Builder attributes(PostFileContentAttributes attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+        public Builder file(byte[] file) {
+            this.file = file;
+            return this;
+        }
+
+        public FileContentCreateRequest build() {
+            return new FileContentCreateRequest(
+                attributes,
+                file
+            );
+        }
+    }
 }

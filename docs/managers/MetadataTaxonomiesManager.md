@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataTaxonomy`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.create(new MetadataTaxonomyCreateRequest(/* … */));
+```
+
 ## list
 
 `GET /metadata_taxonomies/{namespace}`
@@ -24,6 +30,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `limit` | query | `Long` | no |
 
 **Returns:** `MetadataTaxonomies`
+
+**Example**
+
+```java
+for (var item : client.metadataTaxonomies.list("NAMESPACE", null)) {
+  // use item
+}
+```
 
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -40,6 +54,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomy`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.get("NAMESPACE", "TAXONOMY_KEY");
+```
+
 ## delete
 
 `DELETE /metadata_taxonomies/{namespace}/{taxonomy_key}`
@@ -50,6 +70,12 @@ the [pagination guide](../pagination.md).
 | `taxonomy_key` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.metadataTaxonomies.delete("NAMESPACE", "TAXONOMY_KEY");
+```
 
 ## update
 
@@ -64,6 +90,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomy`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.update("NAMESPACE", "TAXONOMY_KEY", new MetadataTaxonomyUpdateRequest(/* … */));
+```
+
 ## createLevels
 
 `POST /metadata_taxonomies/{namespace}/{taxonomy_key}/levels`
@@ -76,6 +108,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `List<MetadataTaxonomyLevel>`
 
 **Returns:** `MetadataTaxonomyLevels`
+
+**Example**
+
+```java
+var result = client.metadataTaxonomies.createLevels("NAMESPACE", "TAXONOMY_KEY", java.util.List.of());
+```
 
 ## updateLevel
 
@@ -91,6 +129,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomyLevel`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.updateLevel("NAMESPACE", "TAXONOMY_KEY", 0L, new LevelUpdateRequest(/* … */));
+```
+
 ## appendLevels
 
 `POST /metadata_taxonomies/{namespace}/{taxonomy_key}/levels:append`
@@ -104,6 +148,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomyLevels`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.appendLevels("NAMESPACE", "TAXONOMY_KEY", new LevelUpdateRequest(/* … */));
+```
+
 ## trimLevels
 
 `POST /metadata_taxonomies/{namespace}/{taxonomy_key}/levels:trim`
@@ -114,6 +164,12 @@ the [pagination guide](../pagination.md).
 | `taxonomy_key` | path | `String` | yes |
 
 **Returns:** `MetadataTaxonomyLevels`
+
+**Example**
+
+```java
+var result = client.metadataTaxonomies.trimLevels("NAMESPACE", "TAXONOMY_KEY");
+```
 
 ## listNodes
 
@@ -133,6 +189,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomyNodes`
 
+**Example**
+
+```java
+for (var item : client.metadataTaxonomies.listNodes("NAMESPACE", "TAXONOMY_KEY", null)) {
+  // use item
+}
+```
+
 Paginated — `listNodes(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -150,6 +214,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomyNode`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.createNodes("NAMESPACE", "TAXONOMY_KEY", new NodesCreateRequest(/* … */));
+```
+
 ## getNode
 
 `GET /metadata_taxonomies/{namespace}/{taxonomy_key}/nodes/{node_id}`
@@ -162,6 +232,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataTaxonomyNode`
 
+**Example**
+
+```java
+var result = client.metadataTaxonomies.getNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID");
+```
+
 ## deleteNode
 
 `DELETE /metadata_taxonomies/{namespace}/{taxonomy_key}/nodes/{node_id}`
@@ -173,6 +249,12 @@ the [pagination guide](../pagination.md).
 | `node_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.metadataTaxonomies.deleteNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID");
+```
 
 ## updateNode
 
@@ -187,6 +269,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `NodeUpdateRequest`
 
 **Returns:** `MetadataTaxonomyNode`
+
+**Example**
+
+```java
+var result = client.metadataTaxonomies.updateNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID", new NodeUpdateRequest(/* … */));
+```
 
 ## listMetadataTemplateFieldOptions
 
@@ -207,6 +295,14 @@ the [pagination guide](../pagination.md).
 | `limit` | query | `Long` | no |
 
 **Returns:** `MetadataTaxonomyNodes`
+
+**Example**
+
+```java
+for (var item : client.metadataTaxonomies.listMetadataTemplateFieldOptions("NAMESPACE", "TEMPLATE_KEY", "FIELD_KEY", null)) {
+  // use item
+}
+```
 
 Paginated — `listMetadataTemplateFieldOptions(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

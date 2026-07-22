@@ -16,4 +16,24 @@ public record SkillCreateRequest(List<SkillCard> cards) {
             dev.unofficialbox.core.Json.decodeList(_m.get("cards"), _x0 -> (_x0 == null ? null : SkillCard.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<SkillCard> cards;
+
+        public Builder cards(List<SkillCard> cards) {
+            this.cards = cards;
+            return this;
+        }
+
+        public SkillCreateRequest build() {
+            return new SkillCreateRequest(
+                cards
+            );
+        }
+    }
 }

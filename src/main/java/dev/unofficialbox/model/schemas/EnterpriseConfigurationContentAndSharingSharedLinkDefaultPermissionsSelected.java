@@ -20,4 +20,30 @@ public record EnterpriseConfigurationContentAndSharingSharedLinkDefaultPermissio
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<SharedLinkPermissions>empty() : java.util.Optional.of((_m.get("value") == null ? null : SharedLinkPermissions.fromJson(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Optional<SharedLinkPermissions> value = java.util.Optional.empty();
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(SharedLinkPermissions value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public EnterpriseConfigurationContentAndSharingSharedLinkDefaultPermissionsSelected build() {
+            return new EnterpriseConfigurationContentAndSharingSharedLinkDefaultPermissionsSelected(
+                isUsed,
+                value
+            );
+        }
+    }
 }

@@ -22,4 +22,30 @@ public record RetentionPolicyAssignmentAssignedTo(
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<AssignedToType>empty() : java.util.Optional.of((_m.get("type") == null ? null : AssignedToType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> id;
+        private Optional<AssignedToType> type = java.util.Optional.empty();
+
+        public Builder id(Tristate<String> id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AssignedToType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public RetentionPolicyAssignmentAssignedTo build() {
+            return new RetentionPolicyAssignmentAssignedTo(
+                id,
+                type
+            );
+        }
+    }
 }

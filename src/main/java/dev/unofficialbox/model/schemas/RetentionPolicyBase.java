@@ -16,4 +16,30 @@ public record RetentionPolicyBase(String id, RetentionPolicyType type) {
             (_m.get("type") == null ? null : RetentionPolicyType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private RetentionPolicyType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(RetentionPolicyType type) {
+            this.type = type;
+            return this;
+        }
+
+        public RetentionPolicyBase build() {
+            return new RetentionPolicyBase(
+                id,
+                type
+            );
+        }
+    }
 }

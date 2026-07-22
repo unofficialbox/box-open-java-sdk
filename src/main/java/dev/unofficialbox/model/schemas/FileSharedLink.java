@@ -55,4 +55,90 @@ public record FileSharedLink(
             dev.unofficialbox.core.Json.asLong(_m.get("preview_count"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String url;
+        private Tristate<String> downloadUrl;
+        private Tristate<String> vanityUrl;
+        private Tristate<String> vanityName;
+        private Optional<SharedLinkAccess> access = java.util.Optional.empty();
+        private SharedLinkAccess effectiveAccess;
+        private SharedLinkEffectivePermission effectivePermission;
+        private Tristate<OffsetDateTime> unsharedAt;
+        private Boolean isPasswordEnabled;
+        private Optional<SharedLinkPermissions> permissions = java.util.Optional.empty();
+        private Long downloadCount;
+        private Long previewCount;
+
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+        public Builder downloadUrl(Tristate<String> downloadUrl) {
+            this.downloadUrl = downloadUrl;
+            return this;
+        }
+        public Builder vanityUrl(Tristate<String> vanityUrl) {
+            this.vanityUrl = vanityUrl;
+            return this;
+        }
+        public Builder vanityName(Tristate<String> vanityName) {
+            this.vanityName = vanityName;
+            return this;
+        }
+        public Builder access(SharedLinkAccess access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+        public Builder effectiveAccess(SharedLinkAccess effectiveAccess) {
+            this.effectiveAccess = effectiveAccess;
+            return this;
+        }
+        public Builder effectivePermission(SharedLinkEffectivePermission effectivePermission) {
+            this.effectivePermission = effectivePermission;
+            return this;
+        }
+        public Builder unsharedAt(Tristate<OffsetDateTime> unsharedAt) {
+            this.unsharedAt = unsharedAt;
+            return this;
+        }
+        public Builder isPasswordEnabled(Boolean isPasswordEnabled) {
+            this.isPasswordEnabled = isPasswordEnabled;
+            return this;
+        }
+        public Builder permissions(SharedLinkPermissions permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+        public Builder downloadCount(Long downloadCount) {
+            this.downloadCount = downloadCount;
+            return this;
+        }
+        public Builder previewCount(Long previewCount) {
+            this.previewCount = previewCount;
+            return this;
+        }
+
+        public FileSharedLink build() {
+            return new FileSharedLink(
+                url,
+                downloadUrl,
+                vanityUrl,
+                vanityName,
+                access,
+                effectiveAccess,
+                effectivePermission,
+                unsharedAt,
+                isPasswordEnabled,
+                permissions,
+                downloadCount,
+                previewCount
+            );
+        }
+    }
 }

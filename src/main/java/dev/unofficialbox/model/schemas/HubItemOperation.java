@@ -23,4 +23,36 @@ public record HubItemOperation(
             (!_m.containsKey("parent_id") || _m.get("parent_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("parent_id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private HubItemOperationAction action;
+        private HubItemReference item;
+        private Optional<String> parentId = java.util.Optional.empty();
+
+        public Builder action(HubItemOperationAction action) {
+            this.action = action;
+            return this;
+        }
+        public Builder item(HubItemReference item) {
+            this.item = item;
+            return this;
+        }
+        public Builder parentId(String parentId) {
+            this.parentId = java.util.Optional.ofNullable(parentId);
+            return this;
+        }
+
+        public HubItemOperation build() {
+            return new HubItemOperation(
+                action,
+                item,
+                parentId
+            );
+        }
+    }
 }

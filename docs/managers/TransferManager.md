@@ -5,7 +5,7 @@ Reach these methods through the `transfer` field on `dev.unofficialbox.Client`.
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## updateUserFolder0
+## transferFolders
 
 `PUT /users/{user_id}/folders/0`
 
@@ -18,4 +18,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `UserFolder0UpdateRequest`
 
 **Returns:** `FolderFull`
+
+**Example**
+
+```java
+var result = client.transfer.transferFolders("USER_ID", new UserFolder0UpdateRequest(/* … */), null);
+```
 

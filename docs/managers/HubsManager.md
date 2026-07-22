@@ -20,6 +20,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Hubs`
 
+**Example**
+
+```java
+for (var item : client.hubs.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -31,6 +39,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `HubCreateRequest`
 
 **Returns:** `Hub`
+
+**Example**
+
+```java
+var result = client.hubs.create(new HubCreateRequest(/* … */));
+```
 
 ## listEnterprise
 
@@ -46,6 +60,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Hubs`
 
+**Example**
+
+```java
+for (var item : client.hubs.listEnterprise(null)) {
+  // use item
+}
+```
+
 Paginated — `listEnterprise(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -60,6 +82,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Hub`
 
+**Example**
+
+```java
+var result = client.hubs.get("HUB_ID");
+```
+
 ## update
 
 `PUT /hubs/{hub_id}`
@@ -72,6 +100,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Hub`
 
+**Example**
+
+```java
+var result = client.hubs.update("HUB_ID", new HubUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /hubs/{hub_id}`
@@ -81,6 +115,12 @@ the [pagination guide](../pagination.md).
 | `hub_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.hubs.delete("HUB_ID");
+```
 
 ## copy
 
@@ -93,4 +133,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `HubCopyRequest`
 
 **Returns:** `Hub`
+
+**Example**
+
+```java
+var result = client.hubs.copy("HUB_ID", new HubCopyRequest(/* … */));
+```
 

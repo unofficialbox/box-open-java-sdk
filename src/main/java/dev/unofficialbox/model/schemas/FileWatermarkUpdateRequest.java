@@ -14,4 +14,24 @@ public record FileWatermarkUpdateRequest(PutFileIdWatermarkWatermark watermark) 
             (_m.get("watermark") == null ? null : PutFileIdWatermarkWatermark.fromJson(_m.get("watermark")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PutFileIdWatermarkWatermark watermark;
+
+        public Builder watermark(PutFileIdWatermarkWatermark watermark) {
+            this.watermark = watermark;
+            return this;
+        }
+
+        public FileWatermarkUpdateRequest build() {
+            return new FileWatermarkUpdateRequest(
+                watermark
+            );
+        }
+    }
 }

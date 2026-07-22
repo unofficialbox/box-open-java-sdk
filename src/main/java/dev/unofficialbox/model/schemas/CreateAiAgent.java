@@ -38,4 +38,66 @@ public record CreateAiAgent(
             (!_m.containsKey("extract") || _m.get("extract") == null) ? java.util.Optional.<AiStudioAgentExtract>empty() : java.util.Optional.of((_m.get("extract") == null ? null : AiStudioAgentExtract.fromJson(_m.get("extract"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiSingleAgentResponseType type;
+        private String name;
+        private String accessState;
+        private Optional<String> iconReference = java.util.Optional.empty();
+        private Optional<List<AiAgentAllowedEntity>> allowedEntities = java.util.Optional.empty();
+        private Optional<AiStudioAgentAsk> ask = java.util.Optional.empty();
+        private Optional<AiStudioAgentTextGen> textGen = java.util.Optional.empty();
+        private Optional<AiStudioAgentExtract> extract = java.util.Optional.empty();
+
+        public Builder type(AiSingleAgentResponseType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder accessState(String accessState) {
+            this.accessState = accessState;
+            return this;
+        }
+        public Builder iconReference(String iconReference) {
+            this.iconReference = java.util.Optional.ofNullable(iconReference);
+            return this;
+        }
+        public Builder allowedEntities(List<AiAgentAllowedEntity> allowedEntities) {
+            this.allowedEntities = java.util.Optional.ofNullable(allowedEntities);
+            return this;
+        }
+        public Builder ask(AiStudioAgentAsk ask) {
+            this.ask = java.util.Optional.ofNullable(ask);
+            return this;
+        }
+        public Builder textGen(AiStudioAgentTextGen textGen) {
+            this.textGen = java.util.Optional.ofNullable(textGen);
+            return this;
+        }
+        public Builder extract(AiStudioAgentExtract extract) {
+            this.extract = java.util.Optional.ofNullable(extract);
+            return this;
+        }
+
+        public CreateAiAgent build() {
+            return new CreateAiAgent(
+                type,
+                name,
+                accessState,
+                iconReference,
+                allowedEntities,
+                ask,
+                textGen,
+                extract
+            );
+        }
+    }
 }

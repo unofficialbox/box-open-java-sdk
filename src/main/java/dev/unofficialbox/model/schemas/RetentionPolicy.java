@@ -65,4 +65,120 @@ public record RetentionPolicy(
             (!_m.containsKey("assignment_counts") || _m.get("assignment_counts") == null) ? java.util.Optional.<RetentionPolicyAssignmentCounts>empty() : java.util.Optional.of((_m.get("assignment_counts") == null ? null : RetentionPolicyAssignmentCounts.fromJson(_m.get("assignment_counts"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private RetentionPolicyType type;
+        private Optional<String> policyName = java.util.Optional.empty();
+        private Optional<String> retentionLength = java.util.Optional.empty();
+        private Optional<RetentionPolicyDispositionAction> dispositionAction = java.util.Optional.empty();
+        private Optional<RetentionPolicyMaxExtensionLengthResponse> maxExtensionLength = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<RetentionPolicyPolicyType> policyType = java.util.Optional.empty();
+        private Optional<RetentionPolicyRetentionType> retentionType = java.util.Optional.empty();
+        private Optional<RetentionPolicyStatus> status = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<Boolean> canOwnerExtendRetention = java.util.Optional.empty();
+        private Optional<Boolean> areOwnersNotified = java.util.Optional.empty();
+        private Optional<List<UserMini>> customNotificationRecipients = java.util.Optional.empty();
+        private Optional<RetentionPolicyAssignmentCounts> assignmentCounts = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(RetentionPolicyType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder policyName(String policyName) {
+            this.policyName = java.util.Optional.ofNullable(policyName);
+            return this;
+        }
+        public Builder retentionLength(String retentionLength) {
+            this.retentionLength = java.util.Optional.ofNullable(retentionLength);
+            return this;
+        }
+        public Builder dispositionAction(RetentionPolicyDispositionAction dispositionAction) {
+            this.dispositionAction = java.util.Optional.ofNullable(dispositionAction);
+            return this;
+        }
+        public Builder maxExtensionLength(RetentionPolicyMaxExtensionLengthResponse maxExtensionLength) {
+            this.maxExtensionLength = java.util.Optional.ofNullable(maxExtensionLength);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder policyType(RetentionPolicyPolicyType policyType) {
+            this.policyType = java.util.Optional.ofNullable(policyType);
+            return this;
+        }
+        public Builder retentionType(RetentionPolicyRetentionType retentionType) {
+            this.retentionType = java.util.Optional.ofNullable(retentionType);
+            return this;
+        }
+        public Builder status(RetentionPolicyStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder canOwnerExtendRetention(Boolean canOwnerExtendRetention) {
+            this.canOwnerExtendRetention = java.util.Optional.ofNullable(canOwnerExtendRetention);
+            return this;
+        }
+        public Builder areOwnersNotified(Boolean areOwnersNotified) {
+            this.areOwnersNotified = java.util.Optional.ofNullable(areOwnersNotified);
+            return this;
+        }
+        public Builder customNotificationRecipients(List<UserMini> customNotificationRecipients) {
+            this.customNotificationRecipients = java.util.Optional.ofNullable(customNotificationRecipients);
+            return this;
+        }
+        public Builder assignmentCounts(RetentionPolicyAssignmentCounts assignmentCounts) {
+            this.assignmentCounts = java.util.Optional.ofNullable(assignmentCounts);
+            return this;
+        }
+
+        public RetentionPolicy build() {
+            return new RetentionPolicy(
+                id,
+                type,
+                policyName,
+                retentionLength,
+                dispositionAction,
+                maxExtensionLength,
+                description,
+                policyType,
+                retentionType,
+                status,
+                createdBy,
+                createdAt,
+                modifiedAt,
+                canOwnerExtendRetention,
+                areOwnersNotified,
+                customNotificationRecipients,
+                assignmentCounts
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record MetadataTaxonomyNode(
             (!_m.containsKey("ancestors") || _m.get("ancestors") == null) ? java.util.Optional.<List<MetadataTaxonomyAncestor>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("ancestors"), _x0 -> (_x0 == null ? null : MetadataTaxonomyAncestor.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private String displayName;
+        private Long level;
+        private Optional<String> parentId = java.util.Optional.empty();
+        private Optional<List<String>> nodePath = java.util.Optional.empty();
+        private Optional<List<MetadataTaxonomyAncestor>> ancestors = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder level(Long level) {
+            this.level = level;
+            return this;
+        }
+        public Builder parentId(String parentId) {
+            this.parentId = java.util.Optional.ofNullable(parentId);
+            return this;
+        }
+        public Builder nodePath(List<String> nodePath) {
+            this.nodePath = java.util.Optional.ofNullable(nodePath);
+            return this;
+        }
+        public Builder ancestors(List<MetadataTaxonomyAncestor> ancestors) {
+            this.ancestors = java.util.Optional.ofNullable(ancestors);
+            return this;
+        }
+
+        public MetadataTaxonomyNode build() {
+            return new MetadataTaxonomyNode(
+                id,
+                displayName,
+                level,
+                parentId,
+                nodePath,
+                ancestors
+            );
+        }
+    }
 }

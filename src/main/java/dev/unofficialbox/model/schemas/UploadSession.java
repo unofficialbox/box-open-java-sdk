@@ -35,4 +35,60 @@ public record UploadSession(
             (!_m.containsKey("session_endpoints") || _m.get("session_endpoints") == null) ? java.util.Optional.<UploadSessionSessionEndpoints>empty() : java.util.Optional.of((_m.get("session_endpoints") == null ? null : UploadSessionSessionEndpoints.fromJson(_m.get("session_endpoints"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<UploadSessionType> type = java.util.Optional.empty();
+        private Optional<OffsetDateTime> sessionExpiresAt = java.util.Optional.empty();
+        private Optional<Long> partSize = java.util.Optional.empty();
+        private Optional<Long> totalParts = java.util.Optional.empty();
+        private Optional<Long> numPartsProcessed = java.util.Optional.empty();
+        private Optional<UploadSessionSessionEndpoints> sessionEndpoints = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(UploadSessionType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder sessionExpiresAt(OffsetDateTime sessionExpiresAt) {
+            this.sessionExpiresAt = java.util.Optional.ofNullable(sessionExpiresAt);
+            return this;
+        }
+        public Builder partSize(Long partSize) {
+            this.partSize = java.util.Optional.ofNullable(partSize);
+            return this;
+        }
+        public Builder totalParts(Long totalParts) {
+            this.totalParts = java.util.Optional.ofNullable(totalParts);
+            return this;
+        }
+        public Builder numPartsProcessed(Long numPartsProcessed) {
+            this.numPartsProcessed = java.util.Optional.ofNullable(numPartsProcessed);
+            return this;
+        }
+        public Builder sessionEndpoints(UploadSessionSessionEndpoints sessionEndpoints) {
+            this.sessionEndpoints = java.util.Optional.ofNullable(sessionEndpoints);
+            return this;
+        }
+
+        public UploadSession build() {
+            return new UploadSession(
+                id,
+                type,
+                sessionExpiresAt,
+                partSize,
+                totalParts,
+                numPartsProcessed,
+                sessionEndpoints
+            );
+        }
+    }
 }

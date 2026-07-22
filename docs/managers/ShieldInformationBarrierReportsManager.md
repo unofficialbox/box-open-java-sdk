@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldInformationBarrierReports`
 
+**Example**
+
+```java
+for (var item : client.shieldInformationBarrierReports.list("SHIELD_INFORMATION_BARRIER_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -29,6 +37,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `ShieldInformationBarrierReport`
 
+**Example**
+
+```java
+var result = client.shieldInformationBarrierReports.create(new ShieldInformationBarrierReference(/* … */));
+```
+
 ## get
 
 `GET /shield_information_barrier_reports/{shield_information_barrier_report_id}`
@@ -38,4 +52,10 @@ the [pagination guide](../pagination.md).
 | `shield_information_barrier_report_id` | path | `String` | yes |
 
 **Returns:** `ShieldInformationBarrierReport`
+
+**Example**
+
+```java
+var result = client.shieldInformationBarrierReports.get("SHIELD_INFORMATION_BARRIER_REPORT_ID");
+```
 

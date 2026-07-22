@@ -16,4 +16,24 @@ public record HubItemsManageRequest(Optional<List<HubItemOperation>> operations)
             (!_m.containsKey("operations") || _m.get("operations") == null) ? java.util.Optional.<List<HubItemOperation>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("operations"), _x0 -> (_x0 == null ? null : HubItemOperation.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<HubItemOperation>> operations = java.util.Optional.empty();
+
+        public Builder operations(List<HubItemOperation> operations) {
+            this.operations = java.util.Optional.ofNullable(operations);
+            return this;
+        }
+
+        public HubItemsManageRequest build() {
+            return new HubItemsManageRequest(
+                operations
+            );
+        }
+    }
 }

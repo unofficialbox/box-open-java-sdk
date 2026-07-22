@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `LegalHoldPolicies`
 
+**Example**
+
+```java
+for (var item : client.legalHoldPolicies.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -30,6 +38,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `LegalHoldPolicy`
 
+**Example**
+
+```java
+var result = client.legalHoldPolicies.create(new LegalHoldPolicyCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /legal_hold_policies/{legal_hold_policy_id}`
@@ -39,6 +53,12 @@ the [pagination guide](../pagination.md).
 | `legal_hold_policy_id` | path | `String` | yes |
 
 **Returns:** `LegalHoldPolicy`
+
+**Example**
+
+```java
+var result = client.legalHoldPolicies.get("LEGAL_HOLD_POLICY_ID");
+```
 
 ## update
 
@@ -52,6 +72,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `LegalHoldPolicy`
 
+**Example**
+
+```java
+var result = client.legalHoldPolicies.update("LEGAL_HOLD_POLICY_ID", new LegalHoldPolicyUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /legal_hold_policies/{legal_hold_policy_id}`
@@ -61,4 +87,10 @@ the [pagination guide](../pagination.md).
 | `legal_hold_policy_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.legalHoldPolicies.delete("LEGAL_HOLD_POLICY_ID");
+```
 

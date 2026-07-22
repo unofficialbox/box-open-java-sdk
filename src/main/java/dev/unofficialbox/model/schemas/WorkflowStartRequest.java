@@ -29,4 +29,48 @@ public record WorkflowStartRequest(
             (!_m.containsKey("outcomes") || _m.get("outcomes") == null) ? java.util.Optional.<List<Outcome>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("outcomes"), _x0 -> (_x0 == null ? null : Outcome.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PostIdStartType> type = java.util.Optional.empty();
+        private PostIdStartFlow flow;
+        private List<PutSkillInvocationIdFile> files;
+        private MetadataCascadePolicyParent folder;
+        private Optional<List<Outcome>> outcomes = java.util.Optional.empty();
+
+        public Builder type(PostIdStartType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder flow(PostIdStartFlow flow) {
+            this.flow = flow;
+            return this;
+        }
+        public Builder files(List<PutSkillInvocationIdFile> files) {
+            this.files = files;
+            return this;
+        }
+        public Builder folder(MetadataCascadePolicyParent folder) {
+            this.folder = folder;
+            return this;
+        }
+        public Builder outcomes(List<Outcome> outcomes) {
+            this.outcomes = java.util.Optional.ofNullable(outcomes);
+            return this;
+        }
+
+        public WorkflowStartRequest build() {
+            return new WorkflowStartRequest(
+                type,
+                flow,
+                files,
+                folder,
+                outcomes
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record CollaborationAllowlistExemptTarget(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistExemptTargetType> type = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryEnterprise> enterprise = java.util.Optional.empty();
+        private Optional<UserMini> user = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(CollaborationAllowlistExemptTargetType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder enterprise(CollaborationAllowlistEntryEnterprise enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder user(UserMini user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public CollaborationAllowlistExemptTarget build() {
+            return new CollaborationAllowlistExemptTarget(
+                id,
+                type,
+                enterprise,
+                user,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

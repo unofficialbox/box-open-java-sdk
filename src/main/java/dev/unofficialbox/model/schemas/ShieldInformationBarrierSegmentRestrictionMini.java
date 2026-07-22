@@ -26,4 +26,42 @@ public record ShieldInformationBarrierSegmentRestrictionMini(
             (_m.get("restricted_segment") == null ? null : ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment.fromJson(_m.get("restricted_segment")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<ShieldInformationBarrierSegmentRestrictionType> type = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+        private ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment shieldInformationBarrierSegment;
+        private ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment restrictedSegment;
+
+        public Builder type(ShieldInformationBarrierSegmentRestrictionType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder shieldInformationBarrierSegment(ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment shieldInformationBarrierSegment) {
+            this.shieldInformationBarrierSegment = shieldInformationBarrierSegment;
+            return this;
+        }
+        public Builder restrictedSegment(ShieldInformationBarrierSegmentMemberShieldInformationBarrierSegment restrictedSegment) {
+            this.restrictedSegment = restrictedSegment;
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentRestrictionMini build() {
+            return new ShieldInformationBarrierSegmentRestrictionMini(
+                type,
+                id,
+                shieldInformationBarrierSegment,
+                restrictedSegment
+            );
+        }
+    }
 }

@@ -23,4 +23,36 @@ public record SkillUpdateRequest(
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<SkillCard>empty() : java.util.Optional.of((_m.get("value") == null ? null : SkillCard.fromJson(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PutOp> op = java.util.Optional.empty();
+        private Optional<String> path = java.util.Optional.empty();
+        private Optional<SkillCard> value = java.util.Optional.empty();
+
+        public Builder op(PutOp op) {
+            this.op = java.util.Optional.ofNullable(op);
+            return this;
+        }
+        public Builder path(String path) {
+            this.path = java.util.Optional.ofNullable(path);
+            return this;
+        }
+        public Builder value(SkillCard value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public SkillUpdateRequest build() {
+            return new SkillUpdateRequest(
+                op,
+                path,
+                value
+            );
+        }
+    }
 }

@@ -45,4 +45,72 @@ public record FileUpdateRequest(
             (!_m.containsKey("tags") || _m.get("tags") == null) ? java.util.Optional.<List<String>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("tags"), _x0 -> dev.unofficialbox.core.Json.asString(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<PutIdParent> parent = java.util.Optional.empty();
+        private Tristate<PutIdSharedLink> sharedLink;
+        private Tristate<PutIdLock> lock;
+        private Optional<OffsetDateTime> dispositionAt = java.util.Optional.empty();
+        private Optional<PutIdPermissions> permissions = java.util.Optional.empty();
+        private Tristate<List<CommentItem>> collections;
+        private Optional<List<String>> tags = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder parent(PutIdParent parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder sharedLink(Tristate<PutIdSharedLink> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder lock(Tristate<PutIdLock> lock) {
+            this.lock = lock;
+            return this;
+        }
+        public Builder dispositionAt(OffsetDateTime dispositionAt) {
+            this.dispositionAt = java.util.Optional.ofNullable(dispositionAt);
+            return this;
+        }
+        public Builder permissions(PutIdPermissions permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+        public Builder collections(Tristate<List<CommentItem>> collections) {
+            this.collections = collections;
+            return this;
+        }
+        public Builder tags(List<String> tags) {
+            this.tags = java.util.Optional.ofNullable(tags);
+            return this;
+        }
+
+        public FileUpdateRequest build() {
+            return new FileUpdateRequest(
+                name,
+                description,
+                parent,
+                sharedLink,
+                lock,
+                dispositionAt,
+                permissions,
+                collections,
+                tags
+            );
+        }
+    }
 }

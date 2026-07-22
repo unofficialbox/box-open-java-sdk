@@ -43,4 +43,66 @@ public record ExternalCollabSecuritySettings(
             !_m.containsKey("factor_type_settings") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("factor_type_settings") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("factor_type_settings"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<String>> denylistDomains = java.util.Optional.empty();
+        private Optional<List<String>> denylistEmails = java.util.Optional.empty();
+        private Optional<List<String>> allowlistDomains = java.util.Optional.empty();
+        private Optional<List<String>> allowlistEmails = java.util.Optional.empty();
+        private Tristate<String> state;
+        private Tristate<String> scheduledStatus;
+        private Tristate<OffsetDateTime> scheduledAt;
+        private Tristate<String> factorTypeSettings;
+
+        public Builder denylistDomains(List<String> denylistDomains) {
+            this.denylistDomains = java.util.Optional.ofNullable(denylistDomains);
+            return this;
+        }
+        public Builder denylistEmails(List<String> denylistEmails) {
+            this.denylistEmails = java.util.Optional.ofNullable(denylistEmails);
+            return this;
+        }
+        public Builder allowlistDomains(List<String> allowlistDomains) {
+            this.allowlistDomains = java.util.Optional.ofNullable(allowlistDomains);
+            return this;
+        }
+        public Builder allowlistEmails(List<String> allowlistEmails) {
+            this.allowlistEmails = java.util.Optional.ofNullable(allowlistEmails);
+            return this;
+        }
+        public Builder state(Tristate<String> state) {
+            this.state = state;
+            return this;
+        }
+        public Builder scheduledStatus(Tristate<String> scheduledStatus) {
+            this.scheduledStatus = scheduledStatus;
+            return this;
+        }
+        public Builder scheduledAt(Tristate<OffsetDateTime> scheduledAt) {
+            this.scheduledAt = scheduledAt;
+            return this;
+        }
+        public Builder factorTypeSettings(Tristate<String> factorTypeSettings) {
+            this.factorTypeSettings = factorTypeSettings;
+            return this;
+        }
+
+        public ExternalCollabSecuritySettings build() {
+            return new ExternalCollabSecuritySettings(
+                denylistDomains,
+                denylistEmails,
+                allowlistDomains,
+                allowlistEmails,
+                state,
+                scheduledStatus,
+                scheduledAt,
+                factorTypeSettings
+            );
+        }
+    }
 }

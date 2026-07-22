@@ -18,4 +18,30 @@ public record WebhookTarget(Optional<String> id, Optional<EventSourceItemType> t
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<EventSourceItemType>empty() : java.util.Optional.of((_m.get("type") == null ? null : EventSourceItemType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<EventSourceItemType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(EventSourceItemType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public WebhookTarget build() {
+            return new WebhookTarget(
+                id,
+                type
+            );
+        }
+    }
 }

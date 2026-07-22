@@ -16,4 +16,24 @@ public record FolderUpdateRequest2(Optional<PutFolderIdUpdateSharedLinkSharedLin
             (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFolderIdUpdateSharedLinkSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFolderIdUpdateSharedLinkSharedLink.fromJson(_m.get("shared_link"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PutFolderIdUpdateSharedLinkSharedLink> sharedLink = java.util.Optional.empty();
+
+        public Builder sharedLink(PutFolderIdUpdateSharedLinkSharedLink sharedLink) {
+            this.sharedLink = java.util.Optional.ofNullable(sharedLink);
+            return this;
+        }
+
+        public FolderUpdateRequest2 build() {
+            return new FolderUpdateRequest2(
+                sharedLink
+            );
+        }
+    }
 }

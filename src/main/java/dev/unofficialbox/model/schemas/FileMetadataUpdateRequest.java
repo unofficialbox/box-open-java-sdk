@@ -26,4 +26,42 @@ public record FileMetadataUpdateRequest(
             (!_m.containsKey("from") || _m.get("from") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("from")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<PutFileIdMetadataIdIdOp> op = java.util.Optional.empty();
+        private Optional<String> path = java.util.Optional.empty();
+        private Optional<MetadataInstanceValue> value = java.util.Optional.empty();
+        private Optional<String> from = java.util.Optional.empty();
+
+        public Builder op(PutFileIdMetadataIdIdOp op) {
+            this.op = java.util.Optional.ofNullable(op);
+            return this;
+        }
+        public Builder path(String path) {
+            this.path = java.util.Optional.ofNullable(path);
+            return this;
+        }
+        public Builder value(MetadataInstanceValue value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+        public Builder from(String from) {
+            this.from = java.util.Optional.ofNullable(from);
+            return this;
+        }
+
+        public FileMetadataUpdateRequest build() {
+            return new FileMetadataUpdateRequest(
+                op,
+                path,
+                value,
+                from
+            );
+        }
+    }
 }

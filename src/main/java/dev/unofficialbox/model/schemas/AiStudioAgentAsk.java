@@ -52,4 +52,90 @@ public record AiStudioAgentAsk(
             (!_m.containsKey("basic_image_multi") || _m.get("basic_image_multi") == null) ? java.util.Optional.<AiStudioAgentBasicTextTool>empty() : java.util.Optional.of((_m.get("basic_image_multi") == null ? null : AiStudioAgentBasicTextTool.fromJson(_m.get("basic_image_multi"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentAskType type;
+        private String accessState;
+        private String description;
+        private Tristate<String> customInstructions;
+        private Optional<List<String>> suggestedQuestions = java.util.Optional.empty();
+        private Optional<AiStudioAgentLongTextTool> longText = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicText = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicImage = java.util.Optional.empty();
+        private Optional<AiAgentSpreadsheetTool> spreadsheet = java.util.Optional.empty();
+        private Optional<AiStudioAgentLongTextTool> longTextMulti = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicTextMulti = java.util.Optional.empty();
+        private Optional<AiStudioAgentBasicTextTool> basicImageMulti = java.util.Optional.empty();
+
+        public Builder type(AiAgentAskType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder accessState(String accessState) {
+            this.accessState = accessState;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        public Builder customInstructions(Tristate<String> customInstructions) {
+            this.customInstructions = customInstructions;
+            return this;
+        }
+        public Builder suggestedQuestions(List<String> suggestedQuestions) {
+            this.suggestedQuestions = java.util.Optional.ofNullable(suggestedQuestions);
+            return this;
+        }
+        public Builder longText(AiStudioAgentLongTextTool longText) {
+            this.longText = java.util.Optional.ofNullable(longText);
+            return this;
+        }
+        public Builder basicText(AiStudioAgentBasicTextTool basicText) {
+            this.basicText = java.util.Optional.ofNullable(basicText);
+            return this;
+        }
+        public Builder basicImage(AiStudioAgentBasicTextTool basicImage) {
+            this.basicImage = java.util.Optional.ofNullable(basicImage);
+            return this;
+        }
+        public Builder spreadsheet(AiAgentSpreadsheetTool spreadsheet) {
+            this.spreadsheet = java.util.Optional.ofNullable(spreadsheet);
+            return this;
+        }
+        public Builder longTextMulti(AiStudioAgentLongTextTool longTextMulti) {
+            this.longTextMulti = java.util.Optional.ofNullable(longTextMulti);
+            return this;
+        }
+        public Builder basicTextMulti(AiStudioAgentBasicTextTool basicTextMulti) {
+            this.basicTextMulti = java.util.Optional.ofNullable(basicTextMulti);
+            return this;
+        }
+        public Builder basicImageMulti(AiStudioAgentBasicTextTool basicImageMulti) {
+            this.basicImageMulti = java.util.Optional.ofNullable(basicImageMulti);
+            return this;
+        }
+
+        public AiStudioAgentAsk build() {
+            return new AiStudioAgentAsk(
+                type,
+                accessState,
+                description,
+                customInstructions,
+                suggestedQuestions,
+                longText,
+                basicText,
+                basicImage,
+                spreadsheet,
+                longTextMulti,
+                basicTextMulti,
+                basicImageMulti
+            );
+        }
+    }
 }

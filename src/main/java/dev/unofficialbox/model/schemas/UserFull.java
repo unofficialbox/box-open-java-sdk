@@ -103,4 +103,192 @@ public record UserFull(
             (!_m.containsKey("external_app_user_id") || _m.get("external_app_user_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("external_app_user_id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private VariableValueType type;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> login = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<String> language = java.util.Optional.empty();
+        private Optional<String> timezone = java.util.Optional.empty();
+        private Optional<Long> spaceAmount = java.util.Optional.empty();
+        private Optional<Long> spaceUsed = java.util.Optional.empty();
+        private Optional<Long> maxUploadSize = java.util.Optional.empty();
+        private Optional<UserStatus> status = java.util.Optional.empty();
+        private Optional<String> jobTitle = java.util.Optional.empty();
+        private Optional<String> phone = java.util.Optional.empty();
+        private Optional<String> address = java.util.Optional.empty();
+        private Optional<String> avatarUrl = java.util.Optional.empty();
+        private Tristate<UserNotificationEmail> notificationEmail;
+        private Optional<UserFullRole> role = java.util.Optional.empty();
+        private Optional<List<TrackingCode>> trackingCodes = java.util.Optional.empty();
+        private Optional<Boolean> canSeeManagedUsers = java.util.Optional.empty();
+        private Optional<Boolean> isSyncEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isExternalCollabRestricted = java.util.Optional.empty();
+        private Optional<Boolean> isExemptFromDeviceLimits = java.util.Optional.empty();
+        private Optional<Boolean> isExemptFromLoginVerification = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryEnterprise> enterprise = java.util.Optional.empty();
+        private Optional<List<String>> myTags = java.util.Optional.empty();
+        private Optional<String> hostname = java.util.Optional.empty();
+        private Optional<Boolean> isPlatformAccessOnly = java.util.Optional.empty();
+        private Optional<String> externalAppUserId = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(VariableValueType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder login(String login) {
+            this.login = java.util.Optional.ofNullable(login);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder language(String language) {
+            this.language = java.util.Optional.ofNullable(language);
+            return this;
+        }
+        public Builder timezone(String timezone) {
+            this.timezone = java.util.Optional.ofNullable(timezone);
+            return this;
+        }
+        public Builder spaceAmount(Long spaceAmount) {
+            this.spaceAmount = java.util.Optional.ofNullable(spaceAmount);
+            return this;
+        }
+        public Builder spaceUsed(Long spaceUsed) {
+            this.spaceUsed = java.util.Optional.ofNullable(spaceUsed);
+            return this;
+        }
+        public Builder maxUploadSize(Long maxUploadSize) {
+            this.maxUploadSize = java.util.Optional.ofNullable(maxUploadSize);
+            return this;
+        }
+        public Builder status(UserStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder jobTitle(String jobTitle) {
+            this.jobTitle = java.util.Optional.ofNullable(jobTitle);
+            return this;
+        }
+        public Builder phone(String phone) {
+            this.phone = java.util.Optional.ofNullable(phone);
+            return this;
+        }
+        public Builder address(String address) {
+            this.address = java.util.Optional.ofNullable(address);
+            return this;
+        }
+        public Builder avatarUrl(String avatarUrl) {
+            this.avatarUrl = java.util.Optional.ofNullable(avatarUrl);
+            return this;
+        }
+        public Builder notificationEmail(Tristate<UserNotificationEmail> notificationEmail) {
+            this.notificationEmail = notificationEmail;
+            return this;
+        }
+        public Builder role(UserFullRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder trackingCodes(List<TrackingCode> trackingCodes) {
+            this.trackingCodes = java.util.Optional.ofNullable(trackingCodes);
+            return this;
+        }
+        public Builder canSeeManagedUsers(Boolean canSeeManagedUsers) {
+            this.canSeeManagedUsers = java.util.Optional.ofNullable(canSeeManagedUsers);
+            return this;
+        }
+        public Builder isSyncEnabled(Boolean isSyncEnabled) {
+            this.isSyncEnabled = java.util.Optional.ofNullable(isSyncEnabled);
+            return this;
+        }
+        public Builder isExternalCollabRestricted(Boolean isExternalCollabRestricted) {
+            this.isExternalCollabRestricted = java.util.Optional.ofNullable(isExternalCollabRestricted);
+            return this;
+        }
+        public Builder isExemptFromDeviceLimits(Boolean isExemptFromDeviceLimits) {
+            this.isExemptFromDeviceLimits = java.util.Optional.ofNullable(isExemptFromDeviceLimits);
+            return this;
+        }
+        public Builder isExemptFromLoginVerification(Boolean isExemptFromLoginVerification) {
+            this.isExemptFromLoginVerification = java.util.Optional.ofNullable(isExemptFromLoginVerification);
+            return this;
+        }
+        public Builder enterprise(CollaborationAllowlistEntryEnterprise enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder myTags(List<String> myTags) {
+            this.myTags = java.util.Optional.ofNullable(myTags);
+            return this;
+        }
+        public Builder hostname(String hostname) {
+            this.hostname = java.util.Optional.ofNullable(hostname);
+            return this;
+        }
+        public Builder isPlatformAccessOnly(Boolean isPlatformAccessOnly) {
+            this.isPlatformAccessOnly = java.util.Optional.ofNullable(isPlatformAccessOnly);
+            return this;
+        }
+        public Builder externalAppUserId(String externalAppUserId) {
+            this.externalAppUserId = java.util.Optional.ofNullable(externalAppUserId);
+            return this;
+        }
+
+        public UserFull build() {
+            return new UserFull(
+                id,
+                type,
+                name,
+                login,
+                createdAt,
+                modifiedAt,
+                language,
+                timezone,
+                spaceAmount,
+                spaceUsed,
+                maxUploadSize,
+                status,
+                jobTitle,
+                phone,
+                address,
+                avatarUrl,
+                notificationEmail,
+                role,
+                trackingCodes,
+                canSeeManagedUsers,
+                isSyncEnabled,
+                isExternalCollabRestricted,
+                isExemptFromDeviceLimits,
+                isExemptFromLoginVerification,
+                enterprise,
+                myTags,
+                hostname,
+                isPlatformAccessOnly,
+                externalAppUserId
+            );
+        }
+    }
 }

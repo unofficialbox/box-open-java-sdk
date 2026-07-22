@@ -20,4 +20,30 @@ public record SignTemplateAdditionalInfo(
             (!_m.containsKey("required") || _m.get("required") == null) ? java.util.Optional.<AdditionalInfoRequired>empty() : java.util.Optional.of((_m.get("required") == null ? null : AdditionalInfoRequired.fromJson(_m.get("required"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<AdditionalInfoNonEditable>> nonEditable = java.util.Optional.empty();
+        private Optional<AdditionalInfoRequired> required = java.util.Optional.empty();
+
+        public Builder nonEditable(List<AdditionalInfoNonEditable> nonEditable) {
+            this.nonEditable = java.util.Optional.ofNullable(nonEditable);
+            return this;
+        }
+        public Builder required(AdditionalInfoRequired required) {
+            this.required = java.util.Optional.ofNullable(required);
+            return this;
+        }
+
+        public SignTemplateAdditionalInfo build() {
+            return new SignTemplateAdditionalInfo(
+                nonEditable,
+                required
+            );
+        }
+    }
 }

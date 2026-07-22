@@ -16,4 +16,30 @@ public record GroupBase(String id, GroupType type) implements AiAgentAllowedEnti
             (_m.get("type") == null ? null : GroupType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private GroupType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(GroupType type) {
+            this.type = type;
+            return this;
+        }
+
+        public GroupBase build() {
+            return new GroupBase(
+                id,
+                type
+            );
+        }
+    }
 }

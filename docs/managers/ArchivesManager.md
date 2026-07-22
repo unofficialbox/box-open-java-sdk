@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Archives`
 
+**Example**
+
+```java
+for (var item : client.archives.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -27,6 +35,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `ArchiveCreateRequest`
 
 **Returns:** `Archive`
+
+**Example**
+
+```java
+var result = client.archives.create(new ArchiveCreateRequest(/* … */));
+```
 
 ## update
 
@@ -40,6 +54,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Archive`
 
+**Example**
+
+```java
+var result = client.archives.update("ARCHIVE_ID", new ArchiveUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /archives/{archive_id}`
@@ -49,4 +69,10 @@ the [pagination guide](../pagination.md).
 | `archive_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.archives.delete("ARCHIVE_ID");
+```
 

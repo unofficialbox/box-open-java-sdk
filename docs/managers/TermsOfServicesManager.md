@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TermsOfServices`
 
+**Example**
+
+```java
+var result = client.termsOfServices.list(null);
+```
+
 ## create
 
 `POST /terms_of_services`
@@ -22,6 +28,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TermsOfServiceCreateRequest`
 
 **Returns:** `TermsOfService`
+
+**Example**
+
+```java
+var result = client.termsOfServices.create(new TermsOfServiceCreateRequest(/* … */));
+```
 
 ## get
 
@@ -32,6 +44,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `terms_of_service_id` | path | `String` | yes |
 
 **Returns:** `TermsOfService`
+
+**Example**
+
+```java
+var result = client.termsOfServices.get("TERMS_OF_SERVICE_ID");
+```
 
 ## update
 
@@ -44,4 +62,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TermsOfServiceUpdateRequest`
 
 **Returns:** `TermsOfService`
+
+**Example**
+
+```java
+var result = client.termsOfServices.update("TERMS_OF_SERVICE_ID", new TermsOfServiceUpdateRequest(/* … */));
+```
 

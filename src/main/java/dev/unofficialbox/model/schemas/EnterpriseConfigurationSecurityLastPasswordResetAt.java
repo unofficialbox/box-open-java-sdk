@@ -22,4 +22,30 @@ public record EnterpriseConfigurationSecurityLastPasswordResetAt(
             !_m.containsKey("value") ? dev.unofficialbox.core.Tristate.<OffsetDateTime>absent() : (_m.get("value") == null ? dev.unofficialbox.core.Tristate.<OffsetDateTime>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("value") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("value"))))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> value;
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(Tristate<OffsetDateTime> value) {
+            this.value = value;
+            return this;
+        }
+
+        public EnterpriseConfigurationSecurityLastPasswordResetAt build() {
+            return new EnterpriseConfigurationSecurityLastPasswordResetAt(
+                isUsed,
+                value
+            );
+        }
+    }
 }

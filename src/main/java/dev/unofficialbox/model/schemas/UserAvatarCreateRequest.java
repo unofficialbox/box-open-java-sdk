@@ -14,4 +14,24 @@ public record UserAvatarCreateRequest(byte[] pic) {
             (_m.get("pic") == null ? null : java.util.Base64.getDecoder().decode(dev.unofficialbox.core.Json.asString(_m.get("pic"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private byte[] pic;
+
+        public Builder pic(byte[] pic) {
+            this.pic = pic;
+            return this;
+        }
+
+        public UserAvatarCreateRequest build() {
+            return new UserAvatarCreateRequest(
+                pic
+            );
+        }
+    }
 }

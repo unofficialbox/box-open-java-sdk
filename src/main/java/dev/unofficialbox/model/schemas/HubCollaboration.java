@@ -35,4 +35,60 @@ public record HubCollaboration(
             (!_m.containsKey("acceptance_requirements_status") || _m.get("acceptance_requirements_status") == null) ? java.util.Optional.<HubCollaborationAcceptanceRequirementsStatus>empty() : java.util.Optional.of((_m.get("acceptance_requirements_status") == null ? null : HubCollaborationAcceptanceRequirementsStatus.fromJson(_m.get("acceptance_requirements_status"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private HubCollaborationType type;
+        private Optional<HubBase> hub = java.util.Optional.empty();
+        private Optional<HubAccessGrantee> accessibleBy = java.util.Optional.empty();
+        private Optional<String> role = java.util.Optional.empty();
+        private Optional<HubCollaborationStatus> status = java.util.Optional.empty();
+        private Optional<HubCollaborationAcceptanceRequirementsStatus> acceptanceRequirementsStatus = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(HubCollaborationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder hub(HubBase hub) {
+            this.hub = java.util.Optional.ofNullable(hub);
+            return this;
+        }
+        public Builder accessibleBy(HubAccessGrantee accessibleBy) {
+            this.accessibleBy = java.util.Optional.ofNullable(accessibleBy);
+            return this;
+        }
+        public Builder role(String role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder status(HubCollaborationStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder acceptanceRequirementsStatus(HubCollaborationAcceptanceRequirementsStatus acceptanceRequirementsStatus) {
+            this.acceptanceRequirementsStatus = java.util.Optional.ofNullable(acceptanceRequirementsStatus);
+            return this;
+        }
+
+        public HubCollaboration build() {
+            return new HubCollaboration(
+                id,
+                type,
+                hub,
+                accessibleBy,
+                role,
+                status,
+                acceptanceRequirementsStatus
+            );
+        }
+    }
 }

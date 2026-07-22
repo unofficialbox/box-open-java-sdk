@@ -16,4 +16,24 @@ public record EntriesStatus(Optional<StatusState> state) {
             (!_m.containsKey("state") || _m.get("state") == null) ? java.util.Optional.<StatusState>empty() : java.util.Optional.of((_m.get("state") == null ? null : StatusState.fromJson(_m.get("state"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<StatusState> state = java.util.Optional.empty();
+
+        public Builder state(StatusState state) {
+            this.state = java.util.Optional.ofNullable(state);
+            return this;
+        }
+
+        public EntriesStatus build() {
+            return new EntriesStatus(
+                state
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record MetadataTemplateSchemaCreateRequest(
             dev.unofficialbox.core.Json.decodeList(_m.get("fields"), _x0 -> (_x0 == null ? null : PostMetadataTemplateSchemaClassificationsFields.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private EnterpriseType scope;
+        private ClassificationTemplate2 templateKey;
+        private ClassificationTemplateDisplayName displayName;
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private Optional<Boolean> copyInstanceOnItemCopy = java.util.Optional.empty();
+        private List<PostMetadataTemplateSchemaClassificationsFields> fields;
+
+        public Builder scope(EnterpriseType scope) {
+            this.scope = scope;
+            return this;
+        }
+        public Builder templateKey(ClassificationTemplate2 templateKey) {
+            this.templateKey = templateKey;
+            return this;
+        }
+        public Builder displayName(ClassificationTemplateDisplayName displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder copyInstanceOnItemCopy(Boolean copyInstanceOnItemCopy) {
+            this.copyInstanceOnItemCopy = java.util.Optional.ofNullable(copyInstanceOnItemCopy);
+            return this;
+        }
+        public Builder fields(List<PostMetadataTemplateSchemaClassificationsFields> fields) {
+            this.fields = fields;
+            return this;
+        }
+
+        public MetadataTemplateSchemaCreateRequest build() {
+            return new MetadataTemplateSchemaCreateRequest(
+                scope,
+                templateKey,
+                displayName,
+                hidden,
+                copyInstanceOnItemCopy,
+                fields
+            );
+        }
+    }
 }

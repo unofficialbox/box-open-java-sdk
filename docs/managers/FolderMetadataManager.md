@@ -16,6 +16,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Metadatas`
 
+**Example**
+
+```java
+var result = client.folderMetadata.listFolderMetadata("FOLDER_ID", null);
+```
+
 ## getFolderMetadata
 
 `GET /folders/{folder_id}/metadata/{scope}/{template_key}`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `template_key` | path | `String` | yes |
 
 **Returns:** `MetadataFull`
+
+**Example**
+
+```java
+var result = client.folderMetadata.getFolderMetadata("FOLDER_ID", null, "TEMPLATE_KEY");
+```
 
 ## updateFolderMetadata
 
@@ -42,6 +54,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataFull`
 
+**Example**
+
+```java
+var result = client.folderMetadata.updateFolderMetadata("FOLDER_ID", null, "TEMPLATE_KEY", java.util.List.of());
+```
+
 ## createFolderMetadata
 
 `POST /folders/{folder_id}/metadata/{scope}/{template_key}`
@@ -56,6 +74,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataFull`
 
+**Example**
+
+```java
+var result = client.folderMetadata.createFolderMetadata("FOLDER_ID", null, "TEMPLATE_KEY", java.util.Map.of());
+```
+
 ## deleteFolderMetadata
 
 `DELETE /folders/{folder_id}/metadata/{scope}/{template_key}`
@@ -67,4 +91,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `template_key` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.folderMetadata.deleteFolderMetadata("FOLDER_ID", null, "TEMPLATE_KEY");
+```
 

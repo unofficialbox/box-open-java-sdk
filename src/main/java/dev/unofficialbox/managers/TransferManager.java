@@ -11,7 +11,7 @@ public final class TransferManager {
     }
 
     /** PUT /users/{user_id}/folders/0. */
-    public dev.unofficialbox.model.schemas.FolderFull updateUserFolder0(String userId, dev.unofficialbox.model.schemas.UserFolder0UpdateRequest body, UpdateUserFolder0Options options) {
+    public dev.unofficialbox.model.schemas.FolderFull transferFolders(String userId, dev.unofficialbox.model.schemas.UserFolder0UpdateRequest body, TransferFoldersOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));
         _url.append("/users");
         _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(userId));
@@ -32,8 +32,8 @@ public final class TransferManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.FolderFull.fromJson(_tree));
     }
 
-    /** Optional parameters for updateUserFolder0. */
-    public static final class UpdateUserFolder0Options {
+    /** Optional parameters for transferFolders. */
+    public static final class TransferFoldersOptions {
         /** The fields parameter. */
         public java.util.List<String> fields;
         /** The notify parameter. */

@@ -29,4 +29,42 @@ public record AiLlmEndpointParamsIBM(
             !_m.containsKey("top_k") ? dev.unofficialbox.core.Tristate.<Double>absent() : (_m.get("top_k") == null ? dev.unofficialbox.core.Tristate.<Double>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asDouble(_m.get("top_k"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiLlmEndpointParamsIBMType type;
+        private Tristate<Double> temperature;
+        private Tristate<Double> topP;
+        private Tristate<Double> topK;
+
+        public Builder type(AiLlmEndpointParamsIBMType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder temperature(Tristate<Double> temperature) {
+            this.temperature = temperature;
+            return this;
+        }
+        public Builder topP(Tristate<Double> topP) {
+            this.topP = topP;
+            return this;
+        }
+        public Builder topK(Tristate<Double> topK) {
+            this.topK = topK;
+            return this;
+        }
+
+        public AiLlmEndpointParamsIBM build() {
+            return new AiLlmEndpointParamsIBM(
+                type,
+                temperature,
+                topP,
+                topK
+            );
+        }
+    }
 }

@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Collaborations`
 
+**Example**
+
+```java
+for (var item : client.listCollaborations.listFileCollaborations("FILE_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listFileCollaborations(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -34,6 +42,14 @@ the [pagination guide](../pagination.md).
 | `marker` | query | `String` | no |
 
 **Returns:** `Collaborations`
+
+**Example**
+
+```java
+for (var item : client.listCollaborations.listFolderCollaborations("FOLDER_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFolderCollaborations(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -52,6 +68,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CollaborationsOffsetPaginated`
 
+**Example**
+
+```java
+for (var item : client.listCollaborations.listCollaborations(null, null)) {
+  // use item
+}
+```
+
 Paginated — `listCollaborations(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -67,6 +91,14 @@ the [pagination guide](../pagination.md).
 | `offset` | query | `Long` | no |
 
 **Returns:** `CollaborationsOffsetPaginated`
+
+**Example**
+
+```java
+for (var item : client.listCollaborations.listGroupCollaborations("GROUP_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listGroupCollaborations(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

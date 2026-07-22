@@ -37,4 +37,54 @@ public record AiLlmEndpointParamsOpenAi(
             !_m.containsKey("stop") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("stop") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("stop"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiLlmEndpointParamsOpenAiType type;
+        private Tristate<Double> temperature;
+        private Tristate<Double> topP;
+        private Tristate<Double> frequencyPenalty;
+        private Tristate<Double> presencePenalty;
+        private Tristate<String> stop;
+
+        public Builder type(AiLlmEndpointParamsOpenAiType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder temperature(Tristate<Double> temperature) {
+            this.temperature = temperature;
+            return this;
+        }
+        public Builder topP(Tristate<Double> topP) {
+            this.topP = topP;
+            return this;
+        }
+        public Builder frequencyPenalty(Tristate<Double> frequencyPenalty) {
+            this.frequencyPenalty = frequencyPenalty;
+            return this;
+        }
+        public Builder presencePenalty(Tristate<Double> presencePenalty) {
+            this.presencePenalty = presencePenalty;
+            return this;
+        }
+        public Builder stop(Tristate<String> stop) {
+            this.stop = stop;
+            return this;
+        }
+
+        public AiLlmEndpointParamsOpenAi build() {
+            return new AiLlmEndpointParamsOpenAi(
+                type,
+                temperature,
+                topP,
+                frequencyPenalty,
+                presencePenalty,
+                stop
+            );
+        }
+    }
 }

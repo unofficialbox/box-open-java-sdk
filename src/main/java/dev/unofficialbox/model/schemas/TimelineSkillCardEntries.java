@@ -23,4 +23,36 @@ public record TimelineSkillCardEntries(
             (!_m.containsKey("image_url") || _m.get("image_url") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("image_url")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> text = java.util.Optional.empty();
+        private Optional<List<EntriesAppears>> appears = java.util.Optional.empty();
+        private Optional<String> imageUrl = java.util.Optional.empty();
+
+        public Builder text(String text) {
+            this.text = java.util.Optional.ofNullable(text);
+            return this;
+        }
+        public Builder appears(List<EntriesAppears> appears) {
+            this.appears = java.util.Optional.ofNullable(appears);
+            return this;
+        }
+        public Builder imageUrl(String imageUrl) {
+            this.imageUrl = java.util.Optional.ofNullable(imageUrl);
+            return this;
+        }
+
+        public TimelineSkillCardEntries build() {
+            return new TimelineSkillCardEntries(
+                text,
+                appears,
+                imageUrl
+            );
+        }
+    }
 }

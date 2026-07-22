@@ -29,4 +29,48 @@ public record AppItemEventSource(
             (!_m.containsKey("group") || _m.get("group") == null) ? java.util.Optional.<GroupMini>empty() : java.util.Optional.of((_m.get("group") == null ? null : GroupMini.fromJson(_m.get("group"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private AppItemType type;
+        private String appItemType;
+        private Optional<UserMini> user = java.util.Optional.empty();
+        private Optional<GroupMini> group = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AppItemType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder appItemType(String appItemType) {
+            this.appItemType = appItemType;
+            return this;
+        }
+        public Builder user(UserMini user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder group(GroupMini group) {
+            this.group = java.util.Optional.ofNullable(group);
+            return this;
+        }
+
+        public AppItemEventSource build() {
+            return new AppItemEventSource(
+                id,
+                type,
+                appItemType,
+                user,
+                group
+            );
+        }
+    }
 }

@@ -29,4 +29,48 @@ public record AiResponseFull(
             (!_m.containsKey("citations") || _m.get("citations") == null) ? java.util.Optional.<List<AiCitation>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("citations"), _x0 -> (_x0 == null ? null : AiCitation.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String answer;
+        private OffsetDateTime createdAt;
+        private Optional<String> completionReason = java.util.Optional.empty();
+        private Optional<AiAgentInfo> aiAgentInfo = java.util.Optional.empty();
+        private Optional<List<AiCitation>> citations = java.util.Optional.empty();
+
+        public Builder answer(String answer) {
+            this.answer = answer;
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder completionReason(String completionReason) {
+            this.completionReason = java.util.Optional.ofNullable(completionReason);
+            return this;
+        }
+        public Builder aiAgentInfo(AiAgentInfo aiAgentInfo) {
+            this.aiAgentInfo = java.util.Optional.ofNullable(aiAgentInfo);
+            return this;
+        }
+        public Builder citations(List<AiCitation> citations) {
+            this.citations = java.util.Optional.ofNullable(citations);
+            return this;
+        }
+
+        public AiResponseFull build() {
+            return new AiResponseFull(
+                answer,
+                createdAt,
+                completionReason,
+                aiAgentInfo,
+                citations
+            );
+        }
+    }
 }

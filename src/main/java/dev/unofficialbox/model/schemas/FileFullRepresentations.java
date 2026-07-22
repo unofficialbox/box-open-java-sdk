@@ -16,4 +16,24 @@ public record FileFullRepresentations(Optional<List<RepresentationsEntries>> ent
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<RepresentationsEntries>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : RepresentationsEntries.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<RepresentationsEntries>> entries = java.util.Optional.empty();
+
+        public Builder entries(List<RepresentationsEntries> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public FileFullRepresentations build() {
+            return new FileFullRepresentations(
+                entries
+            );
+        }
+    }
 }

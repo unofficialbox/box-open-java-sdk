@@ -71,4 +71,114 @@ public record TemplateSignerInput(
             (!_m.containsKey("validation") || _m.get("validation") == null) ? java.util.Optional.<SignRequestSignerInputValidation2>empty() : java.util.Optional.of((_m.get("validation") == null ? null : SignRequestSignerInputValidation2.fromJson(_m.get("validation"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> documentTagId;
+        private Tristate<String> textValue;
+        private Tristate<Boolean> checkboxValue;
+        private Tristate<LocalDate> dateValue;
+        private Optional<TemplateSignerInputType> type = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputContentType> contentType = java.util.Optional.empty();
+        private Optional<Boolean> isRequired = java.util.Optional.empty();
+        private Long pageIndex;
+        private Tristate<String> documentId;
+        private Tristate<List<String>> dropdownChoices;
+        private Tristate<String> groupId;
+        private Optional<TemplateSignerInputCoordinates> coordinates = java.util.Optional.empty();
+        private Optional<TemplateSignerInputDimensions> dimensions = java.util.Optional.empty();
+        private Tristate<String> label;
+        private Optional<Boolean> readOnly = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputValidation2> validation = java.util.Optional.empty();
+
+        public Builder documentTagId(Tristate<String> documentTagId) {
+            this.documentTagId = documentTagId;
+            return this;
+        }
+        public Builder textValue(Tristate<String> textValue) {
+            this.textValue = textValue;
+            return this;
+        }
+        public Builder checkboxValue(Tristate<Boolean> checkboxValue) {
+            this.checkboxValue = checkboxValue;
+            return this;
+        }
+        public Builder dateValue(Tristate<LocalDate> dateValue) {
+            this.dateValue = dateValue;
+            return this;
+        }
+        public Builder type(TemplateSignerInputType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder contentType(SignRequestSignerInputContentType contentType) {
+            this.contentType = java.util.Optional.ofNullable(contentType);
+            return this;
+        }
+        public Builder isRequired(Boolean isRequired) {
+            this.isRequired = java.util.Optional.ofNullable(isRequired);
+            return this;
+        }
+        public Builder pageIndex(Long pageIndex) {
+            this.pageIndex = pageIndex;
+            return this;
+        }
+        public Builder documentId(Tristate<String> documentId) {
+            this.documentId = documentId;
+            return this;
+        }
+        public Builder dropdownChoices(Tristate<List<String>> dropdownChoices) {
+            this.dropdownChoices = dropdownChoices;
+            return this;
+        }
+        public Builder groupId(Tristate<String> groupId) {
+            this.groupId = groupId;
+            return this;
+        }
+        public Builder coordinates(TemplateSignerInputCoordinates coordinates) {
+            this.coordinates = java.util.Optional.ofNullable(coordinates);
+            return this;
+        }
+        public Builder dimensions(TemplateSignerInputDimensions dimensions) {
+            this.dimensions = java.util.Optional.ofNullable(dimensions);
+            return this;
+        }
+        public Builder label(Tristate<String> label) {
+            this.label = label;
+            return this;
+        }
+        public Builder readOnly(Boolean readOnly) {
+            this.readOnly = java.util.Optional.ofNullable(readOnly);
+            return this;
+        }
+        public Builder validation(SignRequestSignerInputValidation2 validation) {
+            this.validation = java.util.Optional.ofNullable(validation);
+            return this;
+        }
+
+        public TemplateSignerInput build() {
+            return new TemplateSignerInput(
+                documentTagId,
+                textValue,
+                checkboxValue,
+                dateValue,
+                type,
+                contentType,
+                isRequired,
+                pageIndex,
+                documentId,
+                dropdownChoices,
+                groupId,
+                coordinates,
+                dimensions,
+                label,
+                readOnly,
+                validation
+            );
+        }
+    }
 }

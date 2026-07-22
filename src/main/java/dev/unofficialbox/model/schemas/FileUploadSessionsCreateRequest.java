@@ -18,4 +18,36 @@ public record FileUploadSessionsCreateRequest(String folderId, Long fileSize, St
             dev.unofficialbox.core.Json.asString(_m.get("file_name"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String folderId;
+        private Long fileSize;
+        private String fileName;
+
+        public Builder folderId(String folderId) {
+            this.folderId = folderId;
+            return this;
+        }
+        public Builder fileSize(Long fileSize) {
+            this.fileSize = fileSize;
+            return this;
+        }
+        public Builder fileName(String fileName) {
+            this.fileName = fileName;
+            return this;
+        }
+
+        public FileUploadSessionsCreateRequest build() {
+            return new FileUploadSessionsCreateRequest(
+                folderId,
+                fileSize,
+                fileName
+            );
+        }
+    }
 }

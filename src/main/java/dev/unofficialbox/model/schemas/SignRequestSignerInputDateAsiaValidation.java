@@ -17,4 +17,24 @@ public record SignRequestSignerInputDateAsiaValidation(
             (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputDateAsiaValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputDateAsiaValidationValidationType.fromJson(_m.get("validation_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SignRequestSignerInputDateAsiaValidationValidationType> validationType = java.util.Optional.empty();
+
+        public Builder validationType(SignRequestSignerInputDateAsiaValidationValidationType validationType) {
+            this.validationType = java.util.Optional.ofNullable(validationType);
+            return this;
+        }
+
+        public SignRequestSignerInputDateAsiaValidation build() {
+            return new SignRequestSignerInputDateAsiaValidation(
+                validationType
+            );
+        }
+    }
 }

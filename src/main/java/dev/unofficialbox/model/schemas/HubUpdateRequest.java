@@ -38,4 +38,66 @@ public record HubUpdateRequest(
             (!_m.containsKey("copy_hub_access") || _m.get("copy_hub_access") == null) ? java.util.Optional.<HubCopyHubAccess>empty() : java.util.Optional.of((_m.get("copy_hub_access") == null ? null : HubCopyHubAccess.fromJson(_m.get("copy_hub_access"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> title = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> isAiEnabled = java.util.Optional.empty();
+        private Optional<Boolean> isCollaborationRestrictedToEnterprise = java.util.Optional.empty();
+        private Optional<Boolean> canNonOwnersInvite = java.util.Optional.empty();
+        private Optional<Boolean> canSharedLinkBeCreated = java.util.Optional.empty();
+        private Optional<Boolean> canPublicSharedLinkBeCreated = java.util.Optional.empty();
+        private Optional<HubCopyHubAccess> copyHubAccess = java.util.Optional.empty();
+
+        public Builder title(String title) {
+            this.title = java.util.Optional.ofNullable(title);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder isAiEnabled(Boolean isAiEnabled) {
+            this.isAiEnabled = java.util.Optional.ofNullable(isAiEnabled);
+            return this;
+        }
+        public Builder isCollaborationRestrictedToEnterprise(Boolean isCollaborationRestrictedToEnterprise) {
+            this.isCollaborationRestrictedToEnterprise = java.util.Optional.ofNullable(isCollaborationRestrictedToEnterprise);
+            return this;
+        }
+        public Builder canNonOwnersInvite(Boolean canNonOwnersInvite) {
+            this.canNonOwnersInvite = java.util.Optional.ofNullable(canNonOwnersInvite);
+            return this;
+        }
+        public Builder canSharedLinkBeCreated(Boolean canSharedLinkBeCreated) {
+            this.canSharedLinkBeCreated = java.util.Optional.ofNullable(canSharedLinkBeCreated);
+            return this;
+        }
+        public Builder canPublicSharedLinkBeCreated(Boolean canPublicSharedLinkBeCreated) {
+            this.canPublicSharedLinkBeCreated = java.util.Optional.ofNullable(canPublicSharedLinkBeCreated);
+            return this;
+        }
+        public Builder copyHubAccess(HubCopyHubAccess copyHubAccess) {
+            this.copyHubAccess = java.util.Optional.ofNullable(copyHubAccess);
+            return this;
+        }
+
+        public HubUpdateRequest build() {
+            return new HubUpdateRequest(
+                title,
+                description,
+                isAiEnabled,
+                isCollaborationRestrictedToEnterprise,
+                canNonOwnersInvite,
+                canSharedLinkBeCreated,
+                canPublicSharedLinkBeCreated,
+                copyHubAccess
+            );
+        }
+    }
 }

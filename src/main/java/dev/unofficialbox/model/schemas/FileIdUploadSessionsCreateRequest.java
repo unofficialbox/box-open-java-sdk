@@ -18,4 +18,30 @@ public record FileIdUploadSessionsCreateRequest(Long fileSize, Optional<String> 
             (!_m.containsKey("file_name") || _m.get("file_name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("file_name")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Long fileSize;
+        private Optional<String> fileName = java.util.Optional.empty();
+
+        public Builder fileSize(Long fileSize) {
+            this.fileSize = fileSize;
+            return this;
+        }
+        public Builder fileName(String fileName) {
+            this.fileName = java.util.Optional.ofNullable(fileName);
+            return this;
+        }
+
+        public FileIdUploadSessionsCreateRequest build() {
+            return new FileIdUploadSessionsCreateRequest(
+                fileSize,
+                fileName
+            );
+        }
+    }
 }

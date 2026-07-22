@@ -3,13 +3,12 @@
 
 # box-open-sdk (Java)
 
-A **community, unofficial** Box API client for Java — one resource
-manager per API area behind a single `dev.unofficialbox.Client`, over a
-dependency-free `java.net.http` runtime with retry, backoff, and token
-refresh.
+A **community, unofficial** Box API client for Java — one resource manager per
+API area behind a single `dev.unofficialbox.Client`, over a dependency-free
+`java.net.http` runtime with retry, backoff, and token refresh.
 
-> **Not affiliated with, authorized, or endorsed by Box, Inc.** "Box"
-> is a trademark of Box, Inc. This is an independent, generated client.
+> **Not affiliated with, authorized, or endorsed by Box, Inc.** "Box" is a
+> trademark of Box, Inc. This is an independent, generated client.
 
 ## Install (Maven)
 
@@ -21,20 +20,85 @@ refresh.
 </dependency>
 ```
 
-## Usage
+## Quickstart
+
+Authenticate, look up the current user, create a folder, upload a file, extract
+its fields with Box AI, tag it with metadata, and query for it — end to end.
+Request bodies use fluent builders:
 
 ```java
-dev.unofficialbox.Client client = new dev.unofficialbox.Client(
-        dev.unofficialbox.runtime.Runtime.developerToken("DEVELOPER_TOKEN"));
+import dev.unofficialbox.Client;
+import dev.unofficialbox.auth.Auth;
+import dev.unofficialbox.runtime.Runtime;
+import dev.unofficialbox.model.schemas.*;
+import java.util.List;
+import java.util.Map;
+
+public final class Quickstart {
+    public static void main(String[] args) throws Exception {
+        // Client Credentials Grant (server-to-server); developer token, OAuth,
+        // and JWT also live in dev.unofficialbox.auth.Auth.
+        var client = new Client(Auth.clientCredentials(
+            Runtime.CcgConfig.enterprise("CLIENT_ID", "CLIENT_SECRET", "ENTERPRISE_ID")));
+
+        // The current user.
+        var me = client.users.getMe(null);
+        System.out.println("authenticated as " + me.id());
+
+        // Create a folder at the account root ("0").
+        var folder = client.folders.create(
+            FolderCreateRequest.builder()
+                .name("Invoices")
+                .parent(AttributesParent.builder().id("0").build())
+                .build(),
+            null);
+
+        // Upload a file into it.
+        var uploaded = client.uploads.uploadFile(
+            FileContentCreateRequest.builder()
+                .attributes(PostFileContentAttributes.builder()
+                    .name("invoice.pdf")
+                    .parent(AttributesParent.builder().id(folder.id()).build())
+                    .build())
+                .file("<file bytes>".getBytes())
+                .build(),
+            null);
+        var fileId = uploaded.entries().orElseThrow().get(0).id();
+
+        // Extract fields from the file with Box AI.
+        var answer = client.ai.extract(
+            AiExtract.builder()
+                .prompt("Extract the invoice number and total amount.")
+                .items(List.of(
+                    AiItemBase.builder().id(fileId).type(AiCitationType.FILE).build()))
+                .build());
+        System.out.println(answer);
+
+        // Attach that metadata to the file (an enterprise template).
+        client.fileMetadata.createFileMetadata(
+            fileId,
+            GetFileIdMetadataIdIdScope.ENTERPRISE,
+            "invoiceData",
+            Map.of("invoiceNumber", "INV-0042", "total", 1250));
+
+        // Query for files carrying that metadata.
+        var results = client.search.queryByMetadata(
+            MetadataQuery.builder()
+                .from("enterprise_0.invoiceData")
+                .ancestorFolderId(folder.id())
+                .build());
+        System.out.println(results);
+    }
+}
 ```
 
 ## Parallel chunked upload (opt-in)
 
-The core SDK compiles and runs on a plain JDK 26. `BoxChunkedUpload`
-uploads a large file's parts **in parallel** using structured
-concurrency, a Java 26 **preview** API — so it is a preview-marked class,
-and code that calls it must pass `--enable-preview` at **both** compile
-and run time (with `--release 26` for `javac`) to unlock the parallel path:
+The core SDK compiles and runs on a plain JDK 26. `BoxChunkedUpload` uploads a
+large file's parts **in parallel** using structured concurrency, a Java 26
+**preview** API — so it is a preview-marked class, and code that calls it must
+pass `--enable-preview` at **both** compile and run time (with `--release 26` for
+`javac`) to unlock the parallel path:
 
 ```java
 // compile: javac --release 26 --enable-preview ...
@@ -45,5 +109,7 @@ var file = new dev.unofficialbox.BoxChunkedUpload(client)
 
 Everything else compiles and runs without the flag.
 
-See the `docs/` directory for per-manager reference and the
-authentication, pagination, and errors guides.
+## Documentation
+
+The [`docs/`](./docs) tree carries the per-manager reference — a call snippet for
+every method — and the authentication, pagination, and errors guides.

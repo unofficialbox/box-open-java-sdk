@@ -20,4 +20,30 @@ public record EnterpriseFeatureSettingsItem(
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<EnterpriseFeatureSetting>empty() : java.util.Optional.of((_m.get("value") == null ? null : EnterpriseFeatureSetting.fromJson(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Optional<EnterpriseFeatureSetting> value = java.util.Optional.empty();
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(EnterpriseFeatureSetting value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public EnterpriseFeatureSettingsItem build() {
+            return new EnterpriseFeatureSettingsItem(
+                isUsed,
+                value
+            );
+        }
+    }
 }

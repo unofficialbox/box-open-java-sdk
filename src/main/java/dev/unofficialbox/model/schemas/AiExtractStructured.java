@@ -35,4 +35,60 @@ public record AiExtractStructured(
             (!_m.containsKey("taxonomy_sources") || _m.get("taxonomy_sources") == null) ? java.util.Optional.<List<AiTaxonomySource>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("taxonomy_sources"), _x0 -> (_x0 == null ? null : AiTaxonomySource.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<AiItemBase> items;
+        private Optional<AiExtractStructuredMetadataTemplate> metadataTemplate = java.util.Optional.empty();
+        private Optional<List<AiExtractStructuredFields>> fields = java.util.Optional.empty();
+        private Optional<AiExtractStructuredAgent> aiAgent = java.util.Optional.empty();
+        private Optional<Boolean> includeConfidenceScore = java.util.Optional.empty();
+        private Optional<Boolean> includeReference = java.util.Optional.empty();
+        private Optional<List<AiTaxonomySource>> taxonomySources = java.util.Optional.empty();
+
+        public Builder items(List<AiItemBase> items) {
+            this.items = items;
+            return this;
+        }
+        public Builder metadataTemplate(AiExtractStructuredMetadataTemplate metadataTemplate) {
+            this.metadataTemplate = java.util.Optional.ofNullable(metadataTemplate);
+            return this;
+        }
+        public Builder fields(List<AiExtractStructuredFields> fields) {
+            this.fields = java.util.Optional.ofNullable(fields);
+            return this;
+        }
+        public Builder aiAgent(AiExtractStructuredAgent aiAgent) {
+            this.aiAgent = java.util.Optional.ofNullable(aiAgent);
+            return this;
+        }
+        public Builder includeConfidenceScore(Boolean includeConfidenceScore) {
+            this.includeConfidenceScore = java.util.Optional.ofNullable(includeConfidenceScore);
+            return this;
+        }
+        public Builder includeReference(Boolean includeReference) {
+            this.includeReference = java.util.Optional.ofNullable(includeReference);
+            return this;
+        }
+        public Builder taxonomySources(List<AiTaxonomySource> taxonomySources) {
+            this.taxonomySources = java.util.Optional.ofNullable(taxonomySources);
+            return this;
+        }
+
+        public AiExtractStructured build() {
+            return new AiExtractStructured(
+                items,
+                metadataTemplate,
+                fields,
+                aiAgent,
+                includeConfidenceScore,
+                includeReference,
+                taxonomySources
+            );
+        }
+    }
 }

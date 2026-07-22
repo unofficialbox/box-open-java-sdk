@@ -18,4 +18,30 @@ public record AutomateWorkflowStartRequest(String workflowActionId, List<String>
             dev.unofficialbox.core.Json.decodeList(_m.get("file_ids"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String workflowActionId;
+        private List<String> fileIds;
+
+        public Builder workflowActionId(String workflowActionId) {
+            this.workflowActionId = workflowActionId;
+            return this;
+        }
+        public Builder fileIds(List<String> fileIds) {
+            this.fileIds = fileIds;
+            return this;
+        }
+
+        public AutomateWorkflowStartRequest build() {
+            return new AutomateWorkflowStartRequest(
+                workflowActionId,
+                fileIds
+            );
+        }
+    }
 }

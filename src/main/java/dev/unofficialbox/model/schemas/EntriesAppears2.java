@@ -16,4 +16,24 @@ public record EntriesAppears2(Optional<Long> start) {
             (!_m.containsKey("start") || _m.get("start") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("start")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> start = java.util.Optional.empty();
+
+        public Builder start(Long start) {
+            this.start = java.util.Optional.ofNullable(start);
+            return this;
+        }
+
+        public EntriesAppears2 build() {
+            return new EntriesAppears2(
+                start
+            );
+        }
+    }
 }

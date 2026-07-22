@@ -17,6 +17,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `WebLink`
 
+**Example**
+
+```java
+var result = client.sharedLinksWebLinks.getSharedItemsWebLinks("BOXAPI", null);
+```
+
 ## getWebLinkGetSharedLink
 
 `GET /web_links/{web_link_id}`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `fields` | query | `String` | yes |
 
 **Returns:** `WebLink`
+
+**Example**
+
+```java
+var result = client.sharedLinksWebLinks.getWebLinkGetSharedLink("WEB_LINK_ID", "FIELDS");
+```
 
 ## updateWebLinkAddSharedLink
 
@@ -41,6 +53,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `WebLink`
 
+**Example**
+
+```java
+var result = client.sharedLinksWebLinks.updateWebLinkAddSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+```
+
 ## updateWebLinkUpdateSharedLink
 
 `PUT /web_links/{web_link_id}`
@@ -54,6 +72,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `WebLink`
 
+**Example**
+
+```java
+var result = client.sharedLinksWebLinks.updateWebLinkUpdateSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+```
+
 ## updateWebLinkRemoveSharedLink
 
 `PUT /web_links/{web_link_id}`
@@ -66,4 +90,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `FileUpdateRequest3`
 
 **Returns:** `WebLink`
+
+**Example**
+
+```java
+var result = client.sharedLinksWebLinks.updateWebLinkRemoveSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest3(/* … */));
+```
 

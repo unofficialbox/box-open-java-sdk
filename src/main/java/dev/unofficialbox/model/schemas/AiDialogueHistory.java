@@ -23,4 +23,36 @@ public record AiDialogueHistory(
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> prompt = java.util.Optional.empty();
+        private Optional<String> answer = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+
+        public Builder prompt(String prompt) {
+            this.prompt = java.util.Optional.ofNullable(prompt);
+            return this;
+        }
+        public Builder answer(String answer) {
+            this.answer = java.util.Optional.ofNullable(answer);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+
+        public AiDialogueHistory build() {
+            return new AiDialogueHistory(
+                prompt,
+                answer,
+                createdAt
+            );
+        }
+    }
 }

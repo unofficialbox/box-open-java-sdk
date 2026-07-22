@@ -28,4 +28,42 @@ public record GroupCreateRequest2(
             !_m.containsKey("configurable_permissions") ? dev.unofficialbox.core.Tristate.<Map<String, Boolean>>absent() : (_m.get("configurable_permissions") == null ? dev.unofficialbox.core.Tristate.<Map<String, Boolean>>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.decodeMap(_m.get("configurable_permissions"), _x0 -> dev.unofficialbox.core.Json.asBoolean(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AttributesParent user;
+        private AttributesParent group;
+        private Optional<GroupMembershipRole> role = java.util.Optional.empty();
+        private Tristate<Map<String, Boolean>> configurablePermissions;
+
+        public Builder user(AttributesParent user) {
+            this.user = user;
+            return this;
+        }
+        public Builder group(AttributesParent group) {
+            this.group = group;
+            return this;
+        }
+        public Builder role(GroupMembershipRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder configurablePermissions(Tristate<Map<String, Boolean>> configurablePermissions) {
+            this.configurablePermissions = configurablePermissions;
+            return this;
+        }
+
+        public GroupCreateRequest2 build() {
+            return new GroupCreateRequest2(
+                user,
+                group,
+                role,
+                configurablePermissions
+            );
+        }
+    }
 }

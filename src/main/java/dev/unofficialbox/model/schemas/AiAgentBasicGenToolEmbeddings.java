@@ -20,4 +20,30 @@ public record AiAgentBasicGenToolEmbeddings(
             (!_m.containsKey("strategy") || _m.get("strategy") == null) ? java.util.Optional.<EmbeddingsStrategy>empty() : java.util.Optional.of((_m.get("strategy") == null ? null : EmbeddingsStrategy.fromJson(_m.get("strategy"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<EmbeddingsStrategy> strategy = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder strategy(EmbeddingsStrategy strategy) {
+            this.strategy = java.util.Optional.ofNullable(strategy);
+            return this;
+        }
+
+        public AiAgentBasicGenToolEmbeddings build() {
+            return new AiAgentBasicGenToolEmbeddings(
+                model,
+                strategy
+            );
+        }
+    }
 }

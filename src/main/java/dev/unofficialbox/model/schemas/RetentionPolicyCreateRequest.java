@@ -44,4 +44,78 @@ public record RetentionPolicyCreateRequest(
             (!_m.containsKey("custom_notification_recipients") || _m.get("custom_notification_recipients") == null) ? java.util.Optional.<List<UserMini>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("custom_notification_recipients"), _x0 -> (_x0 == null ? null : UserMini.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String policyName;
+        private Optional<String> description = java.util.Optional.empty();
+        private RetentionPolicyPolicyType policyType;
+        private RetentionPolicyDispositionAction dispositionAction;
+        private Optional<PostRetentionLength> retentionLength = java.util.Optional.empty();
+        private Optional<RetentionPolicyRetentionType> retentionType = java.util.Optional.empty();
+        private Optional<Boolean> canOwnerExtendRetention = java.util.Optional.empty();
+        private Optional<RetentionPolicyMaxExtensionLengthRequest> maxExtensionLength = java.util.Optional.empty();
+        private Optional<Boolean> areOwnersNotified = java.util.Optional.empty();
+        private Optional<List<UserMini>> customNotificationRecipients = java.util.Optional.empty();
+
+        public Builder policyName(String policyName) {
+            this.policyName = policyName;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder policyType(RetentionPolicyPolicyType policyType) {
+            this.policyType = policyType;
+            return this;
+        }
+        public Builder dispositionAction(RetentionPolicyDispositionAction dispositionAction) {
+            this.dispositionAction = dispositionAction;
+            return this;
+        }
+        public Builder retentionLength(PostRetentionLength retentionLength) {
+            this.retentionLength = java.util.Optional.ofNullable(retentionLength);
+            return this;
+        }
+        public Builder retentionType(RetentionPolicyRetentionType retentionType) {
+            this.retentionType = java.util.Optional.ofNullable(retentionType);
+            return this;
+        }
+        public Builder canOwnerExtendRetention(Boolean canOwnerExtendRetention) {
+            this.canOwnerExtendRetention = java.util.Optional.ofNullable(canOwnerExtendRetention);
+            return this;
+        }
+        public Builder maxExtensionLength(RetentionPolicyMaxExtensionLengthRequest maxExtensionLength) {
+            this.maxExtensionLength = java.util.Optional.ofNullable(maxExtensionLength);
+            return this;
+        }
+        public Builder areOwnersNotified(Boolean areOwnersNotified) {
+            this.areOwnersNotified = java.util.Optional.ofNullable(areOwnersNotified);
+            return this;
+        }
+        public Builder customNotificationRecipients(List<UserMini> customNotificationRecipients) {
+            this.customNotificationRecipients = java.util.Optional.ofNullable(customNotificationRecipients);
+            return this;
+        }
+
+        public RetentionPolicyCreateRequest build() {
+            return new RetentionPolicyCreateRequest(
+                policyName,
+                description,
+                policyType,
+                dispositionAction,
+                retentionLength,
+                retentionType,
+                canOwnerExtendRetention,
+                maxExtensionLength,
+                areOwnersNotified,
+                customNotificationRecipients
+            );
+        }
+    }
 }

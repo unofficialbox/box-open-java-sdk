@@ -18,4 +18,30 @@ public record EmbeddingsStrategy(Optional<String> id, Optional<Long> numTokensPe
             (!_m.containsKey("num_tokens_per_chunk") || _m.get("num_tokens_per_chunk") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("num_tokens_per_chunk")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<Long> numTokensPerChunk = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder numTokensPerChunk(Long numTokensPerChunk) {
+            this.numTokensPerChunk = java.util.Optional.ofNullable(numTokensPerChunk);
+            return this;
+        }
+
+        public EmbeddingsStrategy build() {
+            return new EmbeddingsStrategy(
+                id,
+                numTokensPerChunk
+            );
+        }
+    }
 }

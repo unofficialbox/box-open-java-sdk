@@ -29,4 +29,48 @@ public record ZipDownloadStatus(
             (!_m.containsKey("state") || _m.get("state") == null) ? java.util.Optional.<ZipDownloadStatusState>empty() : java.util.Optional.of((_m.get("state") == null ? null : ZipDownloadStatusState.fromJson(_m.get("state"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> totalFileCount = java.util.Optional.empty();
+        private Optional<Long> downloadedFileCount = java.util.Optional.empty();
+        private Optional<Long> skippedFileCount = java.util.Optional.empty();
+        private Optional<Long> skippedFolderCount = java.util.Optional.empty();
+        private Optional<ZipDownloadStatusState> state = java.util.Optional.empty();
+
+        public Builder totalFileCount(Long totalFileCount) {
+            this.totalFileCount = java.util.Optional.ofNullable(totalFileCount);
+            return this;
+        }
+        public Builder downloadedFileCount(Long downloadedFileCount) {
+            this.downloadedFileCount = java.util.Optional.ofNullable(downloadedFileCount);
+            return this;
+        }
+        public Builder skippedFileCount(Long skippedFileCount) {
+            this.skippedFileCount = java.util.Optional.ofNullable(skippedFileCount);
+            return this;
+        }
+        public Builder skippedFolderCount(Long skippedFolderCount) {
+            this.skippedFolderCount = java.util.Optional.ofNullable(skippedFolderCount);
+            return this;
+        }
+        public Builder state(ZipDownloadStatusState state) {
+            this.state = java.util.Optional.ofNullable(state);
+            return this;
+        }
+
+        public ZipDownloadStatus build() {
+            return new ZipDownloadStatus(
+                totalFileCount,
+                downloadedFileCount,
+                skippedFileCount,
+                skippedFolderCount,
+                state
+            );
+        }
+    }
 }

@@ -23,4 +23,36 @@ public record ShieldListsUpdate(
             (_m.get("content") == null ? null : ShieldListContentRequest.fromJson(_m.get("content")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String name;
+        private Optional<String> description = java.util.Optional.empty();
+        private ShieldListContentRequest content;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder content(ShieldListContentRequest content) {
+            this.content = content;
+            return this;
+        }
+
+        public ShieldListsUpdate build() {
+            return new ShieldListsUpdate(
+                name,
+                description,
+                content
+            );
+        }
+    }
 }

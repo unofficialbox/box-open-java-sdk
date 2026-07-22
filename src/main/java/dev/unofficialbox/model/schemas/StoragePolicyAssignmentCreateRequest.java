@@ -18,4 +18,30 @@ public record StoragePolicyAssignmentCreateRequest(
             (_m.get("assigned_to") == null ? null : PostAssignedTo.fromJson(_m.get("assigned_to")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostStoragePolicy storagePolicy;
+        private PostAssignedTo assignedTo;
+
+        public Builder storagePolicy(PostStoragePolicy storagePolicy) {
+            this.storagePolicy = storagePolicy;
+            return this;
+        }
+        public Builder assignedTo(PostAssignedTo assignedTo) {
+            this.assignedTo = assignedTo;
+            return this;
+        }
+
+        public StoragePolicyAssignmentCreateRequest build() {
+            return new StoragePolicyAssignmentCreateRequest(
+                storagePolicy,
+                assignedTo
+            );
+        }
+    }
 }

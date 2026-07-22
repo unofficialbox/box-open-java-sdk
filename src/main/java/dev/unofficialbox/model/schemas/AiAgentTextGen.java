@@ -20,4 +20,30 @@ public record AiAgentTextGen(
             (!_m.containsKey("basic_gen") || _m.get("basic_gen") == null) ? java.util.Optional.<AiAgentBasicGenTool>empty() : java.util.Optional.of((_m.get("basic_gen") == null ? null : AiAgentBasicGenTool.fromJson(_m.get("basic_gen"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentTextGenType type;
+        private Optional<AiAgentBasicGenTool> basicGen = java.util.Optional.empty();
+
+        public Builder type(AiAgentTextGenType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder basicGen(AiAgentBasicGenTool basicGen) {
+            this.basicGen = java.util.Optional.ofNullable(basicGen);
+            return this;
+        }
+
+        public AiAgentTextGen build() {
+            return new AiAgentTextGen(
+                type,
+                basicGen
+            );
+        }
+    }
 }

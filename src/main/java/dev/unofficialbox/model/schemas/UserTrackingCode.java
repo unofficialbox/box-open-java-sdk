@@ -20,4 +20,30 @@ public record UserTrackingCode(Tristate<Long> id, Tristate<String> name) {
             !_m.containsKey("name") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("name") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("name"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<Long> id;
+        private Tristate<String> name;
+
+        public Builder id(Tristate<Long> id) {
+            this.id = id;
+            return this;
+        }
+        public Builder name(Tristate<String> name) {
+            this.name = name;
+            return this;
+        }
+
+        public UserTrackingCode build() {
+            return new UserTrackingCode(
+                id,
+                name
+            );
+        }
+    }
 }

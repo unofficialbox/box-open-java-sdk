@@ -24,4 +24,42 @@ public record ClassificationUpdateRequest2(
             (_m.get("data") == null ? null : PutAddData.fromJson(_m.get("data")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PutUpdateOp op;
+        private FieldsKey fieldKey;
+        private String enumOptionKey;
+        private PutAddData data;
+
+        public Builder op(PutUpdateOp op) {
+            this.op = op;
+            return this;
+        }
+        public Builder fieldKey(FieldsKey fieldKey) {
+            this.fieldKey = fieldKey;
+            return this;
+        }
+        public Builder enumOptionKey(String enumOptionKey) {
+            this.enumOptionKey = enumOptionKey;
+            return this;
+        }
+        public Builder data(PutAddData data) {
+            this.data = data;
+            return this;
+        }
+
+        public ClassificationUpdateRequest2 build() {
+            return new ClassificationUpdateRequest2(
+                op,
+                fieldKey,
+                enumOptionKey,
+                data
+            );
+        }
+    }
 }

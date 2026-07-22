@@ -20,4 +20,30 @@ public record EnterpriseConfigurationItemBoolean(Optional<Boolean> isUsed, Trist
             !_m.containsKey("value") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("value") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Tristate<Boolean> value;
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(Tristate<Boolean> value) {
+            this.value = value;
+            return this;
+        }
+
+        public EnterpriseConfigurationItemBoolean build() {
+            return new EnterpriseConfigurationItemBoolean(
+                isUsed,
+                value
+            );
+        }
+    }
 }

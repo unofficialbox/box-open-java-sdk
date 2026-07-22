@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AiResponseFull`
 
+**Example**
+
+```java
+var result = client.ai.ask(new AiAsk(/* … */));
+```
+
 ## createTextGen
 
 `POST /ai/text_gen`
@@ -20,6 +26,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `AiTextGen`
 
 **Returns:** `AiResponse`
+
+**Example**
+
+```java
+var result = client.ai.createTextGen(new AiTextGen(/* … */));
+```
 
 ## getAgentDefault
 
@@ -33,6 +45,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AiAgent`
 
+**Example**
+
+```java
+var result = client.ai.getAgentDefault(null, null);
+```
+
 ## extract
 
 `POST /ai/extract`
@@ -41,6 +59,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AiResponse`
 
+**Example**
+
+```java
+var result = client.ai.extract(new AiExtract(/* … */));
+```
+
 ## createExtractStructured
 
 `POST /ai/extract_structured`
@@ -48,4 +72,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `AiExtractStructured`
 
 **Returns:** `AiExtractStructuredResponse`
+
+**Example**
+
+```java
+var result = client.ai.createExtractStructured(new AiExtractStructured(/* … */));
+```
 

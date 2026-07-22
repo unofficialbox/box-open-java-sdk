@@ -16,4 +16,24 @@ public record UserAvatar(Optional<UserAvatarPicUrls> picUrls) {
             (!_m.containsKey("pic_urls") || _m.get("pic_urls") == null) ? java.util.Optional.<UserAvatarPicUrls>empty() : java.util.Optional.of((_m.get("pic_urls") == null ? null : UserAvatarPicUrls.fromJson(_m.get("pic_urls"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<UserAvatarPicUrls> picUrls = java.util.Optional.empty();
+
+        public Builder picUrls(UserAvatarPicUrls picUrls) {
+            this.picUrls = java.util.Optional.ofNullable(picUrls);
+            return this;
+        }
+
+        public UserAvatar build() {
+            return new UserAvatar(
+                picUrls
+            );
+        }
+    }
 }

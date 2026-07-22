@@ -32,4 +32,54 @@ public record Outcome(
             (!_m.containsKey("role") || _m.get("role") == null) ? java.util.Optional.<RoleVariable>empty() : java.util.Optional.of((_m.get("role") == null ? null : RoleVariable.fromJson(_m.get("role"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Optional<CollaboratorVariable> collaborators = java.util.Optional.empty();
+        private Optional<CompletionRuleVariable> completionRule = java.util.Optional.empty();
+        private Optional<RoleVariable> fileCollaboratorRole = java.util.Optional.empty();
+        private Optional<CollaboratorVariable> taskCollaborators = java.util.Optional.empty();
+        private Optional<RoleVariable> role = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder collaborators(CollaboratorVariable collaborators) {
+            this.collaborators = java.util.Optional.ofNullable(collaborators);
+            return this;
+        }
+        public Builder completionRule(CompletionRuleVariable completionRule) {
+            this.completionRule = java.util.Optional.ofNullable(completionRule);
+            return this;
+        }
+        public Builder fileCollaboratorRole(RoleVariable fileCollaboratorRole) {
+            this.fileCollaboratorRole = java.util.Optional.ofNullable(fileCollaboratorRole);
+            return this;
+        }
+        public Builder taskCollaborators(CollaboratorVariable taskCollaborators) {
+            this.taskCollaborators = java.util.Optional.ofNullable(taskCollaborators);
+            return this;
+        }
+        public Builder role(RoleVariable role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+
+        public Outcome build() {
+            return new Outcome(
+                id,
+                collaborators,
+                completionRule,
+                fileCollaboratorRole,
+                taskCollaborators,
+                role
+            );
+        }
+    }
 }

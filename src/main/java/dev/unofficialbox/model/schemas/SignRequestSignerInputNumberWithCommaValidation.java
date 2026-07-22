@@ -17,4 +17,24 @@ public record SignRequestSignerInputNumberWithCommaValidation(
             (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputNumberWithCommaValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputNumberWithCommaValidationValidationType.fromJson(_m.get("validation_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SignRequestSignerInputNumberWithCommaValidationValidationType> validationType = java.util.Optional.empty();
+
+        public Builder validationType(SignRequestSignerInputNumberWithCommaValidationValidationType validationType) {
+            this.validationType = java.util.Optional.ofNullable(validationType);
+            return this;
+        }
+
+        public SignRequestSignerInputNumberWithCommaValidation build() {
+            return new SignRequestSignerInputNumberWithCommaValidation(
+                validationType
+            );
+        }
+    }
 }

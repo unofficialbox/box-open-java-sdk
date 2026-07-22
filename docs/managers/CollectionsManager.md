@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Collections`
 
+**Example**
+
+```java
+for (var item : client.collections.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -34,6 +42,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `ItemsOffsetPaginated`
 
+**Example**
+
+```java
+for (var item : client.collections.listItems("COLLECTION_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listItems(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -47,4 +63,10 @@ the [pagination guide](../pagination.md).
 | `collection_id` | path | `String` | yes |
 
 **Returns:** `Collection`
+
+**Example**
+
+```java
+var result = client.collections.get("COLLECTION_ID");
+```
 

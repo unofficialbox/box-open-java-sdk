@@ -29,4 +29,48 @@ public record RepresentationsEntries(
             (!_m.containsKey("status") || _m.get("status") == null) ? java.util.Optional.<EntriesStatus>empty() : java.util.Optional.of((_m.get("status") == null ? null : EntriesStatus.fromJson(_m.get("status"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<EntriesContent> content = java.util.Optional.empty();
+        private Optional<EntriesInfo> info = java.util.Optional.empty();
+        private Optional<EntriesProperties> properties = java.util.Optional.empty();
+        private Optional<String> representation = java.util.Optional.empty();
+        private Optional<EntriesStatus> status = java.util.Optional.empty();
+
+        public Builder content(EntriesContent content) {
+            this.content = java.util.Optional.ofNullable(content);
+            return this;
+        }
+        public Builder info(EntriesInfo info) {
+            this.info = java.util.Optional.ofNullable(info);
+            return this;
+        }
+        public Builder properties(EntriesProperties properties) {
+            this.properties = java.util.Optional.ofNullable(properties);
+            return this;
+        }
+        public Builder representation(String representation) {
+            this.representation = java.util.Optional.ofNullable(representation);
+            return this;
+        }
+        public Builder status(EntriesStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+
+        public RepresentationsEntries build() {
+            return new RepresentationsEntries(
+                content,
+                info,
+                properties,
+                representation,
+                status
+            );
+        }
+    }
 }

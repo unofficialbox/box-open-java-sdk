@@ -16,4 +16,24 @@ public record ShieldLists(Optional<List<ShieldListMini>> entries) {
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<ShieldListMini>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : ShieldListMini.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<ShieldListMini>> entries = java.util.Optional.empty();
+
+        public Builder entries(List<ShieldListMini> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public ShieldLists build() {
+            return new ShieldLists(
+                entries
+            );
+        }
+    }
 }

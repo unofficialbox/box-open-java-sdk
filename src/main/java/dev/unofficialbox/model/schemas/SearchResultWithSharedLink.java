@@ -23,4 +23,36 @@ public record SearchResultWithSharedLink(
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> accessibleViaSharedLink = java.util.Optional.empty();
+        private Optional<SearchResultWithSharedLinkItem> item = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+
+        public Builder accessibleViaSharedLink(String accessibleViaSharedLink) {
+            this.accessibleViaSharedLink = java.util.Optional.ofNullable(accessibleViaSharedLink);
+            return this;
+        }
+        public Builder item(SearchResultWithSharedLinkItem item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public SearchResultWithSharedLink build() {
+            return new SearchResultWithSharedLink(
+                accessibleViaSharedLink,
+                item,
+                type
+            );
+        }
+    }
 }

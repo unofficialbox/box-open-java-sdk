@@ -25,4 +25,36 @@ public record Archives(
             !_m.containsKey("next_marker") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("next_marker") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("next_marker"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<Archive>> entries = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Tristate<String> nextMarker;
+
+        public Builder entries(List<Archive> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(Tristate<String> nextMarker) {
+            this.nextMarker = nextMarker;
+            return this;
+        }
+
+        public Archives build() {
+            return new Archives(
+                entries,
+                limit,
+                nextMarker
+            );
+        }
+    }
 }

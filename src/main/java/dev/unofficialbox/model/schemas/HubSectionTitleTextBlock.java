@@ -27,4 +27,42 @@ public record HubSectionTitleTextBlock(
             dev.unofficialbox.core.Json.asString(_m.get("fragment"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> parentId;
+        private HubSectionTitleTextBlockType type;
+        private String fragment;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder parentId(Tristate<String> parentId) {
+            this.parentId = parentId;
+            return this;
+        }
+        public Builder type(HubSectionTitleTextBlockType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder fragment(String fragment) {
+            this.fragment = fragment;
+            return this;
+        }
+
+        public HubSectionTitleTextBlock build() {
+            return new HubSectionTitleTextBlock(
+                id,
+                parentId,
+                type,
+                fragment
+            );
+        }
+    }
 }

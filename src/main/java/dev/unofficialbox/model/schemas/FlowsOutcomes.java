@@ -29,4 +29,48 @@ public record FlowsOutcomes(
             (!_m.containsKey("if_rejected") || _m.get("if_rejected") == null) ? java.util.Optional.<List<OutcomesIfRejected>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("if_rejected"), _x0 -> (_x0 == null ? null : OutcomesIfRejected.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<OutcomesType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<OutcomesActionType> actionType = java.util.Optional.empty();
+        private Optional<List<OutcomesIfRejected>> ifRejected = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(OutcomesType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder actionType(OutcomesActionType actionType) {
+            this.actionType = java.util.Optional.ofNullable(actionType);
+            return this;
+        }
+        public Builder ifRejected(List<OutcomesIfRejected> ifRejected) {
+            this.ifRejected = java.util.Optional.ofNullable(ifRejected);
+            return this;
+        }
+
+        public FlowsOutcomes build() {
+            return new FlowsOutcomes(
+                id,
+                type,
+                name,
+                actionType,
+                ifRejected
+            );
+        }
+    }
 }

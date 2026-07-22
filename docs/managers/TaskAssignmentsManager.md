@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TaskAssignments`
 
+**Example**
+
+```java
+var result = client.taskAssignments.listTaskAssignments("TASK_ID");
+```
+
 ## create
 
 `POST /task_assignments`
@@ -22,6 +28,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TaskAssignmentCreateRequest`
 
 **Returns:** `TaskAssignment`
+
+**Example**
+
+```java
+var result = client.taskAssignments.create(new TaskAssignmentCreateRequest(/* … */));
+```
 
 ## get
 
@@ -32,6 +44,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `task_assignment_id` | path | `String` | yes |
 
 **Returns:** `TaskAssignment`
+
+**Example**
+
+```java
+var result = client.taskAssignments.get("TASK_ASSIGNMENT_ID");
+```
 
 ## update
 
@@ -45,6 +63,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TaskAssignment`
 
+**Example**
+
+```java
+var result = client.taskAssignments.update("TASK_ASSIGNMENT_ID", new TaskAssignmentUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /task_assignments/{task_assignment_id}`
@@ -54,4 +78,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `task_assignment_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.taskAssignments.delete("TASK_ASSIGNMENT_ID");
+```
 

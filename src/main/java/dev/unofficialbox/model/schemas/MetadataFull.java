@@ -38,4 +38,66 @@ public record MetadataFull(
             (!_m.containsKey("$typeVersion") || _m.get("$typeVersion") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("$typeVersion")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> parent = java.util.Optional.empty();
+        private Optional<String> template = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<Long> version = java.util.Optional.empty();
+        private Optional<Boolean> canEdit = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<Long> typeVersion = java.util.Optional.empty();
+
+        public Builder parent(String parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder template(String template) {
+            this.template = java.util.Optional.ofNullable(template);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder version(Long version) {
+            this.version = java.util.Optional.ofNullable(version);
+            return this;
+        }
+        public Builder canEdit(Boolean canEdit) {
+            this.canEdit = java.util.Optional.ofNullable(canEdit);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder typeVersion(Long typeVersion) {
+            this.typeVersion = java.util.Optional.ofNullable(typeVersion);
+            return this;
+        }
+
+        public MetadataFull build() {
+            return new MetadataFull(
+                parent,
+                template,
+                scope,
+                version,
+                canEdit,
+                id,
+                type,
+                typeVersion
+            );
+        }
+    }
 }

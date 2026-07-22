@@ -22,4 +22,30 @@ public record EnterpriseConfigurationContentAndSharingExternalCollaborationStatu
             !_m.containsKey("value") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("value") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Tristate<String> value;
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(Tristate<String> value) {
+            this.value = value;
+            return this;
+        }
+
+        public EnterpriseConfigurationContentAndSharingExternalCollaborationStatus build() {
+            return new EnterpriseConfigurationContentAndSharingExternalCollaborationStatus(
+                isUsed,
+                value
+            );
+        }
+    }
 }

@@ -16,4 +16,24 @@ public record ConflictErrorContextInfo(Optional<List<FileConflict>> conflicts) {
             (!_m.containsKey("conflicts") || _m.get("conflicts") == null) ? java.util.Optional.<List<FileConflict>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("conflicts"), _x0 -> (_x0 == null ? null : FileConflict.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<FileConflict>> conflicts = java.util.Optional.empty();
+
+        public Builder conflicts(List<FileConflict> conflicts) {
+            this.conflicts = java.util.Optional.ofNullable(conflicts);
+            return this;
+        }
+
+        public ConflictErrorContextInfo build() {
+            return new ConflictErrorContextInfo(
+                conflicts
+            );
+        }
+    }
 }

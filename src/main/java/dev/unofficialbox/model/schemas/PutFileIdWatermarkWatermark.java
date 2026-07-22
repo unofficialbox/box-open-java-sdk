@@ -14,4 +14,24 @@ public record PutFileIdWatermarkWatermark(WatermarkImprint imprint) {
             (_m.get("imprint") == null ? null : WatermarkImprint.fromJson(_m.get("imprint")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private WatermarkImprint imprint;
+
+        public Builder imprint(WatermarkImprint imprint) {
+            this.imprint = imprint;
+            return this;
+        }
+
+        public PutFileIdWatermarkWatermark build() {
+            return new PutFileIdWatermarkWatermark(
+                imprint
+            );
+        }
+    }
 }

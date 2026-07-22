@@ -23,4 +23,36 @@ public record MetadataFilter(
             (!_m.containsKey("filters") || _m.get("filters") == null) ? java.util.Optional.<Map<String, MetadataFilterValue>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeMap(_m.get("filters"), _x0 -> (_x0 == null ? null : MetadataFilterValue.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<MetadataFilterScope> scope = java.util.Optional.empty();
+        private Optional<String> templateKey = java.util.Optional.empty();
+        private Optional<Map<String, MetadataFilterValue>> filters = java.util.Optional.empty();
+
+        public Builder scope(MetadataFilterScope scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder templateKey(String templateKey) {
+            this.templateKey = java.util.Optional.ofNullable(templateKey);
+            return this;
+        }
+        public Builder filters(Map<String, MetadataFilterValue> filters) {
+            this.filters = java.util.Optional.ofNullable(filters);
+            return this;
+        }
+
+        public MetadataFilter build() {
+            return new MetadataFilter(
+                scope,
+                templateKey,
+                filters
+            );
+        }
+    }
 }

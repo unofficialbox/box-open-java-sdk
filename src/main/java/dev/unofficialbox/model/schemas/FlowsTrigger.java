@@ -23,4 +23,36 @@ public record FlowsTrigger(
             (!_m.containsKey("scope") || _m.get("scope") == null) ? java.util.Optional.<List<TriggerScope>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("scope"), _x0 -> (_x0 == null ? null : TriggerScope.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<TriggerType> type = java.util.Optional.empty();
+        private Optional<TriggerTriggerType> triggerType = java.util.Optional.empty();
+        private Optional<List<TriggerScope>> scope = java.util.Optional.empty();
+
+        public Builder type(TriggerType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder triggerType(TriggerTriggerType triggerType) {
+            this.triggerType = java.util.Optional.ofNullable(triggerType);
+            return this;
+        }
+        public Builder scope(List<TriggerScope> scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+
+        public FlowsTrigger build() {
+            return new FlowsTrigger(
+                type,
+                triggerType,
+                scope
+            );
+        }
+    }
 }

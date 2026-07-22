@@ -32,4 +32,54 @@ public record CollaborationAllowlistEntry(
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryType> type = java.util.Optional.empty();
+        private Optional<String> domain = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryDirection> direction = java.util.Optional.empty();
+        private Optional<CollaborationAllowlistEntryEnterprise> enterprise = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(CollaborationAllowlistEntryType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder domain(String domain) {
+            this.domain = java.util.Optional.ofNullable(domain);
+            return this;
+        }
+        public Builder direction(CollaborationAllowlistEntryDirection direction) {
+            this.direction = java.util.Optional.ofNullable(direction);
+            return this;
+        }
+        public Builder enterprise(CollaborationAllowlistEntryEnterprise enterprise) {
+            this.enterprise = java.util.Optional.ofNullable(enterprise);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+
+        public CollaborationAllowlistEntry build() {
+            return new CollaborationAllowlistEntry(
+                id,
+                type,
+                domain,
+                direction,
+                enterprise,
+                createdAt
+            );
+        }
+    }
 }

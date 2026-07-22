@@ -38,4 +38,66 @@ public record SchemaUpdateRequest(
             (!_m.containsKey("multiSelectOptionKeys") || _m.get("multiSelectOptionKeys") == null) ? java.util.Optional.<List<String>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("multiSelectOptionKeys"), _x0 -> dev.unofficialbox.core.Json.asString(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PutIdIdSchemaOp op;
+        private Optional<Map<String, Object>> data = java.util.Optional.empty();
+        private Optional<String> fieldKey = java.util.Optional.empty();
+        private Optional<List<String>> fieldKeys = java.util.Optional.empty();
+        private Optional<String> enumOptionKey = java.util.Optional.empty();
+        private Optional<List<String>> enumOptionKeys = java.util.Optional.empty();
+        private Optional<String> multiSelectOptionKey = java.util.Optional.empty();
+        private Optional<List<String>> multiSelectOptionKeys = java.util.Optional.empty();
+
+        public Builder op(PutIdIdSchemaOp op) {
+            this.op = op;
+            return this;
+        }
+        public Builder data(Map<String, Object> data) {
+            this.data = java.util.Optional.ofNullable(data);
+            return this;
+        }
+        public Builder fieldKey(String fieldKey) {
+            this.fieldKey = java.util.Optional.ofNullable(fieldKey);
+            return this;
+        }
+        public Builder fieldKeys(List<String> fieldKeys) {
+            this.fieldKeys = java.util.Optional.ofNullable(fieldKeys);
+            return this;
+        }
+        public Builder enumOptionKey(String enumOptionKey) {
+            this.enumOptionKey = java.util.Optional.ofNullable(enumOptionKey);
+            return this;
+        }
+        public Builder enumOptionKeys(List<String> enumOptionKeys) {
+            this.enumOptionKeys = java.util.Optional.ofNullable(enumOptionKeys);
+            return this;
+        }
+        public Builder multiSelectOptionKey(String multiSelectOptionKey) {
+            this.multiSelectOptionKey = java.util.Optional.ofNullable(multiSelectOptionKey);
+            return this;
+        }
+        public Builder multiSelectOptionKeys(List<String> multiSelectOptionKeys) {
+            this.multiSelectOptionKeys = java.util.Optional.ofNullable(multiSelectOptionKeys);
+            return this;
+        }
+
+        public SchemaUpdateRequest build() {
+            return new SchemaUpdateRequest(
+                op,
+                data,
+                fieldKey,
+                fieldKeys,
+                enumOptionKey,
+                enumOptionKeys,
+                multiSelectOptionKey,
+                multiSelectOptionKeys
+            );
+        }
+    }
 }

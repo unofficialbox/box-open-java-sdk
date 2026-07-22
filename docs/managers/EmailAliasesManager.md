@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `EmailAliases`
 
+**Example**
+
+```java
+var result = client.emailAliases.listUser("USER_ID");
+```
+
 ## createUser
 
 `POST /users/{user_id}/email_aliases`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `EmailAlias`
 
+**Example**
+
+```java
+var result = client.emailAliases.createUser("USER_ID", new UserIdCreateRequest(/* … */));
+```
+
 ## deleteUser
 
 `DELETE /users/{user_id}/email_aliases/{email_alias_id}`
@@ -37,4 +49,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `email_alias_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.emailAliases.deleteUser("USER_ID", "EMAIL_ALIAS_ID");
+```
 

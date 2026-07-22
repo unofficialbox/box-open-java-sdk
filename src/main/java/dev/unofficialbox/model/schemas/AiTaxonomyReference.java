@@ -23,4 +23,36 @@ public record AiTaxonomyReference(
             (!_m.containsKey("namespace") || _m.get("namespace") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("namespace")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<AiTaxonomyReferenceType> type = java.util.Optional.empty();
+        private Optional<String> taxonomyKey = java.util.Optional.empty();
+        private Optional<String> namespace = java.util.Optional.empty();
+
+        public Builder type(AiTaxonomyReferenceType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder taxonomyKey(String taxonomyKey) {
+            this.taxonomyKey = java.util.Optional.ofNullable(taxonomyKey);
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = java.util.Optional.ofNullable(namespace);
+            return this;
+        }
+
+        public AiTaxonomyReference build() {
+            return new AiTaxonomyReference(
+                type,
+                taxonomyKey,
+                namespace
+            );
+        }
+    }
 }

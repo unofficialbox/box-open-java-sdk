@@ -23,4 +23,36 @@ public record FileFullClassification(
             (!_m.containsKey("color") || _m.get("color") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("color")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> definition = java.util.Optional.empty();
+        private Optional<String> color = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder definition(String definition) {
+            this.definition = java.util.Optional.ofNullable(definition);
+            return this;
+        }
+        public Builder color(String color) {
+            this.color = java.util.Optional.ofNullable(color);
+            return this;
+        }
+
+        public FileFullClassification build() {
+            return new FileFullClassification(
+                name,
+                definition,
+                color
+            );
+        }
+    }
 }

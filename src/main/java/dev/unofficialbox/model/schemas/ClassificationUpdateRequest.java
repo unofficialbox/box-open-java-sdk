@@ -18,4 +18,36 @@ public record ClassificationUpdateRequest(PutAddOp op, FieldsKey fieldKey, PutAd
             (_m.get("data") == null ? null : PutAddData.fromJson(_m.get("data")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PutAddOp op;
+        private FieldsKey fieldKey;
+        private PutAddData data;
+
+        public Builder op(PutAddOp op) {
+            this.op = op;
+            return this;
+        }
+        public Builder fieldKey(FieldsKey fieldKey) {
+            this.fieldKey = fieldKey;
+            return this;
+        }
+        public Builder data(PutAddData data) {
+            this.data = data;
+            return this;
+        }
+
+        public ClassificationUpdateRequest build() {
+            return new ClassificationUpdateRequest(
+                op,
+                fieldKey,
+                data
+            );
+        }
+    }
 }

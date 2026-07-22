@@ -32,4 +32,54 @@ public record CollaborationsCreateRequest(
             (!_m.containsKey("expires_at") || _m.get("expires_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("expires_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("expires_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostCollaborationsItem item;
+        private PostCollaborationsAccessibleBy accessibleBy;
+        private FileFullAllowedInviteeRoles role;
+        private Optional<Boolean> isAccessOnly = java.util.Optional.empty();
+        private Optional<Boolean> canViewPath = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+
+        public Builder item(PostCollaborationsItem item) {
+            this.item = item;
+            return this;
+        }
+        public Builder accessibleBy(PostCollaborationsAccessibleBy accessibleBy) {
+            this.accessibleBy = accessibleBy;
+            return this;
+        }
+        public Builder role(FileFullAllowedInviteeRoles role) {
+            this.role = role;
+            return this;
+        }
+        public Builder isAccessOnly(Boolean isAccessOnly) {
+            this.isAccessOnly = java.util.Optional.ofNullable(isAccessOnly);
+            return this;
+        }
+        public Builder canViewPath(Boolean canViewPath) {
+            this.canViewPath = java.util.Optional.ofNullable(canViewPath);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+
+        public CollaborationsCreateRequest build() {
+            return new CollaborationsCreateRequest(
+                item,
+                accessibleBy,
+                role,
+                isAccessOnly,
+                canViewPath,
+                expiresAt
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record WorkflowFlows(
             (!_m.containsKey("created_by") || _m.get("created_by") == null) ? java.util.Optional.<UserBase>empty() : java.util.Optional.of((_m.get("created_by") == null ? null : UserBase.fromJson(_m.get("created_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<FlowsType> type = java.util.Optional.empty();
+        private Optional<FlowsTrigger> trigger = java.util.Optional.empty();
+        private Optional<List<FlowsOutcomes>> outcomes = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(FlowsType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder trigger(FlowsTrigger trigger) {
+            this.trigger = java.util.Optional.ofNullable(trigger);
+            return this;
+        }
+        public Builder outcomes(List<FlowsOutcomes> outcomes) {
+            this.outcomes = java.util.Optional.ofNullable(outcomes);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+
+        public WorkflowFlows build() {
+            return new WorkflowFlows(
+                id,
+                type,
+                trigger,
+                outcomes,
+                createdAt,
+                createdBy
+            );
+        }
+    }
 }

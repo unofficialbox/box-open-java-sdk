@@ -32,4 +32,54 @@ public record AccessToken(
             (!_m.containsKey("issued_token_type") || _m.get("issued_token_type") == null) ? java.util.Optional.<AccessTokenIssuedTokenType>empty() : java.util.Optional.of((_m.get("issued_token_type") == null ? null : AccessTokenIssuedTokenType.fromJson(_m.get("issued_token_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> accessToken = java.util.Optional.empty();
+        private Optional<Long> expiresIn = java.util.Optional.empty();
+        private Optional<AccessTokenTokenType> tokenType = java.util.Optional.empty();
+        private Optional<List<ResourceScope>> restrictedTo = java.util.Optional.empty();
+        private Optional<String> refreshToken = java.util.Optional.empty();
+        private Optional<AccessTokenIssuedTokenType> issuedTokenType = java.util.Optional.empty();
+
+        public Builder accessToken(String accessToken) {
+            this.accessToken = java.util.Optional.ofNullable(accessToken);
+            return this;
+        }
+        public Builder expiresIn(Long expiresIn) {
+            this.expiresIn = java.util.Optional.ofNullable(expiresIn);
+            return this;
+        }
+        public Builder tokenType(AccessTokenTokenType tokenType) {
+            this.tokenType = java.util.Optional.ofNullable(tokenType);
+            return this;
+        }
+        public Builder restrictedTo(List<ResourceScope> restrictedTo) {
+            this.restrictedTo = java.util.Optional.ofNullable(restrictedTo);
+            return this;
+        }
+        public Builder refreshToken(String refreshToken) {
+            this.refreshToken = java.util.Optional.ofNullable(refreshToken);
+            return this;
+        }
+        public Builder issuedTokenType(AccessTokenIssuedTokenType issuedTokenType) {
+            this.issuedTokenType = java.util.Optional.ofNullable(issuedTokenType);
+            return this;
+        }
+
+        public AccessToken build() {
+            return new AccessToken(
+                accessToken,
+                expiresIn,
+                tokenType,
+                restrictedTo,
+                refreshToken,
+                issuedTokenType
+            );
+        }
+    }
 }

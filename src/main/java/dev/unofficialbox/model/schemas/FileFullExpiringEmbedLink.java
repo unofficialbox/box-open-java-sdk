@@ -29,4 +29,48 @@ public record FileFullExpiringEmbedLink(
             (!_m.containsKey("url") || _m.get("url") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("url")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> accessToken = java.util.Optional.empty();
+        private Optional<Long> expiresIn = java.util.Optional.empty();
+        private Optional<AccessTokenTokenType> tokenType = java.util.Optional.empty();
+        private Optional<List<ResourceScope>> restrictedTo = java.util.Optional.empty();
+        private Optional<String> url = java.util.Optional.empty();
+
+        public Builder accessToken(String accessToken) {
+            this.accessToken = java.util.Optional.ofNullable(accessToken);
+            return this;
+        }
+        public Builder expiresIn(Long expiresIn) {
+            this.expiresIn = java.util.Optional.ofNullable(expiresIn);
+            return this;
+        }
+        public Builder tokenType(AccessTokenTokenType tokenType) {
+            this.tokenType = java.util.Optional.ofNullable(tokenType);
+            return this;
+        }
+        public Builder restrictedTo(List<ResourceScope> restrictedTo) {
+            this.restrictedTo = java.util.Optional.ofNullable(restrictedTo);
+            return this;
+        }
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+
+        public FileFullExpiringEmbedLink build() {
+            return new FileFullExpiringEmbedLink(
+                accessToken,
+                expiresIn,
+                tokenType,
+                restrictedTo,
+                url
+            );
+        }
+    }
 }

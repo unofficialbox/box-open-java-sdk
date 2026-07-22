@@ -47,4 +47,84 @@ public record IntegrationMapping(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private IntegrationMappingType type;
+        private Optional<IntegrationMappingIntegrationType> integrationType = java.util.Optional.empty();
+        private Optional<Boolean> isManuallyCreated = java.util.Optional.empty();
+        private Optional<IntegrationMappingSlackOptions> options = java.util.Optional.empty();
+        private Optional<UserIntegrationMappings> createdBy = java.util.Optional.empty();
+        private Optional<UserIntegrationMappings> modifiedBy = java.util.Optional.empty();
+        private IntegrationMappingPartnerItemSlack partnerItem;
+        private FolderMini boxItem;
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(IntegrationMappingType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder integrationType(IntegrationMappingIntegrationType integrationType) {
+            this.integrationType = java.util.Optional.ofNullable(integrationType);
+            return this;
+        }
+        public Builder isManuallyCreated(Boolean isManuallyCreated) {
+            this.isManuallyCreated = java.util.Optional.ofNullable(isManuallyCreated);
+            return this;
+        }
+        public Builder options(IntegrationMappingSlackOptions options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+        public Builder createdBy(UserIntegrationMappings createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserIntegrationMappings modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder partnerItem(IntegrationMappingPartnerItemSlack partnerItem) {
+            this.partnerItem = partnerItem;
+            return this;
+        }
+        public Builder boxItem(FolderMini boxItem) {
+            this.boxItem = boxItem;
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public IntegrationMapping build() {
+            return new IntegrationMapping(
+                id,
+                type,
+                integrationType,
+                isManuallyCreated,
+                options,
+                createdBy,
+                modifiedBy,
+                partnerItem,
+                boxItem,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

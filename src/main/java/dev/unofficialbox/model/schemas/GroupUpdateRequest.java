@@ -32,4 +32,54 @@ public record GroupUpdateRequest(
             (!_m.containsKey("member_viewability_level") || _m.get("member_viewability_level") == null) ? java.util.Optional.<GroupFullInvitabilityLevel>empty() : java.util.Optional.of((_m.get("member_viewability_level") == null ? null : GroupFullInvitabilityLevel.fromJson(_m.get("member_viewability_level"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> provenance = java.util.Optional.empty();
+        private Optional<String> externalSyncIdentifier = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<GroupFullInvitabilityLevel> invitabilityLevel = java.util.Optional.empty();
+        private Optional<GroupFullInvitabilityLevel> memberViewabilityLevel = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder provenance(String provenance) {
+            this.provenance = java.util.Optional.ofNullable(provenance);
+            return this;
+        }
+        public Builder externalSyncIdentifier(String externalSyncIdentifier) {
+            this.externalSyncIdentifier = java.util.Optional.ofNullable(externalSyncIdentifier);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder invitabilityLevel(GroupFullInvitabilityLevel invitabilityLevel) {
+            this.invitabilityLevel = java.util.Optional.ofNullable(invitabilityLevel);
+            return this;
+        }
+        public Builder memberViewabilityLevel(GroupFullInvitabilityLevel memberViewabilityLevel) {
+            this.memberViewabilityLevel = java.util.Optional.ofNullable(memberViewabilityLevel);
+            return this;
+        }
+
+        public GroupUpdateRequest build() {
+            return new GroupUpdateRequest(
+                name,
+                provenance,
+                externalSyncIdentifier,
+                description,
+                invitabilityLevel,
+                memberViewabilityLevel
+            );
+        }
+    }
 }

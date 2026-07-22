@@ -18,4 +18,30 @@ public record AiAgentReference(
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAgentReferenceType type;
+        private String id;
+
+        public Builder type(AiAgentReferenceType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public AiAgentReference build() {
+            return new AiAgentReference(
+                type,
+                id
+            );
+        }
+    }
 }

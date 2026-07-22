@@ -20,4 +20,30 @@ public record ShieldListContentIntegration(
             dev.unofficialbox.core.Json.decodeList(_m.get("integrations"), _x0 -> (_x0 == null ? null : ShieldListContentIntegrationIntegrations.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldListContentIntegrationType type;
+        private List<ShieldListContentIntegrationIntegrations> integrations;
+
+        public Builder type(ShieldListContentIntegrationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder integrations(List<ShieldListContentIntegrationIntegrations> integrations) {
+            this.integrations = integrations;
+            return this;
+        }
+
+        public ShieldListContentIntegration build() {
+            return new ShieldListContentIntegration(
+                type,
+                integrations
+            );
+        }
+    }
 }

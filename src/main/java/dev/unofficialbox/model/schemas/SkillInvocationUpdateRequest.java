@@ -29,4 +29,48 @@ public record SkillInvocationUpdateRequest(
             (!_m.containsKey("usage") || _m.get("usage") == null) ? java.util.Optional.<PutSkillInvocationIdUsage>empty() : java.util.Optional.of((_m.get("usage") == null ? null : PutSkillInvocationIdUsage.fromJson(_m.get("usage"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private StatusCode status;
+        private PutSkillInvocationIdMetadata metadata;
+        private PutSkillInvocationIdFile file;
+        private Optional<PutSkillInvocationIdFileVersion> fileVersion = java.util.Optional.empty();
+        private Optional<PutSkillInvocationIdUsage> usage = java.util.Optional.empty();
+
+        public Builder status(StatusCode status) {
+            this.status = status;
+            return this;
+        }
+        public Builder metadata(PutSkillInvocationIdMetadata metadata) {
+            this.metadata = metadata;
+            return this;
+        }
+        public Builder file(PutSkillInvocationIdFile file) {
+            this.file = file;
+            return this;
+        }
+        public Builder fileVersion(PutSkillInvocationIdFileVersion fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder usage(PutSkillInvocationIdUsage usage) {
+            this.usage = java.util.Optional.ofNullable(usage);
+            return this;
+        }
+
+        public SkillInvocationUpdateRequest build() {
+            return new SkillInvocationUpdateRequest(
+                status,
+                metadata,
+                file,
+                fileVersion,
+                usage
+            );
+        }
+    }
 }

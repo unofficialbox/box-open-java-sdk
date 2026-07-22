@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** a binary stream (`Runtime.Stream`)
 
+**Example**
+
+```java
+var result = client.avatars.getUserAvatar("USER_ID");
+```
+
 ## createUserAvatar
 
 `POST /users/{user_id}/avatar`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `UserAvatar`
 
+**Example**
+
+```java
+var result = client.avatars.createUserAvatar("USER_ID", new UserAvatarCreateRequest(/* … */));
+```
+
 ## deleteUserAvatar
 
 `DELETE /users/{user_id}/avatar`
@@ -36,4 +48,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `user_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.avatars.deleteUserAvatar("USER_ID");
+```
 

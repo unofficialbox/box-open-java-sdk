@@ -24,4 +24,42 @@ public record PostOAuth2TokenRefreshAccessToken(
             dev.unofficialbox.core.Json.asString(_m.get("refresh_token"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostOAuth2TokenRefreshAccessTokenGrantType grantType;
+        private String clientId;
+        private String clientSecret;
+        private String refreshToken;
+
+        public Builder grantType(PostOAuth2TokenRefreshAccessTokenGrantType grantType) {
+            this.grantType = grantType;
+            return this;
+        }
+        public Builder clientId(String clientId) {
+            this.clientId = clientId;
+            return this;
+        }
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = clientSecret;
+            return this;
+        }
+        public Builder refreshToken(String refreshToken) {
+            this.refreshToken = refreshToken;
+            return this;
+        }
+
+        public PostOAuth2TokenRefreshAccessToken build() {
+            return new PostOAuth2TokenRefreshAccessToken(
+                grantType,
+                clientId,
+                clientSecret,
+                refreshToken
+            );
+        }
+    }
 }

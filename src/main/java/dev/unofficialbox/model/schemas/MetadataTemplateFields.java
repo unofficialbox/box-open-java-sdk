@@ -47,4 +47,84 @@ public record MetadataTemplateFields(
             (!_m.containsKey("id") || _m.get("id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FieldsType2 type;
+        private String key;
+        private String displayName;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private Optional<List<FieldsOptions3>> options = java.util.Optional.empty();
+        private Optional<String> taxonomyKey = java.util.Optional.empty();
+        private Optional<String> taxonomyId = java.util.Optional.empty();
+        private Optional<String> namespace = java.util.Optional.empty();
+        private Optional<FieldsOptionsRules> optionsRules = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+
+        public Builder type(FieldsType2 type) {
+            this.type = type;
+            return this;
+        }
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder options(List<FieldsOptions3> options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+        public Builder taxonomyKey(String taxonomyKey) {
+            this.taxonomyKey = java.util.Optional.ofNullable(taxonomyKey);
+            return this;
+        }
+        public Builder taxonomyId(String taxonomyId) {
+            this.taxonomyId = java.util.Optional.ofNullable(taxonomyId);
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = java.util.Optional.ofNullable(namespace);
+            return this;
+        }
+        public Builder optionsRules(FieldsOptionsRules optionsRules) {
+            this.optionsRules = java.util.Optional.ofNullable(optionsRules);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+
+        public MetadataTemplateFields build() {
+            return new MetadataTemplateFields(
+                type,
+                key,
+                displayName,
+                description,
+                hidden,
+                options,
+                taxonomyKey,
+                taxonomyId,
+                namespace,
+                optionsRules,
+                id
+            );
+        }
+    }
 }

@@ -18,4 +18,30 @@ public record EnterpriseBase(Optional<String> id, Optional<EnterpriseType> type)
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<EnterpriseType>empty() : java.util.Optional.of((_m.get("type") == null ? null : EnterpriseType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<EnterpriseType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(EnterpriseType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public EnterpriseBase build() {
+            return new EnterpriseBase(
+                id,
+                type
+            );
+        }
+    }
 }

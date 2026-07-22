@@ -71,4 +71,132 @@ public record EnterpriseConfigurationUserSettings(
             (!_m.containsKey("is_instant_login_restricted") || _m.get("is_instant_login_restricted") == null) ? java.util.Optional.<EnterpriseConfigurationItemBoolean>empty() : java.util.Optional.of((_m.get("is_instant_login_restricted") == null ? null : EnterpriseConfigurationItemBoolean.fromJson(_m.get("is_instant_login_restricted"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<EnterpriseFeatureSettingsItem>> enterpriseFeatureSettings = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> userInvitesExpirationTimeFrame = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isUsernameChangeRestricted = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isBoxSyncRestrictedForNewUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isViewAllUsersEnabledForNewUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isDeviceLimitExemptionEnabledForNewUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isExternalCollaborationRestrictedForNewUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isUnlimitedStorageEnabledForNewUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> newUserDefaultStorageLimit = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> newUserDefaultTimezone = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> newUserDefaultLanguage = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isEnterpriseSsoRequired = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isEnterpriseSsoInTesting = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSsoAutoAddGroupsEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSsoAutoAddUserToGroupsEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSsoAutoRemoveUserFromGroupsEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationUserSettingsUserTrackingCodes> userTrackingCodes = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> numberOfUserTrackingCodesRemaining = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isInstantLoginRestricted = java.util.Optional.empty();
+
+        public Builder enterpriseFeatureSettings(List<EnterpriseFeatureSettingsItem> enterpriseFeatureSettings) {
+            this.enterpriseFeatureSettings = java.util.Optional.ofNullable(enterpriseFeatureSettings);
+            return this;
+        }
+        public Builder userInvitesExpirationTimeFrame(EnterpriseConfigurationItemString userInvitesExpirationTimeFrame) {
+            this.userInvitesExpirationTimeFrame = java.util.Optional.ofNullable(userInvitesExpirationTimeFrame);
+            return this;
+        }
+        public Builder isUsernameChangeRestricted(EnterpriseConfigurationItemBoolean isUsernameChangeRestricted) {
+            this.isUsernameChangeRestricted = java.util.Optional.ofNullable(isUsernameChangeRestricted);
+            return this;
+        }
+        public Builder isBoxSyncRestrictedForNewUsers(EnterpriseConfigurationItemBoolean isBoxSyncRestrictedForNewUsers) {
+            this.isBoxSyncRestrictedForNewUsers = java.util.Optional.ofNullable(isBoxSyncRestrictedForNewUsers);
+            return this;
+        }
+        public Builder isViewAllUsersEnabledForNewUsers(EnterpriseConfigurationItemBoolean isViewAllUsersEnabledForNewUsers) {
+            this.isViewAllUsersEnabledForNewUsers = java.util.Optional.ofNullable(isViewAllUsersEnabledForNewUsers);
+            return this;
+        }
+        public Builder isDeviceLimitExemptionEnabledForNewUsers(EnterpriseConfigurationItemBoolean isDeviceLimitExemptionEnabledForNewUsers) {
+            this.isDeviceLimitExemptionEnabledForNewUsers = java.util.Optional.ofNullable(isDeviceLimitExemptionEnabledForNewUsers);
+            return this;
+        }
+        public Builder isExternalCollaborationRestrictedForNewUsers(EnterpriseConfigurationItemBoolean isExternalCollaborationRestrictedForNewUsers) {
+            this.isExternalCollaborationRestrictedForNewUsers = java.util.Optional.ofNullable(isExternalCollaborationRestrictedForNewUsers);
+            return this;
+        }
+        public Builder isUnlimitedStorageEnabledForNewUsers(EnterpriseConfigurationItemBoolean isUnlimitedStorageEnabledForNewUsers) {
+            this.isUnlimitedStorageEnabledForNewUsers = java.util.Optional.ofNullable(isUnlimitedStorageEnabledForNewUsers);
+            return this;
+        }
+        public Builder newUserDefaultStorageLimit(EnterpriseConfigurationItemInteger newUserDefaultStorageLimit) {
+            this.newUserDefaultStorageLimit = java.util.Optional.ofNullable(newUserDefaultStorageLimit);
+            return this;
+        }
+        public Builder newUserDefaultTimezone(EnterpriseConfigurationItemString newUserDefaultTimezone) {
+            this.newUserDefaultTimezone = java.util.Optional.ofNullable(newUserDefaultTimezone);
+            return this;
+        }
+        public Builder newUserDefaultLanguage(EnterpriseConfigurationItemString newUserDefaultLanguage) {
+            this.newUserDefaultLanguage = java.util.Optional.ofNullable(newUserDefaultLanguage);
+            return this;
+        }
+        public Builder isEnterpriseSsoRequired(EnterpriseConfigurationItemBoolean isEnterpriseSsoRequired) {
+            this.isEnterpriseSsoRequired = java.util.Optional.ofNullable(isEnterpriseSsoRequired);
+            return this;
+        }
+        public Builder isEnterpriseSsoInTesting(EnterpriseConfigurationItemBoolean isEnterpriseSsoInTesting) {
+            this.isEnterpriseSsoInTesting = java.util.Optional.ofNullable(isEnterpriseSsoInTesting);
+            return this;
+        }
+        public Builder isSsoAutoAddGroupsEnabled(EnterpriseConfigurationItemBoolean isSsoAutoAddGroupsEnabled) {
+            this.isSsoAutoAddGroupsEnabled = java.util.Optional.ofNullable(isSsoAutoAddGroupsEnabled);
+            return this;
+        }
+        public Builder isSsoAutoAddUserToGroupsEnabled(EnterpriseConfigurationItemBoolean isSsoAutoAddUserToGroupsEnabled) {
+            this.isSsoAutoAddUserToGroupsEnabled = java.util.Optional.ofNullable(isSsoAutoAddUserToGroupsEnabled);
+            return this;
+        }
+        public Builder isSsoAutoRemoveUserFromGroupsEnabled(EnterpriseConfigurationItemBoolean isSsoAutoRemoveUserFromGroupsEnabled) {
+            this.isSsoAutoRemoveUserFromGroupsEnabled = java.util.Optional.ofNullable(isSsoAutoRemoveUserFromGroupsEnabled);
+            return this;
+        }
+        public Builder userTrackingCodes(EnterpriseConfigurationUserSettingsUserTrackingCodes userTrackingCodes) {
+            this.userTrackingCodes = java.util.Optional.ofNullable(userTrackingCodes);
+            return this;
+        }
+        public Builder numberOfUserTrackingCodesRemaining(EnterpriseConfigurationItemInteger numberOfUserTrackingCodesRemaining) {
+            this.numberOfUserTrackingCodesRemaining = java.util.Optional.ofNullable(numberOfUserTrackingCodesRemaining);
+            return this;
+        }
+        public Builder isInstantLoginRestricted(EnterpriseConfigurationItemBoolean isInstantLoginRestricted) {
+            this.isInstantLoginRestricted = java.util.Optional.ofNullable(isInstantLoginRestricted);
+            return this;
+        }
+
+        public EnterpriseConfigurationUserSettings build() {
+            return new EnterpriseConfigurationUserSettings(
+                enterpriseFeatureSettings,
+                userInvitesExpirationTimeFrame,
+                isUsernameChangeRestricted,
+                isBoxSyncRestrictedForNewUsers,
+                isViewAllUsersEnabledForNewUsers,
+                isDeviceLimitExemptionEnabledForNewUsers,
+                isExternalCollaborationRestrictedForNewUsers,
+                isUnlimitedStorageEnabledForNewUsers,
+                newUserDefaultStorageLimit,
+                newUserDefaultTimezone,
+                newUserDefaultLanguage,
+                isEnterpriseSsoRequired,
+                isEnterpriseSsoInTesting,
+                isSsoAutoAddGroupsEnabled,
+                isSsoAutoAddUserToGroupsEnabled,
+                isSsoAutoRemoveUserFromGroupsEnabled,
+                userTrackingCodes,
+                numberOfUserTrackingCodesRemaining,
+                isInstantLoginRestricted
+            );
+        }
+    }
 }

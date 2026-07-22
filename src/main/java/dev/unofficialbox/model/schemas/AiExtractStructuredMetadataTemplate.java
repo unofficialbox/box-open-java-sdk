@@ -23,4 +23,36 @@ public record AiExtractStructuredMetadataTemplate(
             (!_m.containsKey("scope") || _m.get("scope") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("scope")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> templateKey = java.util.Optional.empty();
+        private Optional<MetadataTemplateType> type = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+
+        public Builder templateKey(String templateKey) {
+            this.templateKey = java.util.Optional.ofNullable(templateKey);
+            return this;
+        }
+        public Builder type(MetadataTemplateType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+
+        public AiExtractStructuredMetadataTemplate build() {
+            return new AiExtractStructuredMetadataTemplate(
+                templateKey,
+                type,
+                scope
+            );
+        }
+    }
 }

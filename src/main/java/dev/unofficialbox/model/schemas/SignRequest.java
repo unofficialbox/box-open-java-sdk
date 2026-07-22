@@ -128,4 +128,210 @@ public record SignRequest(
             !_m.containsKey("sender_id") ? dev.unofficialbox.core.Tristate.<Long>absent() : (_m.get("sender_id") == null ? dev.unofficialbox.core.Tristate.<Long>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asLong(_m.get("sender_id"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isDocumentPreparationNeeded = java.util.Optional.empty();
+        private Tristate<String> redirectUrl;
+        private Tristate<String> declinedRedirectUrl;
+        private Optional<Boolean> areTextSignaturesEnabled = java.util.Optional.empty();
+        private Tristate<String> emailSubject;
+        private Tristate<String> emailMessage;
+        private Optional<Boolean> areRemindersEnabled = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<List<SignRequestPrefillTag>> prefillTags = java.util.Optional.empty();
+        private Tristate<Long> daysValid;
+        private Tristate<String> externalId;
+        private Tristate<String> templateId;
+        private Tristate<String> externalSystemName;
+        private Tristate<String> requestFlow;
+        private Optional<SignRequestType> type = java.util.Optional.empty();
+        private Optional<List<FileBase>> sourceFiles = java.util.Optional.empty();
+        private Optional<List<SignRequestSigner>> signers = java.util.Optional.empty();
+        private Tristate<String> signatureColor;
+        private Optional<String> id = java.util.Optional.empty();
+        private Tristate<String> prepareUrl;
+        private Optional<FileMini> signingLog = java.util.Optional.empty();
+        private Optional<SignRequestStatus> status = java.util.Optional.empty();
+        private Optional<SignRequestSignFiles> signFiles = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> autoExpireAt;
+        private Optional<FolderMini> parentFolder = java.util.Optional.empty();
+        private Tristate<String> collaboratorLevel;
+        private Optional<String> shortId = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> finishedAt;
+        private Tristate<String> errorCode;
+        private Tristate<String> senderEmail;
+        private Tristate<Long> senderId;
+
+        public Builder isDocumentPreparationNeeded(Boolean isDocumentPreparationNeeded) {
+            this.isDocumentPreparationNeeded = java.util.Optional.ofNullable(isDocumentPreparationNeeded);
+            return this;
+        }
+        public Builder redirectUrl(Tristate<String> redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public Builder declinedRedirectUrl(Tristate<String> declinedRedirectUrl) {
+            this.declinedRedirectUrl = declinedRedirectUrl;
+            return this;
+        }
+        public Builder areTextSignaturesEnabled(Boolean areTextSignaturesEnabled) {
+            this.areTextSignaturesEnabled = java.util.Optional.ofNullable(areTextSignaturesEnabled);
+            return this;
+        }
+        public Builder emailSubject(Tristate<String> emailSubject) {
+            this.emailSubject = emailSubject;
+            return this;
+        }
+        public Builder emailMessage(Tristate<String> emailMessage) {
+            this.emailMessage = emailMessage;
+            return this;
+        }
+        public Builder areRemindersEnabled(Boolean areRemindersEnabled) {
+            this.areRemindersEnabled = java.util.Optional.ofNullable(areRemindersEnabled);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder prefillTags(List<SignRequestPrefillTag> prefillTags) {
+            this.prefillTags = java.util.Optional.ofNullable(prefillTags);
+            return this;
+        }
+        public Builder daysValid(Tristate<Long> daysValid) {
+            this.daysValid = daysValid;
+            return this;
+        }
+        public Builder externalId(Tristate<String> externalId) {
+            this.externalId = externalId;
+            return this;
+        }
+        public Builder templateId(Tristate<String> templateId) {
+            this.templateId = templateId;
+            return this;
+        }
+        public Builder externalSystemName(Tristate<String> externalSystemName) {
+            this.externalSystemName = externalSystemName;
+            return this;
+        }
+        public Builder requestFlow(Tristate<String> requestFlow) {
+            this.requestFlow = requestFlow;
+            return this;
+        }
+        public Builder type(SignRequestType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder sourceFiles(List<FileBase> sourceFiles) {
+            this.sourceFiles = java.util.Optional.ofNullable(sourceFiles);
+            return this;
+        }
+        public Builder signers(List<SignRequestSigner> signers) {
+            this.signers = java.util.Optional.ofNullable(signers);
+            return this;
+        }
+        public Builder signatureColor(Tristate<String> signatureColor) {
+            this.signatureColor = signatureColor;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder prepareUrl(Tristate<String> prepareUrl) {
+            this.prepareUrl = prepareUrl;
+            return this;
+        }
+        public Builder signingLog(FileMini signingLog) {
+            this.signingLog = java.util.Optional.ofNullable(signingLog);
+            return this;
+        }
+        public Builder status(SignRequestStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder signFiles(SignRequestSignFiles signFiles) {
+            this.signFiles = java.util.Optional.ofNullable(signFiles);
+            return this;
+        }
+        public Builder autoExpireAt(Tristate<OffsetDateTime> autoExpireAt) {
+            this.autoExpireAt = autoExpireAt;
+            return this;
+        }
+        public Builder parentFolder(FolderMini parentFolder) {
+            this.parentFolder = java.util.Optional.ofNullable(parentFolder);
+            return this;
+        }
+        public Builder collaboratorLevel(Tristate<String> collaboratorLevel) {
+            this.collaboratorLevel = collaboratorLevel;
+            return this;
+        }
+        public Builder shortId(String shortId) {
+            this.shortId = java.util.Optional.ofNullable(shortId);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder finishedAt(Tristate<OffsetDateTime> finishedAt) {
+            this.finishedAt = finishedAt;
+            return this;
+        }
+        public Builder errorCode(Tristate<String> errorCode) {
+            this.errorCode = errorCode;
+            return this;
+        }
+        public Builder senderEmail(Tristate<String> senderEmail) {
+            this.senderEmail = senderEmail;
+            return this;
+        }
+        public Builder senderId(Tristate<Long> senderId) {
+            this.senderId = senderId;
+            return this;
+        }
+
+        public SignRequest build() {
+            return new SignRequest(
+                isDocumentPreparationNeeded,
+                redirectUrl,
+                declinedRedirectUrl,
+                areTextSignaturesEnabled,
+                emailSubject,
+                emailMessage,
+                areRemindersEnabled,
+                name,
+                prefillTags,
+                daysValid,
+                externalId,
+                templateId,
+                externalSystemName,
+                requestFlow,
+                type,
+                sourceFiles,
+                signers,
+                signatureColor,
+                id,
+                prepareUrl,
+                signingLog,
+                status,
+                signFiles,
+                autoExpireAt,
+                parentFolder,
+                collaboratorLevel,
+                shortId,
+                createdAt,
+                finishedAt,
+                errorCode,
+                senderEmail,
+                senderId
+            );
+        }
+    }
 }

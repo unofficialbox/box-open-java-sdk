@@ -16,4 +16,30 @@ public record LegalHoldPolicyAssignmentCreateRequest(String policyId, PostAssign
             (_m.get("assign_to") == null ? null : PostAssignTo3.fromJson(_m.get("assign_to")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String policyId;
+        private PostAssignTo3 assignTo;
+
+        public Builder policyId(String policyId) {
+            this.policyId = policyId;
+            return this;
+        }
+        public Builder assignTo(PostAssignTo3 assignTo) {
+            this.assignTo = assignTo;
+            return this;
+        }
+
+        public LegalHoldPolicyAssignmentCreateRequest build() {
+            return new LegalHoldPolicyAssignmentCreateRequest(
+                policyId,
+                assignTo
+            );
+        }
+    }
 }

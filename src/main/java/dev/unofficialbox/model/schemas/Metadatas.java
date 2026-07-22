@@ -18,4 +18,30 @@ public record Metadatas(Optional<List<MetadataBase>> entries, Optional<Long> lim
             (!_m.containsKey("limit") || _m.get("limit") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("limit")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<MetadataBase>> entries = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+
+        public Builder entries(List<MetadataBase> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+
+        public Metadatas build() {
+            return new Metadatas(
+                entries,
+                limit
+            );
+        }
+    }
 }

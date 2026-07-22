@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Tasks`
 
+**Example**
+
+```java
+var result = client.tasks.listFile("FILE_ID");
+```
+
 ## create
 
 `POST /tasks`
@@ -22,6 +28,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TaskCreateRequest`
 
 **Returns:** `Task`
+
+**Example**
+
+```java
+var result = client.tasks.create(new TaskCreateRequest(/* … */));
+```
 
 ## get
 
@@ -32,6 +44,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `task_id` | path | `String` | yes |
 
 **Returns:** `Task`
+
+**Example**
+
+```java
+var result = client.tasks.get("TASK_ID");
+```
 
 ## update
 
@@ -45,6 +63,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Task`
 
+**Example**
+
+```java
+var result = client.tasks.update("TASK_ID", new TaskUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /tasks/{task_id}`
@@ -54,4 +78,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `task_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.tasks.delete("TASK_ID");
+```
 

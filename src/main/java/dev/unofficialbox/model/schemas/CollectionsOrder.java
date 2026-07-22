@@ -18,4 +18,30 @@ public record CollectionsOrder(Optional<String> by, Optional<OrderDirection> dir
             (!_m.containsKey("direction") || _m.get("direction") == null) ? java.util.Optional.<OrderDirection>empty() : java.util.Optional.of((_m.get("direction") == null ? null : OrderDirection.fromJson(_m.get("direction"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> by = java.util.Optional.empty();
+        private Optional<OrderDirection> direction = java.util.Optional.empty();
+
+        public Builder by(String by) {
+            this.by = java.util.Optional.ofNullable(by);
+            return this;
+        }
+        public Builder direction(OrderDirection direction) {
+            this.direction = java.util.Optional.ofNullable(direction);
+            return this;
+        }
+
+        public CollectionsOrder build() {
+            return new CollectionsOrder(
+                by,
+                direction
+            );
+        }
+    }
 }

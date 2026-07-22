@@ -15,4 +15,24 @@ public record SignRequestSignerInputZIP4Validation(
             (_m.get("validation_type") == null ? null : SignRequestSignerInputZIP4ValidationValidationType.fromJson(_m.get("validation_type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private SignRequestSignerInputZIP4ValidationValidationType validationType;
+
+        public Builder validationType(SignRequestSignerInputZIP4ValidationValidationType validationType) {
+            this.validationType = validationType;
+            return this;
+        }
+
+        public SignRequestSignerInputZIP4Validation build() {
+            return new SignRequestSignerInputZIP4Validation(
+                validationType
+            );
+        }
+    }
 }

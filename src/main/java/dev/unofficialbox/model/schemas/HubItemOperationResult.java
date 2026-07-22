@@ -29,4 +29,48 @@ public record HubItemOperationResult(
             (!_m.containsKey("error") || _m.get("error") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("error")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> action = java.util.Optional.empty();
+        private Optional<HubItemReference> item = java.util.Optional.empty();
+        private Optional<String> parentId = java.util.Optional.empty();
+        private Optional<Long> status = java.util.Optional.empty();
+        private Optional<String> error = java.util.Optional.empty();
+
+        public Builder action(String action) {
+            this.action = java.util.Optional.ofNullable(action);
+            return this;
+        }
+        public Builder item(HubItemReference item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+        public Builder parentId(String parentId) {
+            this.parentId = java.util.Optional.ofNullable(parentId);
+            return this;
+        }
+        public Builder status(Long status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder error(String error) {
+            this.error = java.util.Optional.ofNullable(error);
+            return this;
+        }
+
+        public HubItemOperationResult build() {
+            return new HubItemOperationResult(
+                action,
+                item,
+                parentId,
+                status,
+                error
+            );
+        }
+    }
 }

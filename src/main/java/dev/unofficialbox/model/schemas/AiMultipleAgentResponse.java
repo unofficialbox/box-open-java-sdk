@@ -29,4 +29,42 @@ public record AiMultipleAgentResponse(
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : AiSingleAgentResponseFull.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Tristate<String> nextMarker;
+        private Tristate<String> prevMarker;
+        private List<AiSingleAgentResponseFull> entries;
+
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(Tristate<String> nextMarker) {
+            this.nextMarker = nextMarker;
+            return this;
+        }
+        public Builder prevMarker(Tristate<String> prevMarker) {
+            this.prevMarker = prevMarker;
+            return this;
+        }
+        public Builder entries(List<AiSingleAgentResponseFull> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public AiMultipleAgentResponse build() {
+            return new AiMultipleAgentResponse(
+                limit,
+                nextMarker,
+                prevMarker,
+                entries
+            );
+        }
+    }
 }

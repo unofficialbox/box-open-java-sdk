@@ -16,4 +16,24 @@ public record SignRequestCancelRequest(Optional<String> reason) {
             (!_m.containsKey("reason") || _m.get("reason") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("reason")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> reason = java.util.Optional.empty();
+
+        public Builder reason(String reason) {
+            this.reason = java.util.Optional.ofNullable(reason);
+            return this;
+        }
+
+        public SignRequestCancelRequest build() {
+            return new SignRequestCancelRequest(
+                reason
+            );
+        }
+    }
 }

@@ -18,4 +18,30 @@ public record PostCollaborationsItem(Optional<EventSourceItemType> type, Optiona
             (!_m.containsKey("id") || _m.get("id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<EventSourceItemType> type = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+
+        public Builder type(EventSourceItemType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+
+        public PostCollaborationsItem build() {
+            return new PostCollaborationsItem(
+                type,
+                id
+            );
+        }
+    }
 }

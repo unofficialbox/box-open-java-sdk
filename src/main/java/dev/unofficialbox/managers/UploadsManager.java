@@ -11,7 +11,7 @@ public final class UploadsManager {
     }
 
     /** POST /files/{file_id}/content. */
-    public dev.unofficialbox.model.schemas.Files createFileContent(String fileId, dev.unofficialbox.model.schemas.FileIdContentCreateRequest body, CreateFileContentOptions options) {
+    public dev.unofficialbox.model.schemas.Files uploadFileVersion(String fileId, dev.unofficialbox.model.schemas.FileIdContentCreateRequest body, UploadFileVersionOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("upload"));
         _url.append("/files");
         _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(fileId));
@@ -36,7 +36,7 @@ public final class UploadsManager {
     }
 
     /** POST /files/content. */
-    public dev.unofficialbox.model.schemas.Files createFileContent2(dev.unofficialbox.model.schemas.FileContentCreateRequest body, CreateFileContent2Options options) {
+    public dev.unofficialbox.model.schemas.Files uploadFile(dev.unofficialbox.model.schemas.FileContentCreateRequest body, UploadFileOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("upload"));
         _url.append("/files");
         _url.append("/content");
@@ -67,8 +67,8 @@ public final class UploadsManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.UploadUrl.fromJson(_tree));
     }
 
-    /** Optional parameters for createFileContent. */
-    public static final class CreateFileContentOptions {
+    /** Optional parameters for uploadFileVersion. */
+    public static final class UploadFileVersionOptions {
         /** The if-match parameter. */
         public String ifMatch;
         /** The fields parameter. */
@@ -77,8 +77,8 @@ public final class UploadsManager {
         public String contentMd5;
     }
 
-    /** Optional parameters for createFileContent2. */
-    public static final class CreateFileContent2Options {
+    /** Optional parameters for uploadFile. */
+    public static final class UploadFileOptions {
         /** The fields parameter. */
         public java.util.List<String> fields;
         /** The content-md5 parameter. */

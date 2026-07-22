@@ -23,4 +23,36 @@ public record EntriesProperties(
             (!_m.containsKey("thumb") || _m.get("thumb") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("thumb")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> dimensions = java.util.Optional.empty();
+        private Optional<String> paged = java.util.Optional.empty();
+        private Optional<String> thumb = java.util.Optional.empty();
+
+        public Builder dimensions(String dimensions) {
+            this.dimensions = java.util.Optional.ofNullable(dimensions);
+            return this;
+        }
+        public Builder paged(String paged) {
+            this.paged = java.util.Optional.ofNullable(paged);
+            return this;
+        }
+        public Builder thumb(String thumb) {
+            this.thumb = java.util.Optional.ofNullable(thumb);
+            return this;
+        }
+
+        public EntriesProperties build() {
+            return new EntriesProperties(
+                dimensions,
+                paged,
+                thumb
+            );
+        }
+    }
 }

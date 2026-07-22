@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `DocGenJob`
 
+**Example**
+
+```java
+var result = client.docgen.getJob("JOB_ID");
+```
+
 ## listJobs
 
 `GET /docgen_jobs`
@@ -25,6 +31,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `limit` | query | `Long` | no |
 
 **Returns:** `DocGenJobsFull`
+
+**Example**
+
+```java
+for (var item : client.docgen.listJobs(null)) {
+  // use item
+}
+```
 
 Paginated — `listJobs(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -42,6 +56,14 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `DocGenJobs`
 
+**Example**
+
+```java
+for (var item : client.docgen.listBatchJob("BATCH_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listBatchJob(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -53,4 +75,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `DocGenBatchCreateRequest`
 
 **Returns:** `DocGenBatchBase`
+
+**Example**
+
+```java
+var result = client.docgen.createBatches(new DocGenBatchCreateRequest(/* … */));
+```
 

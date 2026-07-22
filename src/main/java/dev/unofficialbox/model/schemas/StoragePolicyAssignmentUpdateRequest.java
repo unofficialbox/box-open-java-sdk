@@ -14,4 +14,24 @@ public record StoragePolicyAssignmentUpdateRequest(PostStoragePolicy storagePoli
             (_m.get("storage_policy") == null ? null : PostStoragePolicy.fromJson(_m.get("storage_policy")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostStoragePolicy storagePolicy;
+
+        public Builder storagePolicy(PostStoragePolicy storagePolicy) {
+            this.storagePolicy = storagePolicy;
+            return this;
+        }
+
+        public StoragePolicyAssignmentUpdateRequest build() {
+            return new StoragePolicyAssignmentUpdateRequest(
+                storagePolicy
+            );
+        }
+    }
 }

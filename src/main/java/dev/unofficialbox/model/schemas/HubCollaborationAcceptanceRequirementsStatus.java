@@ -23,4 +23,36 @@ public record HubCollaborationAcceptanceRequirementsStatus(
             (!_m.containsKey("two_factor_authentication_requirement") || _m.get("two_factor_authentication_requirement") == null) ? java.util.Optional.<AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement>empty() : java.util.Optional.of((_m.get("two_factor_authentication_requirement") == null ? null : AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement.fromJson(_m.get("two_factor_authentication_requirement"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<AcceptanceRequirementsStatusTermsOfServiceRequirement> termsOfServiceRequirement = java.util.Optional.empty();
+        private Optional<AcceptanceRequirementsStatusStrongPasswordRequirement> strongPasswordRequirement = java.util.Optional.empty();
+        private Optional<AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement> twoFactorAuthenticationRequirement = java.util.Optional.empty();
+
+        public Builder termsOfServiceRequirement(AcceptanceRequirementsStatusTermsOfServiceRequirement termsOfServiceRequirement) {
+            this.termsOfServiceRequirement = java.util.Optional.ofNullable(termsOfServiceRequirement);
+            return this;
+        }
+        public Builder strongPasswordRequirement(AcceptanceRequirementsStatusStrongPasswordRequirement strongPasswordRequirement) {
+            this.strongPasswordRequirement = java.util.Optional.ofNullable(strongPasswordRequirement);
+            return this;
+        }
+        public Builder twoFactorAuthenticationRequirement(AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement twoFactorAuthenticationRequirement) {
+            this.twoFactorAuthenticationRequirement = java.util.Optional.ofNullable(twoFactorAuthenticationRequirement);
+            return this;
+        }
+
+        public HubCollaborationAcceptanceRequirementsStatus build() {
+            return new HubCollaborationAcceptanceRequirementsStatus(
+                termsOfServiceRequirement,
+                strongPasswordRequirement,
+                twoFactorAuthenticationRequirement
+            );
+        }
+    }
 }

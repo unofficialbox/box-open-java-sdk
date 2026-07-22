@@ -29,4 +29,48 @@ public record MetadataTaxonomy(
             (!_m.containsKey("levels") || _m.get("levels") == null) ? java.util.Optional.<List<MetadataTaxonomyLevel>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("levels"), _x0 -> (_x0 == null ? null : MetadataTaxonomyLevel.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Optional<String> key = java.util.Optional.empty();
+        private String displayName;
+        private String namespace;
+        private Optional<List<MetadataTaxonomyLevel>> levels = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder key(String key) {
+            this.key = java.util.Optional.ofNullable(key);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = namespace;
+            return this;
+        }
+        public Builder levels(List<MetadataTaxonomyLevel> levels) {
+            this.levels = java.util.Optional.ofNullable(levels);
+            return this;
+        }
+
+        public MetadataTaxonomy build() {
+            return new MetadataTaxonomy(
+                id,
+                key,
+                displayName,
+                namespace,
+                levels
+            );
+        }
+    }
 }

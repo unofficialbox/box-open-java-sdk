@@ -16,4 +16,24 @@ public record IntegrationMappingSlackOptions(Optional<Boolean> isAccessManagemen
             (!_m.containsKey("is_access_management_disabled") || _m.get("is_access_management_disabled") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_access_management_disabled")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isAccessManagementDisabled = java.util.Optional.empty();
+
+        public Builder isAccessManagementDisabled(Boolean isAccessManagementDisabled) {
+            this.isAccessManagementDisabled = java.util.Optional.ofNullable(isAccessManagementDisabled);
+            return this;
+        }
+
+        public IntegrationMappingSlackOptions build() {
+            return new IntegrationMappingSlackOptions(
+                isAccessManagementDisabled
+            );
+        }
+    }
 }

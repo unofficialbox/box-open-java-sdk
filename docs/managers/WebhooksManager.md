@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Webhooks`
 
+**Example**
+
+```java
+for (var item : client.webhooks.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -28,6 +36,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Webhook`
 
+**Example**
+
+```java
+var result = client.webhooks.create(new WebhookCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /webhooks/{webhook_id}`
@@ -37,6 +51,12 @@ the [pagination guide](../pagination.md).
 | `webhook_id` | path | `String` | yes |
 
 **Returns:** `Webhook`
+
+**Example**
+
+```java
+var result = client.webhooks.get("WEBHOOK_ID");
+```
 
 ## update
 
@@ -50,6 +70,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `Webhook`
 
+**Example**
+
+```java
+var result = client.webhooks.update("WEBHOOK_ID", new WebhookUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /webhooks/{webhook_id}`
@@ -59,4 +85,10 @@ the [pagination guide](../pagination.md).
 | `webhook_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.webhooks.delete("WEBHOOK_ID");
+```
 

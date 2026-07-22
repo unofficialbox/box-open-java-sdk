@@ -23,4 +23,36 @@ public record MetadataTaxonomyCreateRequest(
             dev.unofficialbox.core.Json.asString(_m.get("namespace"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> key = java.util.Optional.empty();
+        private String displayName;
+        private String namespace;
+
+        public Builder key(String key) {
+            this.key = java.util.Optional.ofNullable(key);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = namespace;
+            return this;
+        }
+
+        public MetadataTaxonomyCreateRequest build() {
+            return new MetadataTaxonomyCreateRequest(
+                key,
+                displayName,
+                namespace
+            );
+        }
+    }
 }

@@ -26,4 +26,42 @@ public record StoragePolicyAssignment(
             (!_m.containsKey("assigned_to") || _m.get("assigned_to") == null) ? java.util.Optional.<CommentItem>empty() : java.util.Optional.of((_m.get("assigned_to") == null ? null : CommentItem.fromJson(_m.get("assigned_to"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private StoragePolicyAssignmentType type;
+        private Optional<StoragePolicyMini> storagePolicy = java.util.Optional.empty();
+        private Optional<CommentItem> assignedTo = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(StoragePolicyAssignmentType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder storagePolicy(StoragePolicyMini storagePolicy) {
+            this.storagePolicy = java.util.Optional.ofNullable(storagePolicy);
+            return this;
+        }
+        public Builder assignedTo(CommentItem assignedTo) {
+            this.assignedTo = java.util.Optional.ofNullable(assignedTo);
+            return this;
+        }
+
+        public StoragePolicyAssignment build() {
+            return new StoragePolicyAssignment(
+                id,
+                type,
+                storagePolicy,
+                assignedTo
+            );
+        }
+    }
 }

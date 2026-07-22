@@ -24,4 +24,42 @@ public record ShieldListMini(
             (_m.get("content") == null ? null : ShieldListMiniContent.fromJson(_m.get("content")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private ShieldListMiniType type;
+        private String name;
+        private ShieldListMiniContent content;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(ShieldListMiniType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder content(ShieldListMiniContent content) {
+            this.content = content;
+            return this;
+        }
+
+        public ShieldListMini build() {
+            return new ShieldListMini(
+                id,
+                type,
+                name,
+                content
+            );
+        }
+    }
 }

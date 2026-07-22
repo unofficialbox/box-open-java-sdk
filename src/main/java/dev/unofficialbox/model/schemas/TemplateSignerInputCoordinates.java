@@ -18,4 +18,30 @@ public record TemplateSignerInputCoordinates(Optional<Double> x, Optional<Double
             (!_m.containsKey("y") || _m.get("y") == null) ? java.util.Optional.<Double>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asDouble(_m.get("y")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Double> x = java.util.Optional.empty();
+        private Optional<Double> y = java.util.Optional.empty();
+
+        public Builder x(Double x) {
+            this.x = java.util.Optional.ofNullable(x);
+            return this;
+        }
+        public Builder y(Double y) {
+            this.y = java.util.Optional.ofNullable(y);
+            return this;
+        }
+
+        public TemplateSignerInputCoordinates build() {
+            return new TemplateSignerInputCoordinates(
+                x,
+                y
+            );
+        }
+    }
 }

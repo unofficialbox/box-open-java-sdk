@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `UploadSession`
 
+**Example**
+
+```java
+var result = client.chunkedUploads.createFileUploadSessions(new FileUploadSessionsCreateRequest(/* … */));
+```
+
 ## createFileByIdUploadSessions
 
 `POST /files/{file_id}/upload_sessions`
@@ -25,6 +31,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `UploadSession`
 
+**Example**
+
+```java
+var result = client.chunkedUploads.createFileByIdUploadSessions("FILE_ID", new FileIdUploadSessionsCreateRequest(/* … */));
+```
+
 ## getFileUploadSession
 
 `GET /files/upload_sessions/{upload_session_id}`
@@ -34,6 +46,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `upload_session_id` | path | `String` | yes |
 
 **Returns:** `UploadSession`
+
+**Example**
+
+```java
+var result = client.chunkedUploads.getFileUploadSession("UPLOAD_SESSION_ID");
+```
 
 ## updateFileUploadSession
 
@@ -49,6 +67,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `UploadedPart`
 
+**Example**
+
+```java
+var result = client.chunkedUploads.updateFileUploadSession("UPLOAD_SESSION_ID", "DIGEST", "CONTENT-RANGE", null);
+```
+
 ## deleteFileUploadSession
 
 `DELETE /files/upload_sessions/{upload_session_id}`
@@ -58,6 +82,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `upload_session_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.chunkedUploads.deleteFileUploadSession("UPLOAD_SESSION_ID");
+```
 
 ## listFileUploadSessionParts
 
@@ -70,6 +100,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `limit` | query | `Long` | no |
 
 **Returns:** `UploadParts`
+
+**Example**
+
+```java
+for (var item : client.chunkedUploads.listFileUploadSessionParts("UPLOAD_SESSION_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFileUploadSessionParts(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -89,4 +127,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `FileUploadSessionCommitRequest`
 
 **Returns:** `Files`
+
+**Example**
+
+```java
+var result = client.chunkedUploads.commitFileUploadSession("UPLOAD_SESSION_ID", "DIGEST", new FileUploadSessionCommitRequest(/* … */), null);
+```
 

@@ -18,4 +18,30 @@ public record IntegrationMappingTeamsCreateRequest(
             (_m.get("box_item") == null ? null : FolderReference.fromJson(_m.get("box_item")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private IntegrationMappingPartnerItemTeamsCreateRequest partnerItem;
+        private FolderReference boxItem;
+
+        public Builder partnerItem(IntegrationMappingPartnerItemTeamsCreateRequest partnerItem) {
+            this.partnerItem = partnerItem;
+            return this;
+        }
+        public Builder boxItem(FolderReference boxItem) {
+            this.boxItem = boxItem;
+            return this;
+        }
+
+        public IntegrationMappingTeamsCreateRequest build() {
+            return new IntegrationMappingTeamsCreateRequest(
+                partnerItem,
+                boxItem
+            );
+        }
+    }
 }

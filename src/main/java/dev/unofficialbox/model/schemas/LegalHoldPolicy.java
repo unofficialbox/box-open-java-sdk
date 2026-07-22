@@ -53,4 +53,96 @@ public record LegalHoldPolicy(
             (!_m.containsKey("release_notes") || _m.get("release_notes") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("release_notes")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private LegalHoldPolicyType type;
+        private Optional<String> policyName = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyStatus> status = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyAssignmentCounts> assignmentCounts = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> deletedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> filterStartedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> filterEndedAt = java.util.Optional.empty();
+        private Optional<String> releaseNotes = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(LegalHoldPolicyType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder policyName(String policyName) {
+            this.policyName = java.util.Optional.ofNullable(policyName);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder status(LegalHoldPolicyStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder assignmentCounts(LegalHoldPolicyAssignmentCounts assignmentCounts) {
+            this.assignmentCounts = java.util.Optional.ofNullable(assignmentCounts);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder deletedAt(OffsetDateTime deletedAt) {
+            this.deletedAt = java.util.Optional.ofNullable(deletedAt);
+            return this;
+        }
+        public Builder filterStartedAt(OffsetDateTime filterStartedAt) {
+            this.filterStartedAt = java.util.Optional.ofNullable(filterStartedAt);
+            return this;
+        }
+        public Builder filterEndedAt(OffsetDateTime filterEndedAt) {
+            this.filterEndedAt = java.util.Optional.ofNullable(filterEndedAt);
+            return this;
+        }
+        public Builder releaseNotes(String releaseNotes) {
+            this.releaseNotes = java.util.Optional.ofNullable(releaseNotes);
+            return this;
+        }
+
+        public LegalHoldPolicy build() {
+            return new LegalHoldPolicy(
+                id,
+                type,
+                policyName,
+                description,
+                status,
+                assignmentCounts,
+                createdBy,
+                createdAt,
+                modifiedAt,
+                deletedAt,
+                filterStartedAt,
+                filterEndedAt,
+                releaseNotes
+            );
+        }
+    }
 }

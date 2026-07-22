@@ -18,4 +18,30 @@ public record RealtimeServers(Optional<Long> chunkSize, Optional<List<RealtimeSe
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<RealtimeServer>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : RealtimeServer.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> chunkSize = java.util.Optional.empty();
+        private Optional<List<RealtimeServer>> entries = java.util.Optional.empty();
+
+        public Builder chunkSize(Long chunkSize) {
+            this.chunkSize = java.util.Optional.ofNullable(chunkSize);
+            return this;
+        }
+        public Builder entries(List<RealtimeServer> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public RealtimeServers build() {
+            return new RealtimeServers(
+                chunkSize,
+                entries
+            );
+        }
+    }
 }

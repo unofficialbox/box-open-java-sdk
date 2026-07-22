@@ -14,4 +14,24 @@ public record DocGenTemplateCreateRequest(FileReference file) {
             (_m.get("file") == null ? null : FileReference.fromJson(_m.get("file")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FileReference file;
+
+        public Builder file(FileReference file) {
+            this.file = file;
+            return this;
+        }
+
+        public DocGenTemplateCreateRequest build() {
+            return new DocGenTemplateCreateRequest(
+                file
+            );
+        }
+    }
 }

@@ -20,6 +20,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `RetentionPolicies`
 
+**Example**
+
+```java
+for (var item : client.retentionPolicies.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `RetentionPolicy`
 
+**Example**
+
+```java
+var result = client.retentionPolicies.create(new RetentionPolicyCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /retention_policies/{retention_policy_id}`
@@ -42,6 +56,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `RetentionPolicy`
+
+**Example**
+
+```java
+var result = client.retentionPolicies.get("RETENTION_POLICY_ID", null);
+```
 
 ## update
 
@@ -55,6 +75,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `RetentionPolicy`
 
+**Example**
+
+```java
+var result = client.retentionPolicies.update("RETENTION_POLICY_ID", new RetentionPolicyUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /retention_policies/{retention_policy_id}`
@@ -64,4 +90,10 @@ the [pagination guide](../pagination.md).
 | `retention_policy_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.retentionPolicies.delete("RETENTION_POLICY_ID");
+```
 

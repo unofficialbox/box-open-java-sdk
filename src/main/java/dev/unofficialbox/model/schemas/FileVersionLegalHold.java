@@ -32,4 +32,54 @@ public record FileVersionLegalHold(
             (!_m.containsKey("deleted_at") || _m.get("deleted_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("deleted_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("deleted_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<FileVersionLegalHoldType> type = java.util.Optional.empty();
+        private Optional<FileVersionMini> fileVersion = java.util.Optional.empty();
+        private Optional<FileMini> file = java.util.Optional.empty();
+        private Optional<List<LegalHoldPolicyAssignment>> legalHoldPolicyAssignments = java.util.Optional.empty();
+        private Optional<OffsetDateTime> deletedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(FileVersionLegalHoldType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder fileVersion(FileVersionMini fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder file(FileMini file) {
+            this.file = java.util.Optional.ofNullable(file);
+            return this;
+        }
+        public Builder legalHoldPolicyAssignments(List<LegalHoldPolicyAssignment> legalHoldPolicyAssignments) {
+            this.legalHoldPolicyAssignments = java.util.Optional.ofNullable(legalHoldPolicyAssignments);
+            return this;
+        }
+        public Builder deletedAt(OffsetDateTime deletedAt) {
+            this.deletedAt = java.util.Optional.ofNullable(deletedAt);
+            return this;
+        }
+
+        public FileVersionLegalHold build() {
+            return new FileVersionLegalHold(
+                id,
+                type,
+                fileVersion,
+                file,
+                legalHoldPolicyAssignments,
+                deletedAt
+            );
+        }
+    }
 }

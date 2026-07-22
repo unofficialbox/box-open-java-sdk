@@ -14,4 +14,24 @@ public record TermsOfServiceUserStatuseUpdateRequest(Boolean isAccepted) {
             dev.unofficialbox.core.Json.asBoolean(_m.get("is_accepted"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Boolean isAccepted;
+
+        public Builder isAccepted(Boolean isAccepted) {
+            this.isAccepted = isAccepted;
+            return this;
+        }
+
+        public TermsOfServiceUserStatuseUpdateRequest build() {
+            return new TermsOfServiceUserStatuseUpdateRequest(
+                isAccepted
+            );
+        }
+    }
 }

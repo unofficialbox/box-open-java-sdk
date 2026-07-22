@@ -16,4 +16,24 @@ public record GroupFullPermissions(Optional<Boolean> canInviteAsCollaborator) {
             (!_m.containsKey("can_invite_as_collaborator") || _m.get("can_invite_as_collaborator") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_invite_as_collaborator")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> canInviteAsCollaborator = java.util.Optional.empty();
+
+        public Builder canInviteAsCollaborator(Boolean canInviteAsCollaborator) {
+            this.canInviteAsCollaborator = java.util.Optional.ofNullable(canInviteAsCollaborator);
+            return this;
+        }
+
+        public GroupFullPermissions build() {
+            return new GroupFullPermissions(
+                canInviteAsCollaborator
+            );
+        }
+    }
 }

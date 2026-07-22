@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Classification`
 
+**Example**
+
+```java
+var result = client.folderClassifications.get("FOLDER_ID");
+```
+
 ## update
 
 `PUT /folders/{folder_id}/metadata/enterprise/securityClassification-6VMVochwUWo`
@@ -26,6 +32,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json-patch+json`): `List<FileClassificationUpdateRequest>`
 
 **Returns:** `Classification`
+
+**Example**
+
+```java
+var result = client.folderClassifications.update("FOLDER_ID", java.util.List.of());
+```
 
 ## create
 
@@ -39,6 +51,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Classification`
 
+**Example**
+
+```java
+var result = client.folderClassifications.create("FOLDER_ID", new FileClassificationCreateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /folders/{folder_id}/metadata/enterprise/securityClassification-6VMVochwUWo`
@@ -48,4 +66,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `folder_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.folderClassifications.delete("FOLDER_ID");
+```
 

@@ -20,4 +20,36 @@ public record FileVersionMini(String id, FileVersionType type, Optional<String> 
             (!_m.containsKey("sha1") || _m.get("sha1") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("sha1")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private FileVersionType type;
+        private Optional<String> sha1 = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(FileVersionType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = java.util.Optional.ofNullable(sha1);
+            return this;
+        }
+
+        public FileVersionMini build() {
+            return new FileVersionMini(
+                id,
+                type,
+                sha1
+            );
+        }
+    }
 }

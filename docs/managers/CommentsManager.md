@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Comments`
 
+**Example**
+
+```java
+for (var item : client.comments.listFile("FILE_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listFile(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -33,6 +41,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CommentFull`
 
+**Example**
+
+```java
+var result = client.comments.get("COMMENT_ID", null);
+```
+
 ## update
 
 `PUT /comments/{comment_id}`
@@ -46,6 +60,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CommentFull`
 
+**Example**
+
+```java
+var result = client.comments.update("COMMENT_ID", new CommentUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /comments/{comment_id}`
@@ -55,6 +75,12 @@ the [pagination guide](../pagination.md).
 | `comment_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.comments.delete("COMMENT_ID");
+```
 
 ## create
 
@@ -67,4 +93,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `CommentCreateRequest`
 
 **Returns:** `CommentFull`
+
+**Example**
+
+```java
+var result = client.comments.create(new CommentCreateRequest(/* … */), null);
+```
 

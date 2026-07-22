@@ -20,4 +20,30 @@ public record ShieldListContentEmail(
             dev.unofficialbox.core.Json.decodeList(_m.get("email_addresses"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldListContentEmailType type;
+        private List<String> emailAddresses;
+
+        public Builder type(ShieldListContentEmailType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder emailAddresses(List<String> emailAddresses) {
+            this.emailAddresses = emailAddresses;
+            return this;
+        }
+
+        public ShieldListContentEmail build() {
+            return new ShieldListContentEmail(
+                type,
+                emailAddresses
+            );
+        }
+    }
 }

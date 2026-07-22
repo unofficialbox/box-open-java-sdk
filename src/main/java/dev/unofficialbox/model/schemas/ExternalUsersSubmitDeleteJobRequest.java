@@ -16,4 +16,24 @@ public record ExternalUsersSubmitDeleteJobRequest(List<UserReference> externalUs
             dev.unofficialbox.core.Json.decodeList(_m.get("external_users"), _x0 -> (_x0 == null ? null : UserReference.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<UserReference> externalUsers;
+
+        public Builder externalUsers(List<UserReference> externalUsers) {
+            this.externalUsers = externalUsers;
+            return this;
+        }
+
+        public ExternalUsersSubmitDeleteJobRequest build() {
+            return new ExternalUsersSubmitDeleteJobRequest(
+                externalUsers
+            );
+        }
+    }
 }

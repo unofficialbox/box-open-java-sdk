@@ -59,4 +59,108 @@ public record PostOAuth2Token(
             (!_m.containsKey("box_shared_link") || _m.get("box_shared_link") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("box_shared_link")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostOAuth2TokenGrantType grantType;
+        private Optional<String> clientId = java.util.Optional.empty();
+        private Optional<String> clientSecret = java.util.Optional.empty();
+        private Optional<String> code = java.util.Optional.empty();
+        private Optional<String> refreshToken = java.util.Optional.empty();
+        private Optional<String> assertion = java.util.Optional.empty();
+        private Optional<String> subjectToken = java.util.Optional.empty();
+        private Optional<AccessTokenIssuedTokenType> subjectTokenType = java.util.Optional.empty();
+        private Optional<String> actorToken = java.util.Optional.empty();
+        private Optional<PostOAuth2TokenActorTokenType> actorTokenType = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<String> resource = java.util.Optional.empty();
+        private Optional<PostOAuth2TokenBoxSubjectType> boxSubjectType = java.util.Optional.empty();
+        private Optional<String> boxSubjectId = java.util.Optional.empty();
+        private Optional<String> boxSharedLink = java.util.Optional.empty();
+
+        public Builder grantType(PostOAuth2TokenGrantType grantType) {
+            this.grantType = grantType;
+            return this;
+        }
+        public Builder clientId(String clientId) {
+            this.clientId = java.util.Optional.ofNullable(clientId);
+            return this;
+        }
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = java.util.Optional.ofNullable(clientSecret);
+            return this;
+        }
+        public Builder code(String code) {
+            this.code = java.util.Optional.ofNullable(code);
+            return this;
+        }
+        public Builder refreshToken(String refreshToken) {
+            this.refreshToken = java.util.Optional.ofNullable(refreshToken);
+            return this;
+        }
+        public Builder assertion(String assertion) {
+            this.assertion = java.util.Optional.ofNullable(assertion);
+            return this;
+        }
+        public Builder subjectToken(String subjectToken) {
+            this.subjectToken = java.util.Optional.ofNullable(subjectToken);
+            return this;
+        }
+        public Builder subjectTokenType(AccessTokenIssuedTokenType subjectTokenType) {
+            this.subjectTokenType = java.util.Optional.ofNullable(subjectTokenType);
+            return this;
+        }
+        public Builder actorToken(String actorToken) {
+            this.actorToken = java.util.Optional.ofNullable(actorToken);
+            return this;
+        }
+        public Builder actorTokenType(PostOAuth2TokenActorTokenType actorTokenType) {
+            this.actorTokenType = java.util.Optional.ofNullable(actorTokenType);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder resource(String resource) {
+            this.resource = java.util.Optional.ofNullable(resource);
+            return this;
+        }
+        public Builder boxSubjectType(PostOAuth2TokenBoxSubjectType boxSubjectType) {
+            this.boxSubjectType = java.util.Optional.ofNullable(boxSubjectType);
+            return this;
+        }
+        public Builder boxSubjectId(String boxSubjectId) {
+            this.boxSubjectId = java.util.Optional.ofNullable(boxSubjectId);
+            return this;
+        }
+        public Builder boxSharedLink(String boxSharedLink) {
+            this.boxSharedLink = java.util.Optional.ofNullable(boxSharedLink);
+            return this;
+        }
+
+        public PostOAuth2Token build() {
+            return new PostOAuth2Token(
+                grantType,
+                clientId,
+                clientSecret,
+                code,
+                refreshToken,
+                assertion,
+                subjectToken,
+                subjectTokenType,
+                actorToken,
+                actorTokenType,
+                scope,
+                resource,
+                boxSubjectType,
+                boxSubjectId,
+                boxSharedLink
+            );
+        }
+    }
 }

@@ -18,4 +18,30 @@ public record ResourceScope(Optional<ResourceScopeScope> scope, Optional<Resourc
             (!_m.containsKey("object") || _m.get("object") == null) ? java.util.Optional.<Resource>empty() : java.util.Optional.of((_m.get("object") == null ? null : Resource.fromJson(_m.get("object"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<ResourceScopeScope> scope = java.util.Optional.empty();
+        private Optional<Resource> object = java.util.Optional.empty();
+
+        public Builder scope(ResourceScopeScope scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder object(Resource object) {
+            this.object = java.util.Optional.ofNullable(object);
+            return this;
+        }
+
+        public ResourceScope build() {
+            return new ResourceScope(
+                scope,
+                object
+            );
+        }
+    }
 }

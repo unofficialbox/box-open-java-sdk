@@ -18,4 +18,30 @@ public record DevicePinnersOrder(Optional<OrderBy> by, Optional<OrderDirection2>
             (!_m.containsKey("direction") || _m.get("direction") == null) ? java.util.Optional.<OrderDirection2>empty() : java.util.Optional.of((_m.get("direction") == null ? null : OrderDirection2.fromJson(_m.get("direction"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<OrderBy> by = java.util.Optional.empty();
+        private Optional<OrderDirection2> direction = java.util.Optional.empty();
+
+        public Builder by(OrderBy by) {
+            this.by = java.util.Optional.ofNullable(by);
+            return this;
+        }
+        public Builder direction(OrderDirection2 direction) {
+            this.direction = java.util.Optional.ofNullable(direction);
+            return this;
+        }
+
+        public DevicePinnersOrder build() {
+            return new DevicePinnersOrder(
+                by,
+                direction
+            );
+        }
+    }
 }

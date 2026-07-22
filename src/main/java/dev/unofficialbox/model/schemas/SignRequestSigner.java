@@ -85,4 +85,132 @@ public record SignRequestSigner(
             !_m.containsKey("attachments") ? dev.unofficialbox.core.Tristate.<List<SignRequestSignerAttachment>>absent() : (_m.get("attachments") == null ? dev.unofficialbox.core.Tristate.<List<SignRequestSignerAttachment>>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.decodeList(_m.get("attachments"), _x0 -> (_x0 == null ? null : SignRequestSignerAttachment.fromJson(_x0)))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String email;
+        private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
+        private Optional<Boolean> isInPerson = java.util.Optional.empty();
+        private Optional<Long> order = java.util.Optional.empty();
+        private Tristate<String> embedUrlExternalUserId;
+        private Tristate<String> redirectUrl;
+        private Tristate<String> declinedRedirectUrl;
+        private Tristate<Boolean> loginRequired;
+        private Tristate<String> verificationPhoneNumber;
+        private Tristate<String> password;
+        private Tristate<String> signerGroupId;
+        private Tristate<Boolean> suppressNotifications;
+        private Tristate<String> language;
+        private Optional<Boolean> hasViewedDocument = java.util.Optional.empty();
+        private Tristate<SignRequestSignerSignerDecision> signerDecision;
+        private Optional<List<SignRequestSignerInput>> inputs = java.util.Optional.empty();
+        private Tristate<String> embedUrl;
+        private Tristate<String> iframeableEmbedUrl;
+        private Tristate<List<SignRequestSignerAttachment>> attachments;
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+        public Builder role(SignRequestCreateSignerRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder isInPerson(Boolean isInPerson) {
+            this.isInPerson = java.util.Optional.ofNullable(isInPerson);
+            return this;
+        }
+        public Builder order(Long order) {
+            this.order = java.util.Optional.ofNullable(order);
+            return this;
+        }
+        public Builder embedUrlExternalUserId(Tristate<String> embedUrlExternalUserId) {
+            this.embedUrlExternalUserId = embedUrlExternalUserId;
+            return this;
+        }
+        public Builder redirectUrl(Tristate<String> redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public Builder declinedRedirectUrl(Tristate<String> declinedRedirectUrl) {
+            this.declinedRedirectUrl = declinedRedirectUrl;
+            return this;
+        }
+        public Builder loginRequired(Tristate<Boolean> loginRequired) {
+            this.loginRequired = loginRequired;
+            return this;
+        }
+        public Builder verificationPhoneNumber(Tristate<String> verificationPhoneNumber) {
+            this.verificationPhoneNumber = verificationPhoneNumber;
+            return this;
+        }
+        public Builder password(Tristate<String> password) {
+            this.password = password;
+            return this;
+        }
+        public Builder signerGroupId(Tristate<String> signerGroupId) {
+            this.signerGroupId = signerGroupId;
+            return this;
+        }
+        public Builder suppressNotifications(Tristate<Boolean> suppressNotifications) {
+            this.suppressNotifications = suppressNotifications;
+            return this;
+        }
+        public Builder language(Tristate<String> language) {
+            this.language = language;
+            return this;
+        }
+        public Builder hasViewedDocument(Boolean hasViewedDocument) {
+            this.hasViewedDocument = java.util.Optional.ofNullable(hasViewedDocument);
+            return this;
+        }
+        public Builder signerDecision(Tristate<SignRequestSignerSignerDecision> signerDecision) {
+            this.signerDecision = signerDecision;
+            return this;
+        }
+        public Builder inputs(List<SignRequestSignerInput> inputs) {
+            this.inputs = java.util.Optional.ofNullable(inputs);
+            return this;
+        }
+        public Builder embedUrl(Tristate<String> embedUrl) {
+            this.embedUrl = embedUrl;
+            return this;
+        }
+        public Builder iframeableEmbedUrl(Tristate<String> iframeableEmbedUrl) {
+            this.iframeableEmbedUrl = iframeableEmbedUrl;
+            return this;
+        }
+        public Builder attachments(Tristate<List<SignRequestSignerAttachment>> attachments) {
+            this.attachments = attachments;
+            return this;
+        }
+
+        public SignRequestSigner build() {
+            return new SignRequestSigner(
+                email,
+                role,
+                isInPerson,
+                order,
+                embedUrlExternalUserId,
+                redirectUrl,
+                declinedRedirectUrl,
+                loginRequired,
+                verificationPhoneNumber,
+                password,
+                signerGroupId,
+                suppressNotifications,
+                language,
+                hasViewedDocument,
+                signerDecision,
+                inputs,
+                embedUrl,
+                iframeableEmbedUrl,
+                attachments
+            );
+        }
+    }
 }

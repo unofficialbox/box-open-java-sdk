@@ -26,4 +26,42 @@ public record RetentionPolicyAssignmentCreateRequest(
             (!_m.containsKey("start_date_field") || _m.get("start_date_field") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("start_date_field")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String policyId;
+        private PostAssignTo2 assignTo;
+        private Optional<List<PostFilterFields>> filterFields = java.util.Optional.empty();
+        private Optional<String> startDateField = java.util.Optional.empty();
+
+        public Builder policyId(String policyId) {
+            this.policyId = policyId;
+            return this;
+        }
+        public Builder assignTo(PostAssignTo2 assignTo) {
+            this.assignTo = assignTo;
+            return this;
+        }
+        public Builder filterFields(List<PostFilterFields> filterFields) {
+            this.filterFields = java.util.Optional.ofNullable(filterFields);
+            return this;
+        }
+        public Builder startDateField(String startDateField) {
+            this.startDateField = java.util.Optional.ofNullable(startDateField);
+            return this;
+        }
+
+        public RetentionPolicyAssignmentCreateRequest build() {
+            return new RetentionPolicyAssignmentCreateRequest(
+                policyId,
+                assignTo,
+                filterFields,
+                startDateField
+            );
+        }
+    }
 }

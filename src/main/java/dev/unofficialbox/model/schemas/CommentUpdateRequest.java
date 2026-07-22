@@ -16,4 +16,24 @@ public record CommentUpdateRequest(Optional<String> message) {
             (!_m.containsKey("message") || _m.get("message") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("message")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> message = java.util.Optional.empty();
+
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+
+        public CommentUpdateRequest build() {
+            return new CommentUpdateRequest(
+                message
+            );
+        }
+    }
 }

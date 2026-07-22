@@ -22,4 +22,30 @@ public record AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement(
             !_m.containsKey("user_has_two_factor_authentication_enabled") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("user_has_two_factor_authentication_enabled") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("user_has_two_factor_authentication_enabled"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> enterpriseHasTwoFactorAuthEnabled = java.util.Optional.empty();
+        private Tristate<Boolean> userHasTwoFactorAuthenticationEnabled;
+
+        public Builder enterpriseHasTwoFactorAuthEnabled(Boolean enterpriseHasTwoFactorAuthEnabled) {
+            this.enterpriseHasTwoFactorAuthEnabled = java.util.Optional.ofNullable(enterpriseHasTwoFactorAuthEnabled);
+            return this;
+        }
+        public Builder userHasTwoFactorAuthenticationEnabled(Tristate<Boolean> userHasTwoFactorAuthenticationEnabled) {
+            this.userHasTwoFactorAuthenticationEnabled = userHasTwoFactorAuthenticationEnabled;
+            return this;
+        }
+
+        public AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement build() {
+            return new AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement(
+                enterpriseHasTwoFactorAuthEnabled,
+                userHasTwoFactorAuthenticationEnabled
+            );
+        }
+    }
 }

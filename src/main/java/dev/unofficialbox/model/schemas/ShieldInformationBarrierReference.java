@@ -17,4 +17,24 @@ public record ShieldInformationBarrierReference(
             (!_m.containsKey("shield_information_barrier") || _m.get("shield_information_barrier") == null) ? java.util.Optional.<ShieldInformationBarrierBase>empty() : java.util.Optional.of((_m.get("shield_information_barrier") == null ? null : ShieldInformationBarrierBase.fromJson(_m.get("shield_information_barrier"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<ShieldInformationBarrierBase> shieldInformationBarrier = java.util.Optional.empty();
+
+        public Builder shieldInformationBarrier(ShieldInformationBarrierBase shieldInformationBarrier) {
+            this.shieldInformationBarrier = java.util.Optional.ofNullable(shieldInformationBarrier);
+            return this;
+        }
+
+        public ShieldInformationBarrierReference build() {
+            return new ShieldInformationBarrierReference(
+                shieldInformationBarrier
+            );
+        }
+    }
 }

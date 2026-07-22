@@ -18,4 +18,30 @@ public record AiAgentInfo(Optional<List<AiAgentInfoModels>> models, Optional<Str
             (!_m.containsKey("processor") || _m.get("processor") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("processor")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<AiAgentInfoModels>> models = java.util.Optional.empty();
+        private Optional<String> processor = java.util.Optional.empty();
+
+        public Builder models(List<AiAgentInfoModels> models) {
+            this.models = java.util.Optional.ofNullable(models);
+            return this;
+        }
+        public Builder processor(String processor) {
+            this.processor = java.util.Optional.ofNullable(processor);
+            return this;
+        }
+
+        public AiAgentInfo build() {
+            return new AiAgentInfo(
+                models,
+                processor
+            );
+        }
+    }
 }

@@ -15,3 +15,9 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AppItem`
 
+**Example**
+
+```java
+var result = client.sharedLinksAppItems.getSharedItemsAppItems("BOXAPI");
+```
+

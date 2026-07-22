@@ -38,4 +38,66 @@ public record ShieldInformationBarrierReport(
             (!_m.containsKey("updated_at") || _m.get("updated_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("updated_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("updated_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierReportType> type = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierReference> shieldInformationBarrier = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierReportStatus> status = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierReportDetails> details = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> updatedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(ShieldInformationBarrierReportType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder shieldInformationBarrier(ShieldInformationBarrierReference shieldInformationBarrier) {
+            this.shieldInformationBarrier = java.util.Optional.ofNullable(shieldInformationBarrier);
+            return this;
+        }
+        public Builder status(ShieldInformationBarrierReportStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder details(ShieldInformationBarrierReportDetails details) {
+            this.details = java.util.Optional.ofNullable(details);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = java.util.Optional.ofNullable(updatedAt);
+            return this;
+        }
+
+        public ShieldInformationBarrierReport build() {
+            return new ShieldInformationBarrierReport(
+                id,
+                type,
+                shieldInformationBarrier,
+                status,
+                details,
+                createdAt,
+                createdBy,
+                updatedAt
+            );
+        }
+    }
 }

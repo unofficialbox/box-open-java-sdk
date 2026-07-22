@@ -20,4 +20,30 @@ public record SlackUpdateRequest(
             (!_m.containsKey("options") || _m.get("options") == null) ? java.util.Optional.<IntegrationMappingSlackOptions>empty() : java.util.Optional.of((_m.get("options") == null ? null : IntegrationMappingSlackOptions.fromJson(_m.get("options"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<IntegrationMappingBoxItemSlack> boxItem = java.util.Optional.empty();
+        private Optional<IntegrationMappingSlackOptions> options = java.util.Optional.empty();
+
+        public Builder boxItem(IntegrationMappingBoxItemSlack boxItem) {
+            this.boxItem = java.util.Optional.ofNullable(boxItem);
+            return this;
+        }
+        public Builder options(IntegrationMappingSlackOptions options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+
+        public SlackUpdateRequest build() {
+            return new SlackUpdateRequest(
+                boxItem,
+                options
+            );
+        }
+    }
 }

@@ -50,4 +50,84 @@ public record FolderUpdateRequest(
             (!_m.containsKey("can_non_owners_view_collaborators") || _m.get("can_non_owners_view_collaborators") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("can_non_owners_view_collaborators")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<FolderFullSyncState> syncState = java.util.Optional.empty();
+        private Optional<Boolean> canNonOwnersInvite = java.util.Optional.empty();
+        private Optional<PutIdParent> parent = java.util.Optional.empty();
+        private Optional<PutIdSharedLink> sharedLink = java.util.Optional.empty();
+        private Tristate<PutIdFolderUploadEmail> folderUploadEmail;
+        private Optional<List<String>> tags = java.util.Optional.empty();
+        private Optional<Boolean> isCollaborationRestrictedToEnterprise = java.util.Optional.empty();
+        private Tristate<List<CommentItem>> collections;
+        private Optional<Boolean> canNonOwnersViewCollaborators = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder syncState(FolderFullSyncState syncState) {
+            this.syncState = java.util.Optional.ofNullable(syncState);
+            return this;
+        }
+        public Builder canNonOwnersInvite(Boolean canNonOwnersInvite) {
+            this.canNonOwnersInvite = java.util.Optional.ofNullable(canNonOwnersInvite);
+            return this;
+        }
+        public Builder parent(PutIdParent parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder sharedLink(PutIdSharedLink sharedLink) {
+            this.sharedLink = java.util.Optional.ofNullable(sharedLink);
+            return this;
+        }
+        public Builder folderUploadEmail(Tristate<PutIdFolderUploadEmail> folderUploadEmail) {
+            this.folderUploadEmail = folderUploadEmail;
+            return this;
+        }
+        public Builder tags(List<String> tags) {
+            this.tags = java.util.Optional.ofNullable(tags);
+            return this;
+        }
+        public Builder isCollaborationRestrictedToEnterprise(Boolean isCollaborationRestrictedToEnterprise) {
+            this.isCollaborationRestrictedToEnterprise = java.util.Optional.ofNullable(isCollaborationRestrictedToEnterprise);
+            return this;
+        }
+        public Builder collections(Tristate<List<CommentItem>> collections) {
+            this.collections = collections;
+            return this;
+        }
+        public Builder canNonOwnersViewCollaborators(Boolean canNonOwnersViewCollaborators) {
+            this.canNonOwnersViewCollaborators = java.util.Optional.ofNullable(canNonOwnersViewCollaborators);
+            return this;
+        }
+
+        public FolderUpdateRequest build() {
+            return new FolderUpdateRequest(
+                name,
+                description,
+                syncState,
+                canNonOwnersInvite,
+                parent,
+                sharedLink,
+                folderUploadEmail,
+                tags,
+                isCollaborationRestrictedToEnterprise,
+                collections,
+                canNonOwnersViewCollaborators
+            );
+        }
+    }
 }

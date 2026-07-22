@@ -20,4 +20,30 @@ public record LegalHoldPolicyAssignmentBase(
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<LegalHoldPolicyAssignmentType>empty() : java.util.Optional.of((_m.get("type") == null ? null : LegalHoldPolicyAssignmentType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyAssignmentType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(LegalHoldPolicyAssignmentType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public LegalHoldPolicyAssignmentBase build() {
+            return new LegalHoldPolicyAssignmentBase(
+                id,
+                type
+            );
+        }
+    }
 }

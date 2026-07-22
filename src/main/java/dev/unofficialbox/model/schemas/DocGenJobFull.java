@@ -58,4 +58,102 @@ public record DocGenJobFull(
             dev.unofficialbox.core.Json.asString(_m.get("source"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private DocGenJobType type;
+        private DocGenBatchBase batch;
+        private FileReference templateFile;
+        private FileVersionBase templateFileVersion;
+        private Optional<DocGenJobOutputFile> outputFile = java.util.Optional.empty();
+        private Optional<DocGenJobOutputFileVersion> outputFileVersion = java.util.Optional.empty();
+        private DocGenJobStatus status;
+        private String outputType;
+        private Tristate<DocGenJobFailures> failures;
+        private Optional<String> createdAt = java.util.Optional.empty();
+        private UserBase createdBy;
+        private EnterpriseReference enterprise;
+        private String source;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(DocGenJobType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder batch(DocGenBatchBase batch) {
+            this.batch = batch;
+            return this;
+        }
+        public Builder templateFile(FileReference templateFile) {
+            this.templateFile = templateFile;
+            return this;
+        }
+        public Builder templateFileVersion(FileVersionBase templateFileVersion) {
+            this.templateFileVersion = templateFileVersion;
+            return this;
+        }
+        public Builder outputFile(DocGenJobOutputFile outputFile) {
+            this.outputFile = java.util.Optional.ofNullable(outputFile);
+            return this;
+        }
+        public Builder outputFileVersion(DocGenJobOutputFileVersion outputFileVersion) {
+            this.outputFileVersion = java.util.Optional.ofNullable(outputFileVersion);
+            return this;
+        }
+        public Builder status(DocGenJobStatus status) {
+            this.status = status;
+            return this;
+        }
+        public Builder outputType(String outputType) {
+            this.outputType = outputType;
+            return this;
+        }
+        public Builder failures(Tristate<DocGenJobFailures> failures) {
+            this.failures = failures;
+            return this;
+        }
+        public Builder createdAt(String createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = createdBy;
+            return this;
+        }
+        public Builder enterprise(EnterpriseReference enterprise) {
+            this.enterprise = enterprise;
+            return this;
+        }
+        public Builder source(String source) {
+            this.source = source;
+            return this;
+        }
+
+        public DocGenJobFull build() {
+            return new DocGenJobFull(
+                id,
+                type,
+                batch,
+                templateFile,
+                templateFileVersion,
+                outputFile,
+                outputFileVersion,
+                status,
+                outputType,
+                failures,
+                createdAt,
+                createdBy,
+                enterprise,
+                source
+            );
+        }
+    }
 }

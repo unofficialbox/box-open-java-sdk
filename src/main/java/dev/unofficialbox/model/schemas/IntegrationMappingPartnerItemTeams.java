@@ -21,4 +21,36 @@ public record IntegrationMappingPartnerItemTeams(
             dev.unofficialbox.core.Json.asString(_m.get("tenant_id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private IntegrationMappingPartnerItemTeamsType type;
+        private String id;
+        private String tenantId;
+
+        public Builder type(IntegrationMappingPartnerItemTeamsType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder tenantId(String tenantId) {
+            this.tenantId = tenantId;
+            return this;
+        }
+
+        public IntegrationMappingPartnerItemTeams build() {
+            return new IntegrationMappingPartnerItemTeams(
+                type,
+                id,
+                tenantId
+            );
+        }
+    }
 }

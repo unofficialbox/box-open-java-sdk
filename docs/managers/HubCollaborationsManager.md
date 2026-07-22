@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `HubCollaborations`
 
+**Example**
+
+```java
+for (var item : client.hubCollaborations.list("HUB_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -29,6 +37,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `HubCollaboration`
 
+**Example**
+
+```java
+var result = client.hubCollaborations.create(new HubCollaborationCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /hub_collaborations/{hub_collaboration_id}`
@@ -38,6 +52,12 @@ the [pagination guide](../pagination.md).
 | `hub_collaboration_id` | path | `String` | yes |
 
 **Returns:** `HubCollaboration`
+
+**Example**
+
+```java
+var result = client.hubCollaborations.get("HUB_COLLABORATION_ID");
+```
 
 ## update
 
@@ -51,6 +71,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `HubCollaboration`
 
+**Example**
+
+```java
+var result = client.hubCollaborations.update("HUB_COLLABORATION_ID", new HubCollaborationUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /hub_collaborations/{hub_collaboration_id}`
@@ -60,4 +86,10 @@ the [pagination guide](../pagination.md).
 | `hub_collaboration_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.hubCollaborations.delete("HUB_COLLABORATION_ID");
+```
 

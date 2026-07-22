@@ -16,4 +16,24 @@ public record TeamUpdateRequest(Optional<FolderReference> boxItem) {
             (!_m.containsKey("box_item") || _m.get("box_item") == null) ? java.util.Optional.<FolderReference>empty() : java.util.Optional.of((_m.get("box_item") == null ? null : FolderReference.fromJson(_m.get("box_item"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderReference> boxItem = java.util.Optional.empty();
+
+        public Builder boxItem(FolderReference boxItem) {
+            this.boxItem = java.util.Optional.ofNullable(boxItem);
+            return this;
+        }
+
+        public TeamUpdateRequest build() {
+            return new TeamUpdateRequest(
+                boxItem
+            );
+        }
+    }
 }

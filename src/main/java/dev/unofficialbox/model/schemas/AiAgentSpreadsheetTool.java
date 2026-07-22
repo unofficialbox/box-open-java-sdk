@@ -23,4 +23,36 @@ public record AiAgentSpreadsheetTool(
             (!_m.containsKey("llm_endpoint_params") || _m.get("llm_endpoint_params") == null) ? java.util.Optional.<AiLlmEndpointParams>empty() : java.util.Optional.of((_m.get("llm_endpoint_params") == null ? null : AiLlmEndpointParams.fromJson(_m.get("llm_endpoint_params"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<Long> numTokensForCompletion = java.util.Optional.empty();
+        private Optional<AiLlmEndpointParams> llmEndpointParams = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder numTokensForCompletion(Long numTokensForCompletion) {
+            this.numTokensForCompletion = java.util.Optional.ofNullable(numTokensForCompletion);
+            return this;
+        }
+        public Builder llmEndpointParams(AiLlmEndpointParams llmEndpointParams) {
+            this.llmEndpointParams = java.util.Optional.ofNullable(llmEndpointParams);
+            return this;
+        }
+
+        public AiAgentSpreadsheetTool build() {
+            return new AiAgentSpreadsheetTool(
+                model,
+                numTokensForCompletion,
+                llmEndpointParams
+            );
+        }
+    }
 }

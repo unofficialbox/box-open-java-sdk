@@ -26,4 +26,42 @@ public record TaskUpdateRequest(
             (!_m.containsKey("completion_rule") || _m.get("completion_rule") == null) ? java.util.Optional.<TaskCompletionRule>empty() : java.util.Optional.of((_m.get("completion_rule") == null ? null : TaskCompletionRule.fromJson(_m.get("completion_rule"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<TaskAction> action = java.util.Optional.empty();
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<OffsetDateTime> dueAt = java.util.Optional.empty();
+        private Optional<TaskCompletionRule> completionRule = java.util.Optional.empty();
+
+        public Builder action(TaskAction action) {
+            this.action = java.util.Optional.ofNullable(action);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder dueAt(OffsetDateTime dueAt) {
+            this.dueAt = java.util.Optional.ofNullable(dueAt);
+            return this;
+        }
+        public Builder completionRule(TaskCompletionRule completionRule) {
+            this.completionRule = java.util.Optional.ofNullable(completionRule);
+            return this;
+        }
+
+        public TaskUpdateRequest build() {
+            return new TaskUpdateRequest(
+                action,
+                message,
+                dueAt,
+                completionRule
+            );
+        }
+    }
 }

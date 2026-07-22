@@ -42,4 +42,60 @@ public record KeysafeSettings(
             !_m.containsKey("keyring_id") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("keyring_id") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("keyring_id"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> keysafeEnabled = java.util.Optional.empty();
+        private Tristate<String> cloudProvider;
+        private Tristate<String> keyId;
+        private Tristate<String> accountId;
+        private Tristate<String> locationId;
+        private Tristate<String> projectId;
+        private Tristate<String> keyringId;
+
+        public Builder keysafeEnabled(Boolean keysafeEnabled) {
+            this.keysafeEnabled = java.util.Optional.ofNullable(keysafeEnabled);
+            return this;
+        }
+        public Builder cloudProvider(Tristate<String> cloudProvider) {
+            this.cloudProvider = cloudProvider;
+            return this;
+        }
+        public Builder keyId(Tristate<String> keyId) {
+            this.keyId = keyId;
+            return this;
+        }
+        public Builder accountId(Tristate<String> accountId) {
+            this.accountId = accountId;
+            return this;
+        }
+        public Builder locationId(Tristate<String> locationId) {
+            this.locationId = locationId;
+            return this;
+        }
+        public Builder projectId(Tristate<String> projectId) {
+            this.projectId = projectId;
+            return this;
+        }
+        public Builder keyringId(Tristate<String> keyringId) {
+            this.keyringId = keyringId;
+            return this;
+        }
+
+        public KeysafeSettings build() {
+            return new KeysafeSettings(
+                keysafeEnabled,
+                cloudProvider,
+                keyId,
+                accountId,
+                locationId,
+                projectId,
+                keyringId
+            );
+        }
+    }
 }

@@ -23,4 +23,36 @@ public record MetadataTaxonomyAncestor(
             (!_m.containsKey("level") || _m.get("level") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("level")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<String> displayName = java.util.Optional.empty();
+        private Optional<Long> level = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = java.util.Optional.ofNullable(displayName);
+            return this;
+        }
+        public Builder level(Long level) {
+            this.level = java.util.Optional.ofNullable(level);
+            return this;
+        }
+
+        public MetadataTaxonomyAncestor build() {
+            return new MetadataTaxonomyAncestor(
+                id,
+                displayName,
+                level
+            );
+        }
+    }
 }

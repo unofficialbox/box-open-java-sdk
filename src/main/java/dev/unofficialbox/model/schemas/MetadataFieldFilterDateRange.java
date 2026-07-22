@@ -18,4 +18,30 @@ public record MetadataFieldFilterDateRange(Optional<OffsetDateTime> lt, Optional
             (!_m.containsKey("gt") || _m.get("gt") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("gt") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("gt")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<OffsetDateTime> lt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> gt = java.util.Optional.empty();
+
+        public Builder lt(OffsetDateTime lt) {
+            this.lt = java.util.Optional.ofNullable(lt);
+            return this;
+        }
+        public Builder gt(OffsetDateTime gt) {
+            this.gt = java.util.Optional.ofNullable(gt);
+            return this;
+        }
+
+        public MetadataFieldFilterDateRange build() {
+            return new MetadataFieldFilterDateRange(
+                lt,
+                gt
+            );
+        }
+    }
 }

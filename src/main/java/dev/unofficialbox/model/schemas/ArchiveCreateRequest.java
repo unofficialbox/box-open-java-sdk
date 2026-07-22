@@ -23,4 +23,36 @@ public record ArchiveCreateRequest(
             (!_m.containsKey("storage_policy_id") || _m.get("storage_policy_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("storage_policy_id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String name;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<String> storagePolicyId = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder storagePolicyId(String storagePolicyId) {
+            this.storagePolicyId = java.util.Optional.ofNullable(storagePolicyId);
+            return this;
+        }
+
+        public ArchiveCreateRequest build() {
+            return new ArchiveCreateRequest(
+                name,
+                description,
+                storagePolicyId
+            );
+        }
+    }
 }

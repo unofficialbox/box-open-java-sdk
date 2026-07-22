@@ -20,4 +20,30 @@ public record RetentionPolicyAssignmentFilterFields(Tristate<String> field, Tris
             !_m.containsKey("value") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("value") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> field;
+        private Tristate<String> value;
+
+        public Builder field(Tristate<String> field) {
+            this.field = field;
+            return this;
+        }
+        public Builder value(Tristate<String> value) {
+            this.value = value;
+            return this;
+        }
+
+        public RetentionPolicyAssignmentFilterFields build() {
+            return new RetentionPolicyAssignmentFilterFields(
+                field,
+                value
+            );
+        }
+    }
 }

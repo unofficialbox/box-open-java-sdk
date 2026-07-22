@@ -22,4 +22,30 @@ public record AcceptanceRequirementsStatusTermsOfServiceRequirement(
             (!_m.containsKey("terms_of_service") || _m.get("terms_of_service") == null) ? java.util.Optional.<TermsOfServiceBase>empty() : java.util.Optional.of((_m.get("terms_of_service") == null ? null : TermsOfServiceBase.fromJson(_m.get("terms_of_service"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<Boolean> isAccepted;
+        private Optional<TermsOfServiceBase> termsOfService = java.util.Optional.empty();
+
+        public Builder isAccepted(Tristate<Boolean> isAccepted) {
+            this.isAccepted = isAccepted;
+            return this;
+        }
+        public Builder termsOfService(TermsOfServiceBase termsOfService) {
+            this.termsOfService = java.util.Optional.ofNullable(termsOfService);
+            return this;
+        }
+
+        public AcceptanceRequirementsStatusTermsOfServiceRequirement build() {
+            return new AcceptanceRequirementsStatusTermsOfServiceRequirement(
+                isAccepted,
+                termsOfService
+            );
+        }
+    }
 }

@@ -16,4 +16,30 @@ public record TermsOfServiceBase(String id, TermsOfServiceType type) {
             (_m.get("type") == null ? null : TermsOfServiceType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private TermsOfServiceType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(TermsOfServiceType type) {
+            this.type = type;
+            return this;
+        }
+
+        public TermsOfServiceBase build() {
+            return new TermsOfServiceBase(
+                id,
+                type
+            );
+        }
+    }
 }

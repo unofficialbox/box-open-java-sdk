@@ -14,4 +14,24 @@ public record MetadataTaxonomyUpdateRequest(String displayName) {
             dev.unofficialbox.core.Json.asString(_m.get("displayName"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String displayName;
+
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+
+        public MetadataTaxonomyUpdateRequest build() {
+            return new MetadataTaxonomyUpdateRequest(
+                displayName
+            );
+        }
+    }
 }

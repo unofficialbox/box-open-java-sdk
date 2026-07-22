@@ -18,4 +18,30 @@ public record EnterpriseReference(Optional<String> id, Optional<EnterpriseRefere
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<EnterpriseReferenceType>empty() : java.util.Optional.of((_m.get("type") == null ? null : EnterpriseReferenceType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<EnterpriseReferenceType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(EnterpriseReferenceType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public EnterpriseReference build() {
+            return new EnterpriseReference(
+                id,
+                type
+            );
+        }
+    }
 }

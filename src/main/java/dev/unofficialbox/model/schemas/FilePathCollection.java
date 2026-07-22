@@ -18,4 +18,30 @@ public record FilePathCollection(Long totalCount, List<FolderMini> entries) {
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : FolderMini.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Long totalCount;
+        private List<FolderMini> entries;
+
+        public Builder totalCount(Long totalCount) {
+            this.totalCount = totalCount;
+            return this;
+        }
+        public Builder entries(List<FolderMini> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public FilePathCollection build() {
+            return new FilePathCollection(
+                totalCount,
+                entries
+            );
+        }
+    }
 }

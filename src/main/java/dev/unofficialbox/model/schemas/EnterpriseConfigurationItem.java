@@ -16,4 +16,24 @@ public record EnterpriseConfigurationItem(Optional<Boolean> isUsed) {
             (!_m.containsKey("is_used") || _m.get("is_used") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_used")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+
+        public EnterpriseConfigurationItem build() {
+            return new EnterpriseConfigurationItem(
+                isUsed
+            );
+        }
+    }
 }

@@ -26,4 +26,42 @@ public record Collection(
             (!_m.containsKey("collection_type") || _m.get("collection_type") == null) ? java.util.Optional.<CollectionCollectionType>empty() : java.util.Optional.of((_m.get("collection_type") == null ? null : CollectionCollectionType.fromJson(_m.get("collection_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<CollectionType> type = java.util.Optional.empty();
+        private Optional<CollectionName> name = java.util.Optional.empty();
+        private Optional<CollectionCollectionType> collectionType = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(CollectionType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(CollectionName name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder collectionType(CollectionCollectionType collectionType) {
+            this.collectionType = java.util.Optional.ofNullable(collectionType);
+            return this;
+        }
+
+        public Collection build() {
+            return new Collection(
+                id,
+                type,
+                name,
+                collectionType
+            );
+        }
+    }
 }

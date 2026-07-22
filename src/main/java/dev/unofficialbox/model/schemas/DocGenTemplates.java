@@ -29,4 +29,42 @@ public record DocGenTemplates(
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<DocGenTemplate>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : DocGenTemplate.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Tristate<String> nextMarker;
+        private Tristate<String> prevMarker;
+        private Optional<List<DocGenTemplate>> entries = java.util.Optional.empty();
+
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(Tristate<String> nextMarker) {
+            this.nextMarker = nextMarker;
+            return this;
+        }
+        public Builder prevMarker(Tristate<String> prevMarker) {
+            this.prevMarker = prevMarker;
+            return this;
+        }
+        public Builder entries(List<DocGenTemplate> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public DocGenTemplates build() {
+            return new DocGenTemplates(
+                limit,
+                nextMarker,
+                prevMarker,
+                entries
+            );
+        }
+    }
 }

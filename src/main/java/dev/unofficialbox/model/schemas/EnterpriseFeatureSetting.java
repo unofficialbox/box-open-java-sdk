@@ -42,4 +42,60 @@ public record EnterpriseFeatureSetting(
             !_m.containsKey("denylist") ? dev.unofficialbox.core.Tristate.<List<UserOrGroupReference>>absent() : (_m.get("denylist") == null ? dev.unofficialbox.core.Tristate.<List<UserOrGroupReference>>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.decodeList(_m.get("denylist"), _x0 -> (_x0 == null ? null : UserOrGroupReference.fromJson(_x0)))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> id;
+        private Optional<EnterpriseFeatureSettingFeature> feature = java.util.Optional.empty();
+        private Tristate<String> state;
+        private Tristate<Boolean> canConfigure;
+        private Tristate<Boolean> isConfigured;
+        private Tristate<List<UserOrGroupReference>> allowlist;
+        private Tristate<List<UserOrGroupReference>> denylist;
+
+        public Builder id(Tristate<String> id) {
+            this.id = id;
+            return this;
+        }
+        public Builder feature(EnterpriseFeatureSettingFeature feature) {
+            this.feature = java.util.Optional.ofNullable(feature);
+            return this;
+        }
+        public Builder state(Tristate<String> state) {
+            this.state = state;
+            return this;
+        }
+        public Builder canConfigure(Tristate<Boolean> canConfigure) {
+            this.canConfigure = canConfigure;
+            return this;
+        }
+        public Builder isConfigured(Tristate<Boolean> isConfigured) {
+            this.isConfigured = isConfigured;
+            return this;
+        }
+        public Builder allowlist(Tristate<List<UserOrGroupReference>> allowlist) {
+            this.allowlist = allowlist;
+            return this;
+        }
+        public Builder denylist(Tristate<List<UserOrGroupReference>> denylist) {
+            this.denylist = denylist;
+            return this;
+        }
+
+        public EnterpriseFeatureSetting build() {
+            return new EnterpriseFeatureSetting(
+                id,
+                feature,
+                state,
+                canConfigure,
+                isConfigured,
+                allowlist,
+                denylist
+            );
+        }
+    }
 }

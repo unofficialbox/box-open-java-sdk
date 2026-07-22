@@ -23,4 +23,36 @@ public record ListUser(Tristate<Long> id, Tristate<String> name, Tristate<String
             !_m.containsKey("email") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("email") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("email"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<Long> id;
+        private Tristate<String> name;
+        private Tristate<String> email;
+
+        public Builder id(Tristate<Long> id) {
+            this.id = id;
+            return this;
+        }
+        public Builder name(Tristate<String> name) {
+            this.name = name;
+            return this;
+        }
+        public Builder email(Tristate<String> email) {
+            this.email = email;
+            return this;
+        }
+
+        public ListUser build() {
+            return new ListUser(
+                id,
+                name,
+                email
+            );
+        }
+    }
 }

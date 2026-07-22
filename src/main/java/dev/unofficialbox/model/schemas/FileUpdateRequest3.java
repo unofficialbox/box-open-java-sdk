@@ -18,4 +18,24 @@ public record FileUpdateRequest3(Tristate<Map<String, Object>> sharedLink) {
             !_m.containsKey("shared_link") ? dev.unofficialbox.core.Tristate.<Map<String, Object>>absent() : (_m.get("shared_link") == null ? dev.unofficialbox.core.Tristate.<Map<String, Object>>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.decodeMap(_m.get("shared_link"), _x0 -> _x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<Map<String, Object>> sharedLink;
+
+        public Builder sharedLink(Tristate<Map<String, Object>> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+
+        public FileUpdateRequest3 build() {
+            return new FileUpdateRequest3(
+                sharedLink
+            );
+        }
+    }
 }

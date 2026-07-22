@@ -16,4 +16,30 @@ public record ArchiveOwnedBy(String id, String type) {
             dev.unofficialbox.core.Json.asString(_m.get("type"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private String type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public ArchiveOwnedBy build() {
+            return new ArchiveOwnedBy(
+                id,
+                type
+            );
+        }
+    }
 }

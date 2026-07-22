@@ -18,4 +18,30 @@ public record FileRequestCopyRequestFolder(Optional<FolderType> type, String id)
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderType> type = java.util.Optional.empty();
+        private String id;
+
+        public Builder type(FolderType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public FileRequestCopyRequestFolder build() {
+            return new FileRequestCopyRequestFolder(
+                type,
+                id
+            );
+        }
+    }
 }

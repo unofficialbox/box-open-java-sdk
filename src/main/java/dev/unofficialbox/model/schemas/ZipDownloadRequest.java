@@ -20,4 +20,30 @@ public record ZipDownloadRequest(
             (!_m.containsKey("download_file_name") || _m.get("download_file_name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("download_file_name")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<ZipDownloadRequestItems> items;
+        private Optional<String> downloadFileName = java.util.Optional.empty();
+
+        public Builder items(List<ZipDownloadRequestItems> items) {
+            this.items = items;
+            return this;
+        }
+        public Builder downloadFileName(String downloadFileName) {
+            this.downloadFileName = java.util.Optional.ofNullable(downloadFileName);
+            return this;
+        }
+
+        public ZipDownloadRequest build() {
+            return new ZipDownloadRequest(
+                items,
+                downloadFileName
+            );
+        }
+    }
 }

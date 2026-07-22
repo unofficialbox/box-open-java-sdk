@@ -64,4 +64,96 @@ public record SignRequestCreateSigner(
             !_m.containsKey("language") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("language") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("language"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> email;
+        private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
+        private Optional<Boolean> isInPerson = java.util.Optional.empty();
+        private Optional<Long> order = java.util.Optional.empty();
+        private Tristate<String> embedUrlExternalUserId;
+        private Tristate<String> redirectUrl;
+        private Tristate<String> declinedRedirectUrl;
+        private Tristate<Boolean> loginRequired;
+        private Tristate<String> verificationPhoneNumber;
+        private Tristate<String> password;
+        private Tristate<String> signerGroupId;
+        private Tristate<Boolean> suppressNotifications;
+        private Tristate<String> language;
+
+        public Builder email(Tristate<String> email) {
+            this.email = email;
+            return this;
+        }
+        public Builder role(SignRequestCreateSignerRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder isInPerson(Boolean isInPerson) {
+            this.isInPerson = java.util.Optional.ofNullable(isInPerson);
+            return this;
+        }
+        public Builder order(Long order) {
+            this.order = java.util.Optional.ofNullable(order);
+            return this;
+        }
+        public Builder embedUrlExternalUserId(Tristate<String> embedUrlExternalUserId) {
+            this.embedUrlExternalUserId = embedUrlExternalUserId;
+            return this;
+        }
+        public Builder redirectUrl(Tristate<String> redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public Builder declinedRedirectUrl(Tristate<String> declinedRedirectUrl) {
+            this.declinedRedirectUrl = declinedRedirectUrl;
+            return this;
+        }
+        public Builder loginRequired(Tristate<Boolean> loginRequired) {
+            this.loginRequired = loginRequired;
+            return this;
+        }
+        public Builder verificationPhoneNumber(Tristate<String> verificationPhoneNumber) {
+            this.verificationPhoneNumber = verificationPhoneNumber;
+            return this;
+        }
+        public Builder password(Tristate<String> password) {
+            this.password = password;
+            return this;
+        }
+        public Builder signerGroupId(Tristate<String> signerGroupId) {
+            this.signerGroupId = signerGroupId;
+            return this;
+        }
+        public Builder suppressNotifications(Tristate<Boolean> suppressNotifications) {
+            this.suppressNotifications = suppressNotifications;
+            return this;
+        }
+        public Builder language(Tristate<String> language) {
+            this.language = language;
+            return this;
+        }
+
+        public SignRequestCreateSigner build() {
+            return new SignRequestCreateSigner(
+                email,
+                role,
+                isInPerson,
+                order,
+                embedUrlExternalUserId,
+                redirectUrl,
+                declinedRedirectUrl,
+                loginRequired,
+                verificationPhoneNumber,
+                password,
+                signerGroupId,
+                suppressNotifications,
+                language
+            );
+        }
+    }
 }

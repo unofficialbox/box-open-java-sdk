@@ -38,4 +38,66 @@ public record TimelineSkillCard(
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : TimelineSkillCardEntries.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private KeywordSkillCardType type;
+        private TimelineSkillCardSkillCardType skillCardType;
+        private Optional<KeywordSkillCardSkillCardTitle> skillCardTitle = java.util.Optional.empty();
+        private KeywordSkillCardSkill skill;
+        private KeywordSkillCardInvocation invocation;
+        private Optional<Long> duration = java.util.Optional.empty();
+        private List<TimelineSkillCardEntries> entries;
+
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder type(KeywordSkillCardType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder skillCardType(TimelineSkillCardSkillCardType skillCardType) {
+            this.skillCardType = skillCardType;
+            return this;
+        }
+        public Builder skillCardTitle(KeywordSkillCardSkillCardTitle skillCardTitle) {
+            this.skillCardTitle = java.util.Optional.ofNullable(skillCardTitle);
+            return this;
+        }
+        public Builder skill(KeywordSkillCardSkill skill) {
+            this.skill = skill;
+            return this;
+        }
+        public Builder invocation(KeywordSkillCardInvocation invocation) {
+            this.invocation = invocation;
+            return this;
+        }
+        public Builder duration(Long duration) {
+            this.duration = java.util.Optional.ofNullable(duration);
+            return this;
+        }
+        public Builder entries(List<TimelineSkillCardEntries> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public TimelineSkillCard build() {
+            return new TimelineSkillCard(
+                createdAt,
+                type,
+                skillCardType,
+                skillCardTitle,
+                skill,
+                invocation,
+                duration,
+                entries
+            );
+        }
+    }
 }

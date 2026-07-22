@@ -23,4 +23,36 @@ public record CollaboratorVariable(
             dev.unofficialbox.core.Json.decodeList(_m.get("variable_value"), _x0 -> (_x0 == null ? null : CollaboratorVariableVariableValue.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private CollaboratorVariableType type;
+        private CollaboratorVariableVariableType variableType;
+        private List<CollaboratorVariableVariableValue> variableValue;
+
+        public Builder type(CollaboratorVariableType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder variableType(CollaboratorVariableVariableType variableType) {
+            this.variableType = variableType;
+            return this;
+        }
+        public Builder variableValue(List<CollaboratorVariableVariableValue> variableValue) {
+            this.variableValue = variableValue;
+            return this;
+        }
+
+        public CollaboratorVariable build() {
+            return new CollaboratorVariable(
+                type,
+                variableType,
+                variableValue
+            );
+        }
+    }
 }

@@ -14,4 +14,24 @@ public record CollaborationWhitelistExemptTargetsCreateRequest(AttributesParent 
             (_m.get("user") == null ? null : AttributesParent.fromJson(_m.get("user")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AttributesParent user;
+
+        public Builder user(AttributesParent user) {
+            this.user = user;
+            return this;
+        }
+
+        public CollaborationWhitelistExemptTargetsCreateRequest build() {
+            return new CollaborationWhitelistExemptTargetsCreateRequest(
+                user
+            );
+        }
+    }
 }

@@ -16,4 +16,24 @@ public record UploadedPart(Optional<UploadPart> part) {
             (!_m.containsKey("part") || _m.get("part") == null) ? java.util.Optional.<UploadPart>empty() : java.util.Optional.of((_m.get("part") == null ? null : UploadPart.fromJson(_m.get("part"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<UploadPart> part = java.util.Optional.empty();
+
+        public Builder part(UploadPart part) {
+            this.part = java.util.Optional.ofNullable(part);
+            return this;
+        }
+
+        public UploadedPart build() {
+            return new UploadedPart(
+                part
+            );
+        }
+    }
 }

@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `WebLink`
 
+**Example**
+
+```java
+var result = client.webLinks.create(new WebLinkCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /web_links/{web_link_id}`
@@ -23,6 +29,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `boxapi` | header | `String` | no |
 
 **Returns:** `WebLink`
+
+**Example**
+
+```java
+var result = client.webLinks.get("WEB_LINK_ID", null);
+```
 
 ## update
 
@@ -36,6 +48,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `WebLink`
 
+**Example**
+
+```java
+var result = client.webLinks.update("WEB_LINK_ID", new WebLinkUpdateRequest(/* … */));
+```
+
 ## delete
 
 `DELETE /web_links/{web_link_id}`
@@ -45,4 +63,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `web_link_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.webLinks.delete("WEB_LINK_ID");
+```
 

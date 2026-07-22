@@ -15,4 +15,24 @@ public record SignRequestSignerInputSSNValidation(
             (_m.get("validation_type") == null ? null : SignRequestSignerInputSSNValidationValidationType.fromJson(_m.get("validation_type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private SignRequestSignerInputSSNValidationValidationType validationType;
+
+        public Builder validationType(SignRequestSignerInputSSNValidationValidationType validationType) {
+            this.validationType = validationType;
+            return this;
+        }
+
+        public SignRequestSignerInputSSNValidation build() {
+            return new SignRequestSignerInputSSNValidation(
+                validationType
+            );
+        }
+    }
 }

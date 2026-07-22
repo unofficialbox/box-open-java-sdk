@@ -16,6 +16,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Collaboration`
 
+**Example**
+
+```java
+var result = client.userCollaborations.getCollaboration("COLLABORATION_ID", null);
+```
+
 ## updateCollaboration
 
 `PUT /collaborations/{collaboration_id}`
@@ -28,6 +34,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Collaboration`
 
+**Example**
+
+```java
+var result = client.userCollaborations.updateCollaboration("COLLABORATION_ID", new CollaborationUpdateRequest(/* … */));
+```
+
 ## deleteCollaboration
 
 `DELETE /collaborations/{collaboration_id}`
@@ -37,6 +49,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `collaboration_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.userCollaborations.deleteCollaboration("COLLABORATION_ID");
+```
 
 ## createCollaborations
 
@@ -50,4 +68,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `CollaborationsCreateRequest`
 
 **Returns:** `Collaboration`
+
+**Example**
+
+```java
+var result = client.userCollaborations.createCollaborations(new CollaborationsCreateRequest(/* … */), null);
+```
 

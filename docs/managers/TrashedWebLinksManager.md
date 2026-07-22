@@ -18,6 +18,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TrashWebLinkRestored`
 
+**Example**
+
+```java
+var result = client.trashedWebLinks.createWebLink("WEB_LINK_ID", new FileCreateRequest(/* … */), null);
+```
+
 ## getWebLinkTrash
 
 `GET /web_links/{web_link_id}/trash`
@@ -29,6 +35,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TrashWebLink`
 
+**Example**
+
+```java
+var result = client.trashedWebLinks.getWebLinkTrash("WEB_LINK_ID", null);
+```
+
 ## deleteWebLinkTrash
 
 `DELETE /web_links/{web_link_id}/trash`
@@ -38,4 +50,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `web_link_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.trashedWebLinks.deleteWebLinkTrash("WEB_LINK_ID");
+```
 

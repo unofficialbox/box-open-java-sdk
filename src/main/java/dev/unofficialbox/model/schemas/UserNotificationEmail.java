@@ -18,4 +18,30 @@ public record UserNotificationEmail(Optional<String> email, Optional<Boolean> is
             (!_m.containsKey("is_confirmed") || _m.get("is_confirmed") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_confirmed")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> email = java.util.Optional.empty();
+        private Optional<Boolean> isConfirmed = java.util.Optional.empty();
+
+        public Builder email(String email) {
+            this.email = java.util.Optional.ofNullable(email);
+            return this;
+        }
+        public Builder isConfirmed(Boolean isConfirmed) {
+            this.isConfirmed = java.util.Optional.ofNullable(isConfirmed);
+            return this;
+        }
+
+        public UserNotificationEmail build() {
+            return new UserNotificationEmail(
+                email,
+                isConfirmed
+            );
+        }
+    }
 }

@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SessionTerminationMessage`
 
+**Example**
+
+```java
+var result = client.sessionTermination.createUserTerminateSessions(new UserTerminateSessionsCreateRequest(/* … */));
+```
+
 ## createGroupTerminateSessions
 
 `POST /groups/terminate_sessions`
@@ -20,4 +26,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `GroupTerminateSessionsCreateRequest`
 
 **Returns:** `SessionTerminationMessage`
+
+**Example**
+
+```java
+var result = client.sessionTermination.createGroupTerminateSessions(new GroupTerminateSessionsCreateRequest(/* … */));
+```
 

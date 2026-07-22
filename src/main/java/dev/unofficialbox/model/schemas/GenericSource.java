@@ -10,4 +10,15 @@ public record GenericSource() {
     public static GenericSource fromJson(Object _json) {
         return new GenericSource();
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        public GenericSource build() {
+            return new GenericSource();
+        }
+    }
 }

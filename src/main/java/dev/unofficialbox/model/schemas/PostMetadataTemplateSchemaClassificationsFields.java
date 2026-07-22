@@ -29,4 +29,48 @@ public record PostMetadataTemplateSchemaClassificationsFields(
             dev.unofficialbox.core.Json.decodeList(_m.get("options"), _x0 -> (_x0 == null ? null : PutAddData.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FieldsType type;
+        private FieldsKey key;
+        private ClassificationTemplateDisplayName displayName;
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private List<PutAddData> options;
+
+        public Builder type(FieldsType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder key(FieldsKey key) {
+            this.key = key;
+            return this;
+        }
+        public Builder displayName(ClassificationTemplateDisplayName displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder options(List<PutAddData> options) {
+            this.options = options;
+            return this;
+        }
+
+        public PostMetadataTemplateSchemaClassificationsFields build() {
+            return new PostMetadataTemplateSchemaClassificationsFields(
+                type,
+                key,
+                displayName,
+                hidden,
+                options
+            );
+        }
+    }
 }

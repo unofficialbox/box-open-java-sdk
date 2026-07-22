@@ -38,4 +38,66 @@ public record Classification(
             (!_m.containsKey("$canEdit") || _m.get("$canEdit") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("$canEdit")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> boxSecurityClassificationKey = java.util.Optional.empty();
+        private Optional<String> parent = java.util.Optional.empty();
+        private Optional<ClassificationTemplate2> template = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<Long> version = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<Double> typeVersion = java.util.Optional.empty();
+        private Optional<Boolean> canEdit = java.util.Optional.empty();
+
+        public Builder boxSecurityClassificationKey(String boxSecurityClassificationKey) {
+            this.boxSecurityClassificationKey = java.util.Optional.ofNullable(boxSecurityClassificationKey);
+            return this;
+        }
+        public Builder parent(String parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder template(ClassificationTemplate2 template) {
+            this.template = java.util.Optional.ofNullable(template);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder version(Long version) {
+            this.version = java.util.Optional.ofNullable(version);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder typeVersion(Double typeVersion) {
+            this.typeVersion = java.util.Optional.ofNullable(typeVersion);
+            return this;
+        }
+        public Builder canEdit(Boolean canEdit) {
+            this.canEdit = java.util.Optional.ofNullable(canEdit);
+            return this;
+        }
+
+        public Classification build() {
+            return new Classification(
+                boxSecurityClassificationKey,
+                parent,
+                template,
+                scope,
+                version,
+                type,
+                typeVersion,
+                canEdit
+            );
+        }
+    }
 }

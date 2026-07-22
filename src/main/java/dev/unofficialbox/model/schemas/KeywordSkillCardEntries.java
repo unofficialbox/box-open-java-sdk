@@ -16,4 +16,24 @@ public record KeywordSkillCardEntries(Optional<String> text) {
             (!_m.containsKey("text") || _m.get("text") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("text")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> text = java.util.Optional.empty();
+
+        public Builder text(String text) {
+            this.text = java.util.Optional.ofNullable(text);
+            return this;
+        }
+
+        public KeywordSkillCardEntries build() {
+            return new KeywordSkillCardEntries(
+                text
+            );
+        }
+    }
 }

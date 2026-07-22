@@ -16,4 +16,30 @@ public record DocGenJobBase(String id, DocGenJobType type) {
             (_m.get("type") == null ? null : DocGenJobType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private DocGenJobType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(DocGenJobType type) {
+            this.type = type;
+            return this;
+        }
+
+        public DocGenJobBase build() {
+            return new DocGenJobBase(
+                id,
+                type
+            );
+        }
+    }
 }

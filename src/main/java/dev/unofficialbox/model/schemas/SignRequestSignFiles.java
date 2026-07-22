@@ -20,4 +20,30 @@ public record SignRequestSignFiles(
             (!_m.containsKey("is_ready_for_download") || _m.get("is_ready_for_download") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_ready_for_download")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<FileMini>> files = java.util.Optional.empty();
+        private Optional<Boolean> isReadyForDownload = java.util.Optional.empty();
+
+        public Builder files(List<FileMini> files) {
+            this.files = java.util.Optional.ofNullable(files);
+            return this;
+        }
+        public Builder isReadyForDownload(Boolean isReadyForDownload) {
+            this.isReadyForDownload = java.util.Optional.ofNullable(isReadyForDownload);
+            return this;
+        }
+
+        public SignRequestSignFiles build() {
+            return new SignRequestSignFiles(
+                files,
+                isReadyForDownload
+            );
+        }
+    }
 }

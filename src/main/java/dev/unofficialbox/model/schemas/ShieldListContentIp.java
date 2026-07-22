@@ -20,4 +20,30 @@ public record ShieldListContentIp(
             dev.unofficialbox.core.Json.decodeList(_m.get("ip_addresses"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldListContentIpType type;
+        private List<String> ipAddresses;
+
+        public Builder type(ShieldListContentIpType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder ipAddresses(List<String> ipAddresses) {
+            this.ipAddresses = ipAddresses;
+            return this;
+        }
+
+        public ShieldListContentIp build() {
+            return new ShieldListContentIp(
+                type,
+                ipAddresses
+            );
+        }
+    }
 }

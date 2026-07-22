@@ -16,4 +16,30 @@ public record IntegrationMappingBoxItemSlack(FolderType type, String id) {
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FolderType type;
+        private String id;
+
+        public Builder type(FolderType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public IntegrationMappingBoxItemSlack build() {
+            return new IntegrationMappingBoxItemSlack(
+                type,
+                id
+            );
+        }
+    }
 }

@@ -19,6 +19,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileFull`
 
+**Example**
+
+```java
+var result = client.files.get("FILE_ID", null);
+```
+
 ## update
 
 `PUT /files/{file_id}`
@@ -33,6 +39,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileFull`
 
+**Example**
+
+```java
+var result = client.files.update("FILE_ID", new FileUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /files/{file_id}`
@@ -43,6 +55,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `if-match` | header | `String` | no |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.files.delete("FILE_ID", null);
+```
 
 ## copy
 
@@ -56,6 +74,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `FileCopyRequest`
 
 **Returns:** `FileFull`
+
+**Example**
+
+```java
+var result = client.files.copy("FILE_ID", new FileCopyRequest(/* … */), null);
+```
 
 ## getThumbnail
 
@@ -71,4 +95,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `max_width` | query | `Long` | no |
 
 **Returns:** a binary stream (`Runtime.Stream`)
+
+**Example**
+
+```java
+var result = client.files.getThumbnail("FILE_ID", null, null);
+```
 

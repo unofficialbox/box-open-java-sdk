@@ -20,9 +20,21 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Events`
 
+**Example**
+
+```java
+var result = client.events.list(null);
+```
+
 ## options
 
 `OPTIONS /events`
 
 **Returns:** `RealtimeServers`
+
+**Example**
+
+```java
+var result = client.events.options();
+```
 

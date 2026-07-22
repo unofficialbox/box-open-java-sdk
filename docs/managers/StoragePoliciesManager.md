@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `StoragePolicies`
 
+**Example**
+
+```java
+for (var item : client.storagePolicies.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -30,4 +38,10 @@ the [pagination guide](../pagination.md).
 | `storage_policy_id` | path | `String` | yes |
 
 **Returns:** `StoragePolicy`
+
+**Example**
+
+```java
+var result = client.storagePolicies.get("STORAGE_POLICY_ID");
+```
 

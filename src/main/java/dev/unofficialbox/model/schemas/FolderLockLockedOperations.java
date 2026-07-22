@@ -16,4 +16,30 @@ public record FolderLockLockedOperations(Boolean move, Boolean delete) {
             dev.unofficialbox.core.Json.asBoolean(_m.get("delete"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Boolean move;
+        private Boolean delete;
+
+        public Builder move(Boolean move) {
+            this.move = move;
+            return this;
+        }
+        public Builder delete(Boolean delete) {
+            this.delete = delete;
+            return this;
+        }
+
+        public FolderLockLockedOperations build() {
+            return new FolderLockLockedOperations(
+                move,
+                delete
+            );
+        }
+    }
 }

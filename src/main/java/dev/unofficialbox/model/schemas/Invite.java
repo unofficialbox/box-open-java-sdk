@@ -38,4 +38,66 @@ public record Invite(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private InviteType type;
+        private Optional<CollaborationAllowlistEntryEnterprise> invitedTo = java.util.Optional.empty();
+        private Optional<UserMini> actionableBy = java.util.Optional.empty();
+        private Optional<UserMini> invitedBy = java.util.Optional.empty();
+        private Optional<String> status = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(InviteType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder invitedTo(CollaborationAllowlistEntryEnterprise invitedTo) {
+            this.invitedTo = java.util.Optional.ofNullable(invitedTo);
+            return this;
+        }
+        public Builder actionableBy(UserMini actionableBy) {
+            this.actionableBy = java.util.Optional.ofNullable(actionableBy);
+            return this;
+        }
+        public Builder invitedBy(UserMini invitedBy) {
+            this.invitedBy = java.util.Optional.ofNullable(invitedBy);
+            return this;
+        }
+        public Builder status(String status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public Invite build() {
+            return new Invite(
+                id,
+                type,
+                invitedTo,
+                actionableBy,
+                invitedBy,
+                status,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

@@ -13,3 +13,9 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `NotesConvertResponse`
 
+**Example**
+
+```java
+var result = client.notes.convert(new NotesConvertRequestBody(/* … */));
+```
+

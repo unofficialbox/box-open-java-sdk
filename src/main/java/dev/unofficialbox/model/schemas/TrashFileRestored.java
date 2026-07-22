@@ -88,4 +88,150 @@ public record TrashFileRestored(
             (_m.get("item_status") == null ? null : FileItemStatus.fromJson(_m.get("item_status")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private AiCitationType type;
+        private String sequenceId;
+        private Optional<String> name = java.util.Optional.empty();
+        private String sha1;
+        private Optional<FileVersionMini> fileVersion = java.util.Optional.empty();
+        private String description;
+        private Long size;
+        private FilePathCollection pathCollection;
+        private OffsetDateTime createdAt;
+        private OffsetDateTime modifiedAt;
+        private Tristate<String> trashedAt;
+        private Tristate<String> purgedAt;
+        private Tristate<OffsetDateTime> contentCreatedAt;
+        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private UserMini modifiedBy;
+        private UserMini ownedBy;
+        private Tristate<String> sharedLink;
+        private Tristate<FolderMini> parent;
+        private FileItemStatus itemStatus;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = sequenceId;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = sha1;
+            return this;
+        }
+        public Builder fileVersion(FileVersionMini fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = size;
+            return this;
+        }
+        public Builder pathCollection(FilePathCollection pathCollection) {
+            this.pathCollection = pathCollection;
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        public Builder trashedAt(Tristate<String> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<String> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder contentCreatedAt(Tristate<OffsetDateTime> contentCreatedAt) {
+            this.contentCreatedAt = contentCreatedAt;
+            return this;
+        }
+        public Builder contentModifiedAt(Tristate<OffsetDateTime> contentModifiedAt) {
+            this.contentModifiedAt = contentModifiedAt;
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = modifiedBy;
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = ownedBy;
+            return this;
+        }
+        public Builder sharedLink(Tristate<String> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = itemStatus;
+            return this;
+        }
+
+        public TrashFileRestored build() {
+            return new TrashFileRestored(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                sha1,
+                fileVersion,
+                description,
+                size,
+                pathCollection,
+                createdAt,
+                modifiedAt,
+                trashedAt,
+                purgedAt,
+                contentCreatedAt,
+                contentModifiedAt,
+                createdBy,
+                modifiedBy,
+                ownedBy,
+                sharedLink,
+                parent,
+                itemStatus
+            );
+        }
+    }
 }

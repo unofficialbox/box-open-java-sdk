@@ -23,4 +23,36 @@ public record PostOAuth2Revoke(
             (!_m.containsKey("token") || _m.get("token") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("token")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> clientId = java.util.Optional.empty();
+        private Optional<String> clientSecret = java.util.Optional.empty();
+        private Optional<String> token = java.util.Optional.empty();
+
+        public Builder clientId(String clientId) {
+            this.clientId = java.util.Optional.ofNullable(clientId);
+            return this;
+        }
+        public Builder clientSecret(String clientSecret) {
+            this.clientSecret = java.util.Optional.ofNullable(clientSecret);
+            return this;
+        }
+        public Builder token(String token) {
+            this.token = java.util.Optional.ofNullable(token);
+            return this;
+        }
+
+        public PostOAuth2Revoke build() {
+            return new PostOAuth2Revoke(
+                clientId,
+                clientSecret,
+                token
+            );
+        }
+    }
 }

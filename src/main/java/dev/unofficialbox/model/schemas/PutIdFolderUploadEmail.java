@@ -16,4 +16,24 @@ public record PutIdFolderUploadEmail(Optional<FolderUploadEmailAccess> access) {
             (!_m.containsKey("access") || _m.get("access") == null) ? java.util.Optional.<FolderUploadEmailAccess>empty() : java.util.Optional.of((_m.get("access") == null ? null : FolderUploadEmailAccess.fromJson(_m.get("access"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderUploadEmailAccess> access = java.util.Optional.empty();
+
+        public Builder access(FolderUploadEmailAccess access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+
+        public PutIdFolderUploadEmail build() {
+            return new PutIdFolderUploadEmail(
+                access
+            );
+        }
+    }
 }

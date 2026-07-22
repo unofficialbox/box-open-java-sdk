@@ -32,4 +32,54 @@ public record Workflow(
             (!_m.containsKey("flows") || _m.get("flows") == null) ? java.util.Optional.<List<WorkflowFlows>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("flows"), _x0 -> (_x0 == null ? null : WorkflowFlows.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<WorkflowType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> isEnabled = java.util.Optional.empty();
+        private Optional<List<WorkflowFlows>> flows = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(WorkflowType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder isEnabled(Boolean isEnabled) {
+            this.isEnabled = java.util.Optional.ofNullable(isEnabled);
+            return this;
+        }
+        public Builder flows(List<WorkflowFlows> flows) {
+            this.flows = java.util.Optional.ofNullable(flows);
+            return this;
+        }
+
+        public Workflow build() {
+            return new Workflow(
+                id,
+                type,
+                name,
+                description,
+                isEnabled,
+                flows
+            );
+        }
+    }
 }

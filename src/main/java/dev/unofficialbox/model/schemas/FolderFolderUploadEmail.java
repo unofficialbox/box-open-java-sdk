@@ -20,4 +20,30 @@ public record FolderFolderUploadEmail(
             (!_m.containsKey("email") || _m.get("email") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("email")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderUploadEmailAccess> access = java.util.Optional.empty();
+        private Optional<String> email = java.util.Optional.empty();
+
+        public Builder access(FolderUploadEmailAccess access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+        public Builder email(String email) {
+            this.email = java.util.Optional.ofNullable(email);
+            return this;
+        }
+
+        public FolderFolderUploadEmail build() {
+            return new FolderFolderUploadEmail(
+                access,
+                email
+            );
+        }
+    }
 }

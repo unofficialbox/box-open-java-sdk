@@ -20,4 +20,36 @@ public record CommentCreateRequest(String message, Optional<String> taggedMessag
             (_m.get("item") == null ? null : PostItem.fromJson(_m.get("item")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String message;
+        private Optional<String> taggedMessage = java.util.Optional.empty();
+        private PostItem item;
+
+        public Builder message(String message) {
+            this.message = message;
+            return this;
+        }
+        public Builder taggedMessage(String taggedMessage) {
+            this.taggedMessage = java.util.Optional.ofNullable(taggedMessage);
+            return this;
+        }
+        public Builder item(PostItem item) {
+            this.item = item;
+            return this;
+        }
+
+        public CommentCreateRequest build() {
+            return new CommentCreateRequest(
+                message,
+                taggedMessage,
+                item
+            );
+        }
+    }
 }

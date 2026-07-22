@@ -76,4 +76,126 @@ public record SignTemplate(
             !_m.containsKey("request_flow") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("request_flow") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("request_flow"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SignTemplateType> type = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+        private Tristate<String> name;
+        private Tristate<String> emailSubject;
+        private Tristate<String> emailMessage;
+        private Tristate<Long> daysValid;
+        private Optional<FolderMini> parentFolder = java.util.Optional.empty();
+        private Optional<List<FileMini>> sourceFiles = java.util.Optional.empty();
+        private Optional<Boolean> areFieldsLocked = java.util.Optional.empty();
+        private Optional<Boolean> areOptionsLocked = java.util.Optional.empty();
+        private Optional<Boolean> areRecipientsLocked = java.util.Optional.empty();
+        private Optional<Boolean> areEmailSettingsLocked = java.util.Optional.empty();
+        private Optional<Boolean> areFilesLocked = java.util.Optional.empty();
+        private Optional<List<TemplateSigner>> signers = java.util.Optional.empty();
+        private Optional<SignTemplateAdditionalInfo> additionalInfo = java.util.Optional.empty();
+        private Tristate<SignTemplateReadySignLink> readySignLink;
+        private Tristate<SignTemplateCustomBranding> customBranding;
+        private Tristate<String> requestFlow;
+
+        public Builder type(SignTemplateType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder name(Tristate<String> name) {
+            this.name = name;
+            return this;
+        }
+        public Builder emailSubject(Tristate<String> emailSubject) {
+            this.emailSubject = emailSubject;
+            return this;
+        }
+        public Builder emailMessage(Tristate<String> emailMessage) {
+            this.emailMessage = emailMessage;
+            return this;
+        }
+        public Builder daysValid(Tristate<Long> daysValid) {
+            this.daysValid = daysValid;
+            return this;
+        }
+        public Builder parentFolder(FolderMini parentFolder) {
+            this.parentFolder = java.util.Optional.ofNullable(parentFolder);
+            return this;
+        }
+        public Builder sourceFiles(List<FileMini> sourceFiles) {
+            this.sourceFiles = java.util.Optional.ofNullable(sourceFiles);
+            return this;
+        }
+        public Builder areFieldsLocked(Boolean areFieldsLocked) {
+            this.areFieldsLocked = java.util.Optional.ofNullable(areFieldsLocked);
+            return this;
+        }
+        public Builder areOptionsLocked(Boolean areOptionsLocked) {
+            this.areOptionsLocked = java.util.Optional.ofNullable(areOptionsLocked);
+            return this;
+        }
+        public Builder areRecipientsLocked(Boolean areRecipientsLocked) {
+            this.areRecipientsLocked = java.util.Optional.ofNullable(areRecipientsLocked);
+            return this;
+        }
+        public Builder areEmailSettingsLocked(Boolean areEmailSettingsLocked) {
+            this.areEmailSettingsLocked = java.util.Optional.ofNullable(areEmailSettingsLocked);
+            return this;
+        }
+        public Builder areFilesLocked(Boolean areFilesLocked) {
+            this.areFilesLocked = java.util.Optional.ofNullable(areFilesLocked);
+            return this;
+        }
+        public Builder signers(List<TemplateSigner> signers) {
+            this.signers = java.util.Optional.ofNullable(signers);
+            return this;
+        }
+        public Builder additionalInfo(SignTemplateAdditionalInfo additionalInfo) {
+            this.additionalInfo = java.util.Optional.ofNullable(additionalInfo);
+            return this;
+        }
+        public Builder readySignLink(Tristate<SignTemplateReadySignLink> readySignLink) {
+            this.readySignLink = readySignLink;
+            return this;
+        }
+        public Builder customBranding(Tristate<SignTemplateCustomBranding> customBranding) {
+            this.customBranding = customBranding;
+            return this;
+        }
+        public Builder requestFlow(Tristate<String> requestFlow) {
+            this.requestFlow = requestFlow;
+            return this;
+        }
+
+        public SignTemplate build() {
+            return new SignTemplate(
+                type,
+                id,
+                name,
+                emailSubject,
+                emailMessage,
+                daysValid,
+                parentFolder,
+                sourceFiles,
+                areFieldsLocked,
+                areOptionsLocked,
+                areRecipientsLocked,
+                areEmailSettingsLocked,
+                areFilesLocked,
+                signers,
+                additionalInfo,
+                readySignLink,
+                customBranding,
+                requestFlow
+            );
+        }
+    }
 }

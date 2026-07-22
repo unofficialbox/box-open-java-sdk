@@ -21,4 +21,36 @@ public record HubCollaborationCreateRequest(
             dev.unofficialbox.core.Json.asString(_m.get("role"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private HubCollaborationCreateRequestHub hub;
+        private HubCollaborationCreateRequestAccessibleBy accessibleBy;
+        private String role;
+
+        public Builder hub(HubCollaborationCreateRequestHub hub) {
+            this.hub = hub;
+            return this;
+        }
+        public Builder accessibleBy(HubCollaborationCreateRequestAccessibleBy accessibleBy) {
+            this.accessibleBy = accessibleBy;
+            return this;
+        }
+        public Builder role(String role) {
+            this.role = role;
+            return this;
+        }
+
+        public HubCollaborationCreateRequest build() {
+            return new HubCollaborationCreateRequest(
+                hub,
+                accessibleBy,
+                role
+            );
+        }
+    }
 }

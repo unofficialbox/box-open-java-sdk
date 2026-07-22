@@ -35,4 +35,60 @@ public record ConflictError(
             (!_m.containsKey("request_id") || _m.get("request_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("request_id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<ClientErrorType> type = java.util.Optional.empty();
+        private Optional<Long> status = java.util.Optional.empty();
+        private Optional<ClientErrorCode> code = java.util.Optional.empty();
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<ConflictErrorContextInfo> contextInfo = java.util.Optional.empty();
+        private Optional<String> helpUrl = java.util.Optional.empty();
+        private Optional<String> requestId = java.util.Optional.empty();
+
+        public Builder type(ClientErrorType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder status(Long status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder code(ClientErrorCode code) {
+            this.code = java.util.Optional.ofNullable(code);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder contextInfo(ConflictErrorContextInfo contextInfo) {
+            this.contextInfo = java.util.Optional.ofNullable(contextInfo);
+            return this;
+        }
+        public Builder helpUrl(String helpUrl) {
+            this.helpUrl = java.util.Optional.ofNullable(helpUrl);
+            return this;
+        }
+        public Builder requestId(String requestId) {
+            this.requestId = java.util.Optional.ofNullable(requestId);
+            return this;
+        }
+
+        public ConflictError build() {
+            return new ConflictError(
+                type,
+                status,
+                code,
+                message,
+                contextInfo,
+                helpUrl,
+                requestId
+            );
+        }
+    }
 }

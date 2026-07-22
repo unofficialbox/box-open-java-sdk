@@ -24,4 +24,42 @@ public record AppItemAssociation(
             (_m.get("item") == null ? null : AppItemAssociatedItem.fromJson(_m.get("item")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private AppItemAssociationType type;
+        private AppItem appItem;
+        private AppItemAssociatedItem item;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AppItemAssociationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder appItem(AppItem appItem) {
+            this.appItem = appItem;
+            return this;
+        }
+        public Builder item(AppItemAssociatedItem item) {
+            this.item = item;
+            return this;
+        }
+
+        public AppItemAssociation build() {
+            return new AppItemAssociation(
+                id,
+                type,
+                appItem,
+                item
+            );
+        }
+    }
 }

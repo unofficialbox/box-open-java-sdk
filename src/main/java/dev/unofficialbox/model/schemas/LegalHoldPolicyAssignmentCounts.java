@@ -32,4 +32,54 @@ public record LegalHoldPolicyAssignmentCounts(
             (!_m.containsKey("interactions") || _m.get("interactions") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("interactions")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> user = java.util.Optional.empty();
+        private Optional<Long> folder = java.util.Optional.empty();
+        private Optional<Long> file = java.util.Optional.empty();
+        private Optional<Long> fileVersion = java.util.Optional.empty();
+        private Optional<Long> ownership = java.util.Optional.empty();
+        private Optional<Long> interactions = java.util.Optional.empty();
+
+        public Builder user(Long user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder folder(Long folder) {
+            this.folder = java.util.Optional.ofNullable(folder);
+            return this;
+        }
+        public Builder file(Long file) {
+            this.file = java.util.Optional.ofNullable(file);
+            return this;
+        }
+        public Builder fileVersion(Long fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder ownership(Long ownership) {
+            this.ownership = java.util.Optional.ofNullable(ownership);
+            return this;
+        }
+        public Builder interactions(Long interactions) {
+            this.interactions = java.util.Optional.ofNullable(interactions);
+            return this;
+        }
+
+        public LegalHoldPolicyAssignmentCounts build() {
+            return new LegalHoldPolicyAssignmentCounts(
+                user,
+                folder,
+                file,
+                fileVersion,
+                ownership,
+                interactions
+            );
+        }
+    }
 }

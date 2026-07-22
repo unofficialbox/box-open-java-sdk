@@ -11,6 +11,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldLists`
 
+**Example**
+
+```java
+var result = client.shieldLists.list();
+```
+
 ## create
 
 `POST /shield_lists`
@@ -18,6 +24,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `ShieldListsCreate`
 
 **Returns:** `ShieldList`
+
+**Example**
+
+```java
+var result = client.shieldLists.create(new ShieldListsCreate(/* … */));
+```
 
 ## get
 
@@ -28,6 +40,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `shield_list_id` | path | `String` | yes |
 
 **Returns:** `ShieldList`
+
+**Example**
+
+```java
+var result = client.shieldLists.get("SHIELD_LIST_ID");
+```
 
 ## update
 
@@ -41,6 +59,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldList`
 
+**Example**
+
+```java
+var result = client.shieldLists.update("SHIELD_LIST_ID", new ShieldListsUpdate(/* … */));
+```
+
 ## delete
 
 `DELETE /shield_lists/{shield_list_id}`
@@ -50,4 +74,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `shield_list_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.shieldLists.delete("SHIELD_LIST_ID");
+```
 

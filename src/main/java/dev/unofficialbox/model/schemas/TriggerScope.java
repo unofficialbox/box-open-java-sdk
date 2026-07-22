@@ -23,4 +23,36 @@ public record TriggerScope(
             (!_m.containsKey("object") || _m.get("object") == null) ? java.util.Optional.<MetadataCascadePolicyParent>empty() : java.util.Optional.of((_m.get("object") == null ? null : MetadataCascadePolicyParent.fromJson(_m.get("object"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<ScopeType> type = java.util.Optional.empty();
+        private Optional<String> ref = java.util.Optional.empty();
+        private Optional<MetadataCascadePolicyParent> object = java.util.Optional.empty();
+
+        public Builder type(ScopeType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder ref(String ref) {
+            this.ref = java.util.Optional.ofNullable(ref);
+            return this;
+        }
+        public Builder object(MetadataCascadePolicyParent object) {
+            this.object = java.util.Optional.ofNullable(object);
+            return this;
+        }
+
+        public TriggerScope build() {
+            return new TriggerScope(
+                type,
+                ref,
+                object
+            );
+        }
+    }
 }

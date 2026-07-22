@@ -44,4 +44,78 @@ public record AiExtractStructuredFields(
             (!_m.containsKey("options_rules") || _m.get("options_rules") == null) ? java.util.Optional.<AiOptionsRules>empty() : java.util.Optional.of((_m.get("options_rules") == null ? null : AiOptionsRules.fromJson(_m.get("options_rules"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String key;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<String> displayName = java.util.Optional.empty();
+        private Optional<String> prompt = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<List<FieldsOptions>> options = java.util.Optional.empty();
+        private Optional<List<AiExtractSubField>> fields = java.util.Optional.empty();
+        private Optional<String> taxonomyKey = java.util.Optional.empty();
+        private Optional<String> namespace = java.util.Optional.empty();
+        private Optional<AiOptionsRules> optionsRules = java.util.Optional.empty();
+
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = java.util.Optional.ofNullable(displayName);
+            return this;
+        }
+        public Builder prompt(String prompt) {
+            this.prompt = java.util.Optional.ofNullable(prompt);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder options(List<FieldsOptions> options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+        public Builder fields(List<AiExtractSubField> fields) {
+            this.fields = java.util.Optional.ofNullable(fields);
+            return this;
+        }
+        public Builder taxonomyKey(String taxonomyKey) {
+            this.taxonomyKey = java.util.Optional.ofNullable(taxonomyKey);
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = java.util.Optional.ofNullable(namespace);
+            return this;
+        }
+        public Builder optionsRules(AiOptionsRules optionsRules) {
+            this.optionsRules = java.util.Optional.ofNullable(optionsRules);
+            return this;
+        }
+
+        public AiExtractStructuredFields build() {
+            return new AiExtractStructuredFields(
+                key,
+                description,
+                displayName,
+                prompt,
+                type,
+                options,
+                fields,
+                taxonomyKey,
+                namespace,
+                optionsRules
+            );
+        }
+    }
 }

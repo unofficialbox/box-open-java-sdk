@@ -16,4 +16,30 @@ public record TaskAssignmentCreateRequest(PostTask task, PostAssignTo assignTo) 
             (_m.get("assign_to") == null ? null : PostAssignTo.fromJson(_m.get("assign_to")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PostTask task;
+        private PostAssignTo assignTo;
+
+        public Builder task(PostTask task) {
+            this.task = task;
+            return this;
+        }
+        public Builder assignTo(PostAssignTo assignTo) {
+            this.assignTo = assignTo;
+            return this;
+        }
+
+        public TaskAssignmentCreateRequest build() {
+            return new TaskAssignmentCreateRequest(
+                task,
+                assignTo
+            );
+        }
+    }
 }

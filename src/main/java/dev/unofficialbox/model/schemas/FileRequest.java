@@ -62,4 +62,108 @@ public record FileRequest(
             (_m.get("updated_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("updated_at"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private FileRequestType type;
+        private Optional<String> title = java.util.Optional.empty();
+        private Tristate<String> description;
+        private Optional<FileRequestStatus> status = java.util.Optional.empty();
+        private Optional<Boolean> isEmailRequired = java.util.Optional.empty();
+        private Optional<Boolean> isDescriptionRequired = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
+        private FolderMini folder;
+        private Optional<String> url = java.util.Optional.empty();
+        private Tristate<String> etag;
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private OffsetDateTime createdAt;
+        private Optional<UserMini> updatedBy = java.util.Optional.empty();
+        private OffsetDateTime updatedAt;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(FileRequestType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder title(String title) {
+            this.title = java.util.Optional.ofNullable(title);
+            return this;
+        }
+        public Builder description(Tristate<String> description) {
+            this.description = description;
+            return this;
+        }
+        public Builder status(FileRequestStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder isEmailRequired(Boolean isEmailRequired) {
+            this.isEmailRequired = java.util.Optional.ofNullable(isEmailRequired);
+            return this;
+        }
+        public Builder isDescriptionRequired(Boolean isDescriptionRequired) {
+            this.isDescriptionRequired = java.util.Optional.ofNullable(isDescriptionRequired);
+            return this;
+        }
+        public Builder expiresAt(OffsetDateTime expiresAt) {
+            this.expiresAt = java.util.Optional.ofNullable(expiresAt);
+            return this;
+        }
+        public Builder folder(FolderMini folder) {
+            this.folder = folder;
+            return this;
+        }
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder updatedBy(UserMini updatedBy) {
+            this.updatedBy = java.util.Optional.ofNullable(updatedBy);
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
+
+        public FileRequest build() {
+            return new FileRequest(
+                id,
+                type,
+                title,
+                description,
+                status,
+                isEmailRequired,
+                isDescriptionRequired,
+                expiresAt,
+                folder,
+                url,
+                etag,
+                createdBy,
+                createdAt,
+                updatedBy,
+                updatedAt
+            );
+        }
+    }
 }

@@ -37,4 +37,60 @@ public record FileConflict(
             (!_m.containsKey("file_version") || _m.get("file_version") == null) ? java.util.Optional.<FileVersionMini>empty() : java.util.Optional.of((_m.get("file_version") == null ? null : FileVersionMini.fromJson(_m.get("file_version"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private AiCitationType type;
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> sha1 = java.util.Optional.empty();
+        private Optional<FileVersionMini> fileVersion = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = java.util.Optional.ofNullable(sha1);
+            return this;
+        }
+        public Builder fileVersion(FileVersionMini fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+
+        public FileConflict build() {
+            return new FileConflict(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                sha1,
+                fileVersion
+            );
+        }
+    }
 }

@@ -20,6 +20,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AiMultipleAgentResponse`
 
+**Example**
+
+```java
+for (var item : client.aiStudio.listAiAgents(null)) {
+  // use item
+}
+```
+
 Paginated — `listAiAgents(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `AiSingleAgentResponseFull`
 
+**Example**
+
+```java
+var result = client.aiStudio.createAiAgents(new CreateAiAgent(/* … */));
+```
+
 ## getAiAgent
 
 `GET /ai_agents/{agent_id}`
@@ -42,6 +56,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `AiSingleAgentResponseFull`
+
+**Example**
+
+```java
+var result = client.aiStudio.getAiAgent("AGENT_ID", null);
+```
 
 ## updateAiAgent
 
@@ -55,6 +75,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `AiSingleAgentResponseFull`
 
+**Example**
+
+```java
+var result = client.aiStudio.updateAiAgent("AGENT_ID", new CreateAiAgent(/* … */));
+```
+
 ## deleteAiAgent
 
 `DELETE /ai_agents/{agent_id}`
@@ -64,4 +90,10 @@ the [pagination guide](../pagination.md).
 | `agent_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.aiStudio.deleteAiAgent("AGENT_ID");
+```
 

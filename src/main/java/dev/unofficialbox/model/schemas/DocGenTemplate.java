@@ -20,4 +20,30 @@ public record DocGenTemplate(Optional<FileReference> file, Tristate<String> file
             !_m.containsKey("file_name") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("file_name") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("file_name"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FileReference> file = java.util.Optional.empty();
+        private Tristate<String> fileName;
+
+        public Builder file(FileReference file) {
+            this.file = java.util.Optional.ofNullable(file);
+            return this;
+        }
+        public Builder fileName(Tristate<String> fileName) {
+            this.fileName = fileName;
+            return this;
+        }
+
+        public DocGenTemplate build() {
+            return new DocGenTemplate(
+                file,
+                fileName
+            );
+        }
+    }
 }

@@ -64,4 +64,108 @@ public record Collaboration(
             (!_m.containsKey("acceptance_requirements_status") || _m.get("acceptance_requirements_status") == null) ? java.util.Optional.<CollaborationAcceptanceRequirementsStatus>empty() : java.util.Optional.of((_m.get("acceptance_requirements_status") == null ? null : CollaborationAcceptanceRequirementsStatus.fromJson(_m.get("acceptance_requirements_status"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private CollaborationType type;
+        private Tristate<CollaborationItem> item;
+        private Tristate<AppItem> appItem;
+        private Optional<CollaborationAccessGrantee> accessibleBy = java.util.Optional.empty();
+        private Tristate<String> inviteEmail;
+        private Optional<CollaborationRole> role = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> expiresAt;
+        private Optional<Boolean> isAccessOnly = java.util.Optional.empty();
+        private Optional<CollaborationStatus> status = java.util.Optional.empty();
+        private Optional<OffsetDateTime> acknowledgedAt = java.util.Optional.empty();
+        private Optional<UserCollaborations> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<CollaborationAcceptanceRequirementsStatus> acceptanceRequirementsStatus = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(CollaborationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder item(Tristate<CollaborationItem> item) {
+            this.item = item;
+            return this;
+        }
+        public Builder appItem(Tristate<AppItem> appItem) {
+            this.appItem = appItem;
+            return this;
+        }
+        public Builder accessibleBy(CollaborationAccessGrantee accessibleBy) {
+            this.accessibleBy = java.util.Optional.ofNullable(accessibleBy);
+            return this;
+        }
+        public Builder inviteEmail(Tristate<String> inviteEmail) {
+            this.inviteEmail = inviteEmail;
+            return this;
+        }
+        public Builder role(CollaborationRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder expiresAt(Tristate<OffsetDateTime> expiresAt) {
+            this.expiresAt = expiresAt;
+            return this;
+        }
+        public Builder isAccessOnly(Boolean isAccessOnly) {
+            this.isAccessOnly = java.util.Optional.ofNullable(isAccessOnly);
+            return this;
+        }
+        public Builder status(CollaborationStatus status) {
+            this.status = java.util.Optional.ofNullable(status);
+            return this;
+        }
+        public Builder acknowledgedAt(OffsetDateTime acknowledgedAt) {
+            this.acknowledgedAt = java.util.Optional.ofNullable(acknowledgedAt);
+            return this;
+        }
+        public Builder createdBy(UserCollaborations createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder acceptanceRequirementsStatus(CollaborationAcceptanceRequirementsStatus acceptanceRequirementsStatus) {
+            this.acceptanceRequirementsStatus = java.util.Optional.ofNullable(acceptanceRequirementsStatus);
+            return this;
+        }
+
+        public Collaboration build() {
+            return new Collaboration(
+                id,
+                type,
+                item,
+                appItem,
+                accessibleBy,
+                inviteEmail,
+                role,
+                expiresAt,
+                isAccessOnly,
+                status,
+                acknowledgedAt,
+                createdBy,
+                createdAt,
+                modifiedAt,
+                acceptanceRequirementsStatus
+            );
+        }
+    }
 }

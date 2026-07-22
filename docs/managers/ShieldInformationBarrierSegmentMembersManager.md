@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldInformationBarrierSegmentMember`
 
+**Example**
+
+```java
+var result = client.shieldInformationBarrierSegmentMembers.get("SHIELD_INFORMATION_BARRIER_SEGMENT_MEMBER_ID");
+```
+
 ## delete
 
 `DELETE /shield_information_barrier_segment_members/{shield_information_barrier_segment_member_id}`
@@ -24,6 +30,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `shield_information_barrier_segment_member_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.shieldInformationBarrierSegmentMembers.delete("SHIELD_INFORMATION_BARRIER_SEGMENT_MEMBER_ID");
+```
 
 ## list
 
@@ -37,6 +49,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldInformationBarrierSegmentMembers`
 
+**Example**
+
+```java
+for (var item : client.shieldInformationBarrierSegmentMembers.list("SHIELD_INFORMATION_BARRIER_SEGMENT_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -48,4 +68,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `ShieldInformationBarrierSegmentMemberCreateRequest`
 
 **Returns:** `ShieldInformationBarrierSegmentMember`
+
+**Example**
+
+```java
+var result = client.shieldInformationBarrierSegmentMembers.create(new ShieldInformationBarrierSegmentMemberCreateRequest(/* … */));
+```
 

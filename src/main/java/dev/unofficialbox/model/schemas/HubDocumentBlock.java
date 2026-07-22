@@ -19,4 +19,30 @@ public record HubDocumentBlock(String id, Tristate<String> parentId) {
             !_m.containsKey("parent_id") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("parent_id") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("parent_id"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> parentId;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder parentId(Tristate<String> parentId) {
+            this.parentId = parentId;
+            return this;
+        }
+
+        public HubDocumentBlock build() {
+            return new HubDocumentBlock(
+                id,
+                parentId
+            );
+        }
+    }
 }

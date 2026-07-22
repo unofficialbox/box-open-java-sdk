@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Groups`
 
+**Example**
+
+```java
+for (var item : client.groups.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -34,6 +42,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `GroupFull`
 
+**Example**
+
+```java
+var result = client.groups.create(new GroupCreateRequest(/* … */), null);
+```
+
 ## get
 
 `GET /groups/{group_id}`
@@ -44,6 +58,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `GroupFull`
+
+**Example**
+
+```java
+var result = client.groups.get("GROUP_ID", null);
+```
 
 ## update
 
@@ -58,6 +78,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `GroupFull`
 
+**Example**
+
+```java
+var result = client.groups.update("GROUP_ID", new GroupUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /groups/{group_id}`
@@ -67,4 +93,10 @@ the [pagination guide](../pagination.md).
 | `group_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.groups.delete("GROUP_ID");
+```
 

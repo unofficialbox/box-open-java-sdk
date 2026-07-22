@@ -18,6 +18,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TrashFileRestored`
 
+**Example**
+
+```java
+var result = client.trashedFiles.createFile("FILE_ID", new FileCreateRequest(/* … */), null);
+```
+
 ## getFileTrash
 
 `GET /files/{file_id}/trash`
@@ -29,6 +35,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TrashFile`
 
+**Example**
+
+```java
+var result = client.trashedFiles.getFileTrash("FILE_ID", null);
+```
+
 ## deleteFileTrash
 
 `DELETE /files/{file_id}/trash`
@@ -38,4 +50,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `file_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.trashedFiles.deleteFileTrash("FILE_ID");
+```
 

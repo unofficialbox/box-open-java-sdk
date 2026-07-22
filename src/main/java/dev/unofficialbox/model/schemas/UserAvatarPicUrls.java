@@ -23,4 +23,36 @@ public record UserAvatarPicUrls(
             (!_m.containsKey("preview") || _m.get("preview") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("preview")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> small = java.util.Optional.empty();
+        private Optional<String> large = java.util.Optional.empty();
+        private Optional<String> preview = java.util.Optional.empty();
+
+        public Builder small(String small) {
+            this.small = java.util.Optional.ofNullable(small);
+            return this;
+        }
+        public Builder large(String large) {
+            this.large = java.util.Optional.ofNullable(large);
+            return this;
+        }
+        public Builder preview(String preview) {
+            this.preview = java.util.Optional.ofNullable(preview);
+            return this;
+        }
+
+        public UserAvatarPicUrls build() {
+            return new UserAvatarPicUrls(
+                small,
+                large,
+                preview
+            );
+        }
+    }
 }

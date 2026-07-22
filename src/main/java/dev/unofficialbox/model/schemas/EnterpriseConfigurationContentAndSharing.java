@@ -161,4 +161,312 @@ public record EnterpriseConfigurationContentAndSharing(
             (!_m.containsKey("permanent_deletion_allowlist_users") || _m.get("permanent_deletion_allowlist_users") == null) ? java.util.Optional.<EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers>empty() : java.util.Optional.of((_m.get("permanent_deletion_allowlist_users") == null ? null : EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers.fromJson(_m.get("permanent_deletion_allowlist_users"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<List<EnterpriseFeatureSettingsItem>> enterpriseFeatureSettings = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sharingItemType = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sharedLinkCompanyDefinition = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sharedLinkAccess = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sharedLinkDefaultAccess = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingSharedLinkDefaultPermissionsSelected> sharedLinkDefaultPermissionsSelected = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isOpenCustomUrlsDisabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCustomDomainHiddenInSharedLink = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingCollaborationPermissions> collaborationPermissions = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> defaultCollaborationRole = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isInvitePrivilegeRestricted = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingCollaborationRestrictions> collaborationRestrictions = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCollaboratorInviteLinksDisabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isInviteGroupCollaboratorDisabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isOwnershipTransferRestricted = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingExternalCollaborationStatus> externalCollaborationStatus = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers> externalCollaborationAllowlistUsers = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isWatermarkingEnterpriseFeatureEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isRootContentCreationRestricted = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isTagCreationRestricted = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> tagCreationRestriction = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isEmailUploadsEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCustomSettingsEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isFormsLoginRequired = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isFormsBrandingDefaultEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCcFreeTrialActive = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isFileRequestEditorsAllowed = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isFileRequestBrandingDefaultEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isFileRequestLoginRequired = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSharedLinksExpirationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> sharedLinksExpirationDays = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isPublicSharedLinksExpirationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> publicSharedLinksExpirationDays = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> sharedExpirationTarget = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSharedLinksExpirationNotificationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> sharedLinksExpirationNotificationDays = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isSharedLinksExpirationNotificationPrevented = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isAutoDeleteEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> autoDeleteDays = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isAutoDeleteExpirationModificationPrevented = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> autoDeleteTarget = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCollaborationExpirationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> collaborationExpirationDays = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCollaborationExpirationModificationPrevented = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemBoolean> isCollaborationExpirationNotificationEnabled = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> collaborationExpirationTarget = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemInteger> trashAutoClearTime = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationItemString> permanentDeletionAccess = java.util.Optional.empty();
+        private Optional<EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers> permanentDeletionAllowlistUsers = java.util.Optional.empty();
+
+        public Builder enterpriseFeatureSettings(List<EnterpriseFeatureSettingsItem> enterpriseFeatureSettings) {
+            this.enterpriseFeatureSettings = java.util.Optional.ofNullable(enterpriseFeatureSettings);
+            return this;
+        }
+        public Builder sharingItemType(EnterpriseConfigurationItemString sharingItemType) {
+            this.sharingItemType = java.util.Optional.ofNullable(sharingItemType);
+            return this;
+        }
+        public Builder sharedLinkCompanyDefinition(EnterpriseConfigurationItemString sharedLinkCompanyDefinition) {
+            this.sharedLinkCompanyDefinition = java.util.Optional.ofNullable(sharedLinkCompanyDefinition);
+            return this;
+        }
+        public Builder sharedLinkAccess(EnterpriseConfigurationItemString sharedLinkAccess) {
+            this.sharedLinkAccess = java.util.Optional.ofNullable(sharedLinkAccess);
+            return this;
+        }
+        public Builder sharedLinkDefaultAccess(EnterpriseConfigurationItemString sharedLinkDefaultAccess) {
+            this.sharedLinkDefaultAccess = java.util.Optional.ofNullable(sharedLinkDefaultAccess);
+            return this;
+        }
+        public Builder sharedLinkDefaultPermissionsSelected(EnterpriseConfigurationContentAndSharingSharedLinkDefaultPermissionsSelected sharedLinkDefaultPermissionsSelected) {
+            this.sharedLinkDefaultPermissionsSelected = java.util.Optional.ofNullable(sharedLinkDefaultPermissionsSelected);
+            return this;
+        }
+        public Builder isOpenCustomUrlsDisabled(EnterpriseConfigurationItemBoolean isOpenCustomUrlsDisabled) {
+            this.isOpenCustomUrlsDisabled = java.util.Optional.ofNullable(isOpenCustomUrlsDisabled);
+            return this;
+        }
+        public Builder isCustomDomainHiddenInSharedLink(EnterpriseConfigurationItemBoolean isCustomDomainHiddenInSharedLink) {
+            this.isCustomDomainHiddenInSharedLink = java.util.Optional.ofNullable(isCustomDomainHiddenInSharedLink);
+            return this;
+        }
+        public Builder collaborationPermissions(EnterpriseConfigurationContentAndSharingCollaborationPermissions collaborationPermissions) {
+            this.collaborationPermissions = java.util.Optional.ofNullable(collaborationPermissions);
+            return this;
+        }
+        public Builder defaultCollaborationRole(EnterpriseConfigurationItemString defaultCollaborationRole) {
+            this.defaultCollaborationRole = java.util.Optional.ofNullable(defaultCollaborationRole);
+            return this;
+        }
+        public Builder isInvitePrivilegeRestricted(EnterpriseConfigurationItemBoolean isInvitePrivilegeRestricted) {
+            this.isInvitePrivilegeRestricted = java.util.Optional.ofNullable(isInvitePrivilegeRestricted);
+            return this;
+        }
+        public Builder collaborationRestrictions(EnterpriseConfigurationContentAndSharingCollaborationRestrictions collaborationRestrictions) {
+            this.collaborationRestrictions = java.util.Optional.ofNullable(collaborationRestrictions);
+            return this;
+        }
+        public Builder isCollaboratorInviteLinksDisabled(EnterpriseConfigurationItemBoolean isCollaboratorInviteLinksDisabled) {
+            this.isCollaboratorInviteLinksDisabled = java.util.Optional.ofNullable(isCollaboratorInviteLinksDisabled);
+            return this;
+        }
+        public Builder isInviteGroupCollaboratorDisabled(EnterpriseConfigurationItemBoolean isInviteGroupCollaboratorDisabled) {
+            this.isInviteGroupCollaboratorDisabled = java.util.Optional.ofNullable(isInviteGroupCollaboratorDisabled);
+            return this;
+        }
+        public Builder isOwnershipTransferRestricted(EnterpriseConfigurationItemBoolean isOwnershipTransferRestricted) {
+            this.isOwnershipTransferRestricted = java.util.Optional.ofNullable(isOwnershipTransferRestricted);
+            return this;
+        }
+        public Builder externalCollaborationStatus(EnterpriseConfigurationContentAndSharingExternalCollaborationStatus externalCollaborationStatus) {
+            this.externalCollaborationStatus = java.util.Optional.ofNullable(externalCollaborationStatus);
+            return this;
+        }
+        public Builder externalCollaborationAllowlistUsers(EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers externalCollaborationAllowlistUsers) {
+            this.externalCollaborationAllowlistUsers = java.util.Optional.ofNullable(externalCollaborationAllowlistUsers);
+            return this;
+        }
+        public Builder isWatermarkingEnterpriseFeatureEnabled(EnterpriseConfigurationItemBoolean isWatermarkingEnterpriseFeatureEnabled) {
+            this.isWatermarkingEnterpriseFeatureEnabled = java.util.Optional.ofNullable(isWatermarkingEnterpriseFeatureEnabled);
+            return this;
+        }
+        public Builder isRootContentCreationRestricted(EnterpriseConfigurationItemBoolean isRootContentCreationRestricted) {
+            this.isRootContentCreationRestricted = java.util.Optional.ofNullable(isRootContentCreationRestricted);
+            return this;
+        }
+        public Builder isTagCreationRestricted(EnterpriseConfigurationItemBoolean isTagCreationRestricted) {
+            this.isTagCreationRestricted = java.util.Optional.ofNullable(isTagCreationRestricted);
+            return this;
+        }
+        public Builder tagCreationRestriction(EnterpriseConfigurationItemString tagCreationRestriction) {
+            this.tagCreationRestriction = java.util.Optional.ofNullable(tagCreationRestriction);
+            return this;
+        }
+        public Builder isEmailUploadsEnabled(EnterpriseConfigurationItemBoolean isEmailUploadsEnabled) {
+            this.isEmailUploadsEnabled = java.util.Optional.ofNullable(isEmailUploadsEnabled);
+            return this;
+        }
+        public Builder isCustomSettingsEnabled(EnterpriseConfigurationItemBoolean isCustomSettingsEnabled) {
+            this.isCustomSettingsEnabled = java.util.Optional.ofNullable(isCustomSettingsEnabled);
+            return this;
+        }
+        public Builder isFormsLoginRequired(EnterpriseConfigurationItemBoolean isFormsLoginRequired) {
+            this.isFormsLoginRequired = java.util.Optional.ofNullable(isFormsLoginRequired);
+            return this;
+        }
+        public Builder isFormsBrandingDefaultEnabled(EnterpriseConfigurationItemBoolean isFormsBrandingDefaultEnabled) {
+            this.isFormsBrandingDefaultEnabled = java.util.Optional.ofNullable(isFormsBrandingDefaultEnabled);
+            return this;
+        }
+        public Builder isCcFreeTrialActive(EnterpriseConfigurationItemBoolean isCcFreeTrialActive) {
+            this.isCcFreeTrialActive = java.util.Optional.ofNullable(isCcFreeTrialActive);
+            return this;
+        }
+        public Builder isFileRequestEditorsAllowed(EnterpriseConfigurationItemBoolean isFileRequestEditorsAllowed) {
+            this.isFileRequestEditorsAllowed = java.util.Optional.ofNullable(isFileRequestEditorsAllowed);
+            return this;
+        }
+        public Builder isFileRequestBrandingDefaultEnabled(EnterpriseConfigurationItemBoolean isFileRequestBrandingDefaultEnabled) {
+            this.isFileRequestBrandingDefaultEnabled = java.util.Optional.ofNullable(isFileRequestBrandingDefaultEnabled);
+            return this;
+        }
+        public Builder isFileRequestLoginRequired(EnterpriseConfigurationItemBoolean isFileRequestLoginRequired) {
+            this.isFileRequestLoginRequired = java.util.Optional.ofNullable(isFileRequestLoginRequired);
+            return this;
+        }
+        public Builder isSharedLinksExpirationEnabled(EnterpriseConfigurationItemBoolean isSharedLinksExpirationEnabled) {
+            this.isSharedLinksExpirationEnabled = java.util.Optional.ofNullable(isSharedLinksExpirationEnabled);
+            return this;
+        }
+        public Builder sharedLinksExpirationDays(EnterpriseConfigurationItemInteger sharedLinksExpirationDays) {
+            this.sharedLinksExpirationDays = java.util.Optional.ofNullable(sharedLinksExpirationDays);
+            return this;
+        }
+        public Builder isPublicSharedLinksExpirationEnabled(EnterpriseConfigurationItemBoolean isPublicSharedLinksExpirationEnabled) {
+            this.isPublicSharedLinksExpirationEnabled = java.util.Optional.ofNullable(isPublicSharedLinksExpirationEnabled);
+            return this;
+        }
+        public Builder publicSharedLinksExpirationDays(EnterpriseConfigurationItemInteger publicSharedLinksExpirationDays) {
+            this.publicSharedLinksExpirationDays = java.util.Optional.ofNullable(publicSharedLinksExpirationDays);
+            return this;
+        }
+        public Builder sharedExpirationTarget(EnterpriseConfigurationItemString sharedExpirationTarget) {
+            this.sharedExpirationTarget = java.util.Optional.ofNullable(sharedExpirationTarget);
+            return this;
+        }
+        public Builder isSharedLinksExpirationNotificationEnabled(EnterpriseConfigurationItemBoolean isSharedLinksExpirationNotificationEnabled) {
+            this.isSharedLinksExpirationNotificationEnabled = java.util.Optional.ofNullable(isSharedLinksExpirationNotificationEnabled);
+            return this;
+        }
+        public Builder sharedLinksExpirationNotificationDays(EnterpriseConfigurationItemInteger sharedLinksExpirationNotificationDays) {
+            this.sharedLinksExpirationNotificationDays = java.util.Optional.ofNullable(sharedLinksExpirationNotificationDays);
+            return this;
+        }
+        public Builder isSharedLinksExpirationNotificationPrevented(EnterpriseConfigurationItemBoolean isSharedLinksExpirationNotificationPrevented) {
+            this.isSharedLinksExpirationNotificationPrevented = java.util.Optional.ofNullable(isSharedLinksExpirationNotificationPrevented);
+            return this;
+        }
+        public Builder isAutoDeleteEnabled(EnterpriseConfigurationItemBoolean isAutoDeleteEnabled) {
+            this.isAutoDeleteEnabled = java.util.Optional.ofNullable(isAutoDeleteEnabled);
+            return this;
+        }
+        public Builder autoDeleteDays(EnterpriseConfigurationItemInteger autoDeleteDays) {
+            this.autoDeleteDays = java.util.Optional.ofNullable(autoDeleteDays);
+            return this;
+        }
+        public Builder isAutoDeleteExpirationModificationPrevented(EnterpriseConfigurationItemBoolean isAutoDeleteExpirationModificationPrevented) {
+            this.isAutoDeleteExpirationModificationPrevented = java.util.Optional.ofNullable(isAutoDeleteExpirationModificationPrevented);
+            return this;
+        }
+        public Builder autoDeleteTarget(EnterpriseConfigurationItemString autoDeleteTarget) {
+            this.autoDeleteTarget = java.util.Optional.ofNullable(autoDeleteTarget);
+            return this;
+        }
+        public Builder isCollaborationExpirationEnabled(EnterpriseConfigurationItemBoolean isCollaborationExpirationEnabled) {
+            this.isCollaborationExpirationEnabled = java.util.Optional.ofNullable(isCollaborationExpirationEnabled);
+            return this;
+        }
+        public Builder collaborationExpirationDays(EnterpriseConfigurationItemInteger collaborationExpirationDays) {
+            this.collaborationExpirationDays = java.util.Optional.ofNullable(collaborationExpirationDays);
+            return this;
+        }
+        public Builder isCollaborationExpirationModificationPrevented(EnterpriseConfigurationItemBoolean isCollaborationExpirationModificationPrevented) {
+            this.isCollaborationExpirationModificationPrevented = java.util.Optional.ofNullable(isCollaborationExpirationModificationPrevented);
+            return this;
+        }
+        public Builder isCollaborationExpirationNotificationEnabled(EnterpriseConfigurationItemBoolean isCollaborationExpirationNotificationEnabled) {
+            this.isCollaborationExpirationNotificationEnabled = java.util.Optional.ofNullable(isCollaborationExpirationNotificationEnabled);
+            return this;
+        }
+        public Builder collaborationExpirationTarget(EnterpriseConfigurationItemString collaborationExpirationTarget) {
+            this.collaborationExpirationTarget = java.util.Optional.ofNullable(collaborationExpirationTarget);
+            return this;
+        }
+        public Builder trashAutoClearTime(EnterpriseConfigurationItemInteger trashAutoClearTime) {
+            this.trashAutoClearTime = java.util.Optional.ofNullable(trashAutoClearTime);
+            return this;
+        }
+        public Builder permanentDeletionAccess(EnterpriseConfigurationItemString permanentDeletionAccess) {
+            this.permanentDeletionAccess = java.util.Optional.ofNullable(permanentDeletionAccess);
+            return this;
+        }
+        public Builder permanentDeletionAllowlistUsers(EnterpriseConfigurationContentAndSharingExternalCollaborationAllowlistUsers permanentDeletionAllowlistUsers) {
+            this.permanentDeletionAllowlistUsers = java.util.Optional.ofNullable(permanentDeletionAllowlistUsers);
+            return this;
+        }
+
+        public EnterpriseConfigurationContentAndSharing build() {
+            return new EnterpriseConfigurationContentAndSharing(
+                enterpriseFeatureSettings,
+                sharingItemType,
+                sharedLinkCompanyDefinition,
+                sharedLinkAccess,
+                sharedLinkDefaultAccess,
+                sharedLinkDefaultPermissionsSelected,
+                isOpenCustomUrlsDisabled,
+                isCustomDomainHiddenInSharedLink,
+                collaborationPermissions,
+                defaultCollaborationRole,
+                isInvitePrivilegeRestricted,
+                collaborationRestrictions,
+                isCollaboratorInviteLinksDisabled,
+                isInviteGroupCollaboratorDisabled,
+                isOwnershipTransferRestricted,
+                externalCollaborationStatus,
+                externalCollaborationAllowlistUsers,
+                isWatermarkingEnterpriseFeatureEnabled,
+                isRootContentCreationRestricted,
+                isTagCreationRestricted,
+                tagCreationRestriction,
+                isEmailUploadsEnabled,
+                isCustomSettingsEnabled,
+                isFormsLoginRequired,
+                isFormsBrandingDefaultEnabled,
+                isCcFreeTrialActive,
+                isFileRequestEditorsAllowed,
+                isFileRequestBrandingDefaultEnabled,
+                isFileRequestLoginRequired,
+                isSharedLinksExpirationEnabled,
+                sharedLinksExpirationDays,
+                isPublicSharedLinksExpirationEnabled,
+                publicSharedLinksExpirationDays,
+                sharedExpirationTarget,
+                isSharedLinksExpirationNotificationEnabled,
+                sharedLinksExpirationNotificationDays,
+                isSharedLinksExpirationNotificationPrevented,
+                isAutoDeleteEnabled,
+                autoDeleteDays,
+                isAutoDeleteExpirationModificationPrevented,
+                autoDeleteTarget,
+                isCollaborationExpirationEnabled,
+                collaborationExpirationDays,
+                isCollaborationExpirationModificationPrevented,
+                isCollaborationExpirationNotificationEnabled,
+                collaborationExpirationTarget,
+                trashAutoClearTime,
+                permanentDeletionAccess,
+                permanentDeletionAllowlistUsers
+            );
+        }
+    }
 }

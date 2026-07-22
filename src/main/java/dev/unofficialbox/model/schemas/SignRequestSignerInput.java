@@ -54,4 +54,84 @@ public record SignRequestSignerInput(
             !_m.containsKey("is_validated") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("is_validated") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_validated"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> documentTagId;
+        private Tristate<String> textValue;
+        private Tristate<Boolean> checkboxValue;
+        private Tristate<LocalDate> dateValue;
+        private Optional<SignRequestSignerInputType> type = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputContentType> contentType = java.util.Optional.empty();
+        private Long pageIndex;
+        private Optional<Boolean> readOnly = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputValidation2> validation = java.util.Optional.empty();
+        private Tristate<String> reason;
+        private Tristate<Boolean> isValidated;
+
+        public Builder documentTagId(Tristate<String> documentTagId) {
+            this.documentTagId = documentTagId;
+            return this;
+        }
+        public Builder textValue(Tristate<String> textValue) {
+            this.textValue = textValue;
+            return this;
+        }
+        public Builder checkboxValue(Tristate<Boolean> checkboxValue) {
+            this.checkboxValue = checkboxValue;
+            return this;
+        }
+        public Builder dateValue(Tristate<LocalDate> dateValue) {
+            this.dateValue = dateValue;
+            return this;
+        }
+        public Builder type(SignRequestSignerInputType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder contentType(SignRequestSignerInputContentType contentType) {
+            this.contentType = java.util.Optional.ofNullable(contentType);
+            return this;
+        }
+        public Builder pageIndex(Long pageIndex) {
+            this.pageIndex = pageIndex;
+            return this;
+        }
+        public Builder readOnly(Boolean readOnly) {
+            this.readOnly = java.util.Optional.ofNullable(readOnly);
+            return this;
+        }
+        public Builder validation(SignRequestSignerInputValidation2 validation) {
+            this.validation = java.util.Optional.ofNullable(validation);
+            return this;
+        }
+        public Builder reason(Tristate<String> reason) {
+            this.reason = reason;
+            return this;
+        }
+        public Builder isValidated(Tristate<Boolean> isValidated) {
+            this.isValidated = isValidated;
+            return this;
+        }
+
+        public SignRequestSignerInput build() {
+            return new SignRequestSignerInput(
+                documentTagId,
+                textValue,
+                checkboxValue,
+                dateValue,
+                type,
+                contentType,
+                pageIndex,
+                readOnly,
+                validation,
+                reason,
+                isValidated
+            );
+        }
+    }
 }

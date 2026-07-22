@@ -21,4 +21,36 @@ public record MetadataCascadePolicyCreateRequest(
             dev.unofficialbox.core.Json.asString(_m.get("templateKey"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String folderId;
+        private GetFileIdMetadataIdIdScope scope;
+        private String templateKey;
+
+        public Builder folderId(String folderId) {
+            this.folderId = folderId;
+            return this;
+        }
+        public Builder scope(GetFileIdMetadataIdIdScope scope) {
+            this.scope = scope;
+            return this;
+        }
+        public Builder templateKey(String templateKey) {
+            this.templateKey = templateKey;
+            return this;
+        }
+
+        public MetadataCascadePolicyCreateRequest build() {
+            return new MetadataCascadePolicyCreateRequest(
+                folderId,
+                scope,
+                templateKey
+            );
+        }
+    }
 }

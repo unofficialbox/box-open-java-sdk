@@ -38,4 +38,66 @@ public record MetadataTemplate(
             (!_m.containsKey("copyInstanceOnItemCopy") || _m.get("copyInstanceOnItemCopy") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("copyInstanceOnItemCopy")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private MetadataTemplateType type;
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<String> templateKey = java.util.Optional.empty();
+        private Optional<String> displayName = java.util.Optional.empty();
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private Optional<List<MetadataTemplateFields>> fields = java.util.Optional.empty();
+        private Optional<Boolean> copyInstanceOnItemCopy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(MetadataTemplateType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder templateKey(String templateKey) {
+            this.templateKey = java.util.Optional.ofNullable(templateKey);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = java.util.Optional.ofNullable(displayName);
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder fields(List<MetadataTemplateFields> fields) {
+            this.fields = java.util.Optional.ofNullable(fields);
+            return this;
+        }
+        public Builder copyInstanceOnItemCopy(Boolean copyInstanceOnItemCopy) {
+            this.copyInstanceOnItemCopy = java.util.Optional.ofNullable(copyInstanceOnItemCopy);
+            return this;
+        }
+
+        public MetadataTemplate build() {
+            return new MetadataTemplate(
+                id,
+                type,
+                scope,
+                templateKey,
+                displayName,
+                hidden,
+                fields,
+                copyInstanceOnItemCopy
+            );
+        }
+    }
 }

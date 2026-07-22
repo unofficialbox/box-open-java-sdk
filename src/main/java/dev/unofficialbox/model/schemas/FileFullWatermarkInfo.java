@@ -23,4 +23,36 @@ public record FileFullWatermarkInfo(
             (!_m.containsKey("is_watermarked_by_access_policy") || _m.get("is_watermarked_by_access_policy") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_watermarked_by_access_policy")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isWatermarked = java.util.Optional.empty();
+        private Optional<Boolean> isWatermarkInherited = java.util.Optional.empty();
+        private Optional<Boolean> isWatermarkedByAccessPolicy = java.util.Optional.empty();
+
+        public Builder isWatermarked(Boolean isWatermarked) {
+            this.isWatermarked = java.util.Optional.ofNullable(isWatermarked);
+            return this;
+        }
+        public Builder isWatermarkInherited(Boolean isWatermarkInherited) {
+            this.isWatermarkInherited = java.util.Optional.ofNullable(isWatermarkInherited);
+            return this;
+        }
+        public Builder isWatermarkedByAccessPolicy(Boolean isWatermarkedByAccessPolicy) {
+            this.isWatermarkedByAccessPolicy = java.util.Optional.ofNullable(isWatermarkedByAccessPolicy);
+            return this;
+        }
+
+        public FileFullWatermarkInfo build() {
+            return new FileFullWatermarkInfo(
+                isWatermarked,
+                isWatermarkInherited,
+                isWatermarkedByAccessPolicy
+            );
+        }
+    }
 }

@@ -26,4 +26,42 @@ public record UserMini(
             (!_m.containsKey("login") || _m.get("login") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("login")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private VariableValueType type;
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> login = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(VariableValueType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder login(String login) {
+            this.login = java.util.Optional.ofNullable(login);
+            return this;
+        }
+
+        public UserMini build() {
+            return new UserMini(
+                id,
+                type,
+                name,
+                login
+            );
+        }
+    }
 }

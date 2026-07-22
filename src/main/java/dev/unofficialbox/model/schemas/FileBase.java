@@ -24,4 +24,36 @@ public record FileBase(
             (_m.get("type") == null ? null : AiCitationType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private AiCitationType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = type;
+            return this;
+        }
+
+        public FileBase build() {
+            return new FileBase(
+                id,
+                etag,
+                type
+            );
+        }
+    }
 }

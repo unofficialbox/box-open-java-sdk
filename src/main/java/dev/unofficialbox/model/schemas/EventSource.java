@@ -34,4 +34,54 @@ public record EventSource(
             (!_m.containsKey("owned_by") || _m.get("owned_by") == null) ? java.util.Optional.<UserMini>empty() : java.util.Optional.of((_m.get("owned_by") == null ? null : UserMini.fromJson(_m.get("owned_by"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private EventSourceItemType itemType;
+        private String itemId;
+        private String itemName;
+        private Optional<EventSourceClassification> classification = java.util.Optional.empty();
+        private Tristate<FolderMini> parent;
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+
+        public Builder itemType(EventSourceItemType itemType) {
+            this.itemType = itemType;
+            return this;
+        }
+        public Builder itemId(String itemId) {
+            this.itemId = itemId;
+            return this;
+        }
+        public Builder itemName(String itemName) {
+            this.itemName = itemName;
+            return this;
+        }
+        public Builder classification(EventSourceClassification classification) {
+            this.classification = java.util.Optional.ofNullable(classification);
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+
+        public EventSource build() {
+            return new EventSource(
+                itemType,
+                itemId,
+                itemName,
+                classification,
+                parent,
+                ownedBy
+            );
+        }
+    }
 }

@@ -26,4 +26,42 @@ public record DevicePinner(
             (!_m.containsKey("product_name") || _m.get("product_name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("product_name")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<DevicePinnerType> type = java.util.Optional.empty();
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+        private Optional<String> productName = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(DevicePinnerType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+        public Builder productName(String productName) {
+            this.productName = java.util.Optional.ofNullable(productName);
+            return this;
+        }
+
+        public DevicePinner build() {
+            return new DevicePinner(
+                id,
+                type,
+                ownedBy,
+                productName
+            );
+        }
+    }
 }

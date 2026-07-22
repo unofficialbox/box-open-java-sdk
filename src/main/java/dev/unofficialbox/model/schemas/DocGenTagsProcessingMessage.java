@@ -14,4 +14,24 @@ public record DocGenTagsProcessingMessage(String message) {
             dev.unofficialbox.core.Json.asString(_m.get("message"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String message;
+
+        public Builder message(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public DocGenTagsProcessingMessage build() {
+            return new DocGenTagsProcessingMessage(
+                message
+            );
+        }
+    }
 }

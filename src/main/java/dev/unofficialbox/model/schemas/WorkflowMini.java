@@ -29,4 +29,48 @@ public record WorkflowMini(
             (!_m.containsKey("is_enabled") || _m.get("is_enabled") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_enabled")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<WorkflowType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> isEnabled = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(WorkflowType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder isEnabled(Boolean isEnabled) {
+            this.isEnabled = java.util.Optional.ofNullable(isEnabled);
+            return this;
+        }
+
+        public WorkflowMini build() {
+            return new WorkflowMini(
+                id,
+                type,
+                name,
+                description,
+                isEnabled
+            );
+        }
+    }
 }

@@ -18,4 +18,30 @@ public record TaskAssignments(Optional<Long> totalCount, Optional<List<TaskAssig
             (!_m.containsKey("entries") || _m.get("entries") == null) ? java.util.Optional.<List<TaskAssignment>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : TaskAssignment.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Long> totalCount = java.util.Optional.empty();
+        private Optional<List<TaskAssignment>> entries = java.util.Optional.empty();
+
+        public Builder totalCount(Long totalCount) {
+            this.totalCount = java.util.Optional.ofNullable(totalCount);
+            return this;
+        }
+        public Builder entries(List<TaskAssignment> entries) {
+            this.entries = java.util.Optional.ofNullable(entries);
+            return this;
+        }
+
+        public TaskAssignments build() {
+            return new TaskAssignments(
+                totalCount,
+                entries
+            );
+        }
+    }
 }

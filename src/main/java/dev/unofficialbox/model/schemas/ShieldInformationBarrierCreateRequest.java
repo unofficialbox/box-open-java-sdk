@@ -14,4 +14,24 @@ public record ShieldInformationBarrierCreateRequest(EnterpriseBase enterprise) {
             (_m.get("enterprise") == null ? null : EnterpriseBase.fromJson(_m.get("enterprise")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private EnterpriseBase enterprise;
+
+        public Builder enterprise(EnterpriseBase enterprise) {
+            this.enterprise = enterprise;
+            return this;
+        }
+
+        public ShieldInformationBarrierCreateRequest build() {
+            return new ShieldInformationBarrierCreateRequest(
+                enterprise
+            );
+        }
+    }
 }

@@ -35,4 +35,60 @@ public record StatusSkillCard(
             (_m.get("invocation") == null ? null : KeywordSkillCardInvocation.fromJson(_m.get("invocation")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private KeywordSkillCardType type;
+        private StatusSkillCardSkillCardType skillCardType;
+        private Optional<KeywordSkillCardSkillCardTitle> skillCardTitle = java.util.Optional.empty();
+        private StatusSkillCardStatus status;
+        private KeywordSkillCardSkill skill;
+        private KeywordSkillCardInvocation invocation;
+
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder type(KeywordSkillCardType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder skillCardType(StatusSkillCardSkillCardType skillCardType) {
+            this.skillCardType = skillCardType;
+            return this;
+        }
+        public Builder skillCardTitle(KeywordSkillCardSkillCardTitle skillCardTitle) {
+            this.skillCardTitle = java.util.Optional.ofNullable(skillCardTitle);
+            return this;
+        }
+        public Builder status(StatusSkillCardStatus status) {
+            this.status = status;
+            return this;
+        }
+        public Builder skill(KeywordSkillCardSkill skill) {
+            this.skill = skill;
+            return this;
+        }
+        public Builder invocation(KeywordSkillCardInvocation invocation) {
+            this.invocation = invocation;
+            return this;
+        }
+
+        public StatusSkillCard build() {
+            return new StatusSkillCard(
+                createdAt,
+                type,
+                skillCardType,
+                skillCardTitle,
+                status,
+                skill,
+                invocation
+            );
+        }
+    }
 }

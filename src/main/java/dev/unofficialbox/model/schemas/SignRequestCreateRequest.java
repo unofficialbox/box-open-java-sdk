@@ -80,4 +80,126 @@ public record SignRequestCreateRequest(
             (!_m.containsKey("parent_folder") || _m.get("parent_folder") == null) ? java.util.Optional.<FolderMini>empty() : java.util.Optional.of((_m.get("parent_folder") == null ? null : FolderMini.fromJson(_m.get("parent_folder"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isDocumentPreparationNeeded = java.util.Optional.empty();
+        private Tristate<String> redirectUrl;
+        private Tristate<String> declinedRedirectUrl;
+        private Optional<Boolean> areTextSignaturesEnabled = java.util.Optional.empty();
+        private Tristate<String> emailSubject;
+        private Tristate<String> emailMessage;
+        private Optional<Boolean> areRemindersEnabled = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<List<SignRequestPrefillTag>> prefillTags = java.util.Optional.empty();
+        private Tristate<Long> daysValid;
+        private Tristate<String> externalId;
+        private Tristate<String> templateId;
+        private Tristate<String> externalSystemName;
+        private Tristate<String> requestFlow;
+        private Tristate<List<FileBase>> sourceFiles;
+        private Tristate<SignRequestCreateRequestSignatureColor> signatureColor;
+        private List<SignRequestCreateSigner> signers;
+        private Optional<FolderMini> parentFolder = java.util.Optional.empty();
+
+        public Builder isDocumentPreparationNeeded(Boolean isDocumentPreparationNeeded) {
+            this.isDocumentPreparationNeeded = java.util.Optional.ofNullable(isDocumentPreparationNeeded);
+            return this;
+        }
+        public Builder redirectUrl(Tristate<String> redirectUrl) {
+            this.redirectUrl = redirectUrl;
+            return this;
+        }
+        public Builder declinedRedirectUrl(Tristate<String> declinedRedirectUrl) {
+            this.declinedRedirectUrl = declinedRedirectUrl;
+            return this;
+        }
+        public Builder areTextSignaturesEnabled(Boolean areTextSignaturesEnabled) {
+            this.areTextSignaturesEnabled = java.util.Optional.ofNullable(areTextSignaturesEnabled);
+            return this;
+        }
+        public Builder emailSubject(Tristate<String> emailSubject) {
+            this.emailSubject = emailSubject;
+            return this;
+        }
+        public Builder emailMessage(Tristate<String> emailMessage) {
+            this.emailMessage = emailMessage;
+            return this;
+        }
+        public Builder areRemindersEnabled(Boolean areRemindersEnabled) {
+            this.areRemindersEnabled = java.util.Optional.ofNullable(areRemindersEnabled);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder prefillTags(List<SignRequestPrefillTag> prefillTags) {
+            this.prefillTags = java.util.Optional.ofNullable(prefillTags);
+            return this;
+        }
+        public Builder daysValid(Tristate<Long> daysValid) {
+            this.daysValid = daysValid;
+            return this;
+        }
+        public Builder externalId(Tristate<String> externalId) {
+            this.externalId = externalId;
+            return this;
+        }
+        public Builder templateId(Tristate<String> templateId) {
+            this.templateId = templateId;
+            return this;
+        }
+        public Builder externalSystemName(Tristate<String> externalSystemName) {
+            this.externalSystemName = externalSystemName;
+            return this;
+        }
+        public Builder requestFlow(Tristate<String> requestFlow) {
+            this.requestFlow = requestFlow;
+            return this;
+        }
+        public Builder sourceFiles(Tristate<List<FileBase>> sourceFiles) {
+            this.sourceFiles = sourceFiles;
+            return this;
+        }
+        public Builder signatureColor(Tristate<SignRequestCreateRequestSignatureColor> signatureColor) {
+            this.signatureColor = signatureColor;
+            return this;
+        }
+        public Builder signers(List<SignRequestCreateSigner> signers) {
+            this.signers = signers;
+            return this;
+        }
+        public Builder parentFolder(FolderMini parentFolder) {
+            this.parentFolder = java.util.Optional.ofNullable(parentFolder);
+            return this;
+        }
+
+        public SignRequestCreateRequest build() {
+            return new SignRequestCreateRequest(
+                isDocumentPreparationNeeded,
+                redirectUrl,
+                declinedRedirectUrl,
+                areTextSignaturesEnabled,
+                emailSubject,
+                emailMessage,
+                areRemindersEnabled,
+                name,
+                prefillTags,
+                daysValid,
+                externalId,
+                templateId,
+                externalSystemName,
+                requestFlow,
+                sourceFiles,
+                signatureColor,
+                signers,
+                parentFolder
+            );
+        }
+    }
 }

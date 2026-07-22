@@ -28,4 +28,42 @@ public record PutIdSharedLink2(
             (!_m.containsKey("unshared_at") || _m.get("unshared_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("unshared_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("unshared_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SharedLinkAccess> access = java.util.Optional.empty();
+        private Tristate<String> password;
+        private Optional<String> vanityName = java.util.Optional.empty();
+        private Optional<OffsetDateTime> unsharedAt = java.util.Optional.empty();
+
+        public Builder access(SharedLinkAccess access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+        public Builder password(Tristate<String> password) {
+            this.password = password;
+            return this;
+        }
+        public Builder vanityName(String vanityName) {
+            this.vanityName = java.util.Optional.ofNullable(vanityName);
+            return this;
+        }
+        public Builder unsharedAt(OffsetDateTime unsharedAt) {
+            this.unsharedAt = java.util.Optional.ofNullable(unsharedAt);
+            return this;
+        }
+
+        public PutIdSharedLink2 build() {
+            return new PutIdSharedLink2(
+                access,
+                password,
+                vanityName,
+                unsharedAt
+            );
+        }
+    }
 }

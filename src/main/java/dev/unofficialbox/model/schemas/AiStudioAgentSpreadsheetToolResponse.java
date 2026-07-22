@@ -26,4 +26,42 @@ public record AiStudioAgentSpreadsheetToolResponse(
             (!_m.containsKey("warnings") || _m.get("warnings") == null) ? java.util.Optional.<List<String>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("warnings"), _x0 -> dev.unofficialbox.core.Json.asString(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> model = java.util.Optional.empty();
+        private Optional<Long> numTokensForCompletion = java.util.Optional.empty();
+        private Optional<AiLlmEndpointParams> llmEndpointParams = java.util.Optional.empty();
+        private Optional<List<String>> warnings = java.util.Optional.empty();
+
+        public Builder model(String model) {
+            this.model = java.util.Optional.ofNullable(model);
+            return this;
+        }
+        public Builder numTokensForCompletion(Long numTokensForCompletion) {
+            this.numTokensForCompletion = java.util.Optional.ofNullable(numTokensForCompletion);
+            return this;
+        }
+        public Builder llmEndpointParams(AiLlmEndpointParams llmEndpointParams) {
+            this.llmEndpointParams = java.util.Optional.ofNullable(llmEndpointParams);
+            return this;
+        }
+        public Builder warnings(List<String> warnings) {
+            this.warnings = java.util.Optional.ofNullable(warnings);
+            return this;
+        }
+
+        public AiStudioAgentSpreadsheetToolResponse build() {
+            return new AiStudioAgentSpreadsheetToolResponse(
+                model,
+                numTokensForCompletion,
+                llmEndpointParams,
+                warnings
+            );
+        }
+    }
 }

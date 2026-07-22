@@ -20,4 +20,36 @@ public record AiExtract(String prompt, List<AiItemBase> items, Optional<AiExtrac
             (!_m.containsKey("ai_agent") || _m.get("ai_agent") == null) ? java.util.Optional.<AiExtractAgent>empty() : java.util.Optional.of((_m.get("ai_agent") == null ? null : AiExtractAgent.fromJson(_m.get("ai_agent"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String prompt;
+        private List<AiItemBase> items;
+        private Optional<AiExtractAgent> aiAgent = java.util.Optional.empty();
+
+        public Builder prompt(String prompt) {
+            this.prompt = prompt;
+            return this;
+        }
+        public Builder items(List<AiItemBase> items) {
+            this.items = items;
+            return this;
+        }
+        public Builder aiAgent(AiExtractAgent aiAgent) {
+            this.aiAgent = java.util.Optional.ofNullable(aiAgent);
+            return this;
+        }
+
+        public AiExtract build() {
+            return new AiExtract(
+                prompt,
+                items,
+                aiAgent
+            );
+        }
+    }
 }

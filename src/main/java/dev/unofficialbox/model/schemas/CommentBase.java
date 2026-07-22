@@ -18,4 +18,30 @@ public record CommentBase(Optional<String> id, Optional<CommentType> type) {
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<CommentType>empty() : java.util.Optional.of((_m.get("type") == null ? null : CommentType.fromJson(_m.get("type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<CommentType> type = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(CommentType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public CommentBase build() {
+            return new CommentBase(
+                id,
+                type
+            );
+        }
+    }
 }

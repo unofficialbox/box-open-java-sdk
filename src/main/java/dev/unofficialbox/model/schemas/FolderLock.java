@@ -35,4 +35,60 @@ public record FolderLock(
             (!_m.containsKey("lock_type") || _m.get("lock_type") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("lock_type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderMini> folder = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<FolderLockLockedOperations> lockedOperations = java.util.Optional.empty();
+        private Optional<String> lockType = java.util.Optional.empty();
+
+        public Builder folder(FolderMini folder) {
+            this.folder = java.util.Optional.ofNullable(folder);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder lockedOperations(FolderLockLockedOperations lockedOperations) {
+            this.lockedOperations = java.util.Optional.ofNullable(lockedOperations);
+            return this;
+        }
+        public Builder lockType(String lockType) {
+            this.lockType = java.util.Optional.ofNullable(lockType);
+            return this;
+        }
+
+        public FolderLock build() {
+            return new FolderLock(
+                folder,
+                id,
+                type,
+                createdBy,
+                createdAt,
+                lockedOperations,
+                lockType
+            );
+        }
+    }
 }

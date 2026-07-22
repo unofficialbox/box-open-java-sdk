@@ -35,4 +35,60 @@ public record FileVersionRetention(
             (!_m.containsKey("winning_retention_policy") || _m.get("winning_retention_policy") == null) ? java.util.Optional.<RetentionPolicyMini>empty() : java.util.Optional.of((_m.get("winning_retention_policy") == null ? null : RetentionPolicyMini.fromJson(_m.get("winning_retention_policy"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<FileVersionRetentionType> type = java.util.Optional.empty();
+        private Optional<FileVersionMini> fileVersion = java.util.Optional.empty();
+        private Optional<FileMini> file = java.util.Optional.empty();
+        private Optional<OffsetDateTime> appliedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> dispositionAt = java.util.Optional.empty();
+        private Optional<RetentionPolicyMini> winningRetentionPolicy = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(FileVersionRetentionType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder fileVersion(FileVersionMini fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder file(FileMini file) {
+            this.file = java.util.Optional.ofNullable(file);
+            return this;
+        }
+        public Builder appliedAt(OffsetDateTime appliedAt) {
+            this.appliedAt = java.util.Optional.ofNullable(appliedAt);
+            return this;
+        }
+        public Builder dispositionAt(OffsetDateTime dispositionAt) {
+            this.dispositionAt = java.util.Optional.ofNullable(dispositionAt);
+            return this;
+        }
+        public Builder winningRetentionPolicy(RetentionPolicyMini winningRetentionPolicy) {
+            this.winningRetentionPolicy = java.util.Optional.ofNullable(winningRetentionPolicy);
+            return this;
+        }
+
+        public FileVersionRetention build() {
+            return new FileVersionRetention(
+                id,
+                type,
+                fileVersion,
+                file,
+                appliedAt,
+                dispositionAt,
+                winningRetentionPolicy
+            );
+        }
+    }
 }

@@ -20,4 +20,30 @@ public record TaskAssignmentUpdateRequest(
             (!_m.containsKey("resolution_state") || _m.get("resolution_state") == null) ? java.util.Optional.<TaskAssignmentResolutionState>empty() : java.util.Optional.of((_m.get("resolution_state") == null ? null : TaskAssignmentResolutionState.fromJson(_m.get("resolution_state"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<TaskAssignmentResolutionState> resolutionState = java.util.Optional.empty();
+
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder resolutionState(TaskAssignmentResolutionState resolutionState) {
+            this.resolutionState = java.util.Optional.ofNullable(resolutionState);
+            return this;
+        }
+
+        public TaskAssignmentUpdateRequest build() {
+            return new TaskAssignmentUpdateRequest(
+                message,
+                resolutionState
+            );
+        }
+    }
 }

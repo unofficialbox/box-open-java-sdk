@@ -29,4 +29,48 @@ public record WebLinkUpdateRequest(
             (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutIdSharedLink2>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutIdSharedLink2.fromJson(_m.get("shared_link"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> url = java.util.Optional.empty();
+        private Optional<PutIdParent> parent = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<PutIdSharedLink2> sharedLink = java.util.Optional.empty();
+
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+        public Builder parent(PutIdParent parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder sharedLink(PutIdSharedLink2 sharedLink) {
+            this.sharedLink = java.util.Optional.ofNullable(sharedLink);
+            return this;
+        }
+
+        public WebLinkUpdateRequest build() {
+            return new WebLinkUpdateRequest(
+                url,
+                parent,
+                name,
+                description,
+                sharedLink
+            );
+        }
+    }
 }

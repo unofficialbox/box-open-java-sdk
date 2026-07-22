@@ -32,4 +32,54 @@ public record DocGenBatchCreateRequest(
             dev.unofficialbox.core.Json.decodeList(_m.get("document_generation_data"), _x0 -> (_x0 == null ? null : DocGenDocumentGenerationData.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FileReference file;
+        private Optional<FileVersionBase> fileVersion = java.util.Optional.empty();
+        private String inputSource;
+        private DocGenBatchCreateRequestDestinationFolder destinationFolder;
+        private String outputType;
+        private List<DocGenDocumentGenerationData> documentGenerationData;
+
+        public Builder file(FileReference file) {
+            this.file = file;
+            return this;
+        }
+        public Builder fileVersion(FileVersionBase fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder inputSource(String inputSource) {
+            this.inputSource = inputSource;
+            return this;
+        }
+        public Builder destinationFolder(DocGenBatchCreateRequestDestinationFolder destinationFolder) {
+            this.destinationFolder = destinationFolder;
+            return this;
+        }
+        public Builder outputType(String outputType) {
+            this.outputType = outputType;
+            return this;
+        }
+        public Builder documentGenerationData(List<DocGenDocumentGenerationData> documentGenerationData) {
+            this.documentGenerationData = documentGenerationData;
+            return this;
+        }
+
+        public DocGenBatchCreateRequest build() {
+            return new DocGenBatchCreateRequest(
+                file,
+                fileVersion,
+                inputSource,
+                destinationFolder,
+                outputType,
+                documentGenerationData
+            );
+        }
+    }
 }

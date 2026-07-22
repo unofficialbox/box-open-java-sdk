@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileVersions`
 
+**Example**
+
+```java
+for (var item : client.fileVersions.listFileVersions("FILE_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listFileVersions(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -34,6 +42,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `FileVersionFull`
 
+**Example**
+
+```java
+var result = client.fileVersions.getFileVersion("FILE_ID", "FILE_VERSION_ID", null);
+```
+
 ## updateFileVersion
 
 `PUT /files/{file_id}/versions/{file_version_id}`
@@ -47,6 +61,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `FileVersionFull`
 
+**Example**
+
+```java
+var result = client.fileVersions.updateFileVersion("FILE_ID", "FILE_VERSION_ID", new FileVersionUpdateRequest(/* … */));
+```
+
 ## deleteFileVersion
 
 `DELETE /files/{file_id}/versions/{file_version_id}`
@@ -58,6 +78,12 @@ the [pagination guide](../pagination.md).
 | `if-match` | header | `String` | no |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.fileVersions.deleteFileVersion("FILE_ID", "FILE_VERSION_ID", null);
+```
 
 ## createFileVersionCurrent
 
@@ -71,4 +97,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `FileVersionCurrentCreateRequest`
 
 **Returns:** `FileVersionFull`
+
+**Example**
+
+```java
+var result = client.fileVersions.createFileVersionCurrent("FILE_ID", new FileVersionCurrentCreateRequest(/* … */), null);
+```
 

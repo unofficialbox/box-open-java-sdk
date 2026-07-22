@@ -52,4 +52,78 @@ public record RetentionPolicyUpdateRequest(
             !_m.containsKey("custom_notification_recipients") ? dev.unofficialbox.core.Tristate.<List<UserBase>>absent() : (_m.get("custom_notification_recipients") == null ? dev.unofficialbox.core.Tristate.<List<UserBase>>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.decodeList(_m.get("custom_notification_recipients"), _x0 -> (_x0 == null ? null : UserBase.fromJson(_x0)))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> policyName;
+        private Tristate<String> description;
+        private Optional<PutIdDispositionAction> dispositionAction = java.util.Optional.empty();
+        private Tristate<String> retentionType;
+        private Optional<PostRetentionLength> retentionLength = java.util.Optional.empty();
+        private Tristate<String> status;
+        private Tristate<Boolean> canOwnerExtendRetention;
+        private Optional<RetentionPolicyMaxExtensionLengthRequest> maxExtensionLength = java.util.Optional.empty();
+        private Tristate<Boolean> areOwnersNotified;
+        private Tristate<List<UserBase>> customNotificationRecipients;
+
+        public Builder policyName(Tristate<String> policyName) {
+            this.policyName = policyName;
+            return this;
+        }
+        public Builder description(Tristate<String> description) {
+            this.description = description;
+            return this;
+        }
+        public Builder dispositionAction(PutIdDispositionAction dispositionAction) {
+            this.dispositionAction = java.util.Optional.ofNullable(dispositionAction);
+            return this;
+        }
+        public Builder retentionType(Tristate<String> retentionType) {
+            this.retentionType = retentionType;
+            return this;
+        }
+        public Builder retentionLength(PostRetentionLength retentionLength) {
+            this.retentionLength = java.util.Optional.ofNullable(retentionLength);
+            return this;
+        }
+        public Builder status(Tristate<String> status) {
+            this.status = status;
+            return this;
+        }
+        public Builder canOwnerExtendRetention(Tristate<Boolean> canOwnerExtendRetention) {
+            this.canOwnerExtendRetention = canOwnerExtendRetention;
+            return this;
+        }
+        public Builder maxExtensionLength(RetentionPolicyMaxExtensionLengthRequest maxExtensionLength) {
+            this.maxExtensionLength = java.util.Optional.ofNullable(maxExtensionLength);
+            return this;
+        }
+        public Builder areOwnersNotified(Tristate<Boolean> areOwnersNotified) {
+            this.areOwnersNotified = areOwnersNotified;
+            return this;
+        }
+        public Builder customNotificationRecipients(Tristate<List<UserBase>> customNotificationRecipients) {
+            this.customNotificationRecipients = customNotificationRecipients;
+            return this;
+        }
+
+        public RetentionPolicyUpdateRequest build() {
+            return new RetentionPolicyUpdateRequest(
+                policyName,
+                description,
+                dispositionAction,
+                retentionType,
+                retentionLength,
+                status,
+                canOwnerExtendRetention,
+                maxExtensionLength,
+                areOwnersNotified,
+                customNotificationRecipients
+            );
+        }
+    }
 }

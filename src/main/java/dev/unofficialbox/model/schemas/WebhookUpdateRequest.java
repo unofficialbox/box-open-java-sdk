@@ -23,4 +23,36 @@ public record WebhookUpdateRequest(
             (!_m.containsKey("triggers") || _m.get("triggers") == null) ? java.util.Optional.<List<WebhookTriggers>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("triggers"), _x0 -> (_x0 == null ? null : WebhookTriggers.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<WebhookTarget> target = java.util.Optional.empty();
+        private Optional<String> address = java.util.Optional.empty();
+        private Optional<List<WebhookTriggers>> triggers = java.util.Optional.empty();
+
+        public Builder target(WebhookTarget target) {
+            this.target = java.util.Optional.ofNullable(target);
+            return this;
+        }
+        public Builder address(String address) {
+            this.address = java.util.Optional.ofNullable(address);
+            return this;
+        }
+        public Builder triggers(List<WebhookTriggers> triggers) {
+            this.triggers = java.util.Optional.ofNullable(triggers);
+            return this;
+        }
+
+        public WebhookUpdateRequest build() {
+            return new WebhookUpdateRequest(
+                target,
+                address,
+                triggers
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record AiExtractSubField(
             (!_m.containsKey("options") || _m.get("options") == null) ? java.util.Optional.<List<AiExtractFieldOption>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("options"), _x0 -> (_x0 == null ? null : AiExtractFieldOption.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String key;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<String> displayName = java.util.Optional.empty();
+        private Optional<String> prompt = java.util.Optional.empty();
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<List<AiExtractFieldOption>> options = java.util.Optional.empty();
+
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = java.util.Optional.ofNullable(displayName);
+            return this;
+        }
+        public Builder prompt(String prompt) {
+            this.prompt = java.util.Optional.ofNullable(prompt);
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder options(List<AiExtractFieldOption> options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+
+        public AiExtractSubField build() {
+            return new AiExtractSubField(
+                key,
+                description,
+                displayName,
+                prompt,
+                type,
+                options
+            );
+        }
+    }
 }

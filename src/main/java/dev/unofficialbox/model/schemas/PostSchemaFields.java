@@ -44,4 +44,78 @@ public record PostSchemaFields(
             (!_m.containsKey("optionsRules") || _m.get("optionsRules") == null) ? java.util.Optional.<FieldsOptionsRules>empty() : java.util.Optional.of((_m.get("optionsRules") == null ? null : FieldsOptionsRules.fromJson(_m.get("optionsRules"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private FieldsType3 type;
+        private String key;
+        private String displayName;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> hidden = java.util.Optional.empty();
+        private Optional<List<FieldsOptions>> options = java.util.Optional.empty();
+        private Optional<String> taxonomyKey = java.util.Optional.empty();
+        private Optional<String> taxonomyId = java.util.Optional.empty();
+        private Optional<String> namespace = java.util.Optional.empty();
+        private Optional<FieldsOptionsRules> optionsRules = java.util.Optional.empty();
+
+        public Builder type(FieldsType3 type) {
+            this.type = type;
+            return this;
+        }
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder hidden(Boolean hidden) {
+            this.hidden = java.util.Optional.ofNullable(hidden);
+            return this;
+        }
+        public Builder options(List<FieldsOptions> options) {
+            this.options = java.util.Optional.ofNullable(options);
+            return this;
+        }
+        public Builder taxonomyKey(String taxonomyKey) {
+            this.taxonomyKey = java.util.Optional.ofNullable(taxonomyKey);
+            return this;
+        }
+        public Builder taxonomyId(String taxonomyId) {
+            this.taxonomyId = java.util.Optional.ofNullable(taxonomyId);
+            return this;
+        }
+        public Builder namespace(String namespace) {
+            this.namespace = java.util.Optional.ofNullable(namespace);
+            return this;
+        }
+        public Builder optionsRules(FieldsOptionsRules optionsRules) {
+            this.optionsRules = java.util.Optional.ofNullable(optionsRules);
+            return this;
+        }
+
+        public PostSchemaFields build() {
+            return new PostSchemaFields(
+                type,
+                key,
+                displayName,
+                description,
+                hidden,
+                options,
+                taxonomyKey,
+                taxonomyId,
+                namespace,
+                optionsRules
+            );
+        }
+    }
 }

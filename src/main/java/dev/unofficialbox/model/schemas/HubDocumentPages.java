@@ -28,4 +28,42 @@ public record HubDocumentPages(
             !_m.containsKey("next_marker") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("next_marker") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("next_marker"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<HubDocumentPage> entries;
+        private HubDocumentPagesType type;
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Tristate<String> nextMarker;
+
+        public Builder entries(List<HubDocumentPage> entries) {
+            this.entries = entries;
+            return this;
+        }
+        public Builder type(HubDocumentPagesType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder nextMarker(Tristate<String> nextMarker) {
+            this.nextMarker = nextMarker;
+            return this;
+        }
+
+        public HubDocumentPages build() {
+            return new HubDocumentPages(
+                entries,
+                type,
+                limit,
+                nextMarker
+            );
+        }
+    }
 }

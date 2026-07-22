@@ -20,4 +20,36 @@ public record UploadPartMini(Optional<String> partId, Optional<Long> offset, Opt
             (!_m.containsKey("size") || _m.get("size") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("size")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> partId = java.util.Optional.empty();
+        private Optional<Long> offset = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+
+        public Builder partId(String partId) {
+            this.partId = java.util.Optional.ofNullable(partId);
+            return this;
+        }
+        public Builder offset(Long offset) {
+            this.offset = java.util.Optional.ofNullable(offset);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+
+        public UploadPartMini build() {
+            return new UploadPartMini(
+                partId,
+                offset,
+                size
+            );
+        }
+    }
 }

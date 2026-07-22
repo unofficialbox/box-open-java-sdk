@@ -22,4 +22,30 @@ public record ShieldInformationBarrierSegmentUpdateRequest(
             !_m.containsKey("description") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("description") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("description"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Tristate<String> description;
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder description(Tristate<String> description) {
+            this.description = description;
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentUpdateRequest build() {
+            return new ShieldInformationBarrierSegmentUpdateRequest(
+                name,
+                description
+            );
+        }
+    }
 }

@@ -26,4 +26,42 @@ public record AiTextGen(
             (!_m.containsKey("ai_agent") || _m.get("ai_agent") == null) ? java.util.Optional.<AiTextGenAgent>empty() : java.util.Optional.of((_m.get("ai_agent") == null ? null : AiTextGenAgent.fromJson(_m.get("ai_agent"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String prompt;
+        private List<AiTextGenItems> items;
+        private Optional<List<AiDialogueHistory>> dialogueHistory = java.util.Optional.empty();
+        private Optional<AiTextGenAgent> aiAgent = java.util.Optional.empty();
+
+        public Builder prompt(String prompt) {
+            this.prompt = prompt;
+            return this;
+        }
+        public Builder items(List<AiTextGenItems> items) {
+            this.items = items;
+            return this;
+        }
+        public Builder dialogueHistory(List<AiDialogueHistory> dialogueHistory) {
+            this.dialogueHistory = java.util.Optional.ofNullable(dialogueHistory);
+            return this;
+        }
+        public Builder aiAgent(AiTextGenAgent aiAgent) {
+            this.aiAgent = java.util.Optional.ofNullable(aiAgent);
+            return this;
+        }
+
+        public AiTextGen build() {
+            return new AiTextGen(
+                prompt,
+                items,
+                dialogueHistory,
+                aiAgent
+            );
+        }
+    }
 }

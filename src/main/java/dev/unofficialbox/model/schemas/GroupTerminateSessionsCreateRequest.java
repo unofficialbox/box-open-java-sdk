@@ -16,4 +16,24 @@ public record GroupTerminateSessionsCreateRequest(List<String> groupIds) {
             dev.unofficialbox.core.Json.decodeList(_m.get("group_ids"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<String> groupIds;
+
+        public Builder groupIds(List<String> groupIds) {
+            this.groupIds = groupIds;
+            return this;
+        }
+
+        public GroupTerminateSessionsCreateRequest build() {
+            return new GroupTerminateSessionsCreateRequest(
+                groupIds
+            );
+        }
+    }
 }

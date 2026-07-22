@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Watermark`
 
+**Example**
+
+```java
+var result = client.fileWatermarks.getFileWatermark("FILE_ID");
+```
+
 ## updateFileWatermark
 
 `PUT /files/{file_id}/watermark`
@@ -27,6 +33,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Watermark`
 
+**Example**
+
+```java
+var result = client.fileWatermarks.updateFileWatermark("FILE_ID", new FileWatermarkUpdateRequest(/* … */));
+```
+
 ## deleteFileWatermark
 
 `DELETE /files/{file_id}/watermark`
@@ -36,4 +48,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `file_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.fileWatermarks.deleteFileWatermark("FILE_ID");
+```
 

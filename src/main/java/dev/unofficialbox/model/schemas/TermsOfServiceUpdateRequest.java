@@ -16,4 +16,30 @@ public record TermsOfServiceUpdateRequest(TermsOfServiceStatus status, String te
             dev.unofficialbox.core.Json.asString(_m.get("text"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private TermsOfServiceStatus status;
+        private String text;
+
+        public Builder status(TermsOfServiceStatus status) {
+            this.status = status;
+            return this;
+        }
+        public Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public TermsOfServiceUpdateRequest build() {
+            return new TermsOfServiceUpdateRequest(
+                status,
+                text
+            );
+        }
+    }
 }

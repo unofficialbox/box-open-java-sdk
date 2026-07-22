@@ -18,4 +18,30 @@ public record UploadUrl(Optional<String> uploadUrl, Optional<String> uploadToken
             (!_m.containsKey("upload_token") || _m.get("upload_token") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("upload_token")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> uploadUrl = java.util.Optional.empty();
+        private Optional<String> uploadToken = java.util.Optional.empty();
+
+        public Builder uploadUrl(String uploadUrl) {
+            this.uploadUrl = java.util.Optional.ofNullable(uploadUrl);
+            return this;
+        }
+        public Builder uploadToken(String uploadToken) {
+            this.uploadToken = java.util.Optional.ofNullable(uploadToken);
+            return this;
+        }
+
+        public UploadUrl build() {
+            return new UploadUrl(
+                uploadUrl,
+                uploadToken
+            );
+        }
+    }
 }

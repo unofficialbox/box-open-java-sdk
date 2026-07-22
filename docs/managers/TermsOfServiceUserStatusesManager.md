@@ -16,6 +16,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `TermsOfServiceUserStatuses`
 
+**Example**
+
+```java
+var result = client.termsOfServiceUserStatuses.list("TOS_ID", null);
+```
+
 ## create
 
 `POST /terms_of_service_user_statuses`
@@ -23,6 +29,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TermsOfServiceUserStatuseCreateRequest`
 
 **Returns:** `TermsOfServiceUserStatus`
+
+**Example**
+
+```java
+var result = client.termsOfServiceUserStatuses.create(new TermsOfServiceUserStatuseCreateRequest(/* … */));
+```
 
 ## update
 
@@ -35,4 +47,10 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `TermsOfServiceUserStatuseUpdateRequest`
 
 **Returns:** `TermsOfServiceUserStatus`
+
+**Example**
+
+```java
+var result = client.termsOfServiceUserStatuses.update("TERMS_OF_SERVICE_USER_STATUS_ID", new TermsOfServiceUserStatuseUpdateRequest(/* … */));
+```
 

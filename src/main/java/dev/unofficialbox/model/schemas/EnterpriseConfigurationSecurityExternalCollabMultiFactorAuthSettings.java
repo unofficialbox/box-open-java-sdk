@@ -20,4 +20,30 @@ public record EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettin
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<ExternalCollabMultiFactorAuthSettingsValue>empty() : java.util.Optional.of((_m.get("value") == null ? null : ExternalCollabMultiFactorAuthSettingsValue.fromJson(_m.get("value"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<Boolean> isUsed = java.util.Optional.empty();
+        private Optional<ExternalCollabMultiFactorAuthSettingsValue> value = java.util.Optional.empty();
+
+        public Builder isUsed(Boolean isUsed) {
+            this.isUsed = java.util.Optional.ofNullable(isUsed);
+            return this;
+        }
+        public Builder value(ExternalCollabMultiFactorAuthSettingsValue value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettings build() {
+            return new EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettings(
+                isUsed,
+                value
+            );
+        }
+    }
 }

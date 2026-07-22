@@ -16,4 +16,24 @@ public record ExternalUsersSubmitDeleteJobResponse(List<ExternalUserDeletionResu
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : ExternalUserDeletionResult.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<ExternalUserDeletionResult> entries;
+
+        public Builder entries(List<ExternalUserDeletionResult> entries) {
+            this.entries = entries;
+            return this;
+        }
+
+        public ExternalUsersSubmitDeleteJobResponse build() {
+            return new ExternalUsersSubmitDeleteJobResponse(
+                entries
+            );
+        }
+    }
 }

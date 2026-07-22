@@ -38,4 +38,66 @@ public record MetadataQuery(
             (!_m.containsKey("fields") || _m.get("fields") == null) ? java.util.Optional.<List<String>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("fields"), _x0 -> dev.unofficialbox.core.Json.asString(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String from;
+        private Optional<String> query = java.util.Optional.empty();
+        private Optional<Map<String, Object>> queryParams = java.util.Optional.empty();
+        private String ancestorFolderId;
+        private Optional<List<MetadataQueryOrderBy>> orderBy = java.util.Optional.empty();
+        private Optional<Long> limit = java.util.Optional.empty();
+        private Optional<String> marker = java.util.Optional.empty();
+        private Optional<List<String>> fields = java.util.Optional.empty();
+
+        public Builder from(String from) {
+            this.from = from;
+            return this;
+        }
+        public Builder query(String query) {
+            this.query = java.util.Optional.ofNullable(query);
+            return this;
+        }
+        public Builder queryParams(Map<String, Object> queryParams) {
+            this.queryParams = java.util.Optional.ofNullable(queryParams);
+            return this;
+        }
+        public Builder ancestorFolderId(String ancestorFolderId) {
+            this.ancestorFolderId = ancestorFolderId;
+            return this;
+        }
+        public Builder orderBy(List<MetadataQueryOrderBy> orderBy) {
+            this.orderBy = java.util.Optional.ofNullable(orderBy);
+            return this;
+        }
+        public Builder limit(Long limit) {
+            this.limit = java.util.Optional.ofNullable(limit);
+            return this;
+        }
+        public Builder marker(String marker) {
+            this.marker = java.util.Optional.ofNullable(marker);
+            return this;
+        }
+        public Builder fields(List<String> fields) {
+            this.fields = java.util.Optional.ofNullable(fields);
+            return this;
+        }
+
+        public MetadataQuery build() {
+            return new MetadataQuery(
+                from,
+                query,
+                queryParams,
+                ancestorFolderId,
+                orderBy,
+                limit,
+                marker,
+                fields
+            );
+        }
+    }
 }

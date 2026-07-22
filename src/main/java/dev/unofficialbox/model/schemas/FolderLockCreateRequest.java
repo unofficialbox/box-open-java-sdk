@@ -20,4 +20,30 @@ public record FolderLockCreateRequest(
             (_m.get("folder") == null ? null : PostFolder.fromJson(_m.get("folder")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FolderLockLockedOperations> lockedOperations = java.util.Optional.empty();
+        private PostFolder folder;
+
+        public Builder lockedOperations(FolderLockLockedOperations lockedOperations) {
+            this.lockedOperations = java.util.Optional.ofNullable(lockedOperations);
+            return this;
+        }
+        public Builder folder(PostFolder folder) {
+            this.folder = folder;
+            return this;
+        }
+
+        public FolderLockCreateRequest build() {
+            return new FolderLockCreateRequest(
+                lockedOperations,
+                folder
+            );
+        }
+    }
 }

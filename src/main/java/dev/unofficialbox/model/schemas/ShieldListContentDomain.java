@@ -20,4 +20,30 @@ public record ShieldListContentDomain(
             dev.unofficialbox.core.Json.decodeList(_m.get("domains"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldListContentDomainType type;
+        private List<String> domains;
+
+        public Builder type(ShieldListContentDomainType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder domains(List<String> domains) {
+            this.domains = domains;
+            return this;
+        }
+
+        public ShieldListContentDomain build() {
+            return new ShieldListContentDomain(
+                type,
+                domains
+            );
+        }
+    }
 }

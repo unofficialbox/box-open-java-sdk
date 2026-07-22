@@ -38,4 +38,66 @@ public record Comment(
             (!_m.containsKey("item") || _m.get("item") == null) ? java.util.Optional.<CommentItem>empty() : java.util.Optional.of((_m.get("item") == null ? null : CommentItem.fromJson(_m.get("item"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<CommentType> type = java.util.Optional.empty();
+        private Optional<Boolean> isReplyComment = java.util.Optional.empty();
+        private Optional<String> message = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<CommentItem> item = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(CommentType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder isReplyComment(Boolean isReplyComment) {
+            this.isReplyComment = java.util.Optional.ofNullable(isReplyComment);
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder item(CommentItem item) {
+            this.item = java.util.Optional.ofNullable(item);
+            return this;
+        }
+
+        public Comment build() {
+            return new Comment(
+                id,
+                type,
+                isReplyComment,
+                message,
+                createdBy,
+                createdAt,
+                modifiedAt,
+                item
+            );
+        }
+    }
 }

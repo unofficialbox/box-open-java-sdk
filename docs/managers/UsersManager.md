@@ -22,6 +22,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Users`
 
+**Example**
+
+```java
+for (var item : client.users.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -38,6 +46,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `UserFull`
 
+**Example**
+
+```java
+var result = client.users.create(new UserCreateRequest(/* … */), null);
+```
+
 ## getMe
 
 `GET /users/me`
@@ -47,6 +61,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `UserFull`
+
+**Example**
+
+```java
+var result = client.users.getMe(null);
+```
 
 ## get
 
@@ -58,6 +78,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `UserFull`
+
+**Example**
+
+```java
+var result = client.users.get("USER_ID", null);
+```
 
 ## update
 
@@ -72,6 +98,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `UserFull`
 
+**Example**
+
+```java
+var result = client.users.update("USER_ID", new UserUpdateRequest(/* … */), null);
+```
+
 ## delete
 
 `DELETE /users/{user_id}`
@@ -83,4 +115,10 @@ the [pagination guide](../pagination.md).
 | `force` | query | `Boolean` | no |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.users.delete("USER_ID", null);
+```
 

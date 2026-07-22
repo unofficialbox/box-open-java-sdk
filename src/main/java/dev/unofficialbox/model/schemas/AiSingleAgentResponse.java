@@ -47,4 +47,84 @@ public record AiSingleAgentResponse(
             (!_m.containsKey("allowed_entities") || _m.get("allowed_entities") == null) ? java.util.Optional.<List<AiAgentAllowedEntity>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("allowed_entities"), _x0 -> (_x0 == null ? null : AiAgentAllowedEntity.fromJson(_x0))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Optional<AiSingleAgentResponseType> type = java.util.Optional.empty();
+        private String origin;
+        private String name;
+        private String accessState;
+        private Optional<UserBase> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<UserBase> modifiedBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Optional<String> iconReference = java.util.Optional.empty();
+        private Optional<List<AiAgentAllowedEntity>> allowedEntities = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AiSingleAgentResponseType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder origin(String origin) {
+            this.origin = origin;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder accessState(String accessState) {
+            this.accessState = accessState;
+            return this;
+        }
+        public Builder createdBy(UserBase createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedBy(UserBase modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder iconReference(String iconReference) {
+            this.iconReference = java.util.Optional.ofNullable(iconReference);
+            return this;
+        }
+        public Builder allowedEntities(List<AiAgentAllowedEntity> allowedEntities) {
+            this.allowedEntities = java.util.Optional.ofNullable(allowedEntities);
+            return this;
+        }
+
+        public AiSingleAgentResponse build() {
+            return new AiSingleAgentResponse(
+                id,
+                type,
+                origin,
+                name,
+                accessState,
+                createdBy,
+                createdAt,
+                modifiedBy,
+                modifiedAt,
+                iconReference,
+                allowedEntities
+            );
+        }
+    }
 }

@@ -21,6 +21,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `IntegrationMappings`
 
+**Example**
+
+```java
+for (var item : client.integrationMappings.listSlack(null)) {
+  // use item
+}
+```
+
 Paginated — `listSlack(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `IntegrationMappingSlackCreateRequest`
 
 **Returns:** `IntegrationMapping`
+
+**Example**
+
+```java
+var result = client.integrationMappings.createSlack(new IntegrationMappingSlackCreateRequest(/* … */));
+```
 
 ## updateSlack
 
@@ -45,6 +59,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `IntegrationMapping`
 
+**Example**
+
+```java
+var result = client.integrationMappings.updateSlack("INTEGRATION_MAPPING_ID", new SlackUpdateRequest(/* … */));
+```
+
 ## deleteSlack
 
 `DELETE /integration_mappings/slack/{integration_mapping_id}`
@@ -54,6 +74,12 @@ the [pagination guide](../pagination.md).
 | `integration_mapping_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.integrationMappings.deleteSlack("INTEGRATION_MAPPING_ID");
+```
 
 ## listTeams
 
@@ -68,6 +94,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `IntegrationMappingsTeams`
 
+**Example**
+
+```java
+var result = client.integrationMappings.listTeams(null);
+```
+
 ## createTeams
 
 `POST /integration_mappings/teams`
@@ -75,6 +107,12 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `IntegrationMappingTeamsCreateRequest`
 
 **Returns:** `IntegrationMappingTeams`
+
+**Example**
+
+```java
+var result = client.integrationMappings.createTeams(new IntegrationMappingTeamsCreateRequest(/* … */));
+```
 
 ## updateTeam
 
@@ -88,6 +126,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `IntegrationMappingTeams`
 
+**Example**
+
+```java
+var result = client.integrationMappings.updateTeam("INTEGRATION_MAPPING_ID", new TeamUpdateRequest(/* … */));
+```
+
 ## deleteTeam
 
 `DELETE /integration_mappings/teams/{integration_mapping_id}`
@@ -97,4 +141,10 @@ the [pagination guide](../pagination.md).
 | `integration_mapping_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.integrationMappings.deleteTeam("INTEGRATION_MAPPING_ID");
+```
 

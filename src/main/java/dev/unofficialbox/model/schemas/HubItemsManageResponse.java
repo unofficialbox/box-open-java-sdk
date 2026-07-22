@@ -16,4 +16,24 @@ public record HubItemsManageResponse(List<HubItemOperationResult> operations) {
             dev.unofficialbox.core.Json.decodeList(_m.get("operations"), _x0 -> (_x0 == null ? null : HubItemOperationResult.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private List<HubItemOperationResult> operations;
+
+        public Builder operations(List<HubItemOperationResult> operations) {
+            this.operations = operations;
+            return this;
+        }
+
+        public HubItemsManageResponse build() {
+            return new HubItemsManageResponse(
+                operations
+            );
+        }
+    }
 }

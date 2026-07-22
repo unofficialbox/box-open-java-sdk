@@ -16,4 +16,24 @@ public record OptionsStaticConfig(Optional<StaticConfigClassification> classific
             (!_m.containsKey("classification") || _m.get("classification") == null) ? java.util.Optional.<StaticConfigClassification>empty() : java.util.Optional.of((_m.get("classification") == null ? null : StaticConfigClassification.fromJson(_m.get("classification"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<StaticConfigClassification> classification = java.util.Optional.empty();
+
+        public Builder classification(StaticConfigClassification classification) {
+            this.classification = java.util.Optional.ofNullable(classification);
+            return this;
+        }
+
+        public OptionsStaticConfig build() {
+            return new OptionsStaticConfig(
+                classification
+            );
+        }
+    }
 }

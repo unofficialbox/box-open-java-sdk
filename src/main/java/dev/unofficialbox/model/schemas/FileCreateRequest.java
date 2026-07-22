@@ -18,4 +18,30 @@ public record FileCreateRequest(Optional<String> name, Optional<PostFileIdParent
             (!_m.containsKey("parent") || _m.get("parent") == null) ? java.util.Optional.<PostFileIdParent>empty() : java.util.Optional.of((_m.get("parent") == null ? null : PostFileIdParent.fromJson(_m.get("parent"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<PostFileIdParent> parent = java.util.Optional.empty();
+
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder parent(PostFileIdParent parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+
+        public FileCreateRequest build() {
+            return new FileCreateRequest(
+                name,
+                parent
+            );
+        }
+    }
 }

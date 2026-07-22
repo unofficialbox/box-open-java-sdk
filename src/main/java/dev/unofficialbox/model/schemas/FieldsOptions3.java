@@ -18,4 +18,30 @@ public record FieldsOptions3(String key, Optional<String> id) {
             (!_m.containsKey("id") || _m.get("id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("id")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String key;
+        private Optional<String> id = java.util.Optional.empty();
+
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+
+        public FieldsOptions3 build() {
+            return new FieldsOptions3(
+                key,
+                id
+            );
+        }
+    }
 }

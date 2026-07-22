@@ -23,4 +23,36 @@ public record ShieldInformationBarrierSegmentCreateRequest(
             (!_m.containsKey("description") || _m.get("description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("description")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldInformationBarrierBase shieldInformationBarrier;
+        private String name;
+        private Optional<String> description = java.util.Optional.empty();
+
+        public Builder shieldInformationBarrier(ShieldInformationBarrierBase shieldInformationBarrier) {
+            this.shieldInformationBarrier = shieldInformationBarrier;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+
+        public ShieldInformationBarrierSegmentCreateRequest build() {
+            return new ShieldInformationBarrierSegmentCreateRequest(
+                shieldInformationBarrier,
+                name,
+                description
+            );
+        }
+    }
 }

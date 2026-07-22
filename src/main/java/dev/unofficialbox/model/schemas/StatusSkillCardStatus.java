@@ -18,4 +18,30 @@ public record StatusSkillCardStatus(StatusCode code, Optional<String> message) {
             (!_m.containsKey("message") || _m.get("message") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("message")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private StatusCode code;
+        private Optional<String> message = java.util.Optional.empty();
+
+        public Builder code(StatusCode code) {
+            this.code = code;
+            return this;
+        }
+        public Builder message(String message) {
+            this.message = java.util.Optional.ofNullable(message);
+            return this;
+        }
+
+        public StatusSkillCardStatus build() {
+            return new StatusSkillCardStatus(
+                code,
+                message
+            );
+        }
+    }
 }

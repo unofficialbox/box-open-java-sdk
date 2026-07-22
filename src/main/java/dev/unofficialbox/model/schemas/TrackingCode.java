@@ -23,4 +23,36 @@ public record TrackingCode(
             (!_m.containsKey("value") || _m.get("value") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("value")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<TrackingCodeType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> value = java.util.Optional.empty();
+
+        public Builder type(TrackingCodeType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder value(String value) {
+            this.value = java.util.Optional.ofNullable(value);
+            return this;
+        }
+
+        public TrackingCode build() {
+            return new TrackingCode(
+                type,
+                name,
+                value
+            );
+        }
+    }
 }

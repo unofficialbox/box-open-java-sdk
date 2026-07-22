@@ -16,4 +16,24 @@ public record DocGenTemplateBase(Optional<FileReference> file) {
             (!_m.containsKey("file") || _m.get("file") == null) ? java.util.Optional.<FileReference>empty() : java.util.Optional.of((_m.get("file") == null ? null : FileReference.fromJson(_m.get("file"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<FileReference> file = java.util.Optional.empty();
+
+        public Builder file(FileReference file) {
+            this.file = java.util.Optional.ofNullable(file);
+            return this;
+        }
+
+        public DocGenTemplateBase build() {
+            return new DocGenTemplateBase(
+                file
+            );
+        }
+    }
 }

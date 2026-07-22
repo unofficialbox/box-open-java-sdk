@@ -26,4 +26,42 @@ public record AiCitation(
             (!_m.containsKey("name") || _m.get("name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("name")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> content = java.util.Optional.empty();
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<AiCitationType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+
+        public Builder content(String content) {
+            this.content = java.util.Optional.ofNullable(content);
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+
+        public AiCitation build() {
+            return new AiCitation(
+                content,
+                id,
+                type,
+                name
+            );
+        }
+    }
 }

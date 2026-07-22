@@ -23,4 +23,36 @@ public record WebhookCreateRequest(
             dev.unofficialbox.core.Json.decodeList(_m.get("triggers"), _x0 -> (_x0 == null ? null : WebhookTriggers.fromJson(_x0)))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private WebhookTarget target;
+        private String address;
+        private List<WebhookTriggers> triggers;
+
+        public Builder target(WebhookTarget target) {
+            this.target = target;
+            return this;
+        }
+        public Builder address(String address) {
+            this.address = address;
+            return this;
+        }
+        public Builder triggers(List<WebhookTriggers> triggers) {
+            this.triggers = triggers;
+            return this;
+        }
+
+        public WebhookCreateRequest build() {
+            return new WebhookCreateRequest(
+                target,
+                address,
+                triggers
+            );
+        }
+    }
 }

@@ -32,4 +32,54 @@ public record MetadataCascadePolicy(
             (!_m.containsKey("templateKey") || _m.get("templateKey") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("templateKey")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private MetadataCascadePolicyType type;
+        private Optional<MetadataCascadePolicyOwnerEnterprise> ownerEnterprise = java.util.Optional.empty();
+        private Optional<MetadataCascadePolicyParent> parent = java.util.Optional.empty();
+        private Optional<String> scope = java.util.Optional.empty();
+        private Optional<String> templateKey = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(MetadataCascadePolicyType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder ownerEnterprise(MetadataCascadePolicyOwnerEnterprise ownerEnterprise) {
+            this.ownerEnterprise = java.util.Optional.ofNullable(ownerEnterprise);
+            return this;
+        }
+        public Builder parent(MetadataCascadePolicyParent parent) {
+            this.parent = java.util.Optional.ofNullable(parent);
+            return this;
+        }
+        public Builder scope(String scope) {
+            this.scope = java.util.Optional.ofNullable(scope);
+            return this;
+        }
+        public Builder templateKey(String templateKey) {
+            this.templateKey = java.util.Optional.ofNullable(templateKey);
+            return this;
+        }
+
+        public MetadataCascadePolicy build() {
+            return new MetadataCascadePolicy(
+                id,
+                type,
+                ownerEnterprise,
+                parent,
+                scope,
+                templateKey
+            );
+        }
+    }
 }

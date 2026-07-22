@@ -18,4 +18,30 @@ public record CollaborationWhitelistEntriesCreateRequest(
             (_m.get("direction") == null ? null : CollaborationAllowlistEntryDirection.fromJson(_m.get("direction")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String domain;
+        private CollaborationAllowlistEntryDirection direction;
+
+        public Builder domain(String domain) {
+            this.domain = domain;
+            return this;
+        }
+        public Builder direction(CollaborationAllowlistEntryDirection direction) {
+            this.direction = direction;
+            return this;
+        }
+
+        public CollaborationWhitelistEntriesCreateRequest build() {
+            return new CollaborationWhitelistEntriesCreateRequest(
+                domain,
+                direction
+            );
+        }
+    }
 }

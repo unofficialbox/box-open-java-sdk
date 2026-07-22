@@ -14,4 +14,24 @@ public record UserFolder0UpdateRequest(AttributesParent ownedBy) {
             (_m.get("owned_by") == null ? null : AttributesParent.fromJson(_m.get("owned_by")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AttributesParent ownedBy;
+
+        public Builder ownedBy(AttributesParent ownedBy) {
+            this.ownedBy = ownedBy;
+            return this;
+        }
+
+        public UserFolder0UpdateRequest build() {
+            return new UserFolder0UpdateRequest(
+                ownedBy
+            );
+        }
+    }
 }

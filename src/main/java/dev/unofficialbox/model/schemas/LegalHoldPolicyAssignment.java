@@ -35,4 +35,60 @@ public record LegalHoldPolicyAssignment(
             (!_m.containsKey("deleted_at") || _m.get("deleted_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("deleted_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("deleted_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyAssignmentType> type = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyMini> legalHoldPolicy = java.util.Optional.empty();
+        private Optional<LegalHoldPolicyAssignedItem> assignedTo = java.util.Optional.empty();
+        private Optional<UserMini> assignedBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> assignedAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> deletedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(LegalHoldPolicyAssignmentType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder legalHoldPolicy(LegalHoldPolicyMini legalHoldPolicy) {
+            this.legalHoldPolicy = java.util.Optional.ofNullable(legalHoldPolicy);
+            return this;
+        }
+        public Builder assignedTo(LegalHoldPolicyAssignedItem assignedTo) {
+            this.assignedTo = java.util.Optional.ofNullable(assignedTo);
+            return this;
+        }
+        public Builder assignedBy(UserMini assignedBy) {
+            this.assignedBy = java.util.Optional.ofNullable(assignedBy);
+            return this;
+        }
+        public Builder assignedAt(OffsetDateTime assignedAt) {
+            this.assignedAt = java.util.Optional.ofNullable(assignedAt);
+            return this;
+        }
+        public Builder deletedAt(OffsetDateTime deletedAt) {
+            this.deletedAt = java.util.Optional.ofNullable(deletedAt);
+            return this;
+        }
+
+        public LegalHoldPolicyAssignment build() {
+            return new LegalHoldPolicyAssignment(
+                id,
+                type,
+                legalHoldPolicy,
+                assignedTo,
+                assignedBy,
+                assignedAt,
+                deletedAt
+            );
+        }
+    }
 }

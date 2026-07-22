@@ -20,4 +20,36 @@ public record DocGenTag(String tagContent, DocGenTagTagType tagType, List<String
             dev.unofficialbox.core.Json.decodeList(_m.get("json_paths"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String tagContent;
+        private DocGenTagTagType tagType;
+        private List<String> jsonPaths;
+
+        public Builder tagContent(String tagContent) {
+            this.tagContent = tagContent;
+            return this;
+        }
+        public Builder tagType(DocGenTagTagType tagType) {
+            this.tagType = tagType;
+            return this;
+        }
+        public Builder jsonPaths(List<String> jsonPaths) {
+            this.jsonPaths = jsonPaths;
+            return this;
+        }
+
+        public DocGenTag build() {
+            return new DocGenTag(
+                tagContent,
+                tagType,
+                jsonPaths
+            );
+        }
+    }
 }

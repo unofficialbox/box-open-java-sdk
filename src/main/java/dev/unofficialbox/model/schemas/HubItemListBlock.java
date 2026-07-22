@@ -24,4 +24,36 @@ public record HubItemListBlock(
             (_m.get("type") == null ? null : HubItemListBlockType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> parentId;
+        private HubItemListBlockType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder parentId(Tristate<String> parentId) {
+            this.parentId = parentId;
+            return this;
+        }
+        public Builder type(HubItemListBlockType type) {
+            this.type = type;
+            return this;
+        }
+
+        public HubItemListBlock build() {
+            return new HubItemListBlock(
+                id,
+                parentId,
+                type
+            );
+        }
+    }
 }

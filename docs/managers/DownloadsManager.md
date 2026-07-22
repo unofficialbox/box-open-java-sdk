@@ -19,3 +19,9 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** a binary stream (`Runtime.Stream`)
 
+**Example**
+
+```java
+var result = client.downloads.getFileContent("FILE_ID", null);
+```
+

@@ -37,4 +37,60 @@ public record FileFullLock(
             !_m.containsKey("app_type") ? dev.unofficialbox.core.Tristate.<LockAppType>absent() : (_m.get("app_type") == null ? dev.unofficialbox.core.Tristate.<LockAppType>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("app_type") == null ? null : LockAppType.fromJson(_m.get("app_type")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<LockType> type = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> expiredAt = java.util.Optional.empty();
+        private Optional<Boolean> isDownloadPrevented = java.util.Optional.empty();
+        private Tristate<LockAppType> appType;
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(LockType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder expiredAt(OffsetDateTime expiredAt) {
+            this.expiredAt = java.util.Optional.ofNullable(expiredAt);
+            return this;
+        }
+        public Builder isDownloadPrevented(Boolean isDownloadPrevented) {
+            this.isDownloadPrevented = java.util.Optional.ofNullable(isDownloadPrevented);
+            return this;
+        }
+        public Builder appType(Tristate<LockAppType> appType) {
+            this.appType = appType;
+            return this;
+        }
+
+        public FileFullLock build() {
+            return new FileFullLock(
+                id,
+                type,
+                createdBy,
+                createdAt,
+                expiredAt,
+                isDownloadPrevented,
+                appType
+            );
+        }
+    }
 }

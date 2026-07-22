@@ -35,4 +35,60 @@ public record GroupMembership(
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<GroupMembershipType> type = java.util.Optional.empty();
+        private Optional<UserMini> user = java.util.Optional.empty();
+        private Optional<GroupMini> group = java.util.Optional.empty();
+        private Optional<GroupMembershipRole> role = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(GroupMembershipType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder user(UserMini user) {
+            this.user = java.util.Optional.ofNullable(user);
+            return this;
+        }
+        public Builder group(GroupMini group) {
+            this.group = java.util.Optional.ofNullable(group);
+            return this;
+        }
+        public Builder role(GroupMembershipRole role) {
+            this.role = java.util.Optional.ofNullable(role);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+
+        public GroupMembership build() {
+            return new GroupMembership(
+                id,
+                type,
+                user,
+                group,
+                role,
+                createdAt,
+                modifiedAt
+            );
+        }
+    }
 }

@@ -20,4 +20,36 @@ public record AiTextGenItems(String id, AiCitationType type, Optional<String> co
             (!_m.containsKey("content") || _m.get("content") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("content")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private AiCitationType type;
+        private Optional<String> content = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder content(String content) {
+            this.content = java.util.Optional.ofNullable(content);
+            return this;
+        }
+
+        public AiTextGenItems build() {
+            return new AiTextGenItems(
+                id,
+                type,
+                content
+            );
+        }
+    }
 }

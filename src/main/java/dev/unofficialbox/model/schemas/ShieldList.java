@@ -38,4 +38,66 @@ public record ShieldList(
             (_m.get("content") == null ? null : ShieldListContent.fromJson(_m.get("content")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private String type;
+        private String name;
+        private EnterpriseReference enterprise;
+        private Optional<String> description = java.util.Optional.empty();
+        private OffsetDateTime createdAt;
+        private OffsetDateTime updatedAt;
+        private ShieldListContent content;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(String type) {
+            this.type = type;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder enterprise(EnterpriseReference enterprise) {
+            this.enterprise = enterprise;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
+        public Builder content(ShieldListContent content) {
+            this.content = content;
+            return this;
+        }
+
+        public ShieldList build() {
+            return new ShieldList(
+                id,
+                type,
+                name,
+                enterprise,
+                description,
+                createdAt,
+                updatedAt,
+                content
+            );
+        }
+    }
 }

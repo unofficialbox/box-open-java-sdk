@@ -20,4 +20,30 @@ public record StaticConfigClassification(
             (!_m.containsKey("colorID") || _m.get("colorID") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("colorID")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> classificationDefinition = java.util.Optional.empty();
+        private Optional<Long> colorID = java.util.Optional.empty();
+
+        public Builder classificationDefinition(String classificationDefinition) {
+            this.classificationDefinition = java.util.Optional.ofNullable(classificationDefinition);
+            return this;
+        }
+        public Builder colorID(Long colorID) {
+            this.colorID = java.util.Optional.ofNullable(colorID);
+            return this;
+        }
+
+        public StaticConfigClassification build() {
+            return new StaticConfigClassification(
+                classificationDefinition,
+                colorID
+            );
+        }
+    }
 }

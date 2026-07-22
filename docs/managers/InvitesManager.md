@@ -17,6 +17,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `Invite`
 
+**Example**
+
+```java
+var result = client.invites.create(new InviteCreateRequest(/* … */), null);
+```
+
 ## get
 
 `GET /invites/{invite_id}`
@@ -27,4 +33,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `Invite`
+
+**Example**
+
+```java
+var result = client.invites.get("INVITE_ID", null);
+```
 

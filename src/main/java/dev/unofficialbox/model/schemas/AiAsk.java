@@ -32,4 +32,54 @@ public record AiAsk(
             (!_m.containsKey("ai_agent") || _m.get("ai_agent") == null) ? java.util.Optional.<AiAskAgent>empty() : java.util.Optional.of((_m.get("ai_agent") == null ? null : AiAskAgent.fromJson(_m.get("ai_agent"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiAskMode mode;
+        private String prompt;
+        private List<AiItemAsk> items;
+        private Optional<List<AiDialogueHistory>> dialogueHistory = java.util.Optional.empty();
+        private Optional<Boolean> includeCitations = java.util.Optional.empty();
+        private Optional<AiAskAgent> aiAgent = java.util.Optional.empty();
+
+        public Builder mode(AiAskMode mode) {
+            this.mode = mode;
+            return this;
+        }
+        public Builder prompt(String prompt) {
+            this.prompt = prompt;
+            return this;
+        }
+        public Builder items(List<AiItemAsk> items) {
+            this.items = items;
+            return this;
+        }
+        public Builder dialogueHistory(List<AiDialogueHistory> dialogueHistory) {
+            this.dialogueHistory = java.util.Optional.ofNullable(dialogueHistory);
+            return this;
+        }
+        public Builder includeCitations(Boolean includeCitations) {
+            this.includeCitations = java.util.Optional.ofNullable(includeCitations);
+            return this;
+        }
+        public Builder aiAgent(AiAskAgent aiAgent) {
+            this.aiAgent = java.util.Optional.ofNullable(aiAgent);
+            return this;
+        }
+
+        public AiAsk build() {
+            return new AiAsk(
+                mode,
+                prompt,
+                items,
+                dialogueHistory,
+                includeCitations,
+                aiAgent
+            );
+        }
+    }
 }

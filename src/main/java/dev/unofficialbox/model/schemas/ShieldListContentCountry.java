@@ -20,4 +20,30 @@ public record ShieldListContentCountry(
             dev.unofficialbox.core.Json.decodeList(_m.get("country_codes"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private ShieldListContentCountryType type;
+        private List<String> countryCodes;
+
+        public Builder type(ShieldListContentCountryType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder countryCodes(List<String> countryCodes) {
+            this.countryCodes = countryCodes;
+            return this;
+        }
+
+        public ShieldListContentCountry build() {
+            return new ShieldListContentCountry(
+                type,
+                countryCodes
+            );
+        }
+    }
 }

@@ -18,4 +18,36 @@ public record FileClassificationUpdateRequest(PutOp op, PutPath path, String val
             dev.unofficialbox.core.Json.asString(_m.get("value"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private PutOp op;
+        private PutPath path;
+        private String value;
+
+        public Builder op(PutOp op) {
+            this.op = op;
+            return this;
+        }
+        public Builder path(PutPath path) {
+            this.path = path;
+            return this;
+        }
+        public Builder value(String value) {
+            this.value = value;
+            return this;
+        }
+
+        public FileClassificationUpdateRequest build() {
+            return new FileClassificationUpdateRequest(
+                op,
+                path,
+                value
+            );
+        }
+    }
 }

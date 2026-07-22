@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `MetadataCascadePolicies`
 
+**Example**
+
+```java
+for (var item : client.metadataCascadePolicies.list("FOLDER_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -30,6 +38,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataCascadePolicy`
 
+**Example**
+
+```java
+var result = client.metadataCascadePolicies.create(new MetadataCascadePolicyCreateRequest(/* … */));
+```
+
 ## get
 
 `GET /metadata_cascade_policies/{metadata_cascade_policy_id}`
@@ -40,6 +54,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `MetadataCascadePolicy`
 
+**Example**
+
+```java
+var result = client.metadataCascadePolicies.get("METADATA_CASCADE_POLICY_ID");
+```
+
 ## delete
 
 `DELETE /metadata_cascade_policies/{metadata_cascade_policy_id}`
@@ -49,6 +69,12 @@ the [pagination guide](../pagination.md).
 | `metadata_cascade_policy_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.metadataCascadePolicies.delete("METADATA_CASCADE_POLICY_ID");
+```
 
 ## apply
 
@@ -61,4 +87,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `MetadataCascadePolicyApplyRequest`
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.metadataCascadePolicies.apply("METADATA_CASCADE_POLICY_ID", new MetadataCascadePolicyApplyRequest(/* … */));
+```
 

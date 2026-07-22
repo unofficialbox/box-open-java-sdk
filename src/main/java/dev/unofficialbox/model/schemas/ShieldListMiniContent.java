@@ -16,4 +16,24 @@ public record ShieldListMiniContent(Optional<String> type) {
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> type = java.util.Optional.empty();
+
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+
+        public ShieldListMiniContent build() {
+            return new ShieldListMiniContent(
+                type
+            );
+        }
+    }
 }

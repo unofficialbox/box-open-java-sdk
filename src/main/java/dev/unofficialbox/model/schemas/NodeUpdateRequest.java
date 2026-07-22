@@ -16,4 +16,24 @@ public record NodeUpdateRequest(Optional<String> displayName) {
             (!_m.containsKey("displayName") || _m.get("displayName") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("displayName")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> displayName = java.util.Optional.empty();
+
+        public Builder displayName(String displayName) {
+            this.displayName = java.util.Optional.ofNullable(displayName);
+            return this;
+        }
+
+        public NodeUpdateRequest build() {
+            return new NodeUpdateRequest(
+                displayName
+            );
+        }
+    }
 }

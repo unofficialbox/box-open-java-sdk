@@ -23,4 +23,36 @@ public record HubCopyRequest(
             (!_m.containsKey("include_items") || _m.get("include_items") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("include_items")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> title = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Boolean> includeItems = java.util.Optional.empty();
+
+        public Builder title(String title) {
+            this.title = java.util.Optional.ofNullable(title);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder includeItems(Boolean includeItems) {
+            this.includeItems = java.util.Optional.ofNullable(includeItems);
+            return this;
+        }
+
+        public HubCopyRequest build() {
+            return new HubCopyRequest(
+                title,
+                description,
+                includeItems
+            );
+        }
+    }
 }

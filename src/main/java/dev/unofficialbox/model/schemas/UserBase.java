@@ -16,4 +16,30 @@ public record UserBase(String id, VariableValueType type) implements AiAgentAllo
             (_m.get("type") == null ? null : VariableValueType.fromJson(_m.get("type")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private VariableValueType type;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(VariableValueType type) {
+            this.type = type;
+            return this;
+        }
+
+        public UserBase build() {
+            return new UserBase(
+                id,
+                type
+            );
+        }
+    }
 }

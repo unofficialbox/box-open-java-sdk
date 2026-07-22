@@ -13,6 +13,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ZipDownload`
 
+**Example**
+
+```java
+var result = client.zipDownloads.create(new ZipDownloadRequest(/* … */));
+```
+
 ## getContent
 
 `GET /zip_downloads/{zip_download_id}/content`
@@ -23,6 +29,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** a binary stream (`Runtime.Stream`)
 
+**Example**
+
+```java
+var result = client.zipDownloads.getContent("ZIP_DOWNLOAD_ID");
+```
+
 ## getStatus
 
 `GET /zip_downloads/{zip_download_id}/status`
@@ -32,4 +44,10 @@ Each is a **blocking** call returning its value directly and throwing
 | `zip_download_id` | path | `String` | yes |
 
 **Returns:** `ZipDownloadStatus`
+
+**Example**
+
+```java
+var result = client.zipDownloads.getStatus("ZIP_DOWNLOAD_ID");
+```
 

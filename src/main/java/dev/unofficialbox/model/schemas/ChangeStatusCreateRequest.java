@@ -16,4 +16,30 @@ public record ChangeStatusCreateRequest(String id, PostChangeStatusStatus status
             (_m.get("status") == null ? null : PostChangeStatusStatus.fromJson(_m.get("status")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private PostChangeStatusStatus status;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder status(PostChangeStatusStatus status) {
+            this.status = status;
+            return this;
+        }
+
+        public ChangeStatusCreateRequest build() {
+            return new ChangeStatusCreateRequest(
+                id,
+                status
+            );
+        }
+    }
 }

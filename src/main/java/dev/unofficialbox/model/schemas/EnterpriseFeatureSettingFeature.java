@@ -17,4 +17,24 @@ public record EnterpriseFeatureSettingFeature(Tristate<String> id) {
             !_m.containsKey("id") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("id") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("id"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> id;
+
+        public Builder id(Tristate<String> id) {
+            this.id = id;
+            return this;
+        }
+
+        public EnterpriseFeatureSettingFeature build() {
+            return new EnterpriseFeatureSettingFeature(
+                id
+            );
+        }
+    }
 }

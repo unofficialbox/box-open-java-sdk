@@ -21,4 +21,36 @@ public record CompletionRuleVariable(
             (_m.get("variable_value") == null ? null : CompletionRuleVariableVariableValue.fromJson(_m.get("variable_value")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private CollaboratorVariableType type;
+        private CompletionRuleVariableVariableType variableType;
+        private CompletionRuleVariableVariableValue variableValue;
+
+        public Builder type(CollaboratorVariableType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder variableType(CompletionRuleVariableVariableType variableType) {
+            this.variableType = variableType;
+            return this;
+        }
+        public Builder variableValue(CompletionRuleVariableVariableValue variableValue) {
+            this.variableValue = variableValue;
+            return this;
+        }
+
+        public CompletionRuleVariable build() {
+            return new CompletionRuleVariable(
+                type,
+                variableType,
+                variableValue
+            );
+        }
+    }
 }

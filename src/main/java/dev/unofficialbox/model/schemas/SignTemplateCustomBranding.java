@@ -30,4 +30,42 @@ public record SignTemplateCustomBranding(
             !_m.containsKey("email_footer_text") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("email_footer_text") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("email_footer_text"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Tristate<String> companyName;
+        private Tristate<String> logoUri;
+        private Tristate<String> brandingColor;
+        private Tristate<String> emailFooterText;
+
+        public Builder companyName(Tristate<String> companyName) {
+            this.companyName = companyName;
+            return this;
+        }
+        public Builder logoUri(Tristate<String> logoUri) {
+            this.logoUri = logoUri;
+            return this;
+        }
+        public Builder brandingColor(Tristate<String> brandingColor) {
+            this.brandingColor = brandingColor;
+            return this;
+        }
+        public Builder emailFooterText(Tristate<String> emailFooterText) {
+            this.emailFooterText = emailFooterText;
+            return this;
+        }
+
+        public SignTemplateCustomBranding build() {
+            return new SignTemplateCustomBranding(
+                companyName,
+                logoUri,
+                brandingColor,
+                emailFooterText
+            );
+        }
+    }
 }

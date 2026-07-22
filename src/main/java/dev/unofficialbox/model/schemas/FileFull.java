@@ -156,4 +156,276 @@ public record FileFull(
             (!_m.containsKey("is_associated_with_app_item") || _m.get("is_associated_with_app_item") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_associated_with_app_item")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private Tristate<String> etag;
+        private AiCitationType type;
+        private Optional<String> sequenceId = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<String> sha1 = java.util.Optional.empty();
+        private Optional<FileVersionMini> fileVersion = java.util.Optional.empty();
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+        private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> trashedAt;
+        private Tristate<OffsetDateTime> purgedAt;
+        private Tristate<OffsetDateTime> contentCreatedAt;
+        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<UserMini> modifiedBy = java.util.Optional.empty();
+        private Optional<UserMini> ownedBy = java.util.Optional.empty();
+        private Tristate<FileSharedLink> sharedLink;
+        private Tristate<FolderMini> parent;
+        private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
+        private Optional<String> versionNumber = java.util.Optional.empty();
+        private Optional<Long> commentCount = java.util.Optional.empty();
+        private Optional<FileFullPermissions> permissions = java.util.Optional.empty();
+        private Optional<List<String>> tags = java.util.Optional.empty();
+        private Tristate<FileFullLock> lock;
+        private Optional<String> extension = java.util.Optional.empty();
+        private Optional<Boolean> isPackage = java.util.Optional.empty();
+        private Optional<FileFullExpiringEmbedLink> expiringEmbedLink = java.util.Optional.empty();
+        private Optional<FileFullWatermarkInfo> watermarkInfo = java.util.Optional.empty();
+        private Optional<Boolean> isAccessibleViaSharedLink = java.util.Optional.empty();
+        private Optional<List<FileFullAllowedInviteeRoles>> allowedInviteeRoles = java.util.Optional.empty();
+        private Optional<Boolean> isExternallyOwned = java.util.Optional.empty();
+        private Optional<Boolean> hasCollaborations = java.util.Optional.empty();
+        private Optional<Map<String, Map<String, MetadataFull>>> metadata = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> expiresAt;
+        private Optional<FileFullRepresentations> representations = java.util.Optional.empty();
+        private Tristate<FileFullClassification> classification;
+        private Optional<String> uploaderDisplayName = java.util.Optional.empty();
+        private Tristate<OffsetDateTime> dispositionAt;
+        private Tristate<List<FileFullSharedLinkPermissionOptions>> sharedLinkPermissionOptions;
+        private Optional<Boolean> isAssociatedWithAppItem = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder etag(Tristate<String> etag) {
+            this.etag = etag;
+            return this;
+        }
+        public Builder type(AiCitationType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder sequenceId(String sequenceId) {
+            this.sequenceId = java.util.Optional.ofNullable(sequenceId);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = java.util.Optional.ofNullable(sha1);
+            return this;
+        }
+        public Builder fileVersion(FileVersionMini fileVersion) {
+            this.fileVersion = java.util.Optional.ofNullable(fileVersion);
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+        public Builder pathCollection(FilePathCollection pathCollection) {
+            this.pathCollection = java.util.Optional.ofNullable(pathCollection);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder modifiedAt(OffsetDateTime modifiedAt) {
+            this.modifiedAt = java.util.Optional.ofNullable(modifiedAt);
+            return this;
+        }
+        public Builder trashedAt(Tristate<OffsetDateTime> trashedAt) {
+            this.trashedAt = trashedAt;
+            return this;
+        }
+        public Builder purgedAt(Tristate<OffsetDateTime> purgedAt) {
+            this.purgedAt = purgedAt;
+            return this;
+        }
+        public Builder contentCreatedAt(Tristate<OffsetDateTime> contentCreatedAt) {
+            this.contentCreatedAt = contentCreatedAt;
+            return this;
+        }
+        public Builder contentModifiedAt(Tristate<OffsetDateTime> contentModifiedAt) {
+            this.contentModifiedAt = contentModifiedAt;
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder modifiedBy(UserMini modifiedBy) {
+            this.modifiedBy = java.util.Optional.ofNullable(modifiedBy);
+            return this;
+        }
+        public Builder ownedBy(UserMini ownedBy) {
+            this.ownedBy = java.util.Optional.ofNullable(ownedBy);
+            return this;
+        }
+        public Builder sharedLink(Tristate<FileSharedLink> sharedLink) {
+            this.sharedLink = sharedLink;
+            return this;
+        }
+        public Builder parent(Tristate<FolderMini> parent) {
+            this.parent = parent;
+            return this;
+        }
+        public Builder itemStatus(FileItemStatus itemStatus) {
+            this.itemStatus = java.util.Optional.ofNullable(itemStatus);
+            return this;
+        }
+        public Builder versionNumber(String versionNumber) {
+            this.versionNumber = java.util.Optional.ofNullable(versionNumber);
+            return this;
+        }
+        public Builder commentCount(Long commentCount) {
+            this.commentCount = java.util.Optional.ofNullable(commentCount);
+            return this;
+        }
+        public Builder permissions(FileFullPermissions permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+        public Builder tags(List<String> tags) {
+            this.tags = java.util.Optional.ofNullable(tags);
+            return this;
+        }
+        public Builder lock(Tristate<FileFullLock> lock) {
+            this.lock = lock;
+            return this;
+        }
+        public Builder extension(String extension) {
+            this.extension = java.util.Optional.ofNullable(extension);
+            return this;
+        }
+        public Builder isPackage(Boolean isPackage) {
+            this.isPackage = java.util.Optional.ofNullable(isPackage);
+            return this;
+        }
+        public Builder expiringEmbedLink(FileFullExpiringEmbedLink expiringEmbedLink) {
+            this.expiringEmbedLink = java.util.Optional.ofNullable(expiringEmbedLink);
+            return this;
+        }
+        public Builder watermarkInfo(FileFullWatermarkInfo watermarkInfo) {
+            this.watermarkInfo = java.util.Optional.ofNullable(watermarkInfo);
+            return this;
+        }
+        public Builder isAccessibleViaSharedLink(Boolean isAccessibleViaSharedLink) {
+            this.isAccessibleViaSharedLink = java.util.Optional.ofNullable(isAccessibleViaSharedLink);
+            return this;
+        }
+        public Builder allowedInviteeRoles(List<FileFullAllowedInviteeRoles> allowedInviteeRoles) {
+            this.allowedInviteeRoles = java.util.Optional.ofNullable(allowedInviteeRoles);
+            return this;
+        }
+        public Builder isExternallyOwned(Boolean isExternallyOwned) {
+            this.isExternallyOwned = java.util.Optional.ofNullable(isExternallyOwned);
+            return this;
+        }
+        public Builder hasCollaborations(Boolean hasCollaborations) {
+            this.hasCollaborations = java.util.Optional.ofNullable(hasCollaborations);
+            return this;
+        }
+        public Builder metadata(Map<String, Map<String, MetadataFull>> metadata) {
+            this.metadata = java.util.Optional.ofNullable(metadata);
+            return this;
+        }
+        public Builder expiresAt(Tristate<OffsetDateTime> expiresAt) {
+            this.expiresAt = expiresAt;
+            return this;
+        }
+        public Builder representations(FileFullRepresentations representations) {
+            this.representations = java.util.Optional.ofNullable(representations);
+            return this;
+        }
+        public Builder classification(Tristate<FileFullClassification> classification) {
+            this.classification = classification;
+            return this;
+        }
+        public Builder uploaderDisplayName(String uploaderDisplayName) {
+            this.uploaderDisplayName = java.util.Optional.ofNullable(uploaderDisplayName);
+            return this;
+        }
+        public Builder dispositionAt(Tristate<OffsetDateTime> dispositionAt) {
+            this.dispositionAt = dispositionAt;
+            return this;
+        }
+        public Builder sharedLinkPermissionOptions(Tristate<List<FileFullSharedLinkPermissionOptions>> sharedLinkPermissionOptions) {
+            this.sharedLinkPermissionOptions = sharedLinkPermissionOptions;
+            return this;
+        }
+        public Builder isAssociatedWithAppItem(Boolean isAssociatedWithAppItem) {
+            this.isAssociatedWithAppItem = java.util.Optional.ofNullable(isAssociatedWithAppItem);
+            return this;
+        }
+
+        public FileFull build() {
+            return new FileFull(
+                id,
+                etag,
+                type,
+                sequenceId,
+                name,
+                sha1,
+                fileVersion,
+                description,
+                size,
+                pathCollection,
+                createdAt,
+                modifiedAt,
+                trashedAt,
+                purgedAt,
+                contentCreatedAt,
+                contentModifiedAt,
+                createdBy,
+                modifiedBy,
+                ownedBy,
+                sharedLink,
+                parent,
+                itemStatus,
+                versionNumber,
+                commentCount,
+                permissions,
+                tags,
+                lock,
+                extension,
+                isPackage,
+                expiringEmbedLink,
+                watermarkInfo,
+                isAccessibleViaSharedLink,
+                allowedInviteeRoles,
+                isExternallyOwned,
+                hasCollaborations,
+                metadata,
+                expiresAt,
+                representations,
+                classification,
+                uploaderDisplayName,
+                dispositionAt,
+                sharedLinkPermissionOptions,
+                isAssociatedWithAppItem
+            );
+        }
+    }
 }

@@ -18,4 +18,30 @@ public record LevelUpdateRequest(String displayName, Optional<String> descriptio
             (!_m.containsKey("description") || _m.get("description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("description")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String displayName;
+        private Optional<String> description = java.util.Optional.empty();
+
+        public Builder displayName(String displayName) {
+            this.displayName = displayName;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+
+        public LevelUpdateRequest build() {
+            return new LevelUpdateRequest(
+                displayName,
+                description
+            );
+        }
+    }
 }

@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldInformationBarrier`
 
+**Example**
+
+```java
+var result = client.shieldInformationBarriers.get("SHIELD_INFORMATION_BARRIER_ID");
+```
+
 ## createChangeStatus
 
 `POST /shield_information_barriers/change_status`
@@ -22,6 +28,12 @@ Each is a **blocking** call returning its value directly and throwing
 **Request body** (`application/json`): `ChangeStatusCreateRequest`
 
 **Returns:** `ShieldInformationBarrier`
+
+**Example**
+
+```java
+var result = client.shieldInformationBarriers.createChangeStatus(new ChangeStatusCreateRequest(/* … */));
+```
 
 ## list
 
@@ -34,6 +46,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `ShieldInformationBarriers`
 
+**Example**
+
+```java
+for (var item : client.shieldInformationBarriers.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -45,4 +65,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `ShieldInformationBarrierCreateRequest`
 
 **Returns:** `ShieldInformationBarrier`
+
+**Example**
+
+```java
+var result = client.shieldInformationBarriers.create(new ShieldInformationBarrierCreateRequest(/* … */));
+```
 

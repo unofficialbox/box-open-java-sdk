@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `DevicePinner`
 
+**Example**
+
+```java
+var result = client.devicePinners.get("DEVICE_PINNER_ID");
+```
+
 ## delete
 
 `DELETE /device_pinners/{device_pinner_id}`
@@ -24,6 +30,12 @@ Each is a **blocking** call returning its value directly and throwing
 | `device_pinner_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.devicePinners.delete("DEVICE_PINNER_ID");
+```
 
 ## listEnterprise
 
@@ -37,6 +49,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `direction` | query | `OrderDirection` | no |
 
 **Returns:** `DevicePinners`
+
+**Example**
+
+```java
+for (var item : client.devicePinners.listEnterprise("ENTERPRISE_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listEnterprise(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

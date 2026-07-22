@@ -18,4 +18,30 @@ public record MetadataQueryOrderBy(Optional<String> fieldKey, Optional<OrderByDi
             (!_m.containsKey("direction") || _m.get("direction") == null) ? java.util.Optional.<OrderByDirection>empty() : java.util.Optional.of((_m.get("direction") == null ? null : OrderByDirection.fromJson(_m.get("direction"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> fieldKey = java.util.Optional.empty();
+        private Optional<OrderByDirection> direction = java.util.Optional.empty();
+
+        public Builder fieldKey(String fieldKey) {
+            this.fieldKey = java.util.Optional.ofNullable(fieldKey);
+            return this;
+        }
+        public Builder direction(OrderByDirection direction) {
+            this.direction = java.util.Optional.ofNullable(direction);
+            return this;
+        }
+
+        public MetadataQueryOrderBy build() {
+            return new MetadataQueryOrderBy(
+                fieldKey,
+                direction
+            );
+        }
+    }
 }

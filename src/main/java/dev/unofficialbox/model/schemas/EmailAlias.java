@@ -26,4 +26,42 @@ public record EmailAlias(
             (!_m.containsKey("is_confirmed") || _m.get("is_confirmed") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("is_confirmed")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<EmailAliasType> type = java.util.Optional.empty();
+        private Optional<String> email = java.util.Optional.empty();
+        private Optional<Boolean> isConfirmed = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(EmailAliasType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder email(String email) {
+            this.email = java.util.Optional.ofNullable(email);
+            return this;
+        }
+        public Builder isConfirmed(Boolean isConfirmed) {
+            this.isConfirmed = java.util.Optional.ofNullable(isConfirmed);
+            return this;
+        }
+
+        public EmailAlias build() {
+            return new EmailAlias(
+                id,
+                type,
+                email,
+                isConfirmed
+            );
+        }
+    }
 }

@@ -41,4 +41,72 @@ public record AutomateWorkflowAction(
             (_m.get("workflow") == null ? null : AutomateWorkflowReference.fromJson(_m.get("workflow")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String id;
+        private AutomateWorkflowActionType type;
+        private AutomateWorkflowActionActionType actionType;
+        private Optional<String> description = java.util.Optional.empty();
+        private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
+        private Optional<OffsetDateTime> updatedAt = java.util.Optional.empty();
+        private Optional<UserMini> createdBy = java.util.Optional.empty();
+        private Optional<UserMini> updatedBy = java.util.Optional.empty();
+        private AutomateWorkflowReference workflow;
+
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+        public Builder type(AutomateWorkflowActionType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder actionType(AutomateWorkflowActionActionType actionType) {
+            this.actionType = actionType;
+            return this;
+        }
+        public Builder description(String description) {
+            this.description = java.util.Optional.ofNullable(description);
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = java.util.Optional.ofNullable(createdAt);
+            return this;
+        }
+        public Builder updatedAt(OffsetDateTime updatedAt) {
+            this.updatedAt = java.util.Optional.ofNullable(updatedAt);
+            return this;
+        }
+        public Builder createdBy(UserMini createdBy) {
+            this.createdBy = java.util.Optional.ofNullable(createdBy);
+            return this;
+        }
+        public Builder updatedBy(UserMini updatedBy) {
+            this.updatedBy = java.util.Optional.ofNullable(updatedBy);
+            return this;
+        }
+        public Builder workflow(AutomateWorkflowReference workflow) {
+            this.workflow = workflow;
+            return this;
+        }
+
+        public AutomateWorkflowAction build() {
+            return new AutomateWorkflowAction(
+                id,
+                type,
+                actionType,
+                description,
+                createdAt,
+                updatedAt,
+                createdBy,
+                updatedBy,
+                workflow
+            );
+        }
+    }
 }

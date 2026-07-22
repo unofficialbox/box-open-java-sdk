@@ -29,4 +29,48 @@ public record RealtimeServer(
             (!_m.containsKey("retry_timeout") || _m.get("retry_timeout") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("retry_timeout")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> type = java.util.Optional.empty();
+        private Optional<String> url = java.util.Optional.empty();
+        private Optional<String> ttl = java.util.Optional.empty();
+        private Optional<String> maxRetries = java.util.Optional.empty();
+        private Optional<Long> retryTimeout = java.util.Optional.empty();
+
+        public Builder type(String type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder url(String url) {
+            this.url = java.util.Optional.ofNullable(url);
+            return this;
+        }
+        public Builder ttl(String ttl) {
+            this.ttl = java.util.Optional.ofNullable(ttl);
+            return this;
+        }
+        public Builder maxRetries(String maxRetries) {
+            this.maxRetries = java.util.Optional.ofNullable(maxRetries);
+            return this;
+        }
+        public Builder retryTimeout(Long retryTimeout) {
+            this.retryTimeout = java.util.Optional.ofNullable(retryTimeout);
+            return this;
+        }
+
+        public RealtimeServer build() {
+            return new RealtimeServer(
+                type,
+                url,
+                ttl,
+                maxRetries,
+                retryTimeout
+            );
+        }
+    }
 }

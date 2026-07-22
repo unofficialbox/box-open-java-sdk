@@ -17,6 +17,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `GroupMemberships`
 
+**Example**
+
+```java
+for (var item : client.memberships.listUser("USER_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listUser(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -32,6 +40,14 @@ the [pagination guide](../pagination.md).
 | `offset` | query | `Long` | no |
 
 **Returns:** `GroupMemberships`
+
+**Example**
+
+```java
+for (var item : client.memberships.listGroup("GROUP_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listGroup(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
@@ -49,6 +65,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `GroupMembership`
 
+**Example**
+
+```java
+var result = client.memberships.createGroup(new GroupCreateRequest2(/* … */), null);
+```
+
 ## getGroup
 
 `GET /group_memberships/{group_membership_id}`
@@ -59,6 +81,12 @@ the [pagination guide](../pagination.md).
 | `fields` | query | `List<String>` | no |
 
 **Returns:** `GroupMembership`
+
+**Example**
+
+```java
+var result = client.memberships.getGroup("GROUP_MEMBERSHIP_ID", null);
+```
 
 ## updateGroup
 
@@ -73,6 +101,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `GroupMembership`
 
+**Example**
+
+```java
+var result = client.memberships.updateGroup("GROUP_MEMBERSHIP_ID", new GroupUpdateRequest2(/* … */), null);
+```
+
 ## deleteGroup
 
 `DELETE /group_memberships/{group_membership_id}`
@@ -82,4 +116,10 @@ the [pagination guide](../pagination.md).
 | `group_membership_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.memberships.deleteGroup("GROUP_MEMBERSHIP_ID");
+```
 

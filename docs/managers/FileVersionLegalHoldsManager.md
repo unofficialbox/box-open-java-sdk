@@ -15,6 +15,12 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `FileVersionLegalHold`
 
+**Example**
+
+```java
+var result = client.fileVersionLegalHolds.get("FILE_VERSION_LEGAL_HOLD_ID");
+```
+
 ## list
 
 `GET /file_version_legal_holds`
@@ -26,6 +32,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `limit` | query | `Long` | no |
 
 **Returns:** `FileVersionLegalHolds`
+
+**Example**
+
+```java
+for (var item : client.fileVersionLegalHolds.list("POLICY_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See

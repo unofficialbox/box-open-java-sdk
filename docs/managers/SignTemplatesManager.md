@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `SignTemplates`
 
+**Example**
+
+```java
+for (var item : client.signTemplates.list(null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -29,4 +37,10 @@ the [pagination guide](../pagination.md).
 | `template_id` | path | `String` | yes |
 
 **Returns:** `SignTemplate`
+
+**Example**
+
+```java
+var result = client.signTemplates.get("TEMPLATE_ID");
+```
 

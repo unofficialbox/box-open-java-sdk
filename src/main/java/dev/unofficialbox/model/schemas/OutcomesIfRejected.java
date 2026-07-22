@@ -26,4 +26,42 @@ public record OutcomesIfRejected(
             (!_m.containsKey("action_type") || _m.get("action_type") == null) ? java.util.Optional.<OutcomesActionType>empty() : java.util.Optional.of((_m.get("action_type") == null ? null : OutcomesActionType.fromJson(_m.get("action_type"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> id = java.util.Optional.empty();
+        private Optional<OutcomesType> type = java.util.Optional.empty();
+        private Optional<String> name = java.util.Optional.empty();
+        private Optional<OutcomesActionType> actionType = java.util.Optional.empty();
+
+        public Builder id(String id) {
+            this.id = java.util.Optional.ofNullable(id);
+            return this;
+        }
+        public Builder type(OutcomesType type) {
+            this.type = java.util.Optional.ofNullable(type);
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = java.util.Optional.ofNullable(name);
+            return this;
+        }
+        public Builder actionType(OutcomesActionType actionType) {
+            this.actionType = java.util.Optional.ofNullable(actionType);
+            return this;
+        }
+
+        public OutcomesIfRejected build() {
+            return new OutcomesIfRejected(
+                id,
+                type,
+                name,
+                actionType
+            );
+        }
+    }
 }

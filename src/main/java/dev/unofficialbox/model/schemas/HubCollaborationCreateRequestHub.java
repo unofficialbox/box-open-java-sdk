@@ -16,4 +16,30 @@ public record HubCollaborationCreateRequestHub(HubType type, String id) {
             dev.unofficialbox.core.Json.asString(_m.get("id"))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private HubType type;
+        private String id;
+
+        public Builder type(HubType type) {
+            this.type = type;
+            return this;
+        }
+        public Builder id(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public HubCollaborationCreateRequestHub build() {
+            return new HubCollaborationCreateRequestHub(
+                type,
+                id
+            );
+        }
+    }
 }

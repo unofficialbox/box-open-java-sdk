@@ -16,6 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `CollaborationAllowlistExemptTargets`
 
+**Example**
+
+```java
+for (var item : client.collaborationAllowlistExemptTargets.listCollaborationWhitelistExemptTargets(null)) {
+  // use item
+}
+```
+
 Paginated — `listCollaborationWhitelistExemptTargets(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -28,6 +36,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CollaborationAllowlistExemptTarget`
 
+**Example**
+
+```java
+var result = client.collaborationAllowlistExemptTargets.createCollaborationWhitelistExemptTargets(new CollaborationWhitelistExemptTargetsCreateRequest(/* … */));
+```
+
 ## getCollaborationWhitelistExemptTarget
 
 `GET /collaboration_whitelist_exempt_targets/{collaboration_whitelist_exempt_target_id}`
@@ -38,6 +52,12 @@ the [pagination guide](../pagination.md).
 
 **Returns:** `CollaborationAllowlistExemptTarget`
 
+**Example**
+
+```java
+var result = client.collaborationAllowlistExemptTargets.getCollaborationWhitelistExemptTarget("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
+```
+
 ## deleteCollaborationWhitelistExemptTarget
 
 `DELETE /collaboration_whitelist_exempt_targets/{collaboration_whitelist_exempt_target_id}`
@@ -47,4 +67,10 @@ the [pagination guide](../pagination.md).
 | `collaboration_whitelist_exempt_target_id` | path | `String` | yes |
 
 **Returns:** no content (`void`)
+
+**Example**
+
+```java
+client.collaborationAllowlistExemptTargets.deleteCollaborationWhitelistExemptTarget("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
+```
 

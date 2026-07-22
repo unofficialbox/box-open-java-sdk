@@ -31,4 +31,48 @@ public record PutFileIdAddSharedLinkSharedLink(
             (!_m.containsKey("permissions") || _m.get("permissions") == null) ? java.util.Optional.<SharedLinkPermissions3>empty() : java.util.Optional.of((_m.get("permissions") == null ? null : SharedLinkPermissions3.fromJson(_m.get("permissions"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<SharedLinkAccess> access = java.util.Optional.empty();
+        private Tristate<String> password;
+        private Optional<String> vanityName = java.util.Optional.empty();
+        private Optional<OffsetDateTime> unsharedAt = java.util.Optional.empty();
+        private Optional<SharedLinkPermissions3> permissions = java.util.Optional.empty();
+
+        public Builder access(SharedLinkAccess access) {
+            this.access = java.util.Optional.ofNullable(access);
+            return this;
+        }
+        public Builder password(Tristate<String> password) {
+            this.password = password;
+            return this;
+        }
+        public Builder vanityName(String vanityName) {
+            this.vanityName = java.util.Optional.ofNullable(vanityName);
+            return this;
+        }
+        public Builder unsharedAt(OffsetDateTime unsharedAt) {
+            this.unsharedAt = java.util.Optional.ofNullable(unsharedAt);
+            return this;
+        }
+        public Builder permissions(SharedLinkPermissions3 permissions) {
+            this.permissions = java.util.Optional.ofNullable(permissions);
+            return this;
+        }
+
+        public PutFileIdAddSharedLinkSharedLink build() {
+            return new PutFileIdAddSharedLinkSharedLink(
+                access,
+                password,
+                vanityName,
+                unsharedAt,
+                permissions
+            );
+        }
+    }
 }

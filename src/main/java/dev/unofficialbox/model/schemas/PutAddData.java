@@ -18,4 +18,30 @@ public record PutAddData(String key, Optional<OptionsStaticConfig> staticConfig)
             (!_m.containsKey("staticConfig") || _m.get("staticConfig") == null) ? java.util.Optional.<OptionsStaticConfig>empty() : java.util.Optional.of((_m.get("staticConfig") == null ? null : OptionsStaticConfig.fromJson(_m.get("staticConfig"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String key;
+        private Optional<OptionsStaticConfig> staticConfig = java.util.Optional.empty();
+
+        public Builder key(String key) {
+            this.key = key;
+            return this;
+        }
+        public Builder staticConfig(OptionsStaticConfig staticConfig) {
+            this.staticConfig = java.util.Optional.ofNullable(staticConfig);
+            return this;
+        }
+
+        public PutAddData build() {
+            return new PutAddData(
+                key,
+                staticConfig
+            );
+        }
+    }
 }

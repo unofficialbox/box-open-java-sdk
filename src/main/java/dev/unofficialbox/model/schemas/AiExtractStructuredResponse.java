@@ -32,4 +32,54 @@ public record AiExtractStructuredResponse(
             (!_m.containsKey("ai_agent_info") || _m.get("ai_agent_info") == null) ? java.util.Optional.<AiAgentInfo>empty() : java.util.Optional.of((_m.get("ai_agent_info") == null ? null : AiAgentInfo.fromJson(_m.get("ai_agent_info"))))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private AiExtractResponse answer;
+        private OffsetDateTime createdAt;
+        private Optional<String> completionReason = java.util.Optional.empty();
+        private Optional<Map<String, Object>> confidenceScore = java.util.Optional.empty();
+        private Optional<Map<String, Object>> reference = java.util.Optional.empty();
+        private Optional<AiAgentInfo> aiAgentInfo = java.util.Optional.empty();
+
+        public Builder answer(AiExtractResponse answer) {
+            this.answer = answer;
+            return this;
+        }
+        public Builder createdAt(OffsetDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+        public Builder completionReason(String completionReason) {
+            this.completionReason = java.util.Optional.ofNullable(completionReason);
+            return this;
+        }
+        public Builder confidenceScore(Map<String, Object> confidenceScore) {
+            this.confidenceScore = java.util.Optional.ofNullable(confidenceScore);
+            return this;
+        }
+        public Builder reference(Map<String, Object> reference) {
+            this.reference = java.util.Optional.ofNullable(reference);
+            return this;
+        }
+        public Builder aiAgentInfo(AiAgentInfo aiAgentInfo) {
+            this.aiAgentInfo = java.util.Optional.ofNullable(aiAgentInfo);
+            return this;
+        }
+
+        public AiExtractStructuredResponse build() {
+            return new AiExtractStructuredResponse(
+                answer,
+                createdAt,
+                completionReason,
+                confidenceScore,
+                reference,
+                aiAgentInfo
+            );
+        }
+    }
 }

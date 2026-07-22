@@ -26,4 +26,42 @@ public record UploadPart(
             (!_m.containsKey("sha1") || _m.get("sha1") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("sha1")))
         );
     }
+
+    /** A fluent builder; unset optional fields default to empty. */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Optional<String> partId = java.util.Optional.empty();
+        private Optional<Long> offset = java.util.Optional.empty();
+        private Optional<Long> size = java.util.Optional.empty();
+        private Optional<String> sha1 = java.util.Optional.empty();
+
+        public Builder partId(String partId) {
+            this.partId = java.util.Optional.ofNullable(partId);
+            return this;
+        }
+        public Builder offset(Long offset) {
+            this.offset = java.util.Optional.ofNullable(offset);
+            return this;
+        }
+        public Builder size(Long size) {
+            this.size = java.util.Optional.ofNullable(size);
+            return this;
+        }
+        public Builder sha1(String sha1) {
+            this.sha1 = java.util.Optional.ofNullable(sha1);
+            return this;
+        }
+
+        public UploadPart build() {
+            return new UploadPart(
+                partId,
+                offset,
+                size,
+                sha1
+            );
+        }
+    }
 }

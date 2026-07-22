@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `HubItems`
 
+**Example**
+
+```java
+for (var item : client.hubItems.list("HUB_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -33,4 +41,10 @@ the [pagination guide](../pagination.md).
 **Request body** (`application/json`): `HubItemsManageRequest`
 
 **Returns:** `HubItemsManageResponse`
+
+**Example**
+
+```java
+var result = client.hubItems.createHubManageItems("HUB_ID", new HubItemsManageRequest(/* … */));
+```
 

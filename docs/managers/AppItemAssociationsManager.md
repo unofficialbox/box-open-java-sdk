@@ -18,6 +18,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 **Returns:** `AppItemAssociations`
 
+**Example**
+
+```java
+for (var item : client.appItemAssociations.listFile("FILE_ID", null)) {
+  // use item
+}
+```
+
 Paginated — `listFile(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
@@ -34,6 +42,14 @@ the [pagination guide](../pagination.md).
 | `application_type` | query | `String` | no |
 
 **Returns:** `AppItemAssociations`
+
+**Example**
+
+```java
+for (var item : client.appItemAssociations.listFolder("FOLDER_ID", null)) {
+  // use item
+}
+```
 
 Paginated — `listFolder(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
