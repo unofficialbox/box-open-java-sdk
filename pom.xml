@@ -7,11 +7,11 @@
 
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <packaging>jar</packaging>
 
   <name>box-open-sdk</name>
-  <description>Generated Box API client for Java (community, unofficial).</description>
+  <description>Box API client for Java (open source, community, punk rock) — generated, dependency-light, typed models and async managers.</description>
   <url>https://github.com/unofficialbox/box-open-java-sdk</url>
 
   <licenses>
@@ -135,9 +135,10 @@
             <extensions>true</extensions>
             <configuration>
               <publishingServerId>central</publishingServerId>
-              <!-- false: the deployment is validated and staged, then
-                   released by hand from the Portal. Set true to auto-release. -->
-              <autoPublish>false</autoPublish>
+              <!-- true: a validated deployment releases to Central on
+                   upload. Set false to stage it and release by hand
+                   from the Portal instead. -->
+              <autoPublish>true</autoPublish>
             </configuration>
           </plugin>
         </plugins>

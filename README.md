@@ -3,7 +3,10 @@
 
 # box-open-sdk (Java)
 
-A **community, unofficial** Box API client for Java — one resource manager per
+[![Maven Central](https://img.shields.io/maven-central/v/dev.unofficialbox/box-open-sdk.svg)](https://central.sonatype.com/artifact/dev.unofficialbox/box-open-sdk)
+[![javadoc](https://javadoc.io/badge2/dev.unofficialbox/box-open-sdk/javadoc.svg)](https://javadoc.io/doc/dev.unofficialbox/box-open-sdk)
+
+An **open source, community-built** Box API client for Java — one resource manager per
 API area behind a single `dev.unofficialbox.Client`, over a dependency-free
 `java.net.http` runtime with retry, backoff, and token refresh.
 
@@ -16,7 +19,7 @@ API area behind a single `dev.unofficialbox.Client`, over a dependency-free
 <dependency>
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 
