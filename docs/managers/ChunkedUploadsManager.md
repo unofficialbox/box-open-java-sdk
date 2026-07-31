@@ -5,21 +5,21 @@ Reach these methods through the `chunkedUploads` field on `dev.unofficialbox.Cli
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## createFileUploadSessions
+## createFileUploadSession
 
 `POST /files/upload_sessions`
 
-**Request body** (`application/json`): `FileUploadSessionsCreateRequest`
+**Request body** (`application/json`): `FileUploadSessionCreateRequest`
 
 **Returns:** `UploadSession`
 
 **Example**
 
 ```java
-var result = client.chunkedUploads.createFileUploadSessions(new FileUploadSessionsCreateRequest(/* … */));
+var result = client.chunkedUploads.createFileUploadSession(new FileUploadSessionCreateRequest(/* … */));
 ```
 
-## createFileByIdUploadSessions
+## createFileVersionUploadSession
 
 `POST /files/{file_id}/upload_sessions`
 
@@ -27,14 +27,14 @@ var result = client.chunkedUploads.createFileUploadSessions(new FileUploadSessio
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `FileIdUploadSessionsCreateRequest`
+**Request body** (`application/json`): `FileVersionUploadSessionCreateRequest`
 
 **Returns:** `UploadSession`
 
 **Example**
 
 ```java
-var result = client.chunkedUploads.createFileByIdUploadSessions("FILE_ID", new FileIdUploadSessionsCreateRequest(/* … */));
+var result = client.chunkedUploads.createFileVersionUploadSession("FILE_ID", new FileVersionUploadSessionCreateRequest(/* … */));
 ```
 
 ## getFileUploadSession

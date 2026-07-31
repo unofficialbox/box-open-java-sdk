@@ -11,7 +11,7 @@ public final class ChunkedUploadsManager {
     }
 
     /** POST /files/upload_sessions. */
-    public dev.unofficialbox.model.schemas.UploadSession createFileUploadSessions(dev.unofficialbox.model.schemas.FileUploadSessionsCreateRequest body) {
+    public dev.unofficialbox.model.schemas.UploadSession createFileUploadSession(dev.unofficialbox.model.schemas.FileUploadSessionCreateRequest body) {
         StringBuilder _url = new StringBuilder(session.baseUrl("upload"));
         _url.append("/files");
         _url.append("/upload_sessions");
@@ -23,7 +23,7 @@ public final class ChunkedUploadsManager {
     }
 
     /** POST /files/{file_id}/upload_sessions. */
-    public dev.unofficialbox.model.schemas.UploadSession createFileByIdUploadSessions(String fileId, dev.unofficialbox.model.schemas.FileIdUploadSessionsCreateRequest body) {
+    public dev.unofficialbox.model.schemas.UploadSession createFileVersionUploadSession(String fileId, dev.unofficialbox.model.schemas.FileVersionUploadSessionCreateRequest body) {
         StringBuilder _url = new StringBuilder(session.baseUrl("upload"));
         _url.append("/files");
         _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(fileId));

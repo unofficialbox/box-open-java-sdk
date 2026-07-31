@@ -525,7 +525,6 @@ src/main/java/dev/unofficialbox/model/schemas/FileFullRepresentations.java
 src/main/java/dev/unofficialbox/model/schemas/FileFullSharedLinkPermissionOptions.java
 src/main/java/dev/unofficialbox/model/schemas/FileFullWatermarkInfo.java
 src/main/java/dev/unofficialbox/model/schemas/FileIdContentCreateRequest.java
-src/main/java/dev/unofficialbox/model/schemas/FileIdUploadSessionsCreateRequest.java
 src/main/java/dev/unofficialbox/model/schemas/FileItemStatus.java
 src/main/java/dev/unofficialbox/model/schemas/FileMetadataUpdateRequest.java
 src/main/java/dev/unofficialbox/model/schemas/FileMini.java
@@ -543,7 +542,7 @@ src/main/java/dev/unofficialbox/model/schemas/FileUpdateRequest.java
 src/main/java/dev/unofficialbox/model/schemas/FileUpdateRequest2.java
 src/main/java/dev/unofficialbox/model/schemas/FileUpdateRequest3.java
 src/main/java/dev/unofficialbox/model/schemas/FileUploadSessionCommitRequest.java
-src/main/java/dev/unofficialbox/model/schemas/FileUploadSessionsCreateRequest.java
+src/main/java/dev/unofficialbox/model/schemas/FileUploadSessionCreateRequest.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersion.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionBase.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionBaseType.java
@@ -558,6 +557,7 @@ src/main/java/dev/unofficialbox/model/schemas/FileVersionRetentionType.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionRetentions.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionType.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionUpdateRequest.java
+src/main/java/dev/unofficialbox/model/schemas/FileVersionUploadSessionCreateRequest.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersions.java
 src/main/java/dev/unofficialbox/model/schemas/FileVersionsOnHold.java
 src/main/java/dev/unofficialbox/model/schemas/FileWatermarkUpdateRequest.java

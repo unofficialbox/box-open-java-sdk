@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record FileIdUploadSessionsCreateRequest(Long fileSize, Optional<String> fileName) {
+public record FileVersionUploadSessionCreateRequest(Long fileSize, Optional<String> fileName) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("file_size", fileSize());
@@ -11,9 +11,9 @@ public record FileIdUploadSessionsCreateRequest(Long fileSize, Optional<String> 
         return _m;
     }
 
-    public static FileIdUploadSessionsCreateRequest fromJson(Object _json) {
+    public static FileVersionUploadSessionCreateRequest fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
-        return new FileIdUploadSessionsCreateRequest(
+        return new FileVersionUploadSessionCreateRequest(
             dev.unofficialbox.core.Json.asLong(_m.get("file_size")),
             (!_m.containsKey("file_name") || _m.get("file_name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("file_name")))
         );
@@ -37,8 +37,8 @@ public record FileIdUploadSessionsCreateRequest(Long fileSize, Optional<String> 
             return this;
         }
 
-        public FileIdUploadSessionsCreateRequest build() {
-            return new FileIdUploadSessionsCreateRequest(
+        public FileVersionUploadSessionCreateRequest build() {
+            return new FileVersionUploadSessionCreateRequest(
                 fileSize,
                 fileName
             );
