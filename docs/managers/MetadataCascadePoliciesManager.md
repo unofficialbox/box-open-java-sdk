@@ -34,14 +34,14 @@ the [pagination guide](../pagination.md).
 
 `POST /metadata_cascade_policies`
 
-**Request body** (`application/json`): `MetadataCascadePolicyCreateRequest`
+**Request body** (`application/json`): `CreateMetadataCascadePolicyRequest`
 
 **Returns:** `MetadataCascadePolicy`
 
 **Example**
 
 ```java
-var result = client.metadataCascadePolicies.create(new MetadataCascadePolicyCreateRequest(/* … */));
+var result = client.metadataCascadePolicies.create(new CreateMetadataCascadePolicyRequest(/* … */));
 ```
 
 ## get
@@ -84,13 +84,13 @@ client.metadataCascadePolicies.delete("METADATA_CASCADE_POLICY_ID");
 |---|---|---|---|
 | `metadata_cascade_policy_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `MetadataCascadePolicyApplyRequest`
+**Request body** (`application/json`): `ApplyMetadataCascadePolicyRequest`
 
 **Returns:** no content (`void`)
 
 **Example**
 
 ```java
-client.metadataCascadePolicies.apply("METADATA_CASCADE_POLICY_ID", new MetadataCascadePolicyApplyRequest(/* … */));
+client.metadataCascadePolicies.apply("METADATA_CASCADE_POLICY_ID", new ApplyMetadataCascadePolicyRequest(/* … */));
 ```
 

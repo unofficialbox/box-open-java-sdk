@@ -29,7 +29,7 @@ var result = client.skills.get("FILE_ID");
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
 
-**Request body** (`application/json-patch+json`): `List<SkillUpdateRequest>`
+**Request body** (`application/json-patch+json`): `List<UpdateSkillRequest>`
 
 **Returns:** `SkillCardsMetadata`
 
@@ -47,14 +47,14 @@ var result = client.skills.update("FILE_ID", java.util.List.of());
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `SkillCreateRequest`
+**Request body** (`application/json`): `CreateSkillRequest`
 
 **Returns:** `SkillCardsMetadata`
 
 **Example**
 
 ```java
-var result = client.skills.create("FILE_ID", new SkillCreateRequest(/* … */));
+var result = client.skills.create("FILE_ID", new CreateSkillRequest(/* … */));
 ```
 
 ## delete
@@ -81,13 +81,13 @@ client.skills.delete("FILE_ID");
 |---|---|---|---|
 | `skill_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `SkillInvocationUpdateRequest`
+**Request body** (`application/json`): `UpdateSkillInvocationRequest`
 
 **Returns:** no content (`void`)
 
 **Example**
 
 ```java
-client.skills.updateSkillInvocation("SKILL_ID", new SkillInvocationUpdateRequest(/* … */));
+client.skills.updateSkillInvocation("SKILL_ID", new UpdateSkillInvocationRequest(/* … */));
 ```
 

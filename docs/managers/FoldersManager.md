@@ -38,14 +38,14 @@ var result = client.folders.get("FOLDER_ID", null);
 | `fields` | query | `List<String>` | no |
 | `if-match` | header | `String` | no |
 
-**Request body** (`application/json`): `FolderUpdateRequest`
+**Request body** (`application/json`): `UpdateFolderRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.folders.update("FOLDER_ID", new FolderUpdateRequest(/* … */), null);
+var result = client.folders.update("FOLDER_ID", new UpdateFolderRequest(/* … */), null);
 ```
 
 ## delete
@@ -104,14 +104,14 @@ the [pagination guide](../pagination.md).
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FolderCreateRequest`
+**Request body** (`application/json`): `CreateFolderRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.folders.create(new FolderCreateRequest(/* … */), null);
+var result = client.folders.create(new CreateFolderRequest(/* … */), null);
 ```
 
 ## copy
@@ -123,13 +123,13 @@ var result = client.folders.create(new FolderCreateRequest(/* … */), null);
 | `folder_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FolderCopyRequest`
+**Request body** (`application/json`): `CopyFolderRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.folders.copy("FOLDER_ID", new FolderCopyRequest(/* … */), null);
+var result = client.folders.copy("FOLDER_ID", new CopyFolderRequest(/* … */), null);
 ```
 

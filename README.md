@@ -3,8 +3,10 @@
 
 # box-open-sdk (Java)
 
+[![release](https://img.shields.io/github/v/release/unofficialbox/box-open-java-sdk?sort=semver)](https://github.com/unofficialbox/box-open-java-sdk/releases/latest)
 [![Maven Central](https://img.shields.io/maven-central/v/dev.unofficialbox/box-open-sdk.svg)](https://central.sonatype.com/artifact/dev.unofficialbox/box-open-sdk)
 [![javadoc](https://javadoc.io/badge2/dev.unofficialbox/box-open-sdk/javadoc.svg)](https://javadoc.io/doc/dev.unofficialbox/box-open-sdk)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 An **open source, community-built** Box API client for Java — one resource manager per
 API area behind a single `dev.unofficialbox.Client`, over a dependency-free
@@ -19,7 +21,7 @@ API area behind a single `dev.unofficialbox.Client`, over a dependency-free
 <dependency>
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.3.1</version>
+  <version>0.4.0</version>
 </dependency>
 ```
 
@@ -50,7 +52,7 @@ public final class Quickstart {
 
         // Create a folder at the account root ("0").
         var folder = client.folders.create(
-            FolderCreateRequest.builder()
+            CreateFolderRequest.builder()
                 .name("Invoices")
                 .parent(AttributesParent.builder().id("0").build())
                 .build(),
@@ -58,7 +60,7 @@ public final class Quickstart {
 
         // Upload a file into it.
         var uploaded = client.uploads.uploadFile(
-            FileContentCreateRequest.builder()
+            CreateFileContentRequest.builder()
                 .attributes(PostFileContentAttributes.builder()
                     .name("invoice.pdf")
                     .parent(AttributesParent.builder().id(folder.id()).build())
@@ -80,7 +82,7 @@ public final class Quickstart {
         // Attach that metadata to the file (an enterprise template).
         client.fileMetadata.createFileMetadata(
             fileId,
-            GetFileIdMetadataIdIdScope.ENTERPRISE,
+            GetFileIdMetadataIdScope.ENTERPRISE,
             "invoiceData",
             Map.of("invoiceNumber", "INV-0042", "total", 1250));
 

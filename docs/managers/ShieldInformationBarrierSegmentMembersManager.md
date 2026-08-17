@@ -65,13 +65,13 @@ the [pagination guide](../pagination.md).
 
 `POST /shield_information_barrier_segment_members`
 
-**Request body** (`application/json`): `ShieldInformationBarrierSegmentMemberCreateRequest`
+**Request body** (`application/json`): `CreateShieldInformationBarrierSegmentMemberRequest`
 
 **Returns:** `ShieldInformationBarrierSegmentMember`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarrierSegmentMembers.create(new ShieldInformationBarrierSegmentMemberCreateRequest(/* … */));
+var result = client.shieldInformationBarrierSegmentMembers.create(new CreateShieldInformationBarrierSegmentMemberRequest(/* … */));
 ```
 

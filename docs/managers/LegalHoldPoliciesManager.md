@@ -34,14 +34,14 @@ the [pagination guide](../pagination.md).
 
 `POST /legal_hold_policies`
 
-**Request body** (`application/json`): `LegalHoldPolicyCreateRequest`
+**Request body** (`application/json`): `CreateLegalHoldPolicyRequest`
 
 **Returns:** `LegalHoldPolicy`
 
 **Example**
 
 ```java
-var result = client.legalHoldPolicies.create(new LegalHoldPolicyCreateRequest(/* … */));
+var result = client.legalHoldPolicies.create(new CreateLegalHoldPolicyRequest(/* … */));
 ```
 
 ## get
@@ -68,14 +68,14 @@ var result = client.legalHoldPolicies.get("LEGAL_HOLD_POLICY_ID");
 |---|---|---|---|
 | `legal_hold_policy_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `LegalHoldPolicyUpdateRequest`
+**Request body** (`application/json`): `UpdateLegalHoldPolicyRequest`
 
 **Returns:** `LegalHoldPolicy`
 
 **Example**
 
 ```java
-var result = client.legalHoldPolicies.update("LEGAL_HOLD_POLICY_ID", new LegalHoldPolicyUpdateRequest(/* … */));
+var result = client.legalHoldPolicies.update("LEGAL_HOLD_POLICY_ID", new UpdateLegalHoldPolicyRequest(/* … */));
 ```
 
 ## delete

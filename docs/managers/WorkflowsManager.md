@@ -38,13 +38,13 @@ the [pagination guide](../pagination.md).
 |---|---|---|---|
 | `workflow_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `WorkflowStartRequest`
+**Request body** (`application/json`): `StartWorkflowRequest`
 
 **Returns:** no content (`void`)
 
 **Example**
 
 ```java
-client.workflows.start("WORKFLOW_ID", new WorkflowStartRequest(/* … */));
+client.workflows.start("WORKFLOW_ID", new StartWorkflowRequest(/* … */));
 ```
 

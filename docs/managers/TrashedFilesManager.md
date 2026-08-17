@@ -14,14 +14,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `file_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FileCreateRequest`
+**Request body** (`application/json`): `CreateFileRequest`
 
 **Returns:** `TrashFileRestored`
 
 **Example**
 
 ```java
-var result = client.trashedFiles.createFile("FILE_ID", new FileCreateRequest(/* … */), null);
+var result = client.trashedFiles.createFile("FILE_ID", new CreateFileRequest(/* … */), null);
 ```
 
 ## getFileTrash

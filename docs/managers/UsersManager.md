@@ -42,14 +42,14 @@ the [pagination guide](../pagination.md).
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `UserCreateRequest`
+**Request body** (`application/json`): `CreateUserRequest`
 
 **Returns:** `UserFull`
 
 **Example**
 
 ```java
-var result = client.users.create(new UserCreateRequest(/* … */), null);
+var result = client.users.create(new CreateUserRequest(/* … */), null);
 ```
 
 ## getMe
@@ -94,14 +94,14 @@ var result = client.users.get("USER_ID", null);
 | `user_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `UserUpdateRequest`
+**Request body** (`application/json`): `UpdateUserRequest`
 
 **Returns:** `UserFull`
 
 **Example**
 
 ```java
-var result = client.users.update("USER_ID", new UserUpdateRequest(/* … */), null);
+var result = client.users.update("USER_ID", new UpdateUserRequest(/* … */), null);
 ```
 
 ## delete

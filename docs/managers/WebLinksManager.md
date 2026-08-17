@@ -9,14 +9,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 `POST /web_links`
 
-**Request body** (`application/json`): `WebLinkCreateRequest`
+**Request body** (`application/json`): `CreateWebLinkRequest`
 
 **Returns:** `WebLink`
 
 **Example**
 
 ```java
-var result = client.webLinks.create(new WebLinkCreateRequest(/* … */));
+var result = client.webLinks.create(new CreateWebLinkRequest(/* … */));
 ```
 
 ## get
@@ -44,14 +44,14 @@ var result = client.webLinks.get("WEB_LINK_ID", null);
 |---|---|---|---|
 | `web_link_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `WebLinkUpdateRequest`
+**Request body** (`application/json`): `UpdateWebLinkRequest`
 
 **Returns:** `WebLink`
 
 **Example**
 
 ```java
-var result = client.webLinks.update("WEB_LINK_ID", new WebLinkUpdateRequest(/* … */));
+var result = client.webLinks.update("WEB_LINK_ID", new UpdateWebLinkRequest(/* … */));
 ```
 
 ## delete

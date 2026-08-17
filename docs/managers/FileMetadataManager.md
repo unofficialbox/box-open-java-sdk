@@ -29,7 +29,7 @@ var result = client.fileMetadata.listFileMetadata("FILE_ID", null);
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 | `view` | query | `String` | no |
 
@@ -48,10 +48,10 @@ var result = client.fileMetadata.getFileMetadata("FILE_ID", null, "TEMPLATE_KEY"
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
-**Request body** (`application/json-patch+json`): `List<FileMetadataUpdateRequest>`
+**Request body** (`application/json-patch+json`): `List<UpdateFileMetadataRequest>`
 
 **Returns:** `MetadataFull`
 
@@ -68,7 +68,7 @@ var result = client.fileMetadata.updateFileMetadata("FILE_ID", null, "TEMPLATE_K
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
 **Request body** (`application/json`): `Map<String, Object>`
@@ -88,7 +88,7 @@ var result = client.fileMetadata.createFileMetadata("FILE_ID", null, "TEMPLATE_K
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
 **Returns:** no content (`void`)

@@ -49,14 +49,14 @@ var result = client.sharedLinksWebLinks.getWebLinkGetSharedLink("WEB_LINK_ID", "
 | `web_link_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest2`
+**Request body** (`application/json`): `UpdateFileAddSharedLinkRequest`
 
 **Returns:** `WebLink`
 
 **Example**
 
 ```java
-var result = client.sharedLinksWebLinks.updateWebLinkAddSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+var result = client.sharedLinksWebLinks.updateWebLinkAddSharedLink("WEB_LINK_ID", "FIELDS", new UpdateFileAddSharedLinkRequest(/* … */));
 ```
 
 ## updateWebLinkUpdateSharedLink
@@ -68,14 +68,14 @@ var result = client.sharedLinksWebLinks.updateWebLinkAddSharedLink("WEB_LINK_ID"
 | `web_link_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest2`
+**Request body** (`application/json`): `UpdateFileAddSharedLinkRequest`
 
 **Returns:** `WebLink`
 
 **Example**
 
 ```java
-var result = client.sharedLinksWebLinks.updateWebLinkUpdateSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+var result = client.sharedLinksWebLinks.updateWebLinkUpdateSharedLink("WEB_LINK_ID", "FIELDS", new UpdateFileAddSharedLinkRequest(/* … */));
 ```
 
 ## updateWebLinkRemoveSharedLink
@@ -87,13 +87,13 @@ var result = client.sharedLinksWebLinks.updateWebLinkUpdateSharedLink("WEB_LINK_
 | `web_link_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest3`
+**Request body** (`application/json`): `UpdateFileRemoveSharedLinkRequest`
 
 **Returns:** `WebLink`
 
 **Example**
 
 ```java
-var result = client.sharedLinksWebLinks.updateWebLinkRemoveSharedLink("WEB_LINK_ID", "FIELDS", new FileUpdateRequest3(/* … */));
+var result = client.sharedLinksWebLinks.updateWebLinkRemoveSharedLink("WEB_LINK_ID", "FIELDS", new UpdateFileRemoveSharedLinkRequest(/* … */));
 ```
 

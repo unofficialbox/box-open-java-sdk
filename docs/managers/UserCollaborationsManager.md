@@ -30,14 +30,14 @@ var result = client.userCollaborations.getCollaboration("COLLABORATION_ID", null
 |---|---|---|---|
 | `collaboration_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `CollaborationUpdateRequest`
+**Request body** (`application/json`): `UpdateCollaborationRequest`
 
 **Returns:** `Collaboration`
 
 **Example**
 
 ```java
-var result = client.userCollaborations.updateCollaboration("COLLABORATION_ID", new CollaborationUpdateRequest(/* … */));
+var result = client.userCollaborations.updateCollaboration("COLLABORATION_ID", new UpdateCollaborationRequest(/* … */));
 ```
 
 ## deleteCollaboration
@@ -65,13 +65,13 @@ client.userCollaborations.deleteCollaboration("COLLABORATION_ID");
 | `fields` | query | `List<String>` | no |
 | `notify` | query | `Boolean` | no |
 
-**Request body** (`application/json`): `CollaborationsCreateRequest`
+**Request body** (`application/json`): `CreateCollaborationsRequest`
 
 **Returns:** `Collaboration`
 
 **Example**
 
 ```java
-var result = client.userCollaborations.createCollaborations(new CollaborationsCreateRequest(/* … */), null);
+var result = client.userCollaborations.createCollaborations(new CreateCollaborationsRequest(/* … */), null);
 ```
 

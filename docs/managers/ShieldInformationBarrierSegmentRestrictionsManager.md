@@ -65,13 +65,13 @@ the [pagination guide](../pagination.md).
 
 `POST /shield_information_barrier_segment_restrictions`
 
-**Request body** (`application/json`): `ShieldInformationBarrierSegmentRestrictionCreateRequest`
+**Request body** (`application/json`): `CreateShieldInformationBarrierSegmentRestrictionRequest`
 
 **Returns:** `ShieldInformationBarrierSegmentRestriction`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarrierSegmentRestrictions.create(new ShieldInformationBarrierSegmentRestrictionCreateRequest(/* … */));
+var result = client.shieldInformationBarrierSegmentRestrictions.create(new CreateShieldInformationBarrierSegmentRestrictionRequest(/* … */));
 ```
 

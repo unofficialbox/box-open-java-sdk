@@ -29,7 +29,7 @@ var result = client.folderClassifications.get("FOLDER_ID");
 |---|---|---|---|
 | `folder_id` | path | `String` | yes |
 
-**Request body** (`application/json-patch+json`): `List<FileClassificationUpdateRequest>`
+**Request body** (`application/json-patch+json`): `List<UpdateFileClassificationRequest>`
 
 **Returns:** `Classification`
 
@@ -47,14 +47,14 @@ var result = client.folderClassifications.update("FOLDER_ID", java.util.List.of(
 |---|---|---|---|
 | `folder_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `FileClassificationCreateRequest`
+**Request body** (`application/json`): `CreateFileClassificationRequest`
 
 **Returns:** `Classification`
 
 **Example**
 
 ```java
-var result = client.folderClassifications.create("FOLDER_ID", new FileClassificationCreateRequest(/* … */));
+var result = client.folderClassifications.create("FOLDER_ID", new CreateFileClassificationRequest(/* … */));
 ```
 
 ## delete

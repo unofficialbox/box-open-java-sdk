@@ -29,14 +29,14 @@ var result = client.emailAliases.listUser("USER_ID");
 |---|---|---|---|
 | `user_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `UserIdCreateRequest`
+**Request body** (`application/json`): `CreateUserIdRequest`
 
 **Returns:** `EmailAlias`
 
 **Example**
 
 ```java
-var result = client.emailAliases.createUser("USER_ID", new UserIdCreateRequest(/* … */));
+var result = client.emailAliases.createUser("USER_ID", new CreateUserIdRequest(/* … */));
 ```
 
 ## deleteUser

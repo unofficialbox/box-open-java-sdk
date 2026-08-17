@@ -9,14 +9,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 `POST /files/upload_sessions`
 
-**Request body** (`application/json`): `FileUploadSessionCreateRequest`
+**Request body** (`application/json`): `CreateFileUploadSessionRequest`
 
 **Returns:** `UploadSession`
 
 **Example**
 
 ```java
-var result = client.chunkedUploads.createFileUploadSession(new FileUploadSessionCreateRequest(/* … */));
+var result = client.chunkedUploads.createFileUploadSession(new CreateFileUploadSessionRequest(/* … */));
 ```
 
 ## createFileVersionUploadSession
@@ -27,14 +27,14 @@ var result = client.chunkedUploads.createFileUploadSession(new FileUploadSession
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `FileVersionUploadSessionCreateRequest`
+**Request body** (`application/json`): `CreateFileVersionUploadSessionRequest`
 
 **Returns:** `UploadSession`
 
 **Example**
 
 ```java
-var result = client.chunkedUploads.createFileVersionUploadSession("FILE_ID", new FileVersionUploadSessionCreateRequest(/* … */));
+var result = client.chunkedUploads.createFileVersionUploadSession("FILE_ID", new CreateFileVersionUploadSessionRequest(/* … */));
 ```
 
 ## getFileUploadSession
@@ -124,13 +124,13 @@ the [pagination guide](../pagination.md).
 | `if-match` | header | `String` | no |
 | `if-none-match` | header | `String` | no |
 
-**Request body** (`application/json`): `FileUploadSessionCommitRequest`
+**Request body** (`application/json`): `CommitFileUploadSessionRequest`
 
 **Returns:** `Files`
 
 **Example**
 
 ```java
-var result = client.chunkedUploads.commitFileUploadSession("UPLOAD_SESSION_ID", "DIGEST", new FileUploadSessionCommitRequest(/* … */), null);
+var result = client.chunkedUploads.commitFileUploadSession("UPLOAD_SESSION_ID", "DIGEST", new CommitFileUploadSessionRequest(/* … */), null);
 ```
 

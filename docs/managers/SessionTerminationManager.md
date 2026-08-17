@@ -9,27 +9,27 @@ Each is a **blocking** call returning its value directly and throwing
 
 `POST /users/terminate_sessions`
 
-**Request body** (`application/json`): `UserTerminateSessionsCreateRequest`
+**Request body** (`application/json`): `CreateUserTerminateSessionsRequest`
 
 **Returns:** `SessionTerminationMessage`
 
 **Example**
 
 ```java
-var result = client.sessionTermination.createUserTerminateSessions(new UserTerminateSessionsCreateRequest(/* … */));
+var result = client.sessionTermination.createUserTerminateSessions(new CreateUserTerminateSessionsRequest(/* … */));
 ```
 
 ## createGroupTerminateSessions
 
 `POST /groups/terminate_sessions`
 
-**Request body** (`application/json`): `GroupTerminateSessionsCreateRequest`
+**Request body** (`application/json`): `CreateGroupTerminateSessionsRequest`
 
 **Returns:** `SessionTerminationMessage`
 
 **Example**
 
 ```java
-var result = client.sessionTermination.createGroupTerminateSessions(new GroupTerminateSessionsCreateRequest(/* … */));
+var result = client.sessionTermination.createGroupTerminateSessions(new CreateGroupTerminateSessionsRequest(/* … */));
 ```
 

@@ -33,14 +33,14 @@ the [pagination guide](../pagination.md).
 
 `POST /storage_policy_assignments`
 
-**Request body** (`application/json`): `StoragePolicyAssignmentCreateRequest`
+**Request body** (`application/json`): `CreateStoragePolicyAssignmentRequest`
 
 **Returns:** `StoragePolicyAssignment`
 
 **Example**
 
 ```java
-var result = client.storagePolicyAssignments.create(new StoragePolicyAssignmentCreateRequest(/* … */));
+var result = client.storagePolicyAssignments.create(new CreateStoragePolicyAssignmentRequest(/* … */));
 ```
 
 ## get
@@ -67,14 +67,14 @@ var result = client.storagePolicyAssignments.get("STORAGE_POLICY_ASSIGNMENT_ID")
 |---|---|---|---|
 | `storage_policy_assignment_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `StoragePolicyAssignmentUpdateRequest`
+**Request body** (`application/json`): `UpdateStoragePolicyAssignmentRequest`
 
 **Returns:** `StoragePolicyAssignment`
 
 **Example**
 
 ```java
-var result = client.storagePolicyAssignments.update("STORAGE_POLICY_ASSIGNMENT_ID", new StoragePolicyAssignmentUpdateRequest(/* … */));
+var result = client.storagePolicyAssignments.update("STORAGE_POLICY_ASSIGNMENT_ID", new UpdateStoragePolicyAssignmentRequest(/* … */));
 ```
 
 ## delete

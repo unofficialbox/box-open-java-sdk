@@ -32,14 +32,14 @@ the [pagination guide](../pagination.md).
 
 `POST /webhooks`
 
-**Request body** (`application/json`): `WebhookCreateRequest`
+**Request body** (`application/json`): `CreateWebhookRequest`
 
 **Returns:** `Webhook`
 
 **Example**
 
 ```java
-var result = client.webhooks.create(new WebhookCreateRequest(/* … */));
+var result = client.webhooks.create(new CreateWebhookRequest(/* … */));
 ```
 
 ## get
@@ -66,14 +66,14 @@ var result = client.webhooks.get("WEBHOOK_ID");
 |---|---|---|---|
 | `webhook_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `WebhookUpdateRequest`
+**Request body** (`application/json`): `UpdateWebhookRequest`
 
 **Returns:** `Webhook`
 
 **Example**
 
 ```java
-var result = client.webhooks.update("WEBHOOK_ID", new WebhookUpdateRequest(/* … */));
+var result = client.webhooks.update("WEBHOOK_ID", new UpdateWebhookRequest(/* … */));
 ```
 
 ## delete

@@ -26,14 +26,14 @@ var result = client.termsOfServiceUserStatuses.list("TOS_ID", null);
 
 `POST /terms_of_service_user_statuses`
 
-**Request body** (`application/json`): `TermsOfServiceUserStatuseCreateRequest`
+**Request body** (`application/json`): `CreateTermsOfServiceUserStatusRequest`
 
 **Returns:** `TermsOfServiceUserStatus`
 
 **Example**
 
 ```java
-var result = client.termsOfServiceUserStatuses.create(new TermsOfServiceUserStatuseCreateRequest(/* … */));
+var result = client.termsOfServiceUserStatuses.create(new CreateTermsOfServiceUserStatusRequest(/* … */));
 ```
 
 ## update
@@ -44,13 +44,13 @@ var result = client.termsOfServiceUserStatuses.create(new TermsOfServiceUserStat
 |---|---|---|---|
 | `terms_of_service_user_status_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `TermsOfServiceUserStatuseUpdateRequest`
+**Request body** (`application/json`): `UpdateTermsOfServiceUserStatusRequest`
 
 **Returns:** `TermsOfServiceUserStatus`
 
 **Example**
 
 ```java
-var result = client.termsOfServiceUserStatuses.update("TERMS_OF_SERVICE_USER_STATUS_ID", new TermsOfServiceUserStatuseUpdateRequest(/* … */));
+var result = client.termsOfServiceUserStatuses.update("TERMS_OF_SERVICE_USER_STATUS_ID", new UpdateTermsOfServiceUserStatusRequest(/* … */));
 ```
 

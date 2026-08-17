@@ -25,14 +25,14 @@ var result = client.tasks.listFile("FILE_ID");
 
 `POST /tasks`
 
-**Request body** (`application/json`): `TaskCreateRequest`
+**Request body** (`application/json`): `CreateTaskRequest`
 
 **Returns:** `Task`
 
 **Example**
 
 ```java
-var result = client.tasks.create(new TaskCreateRequest(/* … */));
+var result = client.tasks.create(new CreateTaskRequest(/* … */));
 ```
 
 ## get
@@ -59,14 +59,14 @@ var result = client.tasks.get("TASK_ID");
 |---|---|---|---|
 | `task_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `TaskUpdateRequest`
+**Request body** (`application/json`): `UpdateTaskRequest`
 
 **Returns:** `Task`
 
 **Example**
 
 ```java
-var result = client.tasks.update("TASK_ID", new TaskUpdateRequest(/* … */));
+var result = client.tasks.update("TASK_ID", new UpdateTaskRequest(/* … */));
 ```
 
 ## delete

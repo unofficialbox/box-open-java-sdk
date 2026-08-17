@@ -35,14 +35,14 @@ var result = client.files.get("FILE_ID", null);
 | `fields` | query | `List<String>` | no |
 | `if-match` | header | `String` | no |
 
-**Request body** (`application/json`): `FileUpdateRequest`
+**Request body** (`application/json`): `UpdateFileRequest`
 
 **Returns:** `FileFull`
 
 **Example**
 
 ```java
-var result = client.files.update("FILE_ID", new FileUpdateRequest(/* … */), null);
+var result = client.files.update("FILE_ID", new UpdateFileRequest(/* … */), null);
 ```
 
 ## delete
@@ -71,14 +71,14 @@ client.files.delete("FILE_ID", null);
 | `file_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FileCopyRequest`
+**Request body** (`application/json`): `CopyFileRequest`
 
 **Returns:** `FileFull`
 
 **Example**
 
 ```java
-var result = client.files.copy("FILE_ID", new FileCopyRequest(/* … */), null);
+var result = client.files.copy("FILE_ID", new CopyFileRequest(/* … */), null);
 ```
 
 ## getThumbnail

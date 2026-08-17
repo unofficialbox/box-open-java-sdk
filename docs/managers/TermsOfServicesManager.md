@@ -25,14 +25,14 @@ var result = client.termsOfServices.list(null);
 
 `POST /terms_of_services`
 
-**Request body** (`application/json`): `TermsOfServiceCreateRequest`
+**Request body** (`application/json`): `CreateTermsOfServiceRequest`
 
 **Returns:** `TermsOfService`
 
 **Example**
 
 ```java
-var result = client.termsOfServices.create(new TermsOfServiceCreateRequest(/* … */));
+var result = client.termsOfServices.create(new CreateTermsOfServiceRequest(/* … */));
 ```
 
 ## get
@@ -59,13 +59,13 @@ var result = client.termsOfServices.get("TERMS_OF_SERVICE_ID");
 |---|---|---|---|
 | `terms_of_service_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `TermsOfServiceUpdateRequest`
+**Request body** (`application/json`): `UpdateTermsOfServiceRequest`
 
 **Returns:** `TermsOfService`
 
 **Example**
 
 ```java
-var result = client.termsOfServices.update("TERMS_OF_SERVICE_ID", new TermsOfServiceUpdateRequest(/* … */));
+var result = client.termsOfServices.update("TERMS_OF_SERVICE_ID", new UpdateTermsOfServiceRequest(/* … */));
 ```
 

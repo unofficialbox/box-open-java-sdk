@@ -49,14 +49,14 @@ var result = client.sharedLinksFolders.getFolderGetSharedLink("FOLDER_ID", "FIEL
 | `folder_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest2`
+**Request body** (`application/json`): `UpdateFileAddSharedLinkRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFolders.updateFolderAddSharedLink("FOLDER_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+var result = client.sharedLinksFolders.updateFolderAddSharedLink("FOLDER_ID", "FIELDS", new UpdateFileAddSharedLinkRequest(/* … */));
 ```
 
 ## updateFolderUpdateSharedLink
@@ -68,14 +68,14 @@ var result = client.sharedLinksFolders.updateFolderAddSharedLink("FOLDER_ID", "F
 | `folder_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FolderUpdateRequest2`
+**Request body** (`application/json`): `UpdateFolderUpdateSharedLinkRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFolders.updateFolderUpdateSharedLink("FOLDER_ID", "FIELDS", new FolderUpdateRequest2(/* … */));
+var result = client.sharedLinksFolders.updateFolderUpdateSharedLink("FOLDER_ID", "FIELDS", new UpdateFolderUpdateSharedLinkRequest(/* … */));
 ```
 
 ## updateFolderRemoveSharedLink
@@ -87,13 +87,13 @@ var result = client.sharedLinksFolders.updateFolderUpdateSharedLink("FOLDER_ID",
 | `folder_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest3`
+**Request body** (`application/json`): `UpdateFileRemoveSharedLinkRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFolders.updateFolderRemoveSharedLink("FOLDER_ID", "FIELDS", new FileUpdateRequest3(/* … */));
+var result = client.sharedLinksFolders.updateFolderRemoveSharedLink("FOLDER_ID", "FIELDS", new UpdateFileRemoveSharedLinkRequest(/* … */));
 ```
 

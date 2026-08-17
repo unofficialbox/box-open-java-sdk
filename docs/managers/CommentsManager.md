@@ -56,14 +56,14 @@ var result = client.comments.get("COMMENT_ID", null);
 | `comment_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `CommentUpdateRequest`
+**Request body** (`application/json`): `UpdateCommentRequest`
 
 **Returns:** `CommentFull`
 
 **Example**
 
 ```java
-var result = client.comments.update("COMMENT_ID", new CommentUpdateRequest(/* … */), null);
+var result = client.comments.update("COMMENT_ID", new UpdateCommentRequest(/* … */), null);
 ```
 
 ## delete
@@ -90,13 +90,13 @@ client.comments.delete("COMMENT_ID");
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `CommentCreateRequest`
+**Request body** (`application/json`): `CreateCommentRequest`
 
 **Returns:** `CommentFull`
 
 **Example**
 
 ```java
-var result = client.comments.create(new CommentCreateRequest(/* … */), null);
+var result = client.comments.create(new CreateCommentRequest(/* … */), null);
 ```
 

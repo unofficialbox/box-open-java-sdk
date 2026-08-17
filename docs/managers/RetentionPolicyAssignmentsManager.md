@@ -35,14 +35,14 @@ the [pagination guide](../pagination.md).
 
 `POST /retention_policy_assignments`
 
-**Request body** (`application/json`): `RetentionPolicyAssignmentCreateRequest`
+**Request body** (`application/json`): `CreateRetentionPolicyAssignmentRequest`
 
 **Returns:** `RetentionPolicyAssignment`
 
 **Example**
 
 ```java
-var result = client.retentionPolicyAssignments.create(new RetentionPolicyAssignmentCreateRequest(/* … */));
+var result = client.retentionPolicyAssignments.create(new CreateRetentionPolicyAssignmentRequest(/* … */));
 ```
 
 ## get

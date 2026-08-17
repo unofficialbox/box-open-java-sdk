@@ -38,14 +38,14 @@ the [pagination guide](../pagination.md).
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `GroupCreateRequest`
+**Request body** (`application/json`): `CreateGroupRequest`
 
 **Returns:** `GroupFull`
 
 **Example**
 
 ```java
-var result = client.groups.create(new GroupCreateRequest(/* … */), null);
+var result = client.groups.create(new CreateGroupRequest(/* … */), null);
 ```
 
 ## get
@@ -74,14 +74,14 @@ var result = client.groups.get("GROUP_ID", null);
 | `group_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `GroupUpdateRequest`
+**Request body** (`application/json`): `UpdateGroupRequest`
 
 **Returns:** `GroupFull`
 
 **Example**
 
 ```java
-var result = client.groups.update("GROUP_ID", new GroupUpdateRequest(/* … */), null);
+var result = client.groups.update("GROUP_ID", new UpdateGroupRequest(/* … */), null);
 ```
 
 ## delete

@@ -25,14 +25,14 @@ var result = client.folderLocks.list("FOLDER_ID");
 
 `POST /folder_locks`
 
-**Request body** (`application/json`): `FolderLockCreateRequest`
+**Request body** (`application/json`): `CreateFolderLockRequest`
 
 **Returns:** `FolderLock`
 
 **Example**
 
 ```java
-var result = client.folderLocks.create(new FolderLockCreateRequest(/* … */));
+var result = client.folderLocks.create(new CreateFolderLockRequest(/* … */));
 ```
 
 ## delete

@@ -55,14 +55,14 @@ var result = client.integrationMappings.createSlack(new IntegrationMappingSlackC
 |---|---|---|---|
 | `integration_mapping_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `SlackUpdateRequest`
+**Request body** (`application/json`): `UpdateSlackRequest`
 
 **Returns:** `IntegrationMapping`
 
 **Example**
 
 ```java
-var result = client.integrationMappings.updateSlack("INTEGRATION_MAPPING_ID", new SlackUpdateRequest(/* … */));
+var result = client.integrationMappings.updateSlack("INTEGRATION_MAPPING_ID", new UpdateSlackRequest(/* … */));
 ```
 
 ## deleteSlack
@@ -122,14 +122,14 @@ var result = client.integrationMappings.createTeams(new IntegrationMappingTeamsC
 |---|---|---|---|
 | `integration_mapping_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `TeamUpdateRequest`
+**Request body** (`application/json`): `UpdateTeamRequest`
 
 **Returns:** `IntegrationMappingTeams`
 
 **Example**
 
 ```java
-var result = client.integrationMappings.updateTeam("INTEGRATION_MAPPING_ID", new TeamUpdateRequest(/* … */));
+var result = client.integrationMappings.updateTeam("INTEGRATION_MAPPING_ID", new UpdateTeamRequest(/* … */));
 ```
 
 ## deleteTeam

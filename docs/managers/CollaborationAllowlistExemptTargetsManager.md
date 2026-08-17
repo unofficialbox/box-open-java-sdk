@@ -5,7 +5,7 @@ Reach these methods through the `collaborationAllowlistExemptTargets` field on `
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## listCollaborationWhitelistExemptTargets
+## list
 
 `GET /collaboration_whitelist_exempt_targets`
 
@@ -19,30 +19,30 @@ Each is a **blocking** call returning its value directly and throwing
 **Example**
 
 ```java
-for (var item : client.collaborationAllowlistExemptTargets.listCollaborationWhitelistExemptTargets(null)) {
+for (var item : client.collaborationAllowlistExemptTargets.list(null)) {
   // use item
 }
 ```
 
-Paginated — `listCollaborationWhitelistExemptTargets(...)` returns an auto-paging `Iterable` you
+Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
 
-## createCollaborationWhitelistExemptTargets
+## create
 
 `POST /collaboration_whitelist_exempt_targets`
 
-**Request body** (`application/json`): `CollaborationWhitelistExemptTargetsCreateRequest`
+**Request body** (`application/json`): `CreateCollaborationAllowlistExemptTargetRequest`
 
 **Returns:** `CollaborationAllowlistExemptTarget`
 
 **Example**
 
 ```java
-var result = client.collaborationAllowlistExemptTargets.createCollaborationWhitelistExemptTargets(new CollaborationWhitelistExemptTargetsCreateRequest(/* … */));
+var result = client.collaborationAllowlistExemptTargets.create(new CreateCollaborationAllowlistExemptTargetRequest(/* … */));
 ```
 
-## getCollaborationWhitelistExemptTarget
+## get
 
 `GET /collaboration_whitelist_exempt_targets/{collaboration_whitelist_exempt_target_id}`
 
@@ -55,10 +55,10 @@ var result = client.collaborationAllowlistExemptTargets.createCollaborationWhite
 **Example**
 
 ```java
-var result = client.collaborationAllowlistExemptTargets.getCollaborationWhitelistExemptTarget("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
+var result = client.collaborationAllowlistExemptTargets.get("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
 ```
 
-## deleteCollaborationWhitelistExemptTarget
+## delete
 
 `DELETE /collaboration_whitelist_exempt_targets/{collaboration_whitelist_exempt_target_id}`
 
@@ -71,6 +71,6 @@ var result = client.collaborationAllowlistExemptTargets.getCollaborationWhitelis
 **Example**
 
 ```java
-client.collaborationAllowlistExemptTargets.deleteCollaborationWhitelistExemptTarget("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
+client.collaborationAllowlistExemptTargets.delete("COLLABORATION_WHITELIST_EXEMPT_TARGET_ID");
 ```
 

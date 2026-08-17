@@ -5,7 +5,7 @@ Reach these methods through the `collaborationAllowlistEntries` field on `dev.un
 Each is a **blocking** call returning its value directly and throwing
 `dev.unofficialbox.runtime.Runtime.BoxApiException` on failure.
 
-## listCollaborationWhitelistEntries
+## list
 
 `GET /collaboration_whitelist_entries`
 
@@ -19,30 +19,30 @@ Each is a **blocking** call returning its value directly and throwing
 **Example**
 
 ```java
-for (var item : client.collaborationAllowlistEntries.listCollaborationWhitelistEntries(null)) {
+for (var item : client.collaborationAllowlistEntries.list(null)) {
   // use item
 }
 ```
 
-Paginated — `listCollaborationWhitelistEntries(...)` returns an auto-paging `Iterable` you
+Paginated — `list(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
 
-## createCollaborationWhitelistEntries
+## create
 
 `POST /collaboration_whitelist_entries`
 
-**Request body** (`application/json`): `CollaborationWhitelistEntriesCreateRequest`
+**Request body** (`application/json`): `CreateCollaborationAllowlistEntryRequest`
 
 **Returns:** `CollaborationAllowlistEntry`
 
 **Example**
 
 ```java
-var result = client.collaborationAllowlistEntries.createCollaborationWhitelistEntries(new CollaborationWhitelistEntriesCreateRequest(/* … */));
+var result = client.collaborationAllowlistEntries.create(new CreateCollaborationAllowlistEntryRequest(/* … */));
 ```
 
-## getCollaborationWhitelistEntry
+## get
 
 `GET /collaboration_whitelist_entries/{collaboration_whitelist_entry_id}`
 
@@ -55,10 +55,10 @@ var result = client.collaborationAllowlistEntries.createCollaborationWhitelistEn
 **Example**
 
 ```java
-var result = client.collaborationAllowlistEntries.getCollaborationWhitelistEntry("COLLABORATION_WHITELIST_ENTRY_ID");
+var result = client.collaborationAllowlistEntries.get("COLLABORATION_WHITELIST_ENTRY_ID");
 ```
 
-## deleteCollaborationWhitelistEntry
+## delete
 
 `DELETE /collaboration_whitelist_entries/{collaboration_whitelist_entry_id}`
 
@@ -71,6 +71,6 @@ var result = client.collaborationAllowlistEntries.getCollaborationWhitelistEntry
 **Example**
 
 ```java
-client.collaborationAllowlistEntries.deleteCollaborationWhitelistEntry("COLLABORATION_WHITELIST_ENTRY_ID");
+client.collaborationAllowlistEntries.delete("COLLABORATION_WHITELIST_ENTRY_ID");
 ```
 

@@ -29,14 +29,14 @@ var result = client.avatars.getUserAvatar("USER_ID");
 |---|---|---|---|
 | `user_id` | path | `String` | yes |
 
-**Request body** (`multipart/form-data`): `UserAvatarCreateRequest`
+**Request body** (`multipart/form-data`): `CreateUserAvatarRequest`
 
 **Returns:** `UserAvatar`
 
 **Example**
 
 ```java
-var result = client.avatars.createUserAvatar("USER_ID", new UserAvatarCreateRequest(/* … */));
+var result = client.avatars.createUserAvatar("USER_ID", new CreateUserAvatarRequest(/* … */));
 ```
 
 ## deleteUserAvatar

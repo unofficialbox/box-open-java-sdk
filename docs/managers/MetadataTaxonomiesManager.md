@@ -9,14 +9,14 @@ Each is a **blocking** call returning its value directly and throwing
 
 `POST /metadata_taxonomies`
 
-**Request body** (`application/json`): `MetadataTaxonomyCreateRequest`
+**Request body** (`application/json`): `CreateMetadataTaxonomyRequest`
 
 **Returns:** `MetadataTaxonomy`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.create(new MetadataTaxonomyCreateRequest(/* … */));
+var result = client.metadataTaxonomies.create(new CreateMetadataTaxonomyRequest(/* … */));
 ```
 
 ## list
@@ -86,14 +86,14 @@ client.metadataTaxonomies.delete("NAMESPACE", "TAXONOMY_KEY");
 | `namespace` | path | `String` | yes |
 | `taxonomy_key` | path | `String` | yes |
 
-**Request body** (`application/json`): `MetadataTaxonomyUpdateRequest`
+**Request body** (`application/json`): `UpdateMetadataTaxonomyRequest`
 
 **Returns:** `MetadataTaxonomy`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.update("NAMESPACE", "TAXONOMY_KEY", new MetadataTaxonomyUpdateRequest(/* … */));
+var result = client.metadataTaxonomies.update("NAMESPACE", "TAXONOMY_KEY", new UpdateMetadataTaxonomyRequest(/* … */));
 ```
 
 ## createLevels
@@ -125,14 +125,14 @@ var result = client.metadataTaxonomies.createLevels("NAMESPACE", "TAXONOMY_KEY",
 | `taxonomy_key` | path | `String` | yes |
 | `level_index` | path | `Long` | yes |
 
-**Request body** (`application/json`): `LevelUpdateRequest`
+**Request body** (`application/json`): `UpdateLevelRequest`
 
 **Returns:** `MetadataTaxonomyLevel`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.updateLevel("NAMESPACE", "TAXONOMY_KEY", 0L, new LevelUpdateRequest(/* … */));
+var result = client.metadataTaxonomies.updateLevel("NAMESPACE", "TAXONOMY_KEY", 0L, new UpdateLevelRequest(/* … */));
 ```
 
 ## appendLevels
@@ -144,14 +144,14 @@ var result = client.metadataTaxonomies.updateLevel("NAMESPACE", "TAXONOMY_KEY", 
 | `namespace` | path | `String` | yes |
 | `taxonomy_key` | path | `String` | yes |
 
-**Request body** (`application/json`): `LevelUpdateRequest`
+**Request body** (`application/json`): `UpdateLevelRequest`
 
 **Returns:** `MetadataTaxonomyLevels`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.appendLevels("NAMESPACE", "TAXONOMY_KEY", new LevelUpdateRequest(/* … */));
+var result = client.metadataTaxonomies.appendLevels("NAMESPACE", "TAXONOMY_KEY", new UpdateLevelRequest(/* … */));
 ```
 
 ## trimLevels
@@ -210,14 +210,14 @@ the [pagination guide](../pagination.md).
 | `namespace` | path | `String` | yes |
 | `taxonomy_key` | path | `String` | yes |
 
-**Request body** (`application/json`): `NodesCreateRequest`
+**Request body** (`application/json`): `CreateNodesRequest`
 
 **Returns:** `MetadataTaxonomyNode`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.createNodes("NAMESPACE", "TAXONOMY_KEY", new NodesCreateRequest(/* … */));
+var result = client.metadataTaxonomies.createNodes("NAMESPACE", "TAXONOMY_KEY", new CreateNodesRequest(/* … */));
 ```
 
 ## getNode
@@ -266,14 +266,14 @@ client.metadataTaxonomies.deleteNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID");
 | `taxonomy_key` | path | `String` | yes |
 | `node_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `NodeUpdateRequest`
+**Request body** (`application/json`): `UpdateNodeRequest`
 
 **Returns:** `MetadataTaxonomyNode`
 
 **Example**
 
 ```java
-var result = client.metadataTaxonomies.updateNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID", new NodeUpdateRequest(/* … */));
+var result = client.metadataTaxonomies.updateNode("NAMESPACE", "TAXONOMY_KEY", "NODE_ID", new UpdateNodeRequest(/* … */));
 ```
 
 ## listMetadataTemplateFieldOptions

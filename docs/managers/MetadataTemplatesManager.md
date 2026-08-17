@@ -35,7 +35,7 @@ the [pagination guide](../pagination.md).
 
 | Parameter | In | Type | Required |
 |---|---|---|---|
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
 **Returns:** `MetadataTemplate`
@@ -52,10 +52,10 @@ var result = client.metadataTemplates.getSchema(null, "TEMPLATE_KEY");
 
 | Parameter | In | Type | Required |
 |---|---|---|---|
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
-**Request body** (`application/json-patch+json`): `List<SchemaUpdateRequest>`
+**Request body** (`application/json-patch+json`): `List<UpdateSchemaRequest>`
 
 **Returns:** `MetadataTemplate`
 
@@ -71,7 +71,7 @@ var result = client.metadataTemplates.updateSchema(null, "TEMPLATE_KEY", java.ut
 
 | Parameter | In | Type | Required |
 |---|---|---|---|
-| `scope` | path | `GetFileIdMetadataIdIdScope` | yes |
+| `scope` | path | `GetFileIdMetadataIdScope` | yes |
 | `template_key` | path | `String` | yes |
 
 **Returns:** no content (`void`)
@@ -148,13 +148,13 @@ the [pagination guide](../pagination.md).
 
 `POST /metadata_templates/schema`
 
-**Request body** (`application/json`): `SchemaCreateRequest`
+**Request body** (`application/json`): `CreateSchemaRequest`
 
 **Returns:** `MetadataTemplate`
 
 **Example**
 
 ```java
-var result = client.metadataTemplates.createSchema(new SchemaCreateRequest(/* … */));
+var result = client.metadataTemplates.createSchema(new CreateSchemaRequest(/* … */));
 ```
 

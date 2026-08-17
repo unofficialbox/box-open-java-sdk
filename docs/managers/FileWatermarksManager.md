@@ -29,14 +29,14 @@ var result = client.fileWatermarks.getFileWatermark("FILE_ID");
 |---|---|---|---|
 | `file_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `FileWatermarkUpdateRequest`
+**Request body** (`application/json`): `UpdateFileWatermarkRequest`
 
 **Returns:** `Watermark`
 
 **Example**
 
 ```java
-var result = client.fileWatermarks.updateFileWatermark("FILE_ID", new FileWatermarkUpdateRequest(/* … */));
+var result = client.fileWatermarks.updateFileWatermark("FILE_ID", new UpdateFileWatermarkRequest(/* … */));
 ```
 
 ## deleteFileWatermark

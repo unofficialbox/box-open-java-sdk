@@ -13,14 +13,14 @@ Each is a **blocking** call returning its value directly and throwing
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `InviteCreateRequest`
+**Request body** (`application/json`): `CreateInviteRequest`
 
 **Returns:** `Invite`
 
 **Example**
 
 ```java
-var result = client.invites.create(new InviteCreateRequest(/* … */), null);
+var result = client.invites.create(new CreateInviteRequest(/* … */), null);
 ```
 
 ## get

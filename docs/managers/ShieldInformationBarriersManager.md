@@ -25,14 +25,14 @@ var result = client.shieldInformationBarriers.get("SHIELD_INFORMATION_BARRIER_ID
 
 `POST /shield_information_barriers/change_status`
 
-**Request body** (`application/json`): `ChangeStatusCreateRequest`
+**Request body** (`application/json`): `CreateChangeStatusRequest`
 
 **Returns:** `ShieldInformationBarrier`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarriers.createChangeStatus(new ChangeStatusCreateRequest(/* … */));
+var result = client.shieldInformationBarriers.createChangeStatus(new CreateChangeStatusRequest(/* … */));
 ```
 
 ## list
@@ -62,13 +62,13 @@ the [pagination guide](../pagination.md).
 
 `POST /shield_information_barriers`
 
-**Request body** (`application/json`): `ShieldInformationBarrierCreateRequest`
+**Request body** (`application/json`): `CreateShieldInformationBarrierRequest`
 
 **Returns:** `ShieldInformationBarrier`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarriers.create(new ShieldInformationBarrierCreateRequest(/* … */));
+var result = client.shieldInformationBarriers.create(new CreateShieldInformationBarrierRequest(/* … */));
 ```
 

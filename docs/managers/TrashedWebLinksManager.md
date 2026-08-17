@@ -14,14 +14,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `web_link_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FileCreateRequest`
+**Request body** (`application/json`): `CreateFileRequest`
 
 **Returns:** `TrashWebLinkRestored`
 
 **Example**
 
 ```java
-var result = client.trashedWebLinks.createWebLink("WEB_LINK_ID", new FileCreateRequest(/* … */), null);
+var result = client.trashedWebLinks.createWebLink("WEB_LINK_ID", new CreateFileRequest(/* … */), null);
 ```
 
 ## getWebLinkTrash

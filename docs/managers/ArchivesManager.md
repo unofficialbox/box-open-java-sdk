@@ -32,14 +32,14 @@ the [pagination guide](../pagination.md).
 
 `POST /archives`
 
-**Request body** (`application/json`): `ArchiveCreateRequest`
+**Request body** (`application/json`): `CreateArchiveRequest`
 
 **Returns:** `Archive`
 
 **Example**
 
 ```java
-var result = client.archives.create(new ArchiveCreateRequest(/* … */));
+var result = client.archives.create(new CreateArchiveRequest(/* … */));
 ```
 
 ## update
@@ -50,14 +50,14 @@ var result = client.archives.create(new ArchiveCreateRequest(/* … */));
 |---|---|---|---|
 | `archive_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `ArchiveUpdateRequest`
+**Request body** (`application/json`): `UpdateArchiveRequest`
 
 **Returns:** `Archive`
 
 **Example**
 
 ```java
-var result = client.archives.update("ARCHIVE_ID", new ArchiveUpdateRequest(/* … */));
+var result = client.archives.update("ARCHIVE_ID", new UpdateArchiveRequest(/* … */));
 ```
 
 ## delete

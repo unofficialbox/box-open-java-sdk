@@ -57,14 +57,14 @@ var result = client.fileVersions.getFileVersion("FILE_ID", "FILE_VERSION_ID", nu
 | `file_id` | path | `String` | yes |
 | `file_version_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `FileVersionUpdateRequest`
+**Request body** (`application/json`): `UpdateFileVersionRequest`
 
 **Returns:** `FileVersionFull`
 
 **Example**
 
 ```java
-var result = client.fileVersions.updateFileVersion("FILE_ID", "FILE_VERSION_ID", new FileVersionUpdateRequest(/* … */));
+var result = client.fileVersions.updateFileVersion("FILE_ID", "FILE_VERSION_ID", new UpdateFileVersionRequest(/* … */));
 ```
 
 ## deleteFileVersion
@@ -94,13 +94,13 @@ client.fileVersions.deleteFileVersion("FILE_ID", "FILE_VERSION_ID", null);
 | `file_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `FileVersionCurrentCreateRequest`
+**Request body** (`application/json`): `CreateFileVersionCurrentRequest`
 
 **Returns:** `FileVersionFull`
 
 **Example**
 
 ```java
-var result = client.fileVersions.createFileVersionCurrent("FILE_ID", new FileVersionCurrentCreateRequest(/* … */), null);
+var result = client.fileVersions.createFileVersionCurrent("FILE_ID", new CreateFileVersionCurrentRequest(/* … */), null);
 ```
 

@@ -36,14 +36,14 @@ the [pagination guide](../pagination.md).
 
 `POST /legal_hold_policy_assignments`
 
-**Request body** (`application/json`): `LegalHoldPolicyAssignmentCreateRequest`
+**Request body** (`application/json`): `CreateLegalHoldPolicyAssignmentRequest`
 
 **Returns:** `LegalHoldPolicyAssignment`
 
 **Example**
 
 ```java
-var result = client.legalHoldPolicyAssignments.create(new LegalHoldPolicyAssignmentCreateRequest(/* … */));
+var result = client.legalHoldPolicyAssignments.create(new CreateLegalHoldPolicyAssignmentRequest(/* … */));
 ```
 
 ## get

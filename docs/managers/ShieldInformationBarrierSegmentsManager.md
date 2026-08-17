@@ -29,14 +29,14 @@ var result = client.shieldInformationBarrierSegments.get("SHIELD_INFORMATION_BAR
 |---|---|---|---|
 | `shield_information_barrier_segment_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `ShieldInformationBarrierSegmentUpdateRequest`
+**Request body** (`application/json`): `UpdateShieldInformationBarrierSegmentRequest`
 
 **Returns:** `ShieldInformationBarrierSegment`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarrierSegments.update("SHIELD_INFORMATION_BARRIER_SEGMENT_ID", new ShieldInformationBarrierSegmentUpdateRequest(/* … */));
+var result = client.shieldInformationBarrierSegments.update("SHIELD_INFORMATION_BARRIER_SEGMENT_ID", new UpdateShieldInformationBarrierSegmentRequest(/* … */));
 ```
 
 ## delete
@@ -83,13 +83,13 @@ the [pagination guide](../pagination.md).
 
 `POST /shield_information_barrier_segments`
 
-**Request body** (`application/json`): `ShieldInformationBarrierSegmentCreateRequest`
+**Request body** (`application/json`): `CreateShieldInformationBarrierSegmentRequest`
 
 **Returns:** `ShieldInformationBarrierSegment`
 
 **Example**
 
 ```java
-var result = client.shieldInformationBarrierSegments.create(new ShieldInformationBarrierSegmentCreateRequest(/* … */));
+var result = client.shieldInformationBarrierSegments.create(new CreateShieldInformationBarrierSegmentRequest(/* … */));
 ```
 

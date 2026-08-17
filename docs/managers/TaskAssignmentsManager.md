@@ -25,14 +25,14 @@ var result = client.taskAssignments.listTaskAssignments("TASK_ID");
 
 `POST /task_assignments`
 
-**Request body** (`application/json`): `TaskAssignmentCreateRequest`
+**Request body** (`application/json`): `CreateTaskAssignmentRequest`
 
 **Returns:** `TaskAssignment`
 
 **Example**
 
 ```java
-var result = client.taskAssignments.create(new TaskAssignmentCreateRequest(/* … */));
+var result = client.taskAssignments.create(new CreateTaskAssignmentRequest(/* … */));
 ```
 
 ## get
@@ -59,14 +59,14 @@ var result = client.taskAssignments.get("TASK_ASSIGNMENT_ID");
 |---|---|---|---|
 | `task_assignment_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `TaskAssignmentUpdateRequest`
+**Request body** (`application/json`): `UpdateTaskAssignmentRequest`
 
 **Returns:** `TaskAssignment`
 
 **Example**
 
 ```java
-var result = client.taskAssignments.update("TASK_ASSIGNMENT_ID", new TaskAssignmentUpdateRequest(/* … */));
+var result = client.taskAssignments.update("TASK_ASSIGNMENT_ID", new UpdateTaskAssignmentRequest(/* … */));
 ```
 
 ## delete

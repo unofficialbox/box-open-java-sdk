@@ -21,7 +21,7 @@ var result = client.classifications.get();
 
 `PUT /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema`
 
-**Request body** (`application/json`): `List<ClassificationUpdateRequest>`
+**Request body** (`application/json`): `List<UpdateClassificationAddRequest>`
 
 **Returns:** `ClassificationTemplate`
 
@@ -35,7 +35,7 @@ var result = client.classifications.updateAdd(java.util.List.of());
 
 `PUT /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema`
 
-**Request body** (`application/json-patch+json`): `List<ClassificationUpdateRequest2>`
+**Request body** (`application/json-patch+json`): `List<UpdateClassificationUpdateRequest>`
 
 **Returns:** `ClassificationTemplate`
 
@@ -49,13 +49,13 @@ var result = client.classifications.updateUpdate(java.util.List.of());
 
 `POST /metadata_templates/schema`
 
-**Request body** (`application/json`): `MetadataTemplateSchemaCreateRequest`
+**Request body** (`application/json`): `CreateMetadataTemplateSchemaClassificationsRequest`
 
 **Returns:** `ClassificationTemplate`
 
 **Example**
 
 ```java
-var result = client.classifications.createMetadataTemplateSchemaClassifications(new MetadataTemplateSchemaCreateRequest(/* … */));
+var result = client.classifications.createMetadataTemplateSchemaClassifications(new CreateMetadataTemplateSchemaClassificationsRequest(/* … */));
 ```
 

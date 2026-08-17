@@ -15,13 +15,13 @@ Each is a **blocking** call returning its value directly and throwing
 | `fields` | query | `List<String>` | no |
 | `notify` | query | `Boolean` | no |
 
-**Request body** (`application/json`): `UserFolder0UpdateRequest`
+**Request body** (`application/json`): `TransferFoldersRequest`
 
 **Returns:** `FolderFull`
 
 **Example**
 
 ```java
-var result = client.transfer.transferFolders("USER_ID", new UserFolder0UpdateRequest(/* … */), null);
+var result = client.transfer.transferFolders("USER_ID", new TransferFoldersRequest(/* … */), null);
 ```
 

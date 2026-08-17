@@ -36,14 +36,14 @@ the [pagination guide](../pagination.md).
 
 `POST /retention_policies`
 
-**Request body** (`application/json`): `RetentionPolicyCreateRequest`
+**Request body** (`application/json`): `CreateRetentionPolicyRequest`
 
 **Returns:** `RetentionPolicy`
 
 **Example**
 
 ```java
-var result = client.retentionPolicies.create(new RetentionPolicyCreateRequest(/* … */));
+var result = client.retentionPolicies.create(new CreateRetentionPolicyRequest(/* … */));
 ```
 
 ## get
@@ -71,14 +71,14 @@ var result = client.retentionPolicies.get("RETENTION_POLICY_ID", null);
 |---|---|---|---|
 | `retention_policy_id` | path | `String` | yes |
 
-**Request body** (`application/json`): `RetentionPolicyUpdateRequest`
+**Request body** (`application/json`): `UpdateRetentionPolicyRequest`
 
 **Returns:** `RetentionPolicy`
 
 **Example**
 
 ```java
-var result = client.retentionPolicies.update("RETENTION_POLICY_ID", new RetentionPolicyUpdateRequest(/* … */));
+var result = client.retentionPolicies.update("RETENTION_POLICY_ID", new UpdateRetentionPolicyRequest(/* … */));
 ```
 
 ## delete

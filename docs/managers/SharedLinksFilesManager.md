@@ -49,14 +49,14 @@ var result = client.sharedLinksFiles.getFileGetSharedLink("FILE_ID", "FIELDS");
 | `file_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest2`
+**Request body** (`application/json`): `UpdateFileAddSharedLinkRequest`
 
 **Returns:** `FileFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFiles.updateFileAddSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+var result = client.sharedLinksFiles.updateFileAddSharedLink("FILE_ID", "FIELDS", new UpdateFileAddSharedLinkRequest(/* … */));
 ```
 
 ## updateFileUpdateSharedLink
@@ -68,14 +68,14 @@ var result = client.sharedLinksFiles.updateFileAddSharedLink("FILE_ID", "FIELDS"
 | `file_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest2`
+**Request body** (`application/json`): `UpdateFileAddSharedLinkRequest`
 
 **Returns:** `FileFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFiles.updateFileUpdateSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest2(/* … */));
+var result = client.sharedLinksFiles.updateFileUpdateSharedLink("FILE_ID", "FIELDS", new UpdateFileAddSharedLinkRequest(/* … */));
 ```
 
 ## updateFileRemoveSharedLink
@@ -87,13 +87,13 @@ var result = client.sharedLinksFiles.updateFileUpdateSharedLink("FILE_ID", "FIEL
 | `file_id` | path | `String` | yes |
 | `fields` | query | `String` | yes |
 
-**Request body** (`application/json`): `FileUpdateRequest3`
+**Request body** (`application/json`): `UpdateFileRemoveSharedLinkRequest`
 
 **Returns:** `FileFull`
 
 **Example**
 
 ```java
-var result = client.sharedLinksFiles.updateFileRemoveSharedLink("FILE_ID", "FIELDS", new FileUpdateRequest3(/* … */));
+var result = client.sharedLinksFiles.updateFileRemoveSharedLink("FILE_ID", "FIELDS", new UpdateFileRemoveSharedLinkRequest(/* … */));
 ```
 

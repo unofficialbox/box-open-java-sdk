@@ -16,14 +16,14 @@ Each is a **blocking** call returning its value directly and throwing
 | `fields` | query | `List<String>` | no |
 | `content-md5` | header | `String` | no |
 
-**Request body** (`multipart/form-data`): `FileIdContentCreateRequest`
+**Request body** (`multipart/form-data`): `CreateFileIdContentRequest`
 
 **Returns:** `Files`
 
 **Example**
 
 ```java
-var result = client.uploads.uploadFileVersion("FILE_ID", new FileIdContentCreateRequest(/* … */), null);
+var result = client.uploads.uploadFileVersion("FILE_ID", new CreateFileIdContentRequest(/* … */), null);
 ```
 
 ## uploadFile
@@ -35,14 +35,14 @@ var result = client.uploads.uploadFileVersion("FILE_ID", new FileIdContentCreate
 | `fields` | query | `List<String>` | no |
 | `content-md5` | header | `String` | no |
 
-**Request body** (`multipart/form-data`): `FileContentCreateRequest`
+**Request body** (`multipart/form-data`): `CreateFileContentRequest`
 
 **Returns:** `Files`
 
 **Example**
 
 ```java
-var result = client.uploads.uploadFile(new FileContentCreateRequest(/* … */), null);
+var result = client.uploads.uploadFile(new CreateFileContentRequest(/* … */), null);
 ```
 
 ## optionFileContent

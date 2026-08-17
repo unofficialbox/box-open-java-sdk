@@ -53,7 +53,7 @@ Paginated — `listGroup(...)` returns an auto-paging `Iterable` you
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
 
-## createGroup
+## createGroupMembership
 
 `POST /group_memberships`
 
@@ -61,17 +61,17 @@ the [pagination guide](../pagination.md).
 |---|---|---|---|
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `GroupCreateRequest2`
+**Request body** (`application/json`): `CreateGroupMembershipRequest`
 
 **Returns:** `GroupMembership`
 
 **Example**
 
 ```java
-var result = client.memberships.createGroup(new GroupCreateRequest2(/* … */), null);
+var result = client.memberships.createGroupMembership(new CreateGroupMembershipRequest(/* … */), null);
 ```
 
-## getGroup
+## getGroupMembership
 
 `GET /group_memberships/{group_membership_id}`
 
@@ -85,10 +85,10 @@ var result = client.memberships.createGroup(new GroupCreateRequest2(/* … */), 
 **Example**
 
 ```java
-var result = client.memberships.getGroup("GROUP_MEMBERSHIP_ID", null);
+var result = client.memberships.getGroupMembership("GROUP_MEMBERSHIP_ID", null);
 ```
 
-## updateGroup
+## updateGroupMembership
 
 `PUT /group_memberships/{group_membership_id}`
 
@@ -97,17 +97,17 @@ var result = client.memberships.getGroup("GROUP_MEMBERSHIP_ID", null);
 | `group_membership_id` | path | `String` | yes |
 | `fields` | query | `List<String>` | no |
 
-**Request body** (`application/json`): `GroupUpdateRequest2`
+**Request body** (`application/json`): `UpdateGroupMembershipRequest`
 
 **Returns:** `GroupMembership`
 
 **Example**
 
 ```java
-var result = client.memberships.updateGroup("GROUP_MEMBERSHIP_ID", new GroupUpdateRequest2(/* … */), null);
+var result = client.memberships.updateGroupMembership("GROUP_MEMBERSHIP_ID", new UpdateGroupMembershipRequest(/* … */), null);
 ```
 
-## deleteGroup
+## deleteGroupMembership
 
 `DELETE /group_memberships/{group_membership_id}`
 
@@ -120,6 +120,6 @@ var result = client.memberships.updateGroup("GROUP_MEMBERSHIP_ID", new GroupUpda
 **Example**
 
 ```java
-client.memberships.deleteGroup("GROUP_MEMBERSHIP_ID");
+client.memberships.deleteGroupMembership("GROUP_MEMBERSHIP_ID");
 ```
 
