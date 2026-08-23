@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 public record CreateTermsOfServiceUserStatusRequest(
     PostTos tos,
-    CollaboratorVariableVariableValue user,
+    CollaboratorVariableValue user,
     Boolean isAccepted) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
@@ -17,7 +17,7 @@ public record CreateTermsOfServiceUserStatusRequest(
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new CreateTermsOfServiceUserStatusRequest(
             (_m.get("tos") == null ? null : PostTos.fromJson(_m.get("tos"))),
-            (_m.get("user") == null ? null : CollaboratorVariableVariableValue.fromJson(_m.get("user"))),
+            (_m.get("user") == null ? null : CollaboratorVariableValue.fromJson(_m.get("user"))),
             dev.unofficialbox.core.Json.asBoolean(_m.get("is_accepted"))
         );
     }
@@ -29,14 +29,14 @@ public record CreateTermsOfServiceUserStatusRequest(
 
     public static final class Builder {
         private PostTos tos;
-        private CollaboratorVariableVariableValue user;
+        private CollaboratorVariableValue user;
         private Boolean isAccepted;
 
         public Builder tos(PostTos tos) {
             this.tos = tos;
             return this;
         }
-        public Builder user(CollaboratorVariableVariableValue user) {
+        public Builder user(CollaboratorVariableValue user) {
             this.user = user;
             return this;
         }

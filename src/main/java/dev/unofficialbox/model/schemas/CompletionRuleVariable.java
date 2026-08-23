@@ -3,8 +3,8 @@ package dev.unofficialbox.model.schemas;
 
 public record CompletionRuleVariable(
     CollaboratorVariableType type,
-    CompletionRuleVariableVariableType variableType,
-    CompletionRuleVariableVariableValue variableValue) {
+    CompletionRuleVariableType variableType,
+    CompletionRuleVariableValue variableValue) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("type", (type() == null ? null : type().toJson()));
@@ -17,8 +17,8 @@ public record CompletionRuleVariable(
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new CompletionRuleVariable(
             (_m.get("type") == null ? null : CollaboratorVariableType.fromJson(_m.get("type"))),
-            (_m.get("variable_type") == null ? null : CompletionRuleVariableVariableType.fromJson(_m.get("variable_type"))),
-            (_m.get("variable_value") == null ? null : CompletionRuleVariableVariableValue.fromJson(_m.get("variable_value")))
+            (_m.get("variable_type") == null ? null : CompletionRuleVariableType.fromJson(_m.get("variable_type"))),
+            (_m.get("variable_value") == null ? null : CompletionRuleVariableValue.fromJson(_m.get("variable_value")))
         );
     }
 
@@ -29,18 +29,18 @@ public record CompletionRuleVariable(
 
     public static final class Builder {
         private CollaboratorVariableType type;
-        private CompletionRuleVariableVariableType variableType;
-        private CompletionRuleVariableVariableValue variableValue;
+        private CompletionRuleVariableType variableType;
+        private CompletionRuleVariableValue variableValue;
 
         public Builder type(CollaboratorVariableType type) {
             this.type = type;
             return this;
         }
-        public Builder variableType(CompletionRuleVariableVariableType variableType) {
+        public Builder variableType(CompletionRuleVariableType variableType) {
             this.variableType = variableType;
             return this;
         }
-        public Builder variableValue(CompletionRuleVariableVariableValue variableValue) {
+        public Builder variableValue(CompletionRuleVariableValue variableValue) {
             this.variableValue = variableValue;
             return this;
         }

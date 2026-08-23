@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record Watermark(Optional<WatermarkWatermark> watermark) {
+public record Watermark(Optional<Watermark2> watermark) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         watermark().ifPresent(_v -> _m.put("watermark", (_v == null ? null : _v.toJson())));
@@ -13,7 +13,7 @@ public record Watermark(Optional<WatermarkWatermark> watermark) {
     public static Watermark fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new Watermark(
-            (!_m.containsKey("watermark") || _m.get("watermark") == null) ? java.util.Optional.<WatermarkWatermark>empty() : java.util.Optional.of((_m.get("watermark") == null ? null : WatermarkWatermark.fromJson(_m.get("watermark"))))
+            (!_m.containsKey("watermark") || _m.get("watermark") == null) ? java.util.Optional.<Watermark2>empty() : java.util.Optional.of((_m.get("watermark") == null ? null : Watermark2.fromJson(_m.get("watermark"))))
         );
     }
 
@@ -23,9 +23,9 @@ public record Watermark(Optional<WatermarkWatermark> watermark) {
     }
 
     public static final class Builder {
-        private Optional<WatermarkWatermark> watermark = java.util.Optional.empty();
+        private Optional<Watermark2> watermark = java.util.Optional.empty();
 
-        public Builder watermark(WatermarkWatermark watermark) {
+        public Builder watermark(Watermark2 watermark) {
             this.watermark = java.util.Optional.ofNullable(watermark);
             return this;
         }

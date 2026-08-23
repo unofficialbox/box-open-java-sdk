@@ -7,7 +7,7 @@ public record Group(
     String id,
     GroupType type,
     Optional<String> name,
-    Optional<GroupGroupType> groupType,
+    Optional<GroupType2> groupType,
     Optional<OffsetDateTime> createdAt,
     Optional<OffsetDateTime> modifiedAt) {
     public java.util.Map<String, Object> toJson() {
@@ -27,7 +27,7 @@ public record Group(
             dev.unofficialbox.core.Json.asString(_m.get("id")),
             (_m.get("type") == null ? null : GroupType.fromJson(_m.get("type"))),
             (!_m.containsKey("name") || _m.get("name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("name"))),
-            (!_m.containsKey("group_type") || _m.get("group_type") == null) ? java.util.Optional.<GroupGroupType>empty() : java.util.Optional.of((_m.get("group_type") == null ? null : GroupGroupType.fromJson(_m.get("group_type")))),
+            (!_m.containsKey("group_type") || _m.get("group_type") == null) ? java.util.Optional.<GroupType2>empty() : java.util.Optional.of((_m.get("group_type") == null ? null : GroupType2.fromJson(_m.get("group_type")))),
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at"))))),
             (!_m.containsKey("modified_at") || _m.get("modified_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("modified_at")))))
         );
@@ -42,7 +42,7 @@ public record Group(
         private String id;
         private GroupType type;
         private Optional<String> name = java.util.Optional.empty();
-        private Optional<GroupGroupType> groupType = java.util.Optional.empty();
+        private Optional<GroupType2> groupType = java.util.Optional.empty();
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
 
@@ -58,7 +58,7 @@ public record Group(
             this.name = java.util.Optional.ofNullable(name);
             return this;
         }
-        public Builder groupType(GroupGroupType groupType) {
+        public Builder groupType(GroupType2 groupType) {
             this.groupType = java.util.Optional.ofNullable(groupType);
             return this;
         }

@@ -6,7 +6,7 @@ import module java.base;
 public record CreateRetentionPolicyRequest(
     String policyName,
     Optional<String> description,
-    RetentionPolicyPolicyType policyType,
+    RetentionPolicyType2 policyType,
     RetentionPolicyDispositionAction dispositionAction,
     Optional<PostRetentionLength> retentionLength,
     Optional<RetentionPolicyRetentionType> retentionType,
@@ -34,7 +34,7 @@ public record CreateRetentionPolicyRequest(
         return new CreateRetentionPolicyRequest(
             dev.unofficialbox.core.Json.asString(_m.get("policy_name")),
             (!_m.containsKey("description") || _m.get("description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("description"))),
-            (_m.get("policy_type") == null ? null : RetentionPolicyPolicyType.fromJson(_m.get("policy_type"))),
+            (_m.get("policy_type") == null ? null : RetentionPolicyType2.fromJson(_m.get("policy_type"))),
             (_m.get("disposition_action") == null ? null : RetentionPolicyDispositionAction.fromJson(_m.get("disposition_action"))),
             (!_m.containsKey("retention_length") || _m.get("retention_length") == null) ? java.util.Optional.<PostRetentionLength>empty() : java.util.Optional.of((_m.get("retention_length") == null ? null : PostRetentionLength.fromJson(_m.get("retention_length")))),
             (!_m.containsKey("retention_type") || _m.get("retention_type") == null) ? java.util.Optional.<RetentionPolicyRetentionType>empty() : java.util.Optional.of((_m.get("retention_type") == null ? null : RetentionPolicyRetentionType.fromJson(_m.get("retention_type")))),
@@ -53,7 +53,7 @@ public record CreateRetentionPolicyRequest(
     public static final class Builder {
         private String policyName;
         private Optional<String> description = java.util.Optional.empty();
-        private RetentionPolicyPolicyType policyType;
+        private RetentionPolicyType2 policyType;
         private RetentionPolicyDispositionAction dispositionAction;
         private Optional<PostRetentionLength> retentionLength = java.util.Optional.empty();
         private Optional<RetentionPolicyRetentionType> retentionType = java.util.Optional.empty();
@@ -70,7 +70,7 @@ public record CreateRetentionPolicyRequest(
             this.description = java.util.Optional.ofNullable(description);
             return this;
         }
-        public Builder policyType(RetentionPolicyPolicyType policyType) {
+        public Builder policyType(RetentionPolicyType2 policyType) {
             this.policyType = policyType;
             return this;
         }

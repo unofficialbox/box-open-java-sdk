@@ -2,7 +2,7 @@
 package dev.unofficialbox.model.schemas;
 
 public record SignRequestSignerInputSSNValidation(
-    SignRequestSignerInputSSNValidationValidationType validationType) {
+    SignRequestSignerInputSSNValidationType validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("validation_type", (validationType() == null ? null : validationType().toJson()));
@@ -12,7 +12,7 @@ public record SignRequestSignerInputSSNValidation(
     public static SignRequestSignerInputSSNValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputSSNValidation(
-            (_m.get("validation_type") == null ? null : SignRequestSignerInputSSNValidationValidationType.fromJson(_m.get("validation_type")))
+            (_m.get("validation_type") == null ? null : SignRequestSignerInputSSNValidationType.fromJson(_m.get("validation_type")))
         );
     }
 
@@ -22,9 +22,9 @@ public record SignRequestSignerInputSSNValidation(
     }
 
     public static final class Builder {
-        private SignRequestSignerInputSSNValidationValidationType validationType;
+        private SignRequestSignerInputSSNValidationType validationType;
 
-        public Builder validationType(SignRequestSignerInputSSNValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputSSNValidationType validationType) {
             this.validationType = validationType;
             return this;
         }

@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record SignRequestSignerInputNumberWithCommaValidation(
-    Optional<SignRequestSignerInputNumberWithCommaValidationValidationType> validationType) {
+    Optional<SignRequestSignerInputNumberWithCommaValidationType> validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         validationType().ifPresent(_v -> _m.put("validation_type", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record SignRequestSignerInputNumberWithCommaValidation(
     public static SignRequestSignerInputNumberWithCommaValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputNumberWithCommaValidation(
-            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputNumberWithCommaValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputNumberWithCommaValidationValidationType.fromJson(_m.get("validation_type"))))
+            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputNumberWithCommaValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputNumberWithCommaValidationType.fromJson(_m.get("validation_type"))))
         );
     }
 
@@ -24,9 +24,9 @@ public record SignRequestSignerInputNumberWithCommaValidation(
     }
 
     public static final class Builder {
-        private Optional<SignRequestSignerInputNumberWithCommaValidationValidationType> validationType = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputNumberWithCommaValidationType> validationType = java.util.Optional.empty();
 
-        public Builder validationType(SignRequestSignerInputNumberWithCommaValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputNumberWithCommaValidationType validationType) {
             this.validationType = java.util.Optional.ofNullable(validationType);
             return this;
         }

@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record SignRequestSignerInputDateAsiaValidation(
-    Optional<SignRequestSignerInputDateAsiaValidationValidationType> validationType) {
+    Optional<SignRequestSignerInputDateAsiaValidationType> validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         validationType().ifPresent(_v -> _m.put("validation_type", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record SignRequestSignerInputDateAsiaValidation(
     public static SignRequestSignerInputDateAsiaValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputDateAsiaValidation(
-            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputDateAsiaValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputDateAsiaValidationValidationType.fromJson(_m.get("validation_type"))))
+            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputDateAsiaValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputDateAsiaValidationType.fromJson(_m.get("validation_type"))))
         );
     }
 
@@ -24,9 +24,9 @@ public record SignRequestSignerInputDateAsiaValidation(
     }
 
     public static final class Builder {
-        private Optional<SignRequestSignerInputDateAsiaValidationValidationType> validationType = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputDateAsiaValidationType> validationType = java.util.Optional.empty();
 
-        public Builder validationType(SignRequestSignerInputDateAsiaValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputDateAsiaValidationType validationType) {
             this.validationType = java.util.Optional.ofNullable(validationType);
             return this;
         }

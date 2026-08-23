@@ -6,8 +6,8 @@ import module java.base;
 public record StatusSkillCard(
     Optional<OffsetDateTime> createdAt,
     KeywordSkillCardType type,
-    StatusSkillCardSkillCardType skillCardType,
-    Optional<KeywordSkillCardSkillCardTitle> skillCardTitle,
+    StatusSkillCardType skillCardType,
+    Optional<KeywordSkillCardTitle> skillCardTitle,
     StatusSkillCardStatus status,
     KeywordSkillCardSkill skill,
     KeywordSkillCardInvocation invocation) {
@@ -28,8 +28,8 @@ public record StatusSkillCard(
         return new StatusSkillCard(
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at"))))),
             (_m.get("type") == null ? null : KeywordSkillCardType.fromJson(_m.get("type"))),
-            (_m.get("skill_card_type") == null ? null : StatusSkillCardSkillCardType.fromJson(_m.get("skill_card_type"))),
-            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardSkillCardTitle.fromJson(_m.get("skill_card_title")))),
+            (_m.get("skill_card_type") == null ? null : StatusSkillCardType.fromJson(_m.get("skill_card_type"))),
+            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardTitle.fromJson(_m.get("skill_card_title")))),
             (_m.get("status") == null ? null : StatusSkillCardStatus.fromJson(_m.get("status"))),
             (_m.get("skill") == null ? null : KeywordSkillCardSkill.fromJson(_m.get("skill"))),
             (_m.get("invocation") == null ? null : KeywordSkillCardInvocation.fromJson(_m.get("invocation")))
@@ -44,8 +44,8 @@ public record StatusSkillCard(
     public static final class Builder {
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private KeywordSkillCardType type;
-        private StatusSkillCardSkillCardType skillCardType;
-        private Optional<KeywordSkillCardSkillCardTitle> skillCardTitle = java.util.Optional.empty();
+        private StatusSkillCardType skillCardType;
+        private Optional<KeywordSkillCardTitle> skillCardTitle = java.util.Optional.empty();
         private StatusSkillCardStatus status;
         private KeywordSkillCardSkill skill;
         private KeywordSkillCardInvocation invocation;
@@ -58,11 +58,11 @@ public record StatusSkillCard(
             this.type = type;
             return this;
         }
-        public Builder skillCardType(StatusSkillCardSkillCardType skillCardType) {
+        public Builder skillCardType(StatusSkillCardType skillCardType) {
             this.skillCardType = skillCardType;
             return this;
         }
-        public Builder skillCardTitle(KeywordSkillCardSkillCardTitle skillCardTitle) {
+        public Builder skillCardTitle(KeywordSkillCardTitle skillCardTitle) {
             this.skillCardTitle = java.util.Optional.ofNullable(skillCardTitle);
             return this;
         }

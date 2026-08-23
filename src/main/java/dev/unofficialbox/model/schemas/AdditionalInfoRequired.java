@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record AdditionalInfoRequired(
-    Optional<List<List<SignRequestSignerInputEmailValidationValidationType>>> signers) {
+    Optional<List<List<SignRequestSignerInputEmailValidationType>>> signers) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         signers().ifPresent(_v -> _m.put("signers", dev.unofficialbox.core.Json.encodeList(_v, _x0 -> dev.unofficialbox.core.Json.encodeList(_x0, _x1 -> (_x1 == null ? null : _x1.toJson())))));
@@ -14,7 +14,7 @@ public record AdditionalInfoRequired(
     public static AdditionalInfoRequired fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new AdditionalInfoRequired(
-            (!_m.containsKey("signers") || _m.get("signers") == null) ? java.util.Optional.<List<List<SignRequestSignerInputEmailValidationValidationType>>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("signers"), _x0 -> dev.unofficialbox.core.Json.decodeList(_x0, _x1 -> (_x1 == null ? null : SignRequestSignerInputEmailValidationValidationType.fromJson(_x1)))))
+            (!_m.containsKey("signers") || _m.get("signers") == null) ? java.util.Optional.<List<List<SignRequestSignerInputEmailValidationType>>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("signers"), _x0 -> dev.unofficialbox.core.Json.decodeList(_x0, _x1 -> (_x1 == null ? null : SignRequestSignerInputEmailValidationType.fromJson(_x1)))))
         );
     }
 
@@ -24,9 +24,9 @@ public record AdditionalInfoRequired(
     }
 
     public static final class Builder {
-        private Optional<List<List<SignRequestSignerInputEmailValidationValidationType>>> signers = java.util.Optional.empty();
+        private Optional<List<List<SignRequestSignerInputEmailValidationType>>> signers = java.util.Optional.empty();
 
-        public Builder signers(List<List<SignRequestSignerInputEmailValidationValidationType>> signers) {
+        public Builder signers(List<List<SignRequestSignerInputEmailValidationType>> signers) {
             this.signers = java.util.Optional.ofNullable(signers);
             return this;
         }

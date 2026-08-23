@@ -6,7 +6,7 @@ import module java.base;
 public record FileFullExpiringEmbedLink(
     Optional<String> accessToken,
     Optional<Long> expiresIn,
-    Optional<AccessTokenTokenType> tokenType,
+    Optional<AccessTokenType> tokenType,
     Optional<List<ResourceScope>> restrictedTo,
     Optional<String> url) {
     public java.util.Map<String, Object> toJson() {
@@ -24,7 +24,7 @@ public record FileFullExpiringEmbedLink(
         return new FileFullExpiringEmbedLink(
             (!_m.containsKey("access_token") || _m.get("access_token") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("access_token"))),
             (!_m.containsKey("expires_in") || _m.get("expires_in") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("expires_in"))),
-            (!_m.containsKey("token_type") || _m.get("token_type") == null) ? java.util.Optional.<AccessTokenTokenType>empty() : java.util.Optional.of((_m.get("token_type") == null ? null : AccessTokenTokenType.fromJson(_m.get("token_type")))),
+            (!_m.containsKey("token_type") || _m.get("token_type") == null) ? java.util.Optional.<AccessTokenType>empty() : java.util.Optional.of((_m.get("token_type") == null ? null : AccessTokenType.fromJson(_m.get("token_type")))),
             (!_m.containsKey("restricted_to") || _m.get("restricted_to") == null) ? java.util.Optional.<List<ResourceScope>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("restricted_to"), _x0 -> (_x0 == null ? null : ResourceScope.fromJson(_x0)))),
             (!_m.containsKey("url") || _m.get("url") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("url")))
         );
@@ -38,7 +38,7 @@ public record FileFullExpiringEmbedLink(
     public static final class Builder {
         private Optional<String> accessToken = java.util.Optional.empty();
         private Optional<Long> expiresIn = java.util.Optional.empty();
-        private Optional<AccessTokenTokenType> tokenType = java.util.Optional.empty();
+        private Optional<AccessTokenType> tokenType = java.util.Optional.empty();
         private Optional<List<ResourceScope>> restrictedTo = java.util.Optional.empty();
         private Optional<String> url = java.util.Optional.empty();
 
@@ -50,7 +50,7 @@ public record FileFullExpiringEmbedLink(
             this.expiresIn = java.util.Optional.ofNullable(expiresIn);
             return this;
         }
-        public Builder tokenType(AccessTokenTokenType tokenType) {
+        public Builder tokenType(AccessTokenType tokenType) {
             this.tokenType = java.util.Optional.ofNullable(tokenType);
             return this;
         }

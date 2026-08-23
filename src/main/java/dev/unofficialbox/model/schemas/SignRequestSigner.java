@@ -19,7 +19,7 @@ public record SignRequestSigner(
     Tristate<Boolean> suppressNotifications,
     Tristate<String> language,
     Optional<Boolean> hasViewedDocument,
-    Tristate<SignRequestSignerSignerDecision> signerDecision,
+    Tristate<SignRequestSignerDecision> signerDecision,
     Optional<List<SignRequestSignerInput>> inputs,
     Tristate<String> embedUrl,
     Tristate<String> iframeableEmbedUrl,
@@ -78,7 +78,7 @@ public record SignRequestSigner(
             !_m.containsKey("suppress_notifications") ? dev.unofficialbox.core.Tristate.<Boolean>absent() : (_m.get("suppress_notifications") == null ? dev.unofficialbox.core.Tristate.<Boolean>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asBoolean(_m.get("suppress_notifications")))),
             !_m.containsKey("language") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("language") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("language")))),
             (!_m.containsKey("has_viewed_document") || _m.get("has_viewed_document") == null) ? java.util.Optional.<Boolean>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asBoolean(_m.get("has_viewed_document"))),
-            !_m.containsKey("signer_decision") ? dev.unofficialbox.core.Tristate.<SignRequestSignerSignerDecision>absent() : (_m.get("signer_decision") == null ? dev.unofficialbox.core.Tristate.<SignRequestSignerSignerDecision>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("signer_decision") == null ? null : SignRequestSignerSignerDecision.fromJson(_m.get("signer_decision"))))),
+            !_m.containsKey("signer_decision") ? dev.unofficialbox.core.Tristate.<SignRequestSignerDecision>absent() : (_m.get("signer_decision") == null ? dev.unofficialbox.core.Tristate.<SignRequestSignerDecision>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("signer_decision") == null ? null : SignRequestSignerDecision.fromJson(_m.get("signer_decision"))))),
             (!_m.containsKey("inputs") || _m.get("inputs") == null) ? java.util.Optional.<List<SignRequestSignerInput>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("inputs"), _x0 -> (_x0 == null ? null : SignRequestSignerInput.fromJson(_x0)))),
             !_m.containsKey("embed_url") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("embed_url") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("embed_url")))),
             !_m.containsKey("iframeable_embed_url") ? dev.unofficialbox.core.Tristate.<String>absent() : (_m.get("iframeable_embed_url") == null ? dev.unofficialbox.core.Tristate.<String>ofNull() : dev.unofficialbox.core.Tristate.of(dev.unofficialbox.core.Json.asString(_m.get("iframeable_embed_url")))),
@@ -106,7 +106,7 @@ public record SignRequestSigner(
         private Tristate<Boolean> suppressNotifications;
         private Tristate<String> language;
         private Optional<Boolean> hasViewedDocument = java.util.Optional.empty();
-        private Tristate<SignRequestSignerSignerDecision> signerDecision;
+        private Tristate<SignRequestSignerDecision> signerDecision;
         private Optional<List<SignRequestSignerInput>> inputs = java.util.Optional.empty();
         private Tristate<String> embedUrl;
         private Tristate<String> iframeableEmbedUrl;
@@ -168,7 +168,7 @@ public record SignRequestSigner(
             this.hasViewedDocument = java.util.Optional.ofNullable(hasViewedDocument);
             return this;
         }
-        public Builder signerDecision(Tristate<SignRequestSignerSignerDecision> signerDecision) {
+        public Builder signerDecision(Tristate<SignRequestSignerDecision> signerDecision) {
             this.signerDecision = signerDecision;
             return this;
         }

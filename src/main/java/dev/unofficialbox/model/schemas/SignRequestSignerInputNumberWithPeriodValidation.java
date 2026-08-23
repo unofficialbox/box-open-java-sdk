@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record SignRequestSignerInputNumberWithPeriodValidation(
-    Optional<SignRequestSignerInputNumberWithPeriodValidationValidationType> validationType) {
+    Optional<SignRequestSignerInputNumberWithPeriodValidationType> validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         validationType().ifPresent(_v -> _m.put("validation_type", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record SignRequestSignerInputNumberWithPeriodValidation(
     public static SignRequestSignerInputNumberWithPeriodValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputNumberWithPeriodValidation(
-            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputNumberWithPeriodValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputNumberWithPeriodValidationValidationType.fromJson(_m.get("validation_type"))))
+            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputNumberWithPeriodValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputNumberWithPeriodValidationType.fromJson(_m.get("validation_type"))))
         );
     }
 
@@ -24,9 +24,9 @@ public record SignRequestSignerInputNumberWithPeriodValidation(
     }
 
     public static final class Builder {
-        private Optional<SignRequestSignerInputNumberWithPeriodValidationValidationType> validationType = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputNumberWithPeriodValidationType> validationType = java.util.Optional.empty();
 
-        public Builder validationType(SignRequestSignerInputNumberWithPeriodValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputNumberWithPeriodValidationType validationType) {
             this.validationType = java.util.Optional.ofNullable(validationType);
             return this;
         }

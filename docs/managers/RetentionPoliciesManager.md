@@ -12,7 +12,7 @@ Each is a **blocking** call returning its value directly and throwing
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `policy_name` | query | `String` | no |
-| `policy_type` | query | `RetentionPolicyPolicyType` | no |
+| `policy_type` | query | `RetentionPolicyType2` | no |
 | `created_by_user_id` | query | `String` | no |
 | `fields` | query | `List<String>` | no |
 | `limit` | query | `Long` | no |

@@ -9,7 +9,7 @@ public record Event(
     Optional<OffsetDateTime> recordedAt,
     Optional<String> eventId,
     Optional<UserMini> createdBy,
-    Optional<EventEventType> eventType,
+    Optional<EventType> eventType,
     Optional<String> sessionId,
     Optional<EventSourceResource> source,
     Optional<Map<String, Object>> additionalDetails) {
@@ -35,7 +35,7 @@ public record Event(
             (!_m.containsKey("recorded_at") || _m.get("recorded_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("recorded_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("recorded_at"))))),
             (!_m.containsKey("event_id") || _m.get("event_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("event_id"))),
             (!_m.containsKey("created_by") || _m.get("created_by") == null) ? java.util.Optional.<UserMini>empty() : java.util.Optional.of((_m.get("created_by") == null ? null : UserMini.fromJson(_m.get("created_by")))),
-            (!_m.containsKey("event_type") || _m.get("event_type") == null) ? java.util.Optional.<EventEventType>empty() : java.util.Optional.of((_m.get("event_type") == null ? null : EventEventType.fromJson(_m.get("event_type")))),
+            (!_m.containsKey("event_type") || _m.get("event_type") == null) ? java.util.Optional.<EventType>empty() : java.util.Optional.of((_m.get("event_type") == null ? null : EventType.fromJson(_m.get("event_type")))),
             (!_m.containsKey("session_id") || _m.get("session_id") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("session_id"))),
             (!_m.containsKey("source") || _m.get("source") == null) ? java.util.Optional.<EventSourceResource>empty() : java.util.Optional.of((_m.get("source") == null ? null : EventSourceResource.fromJson(_m.get("source")))),
             (!_m.containsKey("additional_details") || _m.get("additional_details") == null) ? java.util.Optional.<Map<String, Object>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeMap(_m.get("additional_details"), _x0 -> _x0))
@@ -53,7 +53,7 @@ public record Event(
         private Optional<OffsetDateTime> recordedAt = java.util.Optional.empty();
         private Optional<String> eventId = java.util.Optional.empty();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
-        private Optional<EventEventType> eventType = java.util.Optional.empty();
+        private Optional<EventType> eventType = java.util.Optional.empty();
         private Optional<String> sessionId = java.util.Optional.empty();
         private Optional<EventSourceResource> source = java.util.Optional.empty();
         private Optional<Map<String, Object>> additionalDetails = java.util.Optional.empty();
@@ -78,7 +78,7 @@ public record Event(
             this.createdBy = java.util.Optional.ofNullable(createdBy);
             return this;
         }
-        public Builder eventType(EventEventType eventType) {
+        public Builder eventType(EventType eventType) {
             this.eventType = java.util.Optional.ofNullable(eventType);
             return this;
         }

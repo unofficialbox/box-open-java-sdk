@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record SignRequestSignerInputDateEUValidation(
-    Optional<SignRequestSignerInputDateEUValidationValidationType> validationType) {
+    Optional<SignRequestSignerInputDateEUValidationType> validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         validationType().ifPresent(_v -> _m.put("validation_type", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record SignRequestSignerInputDateEUValidation(
     public static SignRequestSignerInputDateEUValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputDateEUValidation(
-            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputDateEUValidationValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputDateEUValidationValidationType.fromJson(_m.get("validation_type"))))
+            (!_m.containsKey("validation_type") || _m.get("validation_type") == null) ? java.util.Optional.<SignRequestSignerInputDateEUValidationType>empty() : java.util.Optional.of((_m.get("validation_type") == null ? null : SignRequestSignerInputDateEUValidationType.fromJson(_m.get("validation_type"))))
         );
     }
 
@@ -24,9 +24,9 @@ public record SignRequestSignerInputDateEUValidation(
     }
 
     public static final class Builder {
-        private Optional<SignRequestSignerInputDateEUValidationValidationType> validationType = java.util.Optional.empty();
+        private Optional<SignRequestSignerInputDateEUValidationType> validationType = java.util.Optional.empty();
 
-        public Builder validationType(SignRequestSignerInputDateEUValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputDateEUValidationType validationType) {
             this.validationType = java.util.Optional.ofNullable(validationType);
             return this;
         }

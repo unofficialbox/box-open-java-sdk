@@ -3,8 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record UpdateFolderUpdateSharedLinkRequest(
-    Optional<PutFolderIdUpdateSharedLinkSharedLink> sharedLink) {
+public record UpdateFolderUpdateSharedLinkRequest(Optional<PutFolderIdUpdateSharedLink> sharedLink) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         sharedLink().ifPresent(_v -> _m.put("shared_link", (_v == null ? null : _v.toJson())));
@@ -14,7 +13,7 @@ public record UpdateFolderUpdateSharedLinkRequest(
     public static UpdateFolderUpdateSharedLinkRequest fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new UpdateFolderUpdateSharedLinkRequest(
-            (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFolderIdUpdateSharedLinkSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFolderIdUpdateSharedLinkSharedLink.fromJson(_m.get("shared_link"))))
+            (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFolderIdUpdateSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFolderIdUpdateSharedLink.fromJson(_m.get("shared_link"))))
         );
     }
 
@@ -24,9 +23,9 @@ public record UpdateFolderUpdateSharedLinkRequest(
     }
 
     public static final class Builder {
-        private Optional<PutFolderIdUpdateSharedLinkSharedLink> sharedLink = java.util.Optional.empty();
+        private Optional<PutFolderIdUpdateSharedLink> sharedLink = java.util.Optional.empty();
 
-        public Builder sharedLink(PutFolderIdUpdateSharedLinkSharedLink sharedLink) {
+        public Builder sharedLink(PutFolderIdUpdateSharedLink sharedLink) {
             this.sharedLink = java.util.Optional.ofNullable(sharedLink);
             return this;
         }

@@ -2,7 +2,7 @@
 package dev.unofficialbox.model.schemas;
 
 public record SignRequestSignerInputCustomValidation(
-    SignRequestSignerInputCustomValidationValidationType validationType,
+    SignRequestSignerInputCustomValidationType validationType,
     String customRegex,
     String customErrorMessage) {
     public java.util.Map<String, Object> toJson() {
@@ -16,7 +16,7 @@ public record SignRequestSignerInputCustomValidation(
     public static SignRequestSignerInputCustomValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputCustomValidation(
-            (_m.get("validation_type") == null ? null : SignRequestSignerInputCustomValidationValidationType.fromJson(_m.get("validation_type"))),
+            (_m.get("validation_type") == null ? null : SignRequestSignerInputCustomValidationType.fromJson(_m.get("validation_type"))),
             _m.get("custom_regex") == null ? null : dev.unofficialbox.core.Json.asString(_m.get("custom_regex")),
             _m.get("custom_error_message") == null ? null : dev.unofficialbox.core.Json.asString(_m.get("custom_error_message"))
         );
@@ -28,11 +28,11 @@ public record SignRequestSignerInputCustomValidation(
     }
 
     public static final class Builder {
-        private SignRequestSignerInputCustomValidationValidationType validationType;
+        private SignRequestSignerInputCustomValidationType validationType;
         private String customRegex;
         private String customErrorMessage;
 
-        public Builder validationType(SignRequestSignerInputCustomValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputCustomValidationType validationType) {
             this.validationType = validationType;
             return this;
         }

@@ -20,7 +20,7 @@ public final class RetentionPoliciesManager {
             _req = dev.unofficialbox.runtime.Runtime.withQuery(_req, "policy_name", _v);
         }
         if (options != null && options.policyType != null) {
-            dev.unofficialbox.model.schemas.RetentionPolicyPolicyType _v = options.policyType;
+            dev.unofficialbox.model.schemas.RetentionPolicyType2 _v = options.policyType;
             _req = dev.unofficialbox.runtime.Runtime.withQuery(_req, "policy_type", _v.value());
         }
         if (options != null && options.createdByUserId != null) {
@@ -99,7 +99,7 @@ public final class RetentionPoliciesManager {
         /** The policy_name parameter. */
         public String policyName;
         /** The policy_type parameter. */
-        public dev.unofficialbox.model.schemas.RetentionPolicyPolicyType policyType;
+        public dev.unofficialbox.model.schemas.RetentionPolicyType2 policyType;
         /** The created_by_user_id parameter. */
         public String createdByUserId;
         /** The fields parameter. */

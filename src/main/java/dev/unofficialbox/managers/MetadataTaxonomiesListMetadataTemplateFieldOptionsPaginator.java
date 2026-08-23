@@ -13,9 +13,9 @@ public final class MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator i
     private final String namespace;
     private final String templateKey;
     private final String fieldKey;
-    private final MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions options;
+    private final MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions options;
 
-    MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator(dev.unofficialbox.runtime.Runtime.Session session, String namespace, String templateKey, String fieldKey, MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions options) {
+    MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator(dev.unofficialbox.runtime.Runtime.Session session, String namespace, String templateKey, String fieldKey, MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions options) {
         this.session = session;
         this.namespace = namespace;
         this.templateKey = templateKey;
@@ -23,8 +23,8 @@ public final class MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator i
         this.options = options;
     }
 
-    private MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions _freshOptions() {
-        MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions _o = new MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions();
+    private MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions _freshOptions() {
+        MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions _o = new MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions();
         if (options != null) {
             _o.level = options.level;
             _o.parent = options.parent;
@@ -42,7 +42,7 @@ public final class MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator i
     public java.util.Iterator<dev.unofficialbox.model.schemas.MetadataTaxonomyNode> iterator() {
         return new java.util.Iterator<dev.unofficialbox.model.schemas.MetadataTaxonomyNode>() {
             private final MetadataTaxonomiesManager _manager = new MetadataTaxonomiesManager(session);
-            private final MetadataTaxonomiesManager.ListMetadataTemplateFieldOptionsOptions _opts = _freshOptions();
+            private final MetadataTaxonomiesManager.ListMetadataTemplateFieldOptions _opts = _freshOptions();
             private String _cursor = _opts.marker;
             private java.util.Iterator<dev.unofficialbox.model.schemas.MetadataTaxonomyNode> _buffer = java.util.Collections.emptyIterator();
             private boolean _done = false;

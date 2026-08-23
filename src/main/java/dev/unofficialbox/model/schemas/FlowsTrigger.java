@@ -5,7 +5,7 @@ import module java.base;
 
 public record FlowsTrigger(
     Optional<TriggerType> type,
-    Optional<TriggerTriggerType> triggerType,
+    Optional<WorkflowFlowsTriggerType> triggerType,
     Optional<List<TriggerScope>> scope) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
@@ -19,7 +19,7 @@ public record FlowsTrigger(
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new FlowsTrigger(
             (!_m.containsKey("type") || _m.get("type") == null) ? java.util.Optional.<TriggerType>empty() : java.util.Optional.of((_m.get("type") == null ? null : TriggerType.fromJson(_m.get("type")))),
-            (!_m.containsKey("trigger_type") || _m.get("trigger_type") == null) ? java.util.Optional.<TriggerTriggerType>empty() : java.util.Optional.of((_m.get("trigger_type") == null ? null : TriggerTriggerType.fromJson(_m.get("trigger_type")))),
+            (!_m.containsKey("trigger_type") || _m.get("trigger_type") == null) ? java.util.Optional.<WorkflowFlowsTriggerType>empty() : java.util.Optional.of((_m.get("trigger_type") == null ? null : WorkflowFlowsTriggerType.fromJson(_m.get("trigger_type")))),
             (!_m.containsKey("scope") || _m.get("scope") == null) ? java.util.Optional.<List<TriggerScope>>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.decodeList(_m.get("scope"), _x0 -> (_x0 == null ? null : TriggerScope.fromJson(_x0))))
         );
     }
@@ -31,14 +31,14 @@ public record FlowsTrigger(
 
     public static final class Builder {
         private Optional<TriggerType> type = java.util.Optional.empty();
-        private Optional<TriggerTriggerType> triggerType = java.util.Optional.empty();
+        private Optional<WorkflowFlowsTriggerType> triggerType = java.util.Optional.empty();
         private Optional<List<TriggerScope>> scope = java.util.Optional.empty();
 
         public Builder type(TriggerType type) {
             this.type = java.util.Optional.ofNullable(type);
             return this;
         }
-        public Builder triggerType(TriggerTriggerType triggerType) {
+        public Builder triggerType(WorkflowFlowsTriggerType triggerType) {
             this.triggerType = java.util.Optional.ofNullable(triggerType);
             return this;
         }

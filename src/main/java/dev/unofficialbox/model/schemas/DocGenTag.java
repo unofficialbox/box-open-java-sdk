@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record DocGenTag(String tagContent, DocGenTagTagType tagType, List<String> jsonPaths) {
+public record DocGenTag(String tagContent, DocGenTagType tagType, List<String> jsonPaths) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("tag_content", tagContent());
@@ -16,7 +16,7 @@ public record DocGenTag(String tagContent, DocGenTagTagType tagType, List<String
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new DocGenTag(
             dev.unofficialbox.core.Json.asString(_m.get("tag_content")),
-            (_m.get("tag_type") == null ? null : DocGenTagTagType.fromJson(_m.get("tag_type"))),
+            (_m.get("tag_type") == null ? null : DocGenTagType.fromJson(_m.get("tag_type"))),
             dev.unofficialbox.core.Json.decodeList(_m.get("json_paths"), _x0 -> dev.unofficialbox.core.Json.asString(_x0))
         );
     }
@@ -28,14 +28,14 @@ public record DocGenTag(String tagContent, DocGenTagTagType tagType, List<String
 
     public static final class Builder {
         private String tagContent;
-        private DocGenTagTagType tagType;
+        private DocGenTagType tagType;
         private List<String> jsonPaths;
 
         public Builder tagContent(String tagContent) {
             this.tagContent = tagContent;
             return this;
         }
-        public Builder tagType(DocGenTagTagType tagType) {
+        public Builder tagType(DocGenTagType tagType) {
             this.tagType = tagType;
             return this;
         }

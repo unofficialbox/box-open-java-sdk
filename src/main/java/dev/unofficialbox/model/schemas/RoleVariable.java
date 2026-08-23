@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 public record RoleVariable(
     CollaboratorVariableType type,
-    RoleVariableVariableType variableType,
+    RoleVariableType variableType,
     FileFullAllowedInviteeRoles variableValue) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
@@ -17,7 +17,7 @@ public record RoleVariable(
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new RoleVariable(
             (_m.get("type") == null ? null : CollaboratorVariableType.fromJson(_m.get("type"))),
-            (_m.get("variable_type") == null ? null : RoleVariableVariableType.fromJson(_m.get("variable_type"))),
+            (_m.get("variable_type") == null ? null : RoleVariableType.fromJson(_m.get("variable_type"))),
             (_m.get("variable_value") == null ? null : FileFullAllowedInviteeRoles.fromJson(_m.get("variable_value")))
         );
     }
@@ -29,14 +29,14 @@ public record RoleVariable(
 
     public static final class Builder {
         private CollaboratorVariableType type;
-        private RoleVariableVariableType variableType;
+        private RoleVariableType variableType;
         private FileFullAllowedInviteeRoles variableValue;
 
         public Builder type(CollaboratorVariableType type) {
             this.type = type;
             return this;
         }
-        public Builder variableType(RoleVariableVariableType variableType) {
+        public Builder variableType(RoleVariableType variableType) {
             this.variableType = variableType;
             return this;
         }

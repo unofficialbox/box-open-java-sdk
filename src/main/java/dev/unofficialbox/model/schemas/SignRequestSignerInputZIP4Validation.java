@@ -2,7 +2,7 @@
 package dev.unofficialbox.model.schemas;
 
 public record SignRequestSignerInputZIP4Validation(
-    SignRequestSignerInputZIP4ValidationValidationType validationType) {
+    SignRequestSignerInputZIP4ValidationType validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("validation_type", (validationType() == null ? null : validationType().toJson()));
@@ -12,7 +12,7 @@ public record SignRequestSignerInputZIP4Validation(
     public static SignRequestSignerInputZIP4Validation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputZIP4Validation(
-            (_m.get("validation_type") == null ? null : SignRequestSignerInputZIP4ValidationValidationType.fromJson(_m.get("validation_type")))
+            (_m.get("validation_type") == null ? null : SignRequestSignerInputZIP4ValidationType.fromJson(_m.get("validation_type")))
         );
     }
 
@@ -22,9 +22,9 @@ public record SignRequestSignerInputZIP4Validation(
     }
 
     public static final class Builder {
-        private SignRequestSignerInputZIP4ValidationValidationType validationType;
+        private SignRequestSignerInputZIP4ValidationType validationType;
 
-        public Builder validationType(SignRequestSignerInputZIP4ValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputZIP4ValidationType validationType) {
             this.validationType = validationType;
             return this;
         }

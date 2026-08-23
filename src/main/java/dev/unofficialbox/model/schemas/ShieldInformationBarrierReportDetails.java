@@ -4,7 +4,7 @@ package dev.unofficialbox.model.schemas;
 import module java.base;
 
 public record ShieldInformationBarrierReportDetails(
-    Optional<ShieldInformationBarrierReportDetailsDetails> details) {
+    Optional<ShieldInformationBarrierReportDetails2> details) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         details().ifPresent(_v -> _m.put("details", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record ShieldInformationBarrierReportDetails(
     public static ShieldInformationBarrierReportDetails fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new ShieldInformationBarrierReportDetails(
-            (!_m.containsKey("details") || _m.get("details") == null) ? java.util.Optional.<ShieldInformationBarrierReportDetailsDetails>empty() : java.util.Optional.of((_m.get("details") == null ? null : ShieldInformationBarrierReportDetailsDetails.fromJson(_m.get("details"))))
+            (!_m.containsKey("details") || _m.get("details") == null) ? java.util.Optional.<ShieldInformationBarrierReportDetails2>empty() : java.util.Optional.of((_m.get("details") == null ? null : ShieldInformationBarrierReportDetails2.fromJson(_m.get("details"))))
         );
     }
 
@@ -24,9 +24,9 @@ public record ShieldInformationBarrierReportDetails(
     }
 
     public static final class Builder {
-        private Optional<ShieldInformationBarrierReportDetailsDetails> details = java.util.Optional.empty();
+        private Optional<ShieldInformationBarrierReportDetails2> details = java.util.Optional.empty();
 
-        public Builder details(ShieldInformationBarrierReportDetailsDetails details) {
+        public Builder details(ShieldInformationBarrierReportDetails2 details) {
             this.details = java.util.Optional.ofNullable(details);
             return this;
         }

@@ -2,7 +2,7 @@
 package dev.unofficialbox.model.schemas;
 
 public record SignRequestSignerInputEmailValidation(
-    SignRequestSignerInputEmailValidationValidationType validationType) {
+    SignRequestSignerInputEmailValidationType validationType) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("validation_type", (validationType() == null ? null : validationType().toJson()));
@@ -12,7 +12,7 @@ public record SignRequestSignerInputEmailValidation(
     public static SignRequestSignerInputEmailValidation fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new SignRequestSignerInputEmailValidation(
-            (_m.get("validation_type") == null ? null : SignRequestSignerInputEmailValidationValidationType.fromJson(_m.get("validation_type")))
+            (_m.get("validation_type") == null ? null : SignRequestSignerInputEmailValidationType.fromJson(_m.get("validation_type")))
         );
     }
 
@@ -22,9 +22,9 @@ public record SignRequestSignerInputEmailValidation(
     }
 
     public static final class Builder {
-        private SignRequestSignerInputEmailValidationValidationType validationType;
+        private SignRequestSignerInputEmailValidationType validationType;
 
-        public Builder validationType(SignRequestSignerInputEmailValidationValidationType validationType) {
+        public Builder validationType(SignRequestSignerInputEmailValidationType validationType) {
             this.validationType = validationType;
             return this;
         }

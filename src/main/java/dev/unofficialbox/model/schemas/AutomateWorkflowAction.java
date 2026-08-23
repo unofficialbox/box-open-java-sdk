@@ -6,7 +6,7 @@ import module java.base;
 public record AutomateWorkflowAction(
     String id,
     AutomateWorkflowActionType type,
-    AutomateWorkflowActionActionType actionType,
+    AutomateWorkflowActionType2 actionType,
     Optional<String> description,
     Optional<OffsetDateTime> createdAt,
     Optional<OffsetDateTime> updatedAt,
@@ -32,7 +32,7 @@ public record AutomateWorkflowAction(
         return new AutomateWorkflowAction(
             dev.unofficialbox.core.Json.asString(_m.get("id")),
             (_m.get("type") == null ? null : AutomateWorkflowActionType.fromJson(_m.get("type"))),
-            (_m.get("action_type") == null ? null : AutomateWorkflowActionActionType.fromJson(_m.get("action_type"))),
+            (_m.get("action_type") == null ? null : AutomateWorkflowActionType2.fromJson(_m.get("action_type"))),
             (!_m.containsKey("description") || _m.get("description") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("description"))),
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at"))))),
             (!_m.containsKey("updated_at") || _m.get("updated_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("updated_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("updated_at"))))),
@@ -50,7 +50,7 @@ public record AutomateWorkflowAction(
     public static final class Builder {
         private String id;
         private AutomateWorkflowActionType type;
-        private AutomateWorkflowActionActionType actionType;
+        private AutomateWorkflowActionType2 actionType;
         private Optional<String> description = java.util.Optional.empty();
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> updatedAt = java.util.Optional.empty();
@@ -66,7 +66,7 @@ public record AutomateWorkflowAction(
             this.type = type;
             return this;
         }
-        public Builder actionType(AutomateWorkflowActionActionType actionType) {
+        public Builder actionType(AutomateWorkflowActionType2 actionType) {
             this.actionType = actionType;
             return this;
         }

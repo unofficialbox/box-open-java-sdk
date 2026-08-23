@@ -5,8 +5,8 @@ import module java.base;
 
 public record CollaboratorVariable(
     CollaboratorVariableType type,
-    CollaboratorVariableVariableType variableType,
-    List<CollaboratorVariableVariableValue> variableValue) {
+    CollaboratorVariableType2 variableType,
+    List<CollaboratorVariableValue> variableValue) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("type", (type() == null ? null : type().toJson()));
@@ -19,8 +19,8 @@ public record CollaboratorVariable(
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new CollaboratorVariable(
             (_m.get("type") == null ? null : CollaboratorVariableType.fromJson(_m.get("type"))),
-            (_m.get("variable_type") == null ? null : CollaboratorVariableVariableType.fromJson(_m.get("variable_type"))),
-            dev.unofficialbox.core.Json.decodeList(_m.get("variable_value"), _x0 -> (_x0 == null ? null : CollaboratorVariableVariableValue.fromJson(_x0)))
+            (_m.get("variable_type") == null ? null : CollaboratorVariableType2.fromJson(_m.get("variable_type"))),
+            dev.unofficialbox.core.Json.decodeList(_m.get("variable_value"), _x0 -> (_x0 == null ? null : CollaboratorVariableValue.fromJson(_x0)))
         );
     }
 
@@ -31,18 +31,18 @@ public record CollaboratorVariable(
 
     public static final class Builder {
         private CollaboratorVariableType type;
-        private CollaboratorVariableVariableType variableType;
-        private List<CollaboratorVariableVariableValue> variableValue;
+        private CollaboratorVariableType2 variableType;
+        private List<CollaboratorVariableValue> variableValue;
 
         public Builder type(CollaboratorVariableType type) {
             this.type = type;
             return this;
         }
-        public Builder variableType(CollaboratorVariableVariableType variableType) {
+        public Builder variableType(CollaboratorVariableType2 variableType) {
             this.variableType = variableType;
             return this;
         }
-        public Builder variableValue(List<CollaboratorVariableVariableValue> variableValue) {
+        public Builder variableValue(List<CollaboratorVariableValue> variableValue) {
             this.variableValue = variableValue;
             return this;
         }

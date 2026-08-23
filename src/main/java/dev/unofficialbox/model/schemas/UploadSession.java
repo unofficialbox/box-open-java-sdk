@@ -10,7 +10,7 @@ public record UploadSession(
     Optional<Long> partSize,
     Optional<Long> totalParts,
     Optional<Long> numPartsProcessed,
-    Optional<UploadSessionSessionEndpoints> sessionEndpoints) {
+    Optional<UploadSessionEndpoints> sessionEndpoints) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         id().ifPresent(_v -> _m.put("id", _v));
@@ -32,7 +32,7 @@ public record UploadSession(
             (!_m.containsKey("part_size") || _m.get("part_size") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("part_size"))),
             (!_m.containsKey("total_parts") || _m.get("total_parts") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("total_parts"))),
             (!_m.containsKey("num_parts_processed") || _m.get("num_parts_processed") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("num_parts_processed"))),
-            (!_m.containsKey("session_endpoints") || _m.get("session_endpoints") == null) ? java.util.Optional.<UploadSessionSessionEndpoints>empty() : java.util.Optional.of((_m.get("session_endpoints") == null ? null : UploadSessionSessionEndpoints.fromJson(_m.get("session_endpoints"))))
+            (!_m.containsKey("session_endpoints") || _m.get("session_endpoints") == null) ? java.util.Optional.<UploadSessionEndpoints>empty() : java.util.Optional.of((_m.get("session_endpoints") == null ? null : UploadSessionEndpoints.fromJson(_m.get("session_endpoints"))))
         );
     }
 
@@ -48,7 +48,7 @@ public record UploadSession(
         private Optional<Long> partSize = java.util.Optional.empty();
         private Optional<Long> totalParts = java.util.Optional.empty();
         private Optional<Long> numPartsProcessed = java.util.Optional.empty();
-        private Optional<UploadSessionSessionEndpoints> sessionEndpoints = java.util.Optional.empty();
+        private Optional<UploadSessionEndpoints> sessionEndpoints = java.util.Optional.empty();
 
         public Builder id(String id) {
             this.id = java.util.Optional.ofNullable(id);
@@ -74,7 +74,7 @@ public record UploadSession(
             this.numPartsProcessed = java.util.Optional.ofNullable(numPartsProcessed);
             return this;
         }
-        public Builder sessionEndpoints(UploadSessionSessionEndpoints sessionEndpoints) {
+        public Builder sessionEndpoints(UploadSessionEndpoints sessionEndpoints) {
             this.sessionEndpoints = java.util.Optional.ofNullable(sessionEndpoints);
             return this;
         }

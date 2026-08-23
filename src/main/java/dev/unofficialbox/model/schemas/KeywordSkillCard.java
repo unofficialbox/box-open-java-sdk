@@ -6,8 +6,8 @@ import module java.base;
 public record KeywordSkillCard(
     Optional<OffsetDateTime> createdAt,
     KeywordSkillCardType type,
-    KeywordSkillCardSkillCardType skillCardType,
-    Optional<KeywordSkillCardSkillCardTitle> skillCardTitle,
+    KeywordSkillCardType2 skillCardType,
+    Optional<KeywordSkillCardTitle> skillCardTitle,
     KeywordSkillCardSkill skill,
     KeywordSkillCardInvocation invocation,
     List<KeywordSkillCardEntries> entries) {
@@ -28,8 +28,8 @@ public record KeywordSkillCard(
         return new KeywordSkillCard(
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at"))))),
             (_m.get("type") == null ? null : KeywordSkillCardType.fromJson(_m.get("type"))),
-            (_m.get("skill_card_type") == null ? null : KeywordSkillCardSkillCardType.fromJson(_m.get("skill_card_type"))),
-            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardSkillCardTitle.fromJson(_m.get("skill_card_title")))),
+            (_m.get("skill_card_type") == null ? null : KeywordSkillCardType2.fromJson(_m.get("skill_card_type"))),
+            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardTitle.fromJson(_m.get("skill_card_title")))),
             (_m.get("skill") == null ? null : KeywordSkillCardSkill.fromJson(_m.get("skill"))),
             (_m.get("invocation") == null ? null : KeywordSkillCardInvocation.fromJson(_m.get("invocation"))),
             dev.unofficialbox.core.Json.decodeList(_m.get("entries"), _x0 -> (_x0 == null ? null : KeywordSkillCardEntries.fromJson(_x0)))
@@ -44,8 +44,8 @@ public record KeywordSkillCard(
     public static final class Builder {
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private KeywordSkillCardType type;
-        private KeywordSkillCardSkillCardType skillCardType;
-        private Optional<KeywordSkillCardSkillCardTitle> skillCardTitle = java.util.Optional.empty();
+        private KeywordSkillCardType2 skillCardType;
+        private Optional<KeywordSkillCardTitle> skillCardTitle = java.util.Optional.empty();
         private KeywordSkillCardSkill skill;
         private KeywordSkillCardInvocation invocation;
         private List<KeywordSkillCardEntries> entries;
@@ -58,11 +58,11 @@ public record KeywordSkillCard(
             this.type = type;
             return this;
         }
-        public Builder skillCardType(KeywordSkillCardSkillCardType skillCardType) {
+        public Builder skillCardType(KeywordSkillCardType2 skillCardType) {
             this.skillCardType = skillCardType;
             return this;
         }
-        public Builder skillCardTitle(KeywordSkillCardSkillCardTitle skillCardTitle) {
+        public Builder skillCardTitle(KeywordSkillCardTitle skillCardTitle) {
             this.skillCardTitle = java.util.Optional.ofNullable(skillCardTitle);
             return this;
         }

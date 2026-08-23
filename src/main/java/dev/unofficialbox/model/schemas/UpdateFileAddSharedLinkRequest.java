@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record UpdateFileAddSharedLinkRequest(Optional<PutFileIdAddSharedLinkSharedLink> sharedLink) {
+public record UpdateFileAddSharedLinkRequest(Optional<PutFileIdAddSharedLink> sharedLink) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         sharedLink().ifPresent(_v -> _m.put("shared_link", (_v == null ? null : _v.toJson())));
@@ -13,7 +13,7 @@ public record UpdateFileAddSharedLinkRequest(Optional<PutFileIdAddSharedLinkShar
     public static UpdateFileAddSharedLinkRequest fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new UpdateFileAddSharedLinkRequest(
-            (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFileIdAddSharedLinkSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFileIdAddSharedLinkSharedLink.fromJson(_m.get("shared_link"))))
+            (!_m.containsKey("shared_link") || _m.get("shared_link") == null) ? java.util.Optional.<PutFileIdAddSharedLink>empty() : java.util.Optional.of((_m.get("shared_link") == null ? null : PutFileIdAddSharedLink.fromJson(_m.get("shared_link"))))
         );
     }
 
@@ -23,9 +23,9 @@ public record UpdateFileAddSharedLinkRequest(Optional<PutFileIdAddSharedLinkShar
     }
 
     public static final class Builder {
-        private Optional<PutFileIdAddSharedLinkSharedLink> sharedLink = java.util.Optional.empty();
+        private Optional<PutFileIdAddSharedLink> sharedLink = java.util.Optional.empty();
 
-        public Builder sharedLink(PutFileIdAddSharedLinkSharedLink sharedLink) {
+        public Builder sharedLink(PutFileIdAddSharedLink sharedLink) {
             this.sharedLink = java.util.Optional.ofNullable(sharedLink);
             return this;
         }

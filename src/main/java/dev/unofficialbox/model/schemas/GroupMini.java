@@ -7,7 +7,7 @@ public record GroupMini(
     String id,
     GroupType type,
     Optional<String> name,
-    Optional<GroupGroupType> groupType) implements CollaborationAccessGrantee, HubAccessGrantee {
+    Optional<GroupType2> groupType) implements CollaborationAccessGrantee, HubAccessGrantee {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         _m.put("id", id());
@@ -23,7 +23,7 @@ public record GroupMini(
             dev.unofficialbox.core.Json.asString(_m.get("id")),
             (_m.get("type") == null ? null : GroupType.fromJson(_m.get("type"))),
             (!_m.containsKey("name") || _m.get("name") == null) ? java.util.Optional.<String>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asString(_m.get("name"))),
-            (!_m.containsKey("group_type") || _m.get("group_type") == null) ? java.util.Optional.<GroupGroupType>empty() : java.util.Optional.of((_m.get("group_type") == null ? null : GroupGroupType.fromJson(_m.get("group_type"))))
+            (!_m.containsKey("group_type") || _m.get("group_type") == null) ? java.util.Optional.<GroupType2>empty() : java.util.Optional.of((_m.get("group_type") == null ? null : GroupType2.fromJson(_m.get("group_type"))))
         );
     }
 
@@ -36,7 +36,7 @@ public record GroupMini(
         private String id;
         private GroupType type;
         private Optional<String> name = java.util.Optional.empty();
-        private Optional<GroupGroupType> groupType = java.util.Optional.empty();
+        private Optional<GroupType2> groupType = java.util.Optional.empty();
 
         public Builder id(String id) {
             this.id = id;
@@ -50,7 +50,7 @@ public record GroupMini(
             this.name = java.util.Optional.ofNullable(name);
             return this;
         }
-        public Builder groupType(GroupGroupType groupType) {
+        public Builder groupType(GroupType2 groupType) {
             this.groupType = java.util.Optional.ofNullable(groupType);
             return this;
         }

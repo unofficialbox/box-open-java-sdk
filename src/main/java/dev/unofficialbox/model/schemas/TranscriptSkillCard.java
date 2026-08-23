@@ -6,8 +6,8 @@ import module java.base;
 public record TranscriptSkillCard(
     Optional<OffsetDateTime> createdAt,
     KeywordSkillCardType type,
-    TranscriptSkillCardSkillCardType skillCardType,
-    Optional<KeywordSkillCardSkillCardTitle> skillCardTitle,
+    TranscriptSkillCardType skillCardType,
+    Optional<KeywordSkillCardTitle> skillCardTitle,
     KeywordSkillCardSkill skill,
     KeywordSkillCardInvocation invocation,
     Optional<Long> duration,
@@ -30,8 +30,8 @@ public record TranscriptSkillCard(
         return new TranscriptSkillCard(
             (!_m.containsKey("created_at") || _m.get("created_at") == null) ? java.util.Optional.<OffsetDateTime>empty() : java.util.Optional.of((_m.get("created_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("created_at"))))),
             (_m.get("type") == null ? null : KeywordSkillCardType.fromJson(_m.get("type"))),
-            (_m.get("skill_card_type") == null ? null : TranscriptSkillCardSkillCardType.fromJson(_m.get("skill_card_type"))),
-            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardSkillCardTitle.fromJson(_m.get("skill_card_title")))),
+            (_m.get("skill_card_type") == null ? null : TranscriptSkillCardType.fromJson(_m.get("skill_card_type"))),
+            (!_m.containsKey("skill_card_title") || _m.get("skill_card_title") == null) ? java.util.Optional.<KeywordSkillCardTitle>empty() : java.util.Optional.of((_m.get("skill_card_title") == null ? null : KeywordSkillCardTitle.fromJson(_m.get("skill_card_title")))),
             (_m.get("skill") == null ? null : KeywordSkillCardSkill.fromJson(_m.get("skill"))),
             (_m.get("invocation") == null ? null : KeywordSkillCardInvocation.fromJson(_m.get("invocation"))),
             (!_m.containsKey("duration") || _m.get("duration") == null) ? java.util.Optional.<Long>empty() : java.util.Optional.of(dev.unofficialbox.core.Json.asLong(_m.get("duration"))),
@@ -47,8 +47,8 @@ public record TranscriptSkillCard(
     public static final class Builder {
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private KeywordSkillCardType type;
-        private TranscriptSkillCardSkillCardType skillCardType;
-        private Optional<KeywordSkillCardSkillCardTitle> skillCardTitle = java.util.Optional.empty();
+        private TranscriptSkillCardType skillCardType;
+        private Optional<KeywordSkillCardTitle> skillCardTitle = java.util.Optional.empty();
         private KeywordSkillCardSkill skill;
         private KeywordSkillCardInvocation invocation;
         private Optional<Long> duration = java.util.Optional.empty();
@@ -62,11 +62,11 @@ public record TranscriptSkillCard(
             this.type = type;
             return this;
         }
-        public Builder skillCardType(TranscriptSkillCardSkillCardType skillCardType) {
+        public Builder skillCardType(TranscriptSkillCardType skillCardType) {
             this.skillCardType = skillCardType;
             return this;
         }
-        public Builder skillCardTitle(KeywordSkillCardSkillCardTitle skillCardTitle) {
+        public Builder skillCardTitle(KeywordSkillCardTitle skillCardTitle) {
             this.skillCardTitle = java.util.Optional.ofNullable(skillCardTitle);
             return this;
         }

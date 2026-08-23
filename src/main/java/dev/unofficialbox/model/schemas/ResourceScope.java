@@ -3,7 +3,7 @@ package dev.unofficialbox.model.schemas;
 
 import module java.base;
 
-public record ResourceScope(Optional<ResourceScopeScope> scope, Optional<Resource> object) {
+public record ResourceScope(Optional<ResourceScope2> scope, Optional<Resource> object) {
     public java.util.Map<String, Object> toJson() {
         java.util.Map<String, Object> _m = new java.util.LinkedHashMap<>();
         scope().ifPresent(_v -> _m.put("scope", (_v == null ? null : _v.toJson())));
@@ -14,7 +14,7 @@ public record ResourceScope(Optional<ResourceScopeScope> scope, Optional<Resourc
     public static ResourceScope fromJson(Object _json) {
         java.util.Map<String, Object> _m = dev.unofficialbox.core.Json.asObject(_json);
         return new ResourceScope(
-            (!_m.containsKey("scope") || _m.get("scope") == null) ? java.util.Optional.<ResourceScopeScope>empty() : java.util.Optional.of((_m.get("scope") == null ? null : ResourceScopeScope.fromJson(_m.get("scope")))),
+            (!_m.containsKey("scope") || _m.get("scope") == null) ? java.util.Optional.<ResourceScope2>empty() : java.util.Optional.of((_m.get("scope") == null ? null : ResourceScope2.fromJson(_m.get("scope")))),
             (!_m.containsKey("object") || _m.get("object") == null) ? java.util.Optional.<Resource>empty() : java.util.Optional.of((_m.get("object") == null ? null : Resource.fromJson(_m.get("object"))))
         );
     }
@@ -25,10 +25,10 @@ public record ResourceScope(Optional<ResourceScopeScope> scope, Optional<Resourc
     }
 
     public static final class Builder {
-        private Optional<ResourceScopeScope> scope = java.util.Optional.empty();
+        private Optional<ResourceScope2> scope = java.util.Optional.empty();
         private Optional<Resource> object = java.util.Optional.empty();
 
-        public Builder scope(ResourceScopeScope scope) {
+        public Builder scope(ResourceScope2 scope) {
             this.scope = java.util.Optional.ofNullable(scope);
             return this;
         }

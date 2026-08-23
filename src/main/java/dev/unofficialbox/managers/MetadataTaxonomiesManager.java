@@ -233,7 +233,7 @@ public final class MetadataTaxonomiesManager {
     }
 
     /** GET /metadata_templates/{namespace}/{template_key}/fields/{field_key}/options. */
-    dev.unofficialbox.model.schemas.MetadataTaxonomyNodes listMetadataTemplateFieldOptionsPage(String namespace, String templateKey, String fieldKey, ListMetadataTemplateFieldOptionsOptions options) {
+    dev.unofficialbox.model.schemas.MetadataTaxonomyNodes listMetadataTemplateFieldOptionsPage(String namespace, String templateKey, String fieldKey, ListMetadataTemplateFieldOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));
         _url.append("/metadata_templates");
         _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(namespace));
@@ -279,7 +279,7 @@ public final class MetadataTaxonomiesManager {
     }
 
     /** Iterate every dev.unofficialbox.model.schemas.MetadataTaxonomyNode across pages, threading the cursor (FR-7.3). */
-    public MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator listMetadataTemplateFieldOptions(String namespace, String templateKey, String fieldKey, ListMetadataTemplateFieldOptionsOptions options) {
+    public MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator listMetadataTemplateFieldOptions(String namespace, String templateKey, String fieldKey, ListMetadataTemplateFieldOptions options) {
         return new MetadataTaxonomiesListMetadataTemplateFieldOptionsPaginator(session, namespace, templateKey, fieldKey, options);
     }
 
@@ -310,7 +310,7 @@ public final class MetadataTaxonomiesManager {
     }
 
     /** Optional parameters for listMetadataTemplateFieldOptions. */
-    public static final class ListMetadataTemplateFieldOptionsOptions {
+    public static final class ListMetadataTemplateFieldOptions {
         /** The level parameter. */
         public java.util.List<Long> level;
         /** The parent parameter. */

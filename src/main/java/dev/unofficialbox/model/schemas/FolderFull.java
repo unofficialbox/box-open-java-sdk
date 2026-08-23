@@ -23,7 +23,7 @@ public record FolderFull(
     Tristate<OffsetDateTime> contentModifiedAt,
     Optional<UserMini> ownedBy,
     Tristate<FileSharedLink> sharedLink,
-    Tristate<FolderFolderUploadEmail> folderUploadEmail,
+    Tristate<FolderUploadEmail> folderUploadEmail,
     Tristate<FolderMini> parent,
     Optional<FileItemStatus> itemStatus,
     Optional<Items> itemCollection,
@@ -118,7 +118,7 @@ public record FolderFull(
             !_m.containsKey("content_modified_at") ? dev.unofficialbox.core.Tristate.<OffsetDateTime>absent() : (_m.get("content_modified_at") == null ? dev.unofficialbox.core.Tristate.<OffsetDateTime>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("content_modified_at") == null ? null : java.time.OffsetDateTime.parse(dev.unofficialbox.core.Json.asString(_m.get("content_modified_at")))))),
             (!_m.containsKey("owned_by") || _m.get("owned_by") == null) ? java.util.Optional.<UserMini>empty() : java.util.Optional.of((_m.get("owned_by") == null ? null : UserMini.fromJson(_m.get("owned_by")))),
             !_m.containsKey("shared_link") ? dev.unofficialbox.core.Tristate.<FileSharedLink>absent() : (_m.get("shared_link") == null ? dev.unofficialbox.core.Tristate.<FileSharedLink>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("shared_link") == null ? null : FileSharedLink.fromJson(_m.get("shared_link"))))),
-            !_m.containsKey("folder_upload_email") ? dev.unofficialbox.core.Tristate.<FolderFolderUploadEmail>absent() : (_m.get("folder_upload_email") == null ? dev.unofficialbox.core.Tristate.<FolderFolderUploadEmail>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("folder_upload_email") == null ? null : FolderFolderUploadEmail.fromJson(_m.get("folder_upload_email"))))),
+            !_m.containsKey("folder_upload_email") ? dev.unofficialbox.core.Tristate.<FolderUploadEmail>absent() : (_m.get("folder_upload_email") == null ? dev.unofficialbox.core.Tristate.<FolderUploadEmail>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("folder_upload_email") == null ? null : FolderUploadEmail.fromJson(_m.get("folder_upload_email"))))),
             !_m.containsKey("parent") ? dev.unofficialbox.core.Tristate.<FolderMini>absent() : (_m.get("parent") == null ? dev.unofficialbox.core.Tristate.<FolderMini>ofNull() : dev.unofficialbox.core.Tristate.of((_m.get("parent") == null ? null : FolderMini.fromJson(_m.get("parent"))))),
             (!_m.containsKey("item_status") || _m.get("item_status") == null) ? java.util.Optional.<FileItemStatus>empty() : java.util.Optional.of((_m.get("item_status") == null ? null : FileItemStatus.fromJson(_m.get("item_status")))),
             (!_m.containsKey("item_collection") || _m.get("item_collection") == null) ? java.util.Optional.<Items>empty() : java.util.Optional.of((_m.get("item_collection") == null ? null : Items.fromJson(_m.get("item_collection")))),
@@ -165,7 +165,7 @@ public record FolderFull(
         private Tristate<OffsetDateTime> contentModifiedAt;
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
         private Tristate<FileSharedLink> sharedLink;
-        private Tristate<FolderFolderUploadEmail> folderUploadEmail;
+        private Tristate<FolderUploadEmail> folderUploadEmail;
         private Tristate<FolderMini> parent;
         private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
         private Optional<Items> itemCollection = java.util.Optional.empty();
@@ -258,7 +258,7 @@ public record FolderFull(
             this.sharedLink = sharedLink;
             return this;
         }
-        public Builder folderUploadEmail(Tristate<FolderFolderUploadEmail> folderUploadEmail) {
+        public Builder folderUploadEmail(Tristate<FolderUploadEmail> folderUploadEmail) {
             this.folderUploadEmail = folderUploadEmail;
             return this;
         }
