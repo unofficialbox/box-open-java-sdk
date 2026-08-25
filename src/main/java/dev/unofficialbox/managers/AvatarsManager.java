@@ -27,8 +27,7 @@ public final class AvatarsManager {
         _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(userId));
         _url.append("/avatar");
         dev.unofficialbox.runtime.Runtime.Request _req = session.newRequest("POST", _url.toString());
-        byte[] _attributes = dev.unofficialbox.core.Json.write((body == null ? null : body.toJson())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
-        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, _attributes, "file", dev.unofficialbox.runtime.Runtime.Stream.empty());
+        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, "", new byte[0], "pic", dev.unofficialbox.runtime.Runtime.Stream.fromBytes(body.pic()));
         Object _tree = dev.unofficialbox.core.Json.parse(new String(dev.unofficialbox.runtime.Runtime.responseBytes(session.fetch(_req)), java.nio.charset.StandardCharsets.UTF_8));
         return (_tree == null ? null : dev.unofficialbox.model.schemas.UserAvatar.fromJson(_tree));
     }

@@ -21,7 +21,7 @@ API area behind a single `dev.unofficialbox.Client`, over a dependency-free
 <dependency>
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.4.2</version>
+  <version>0.4.3</version>
 </dependency>
 ```
 

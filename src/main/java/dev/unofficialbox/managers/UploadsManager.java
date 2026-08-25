@@ -29,8 +29,8 @@ public final class UploadsManager {
             String _v = options.contentMd5;
             _req = dev.unofficialbox.runtime.Runtime.withHeader(_req, "content-md5", _v);
         }
-        byte[] _attributes = dev.unofficialbox.core.Json.write((body == null ? null : body.toJson())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
-        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, _attributes, "file", dev.unofficialbox.runtime.Runtime.Stream.empty());
+        byte[] _jsonBytes = dev.unofficialbox.core.Json.write((body.attributes() == null ? null : body.attributes().toJson())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, "attributes", _jsonBytes, "file", dev.unofficialbox.runtime.Runtime.Stream.fromBytes(body.file()));
         Object _tree = dev.unofficialbox.core.Json.parse(new String(dev.unofficialbox.runtime.Runtime.responseBytes(session.fetch(_req)), java.nio.charset.StandardCharsets.UTF_8));
         return (_tree == null ? null : dev.unofficialbox.model.schemas.Files.fromJson(_tree));
     }
@@ -49,8 +49,8 @@ public final class UploadsManager {
             String _v = options.contentMd5;
             _req = dev.unofficialbox.runtime.Runtime.withHeader(_req, "content-md5", _v);
         }
-        byte[] _attributes = dev.unofficialbox.core.Json.write((body == null ? null : body.toJson())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
-        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, _attributes, "file", dev.unofficialbox.runtime.Runtime.Stream.empty());
+        byte[] _jsonBytes = dev.unofficialbox.core.Json.write((body.attributes() == null ? null : body.attributes().toJson())).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        _req = dev.unofficialbox.runtime.Runtime.withMultipartBody(_req, "attributes", _jsonBytes, "file", dev.unofficialbox.runtime.Runtime.Stream.fromBytes(body.file()));
         Object _tree = dev.unofficialbox.core.Json.parse(new String(dev.unofficialbox.runtime.Runtime.responseBytes(session.fetch(_req)), java.nio.charset.StandardCharsets.UTF_8));
         return (_tree == null ? null : dev.unofficialbox.model.schemas.Files.fromJson(_tree));
     }
