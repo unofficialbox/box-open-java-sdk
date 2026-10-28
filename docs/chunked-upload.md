@@ -2,16 +2,11 @@
 # Chunked upload
 
 Large files upload faster through `dev.unofficialbox.BoxChunkedUpload`, which splits the
-content into parts and uploads them **in parallel** (create session → upload each
-part with its `Content-Range` and SHA-1 → commit). It uses structured
-concurrency, a Java 26 **preview** API. `BoxChunkedUpload` is therefore a
-preview-marked class, so code that calls it must pass `--enable-preview` at
-**both** compile and run time (with `--release 26` for `javac`) — the rest of
-the SDK compiles and runs on a plain JDK 26, and only this class needs the flag.
+content into parts and uploads them **in parallel** on virtual threads (create
+session → upload each part with its `Content-Range` and SHA-1 → commit). No
+flags are needed.
 
 ```java
-// compile: javac --release 26 --enable-preview ...
-// run:     java --enable-preview ...
 var file = new dev.unofficialbox.BoxChunkedUpload(client)
 .upload(bytes, "large.bin", folderId);
 
@@ -23,3 +18,18 @@ var version = new dev.unofficialbox.BoxChunkedUpload(client)
 Both return the uploaded `Files` object. A failure throws
 `dev.unofficialbox.runtime.Runtime.BoxApiException` like every other call (see the
 [errors guide](errors.md)); the first part to fail cancels the rest.
+
+## Structured concurrency (opt-in preview)
+
+`dev.unofficialbox.BoxStructuredChunkedUpload` runs the same protocol with the parts
+fanned out by structured concurrency, a Java **preview** API. Code that uses it
+passes `--enable-preview` at **both** compile and run time (with `--release 26`
+for `javac`). A preview class only loads on the JDK release it was compiled for
+(26); `BoxChunkedUpload` has no such limit.
+
+```java
+// compile: javac --release 26 --enable-preview ...
+// run:     java --enable-preview ...
+var file = new dev.unofficialbox.BoxStructuredChunkedUpload(client)
+.upload(bytes, "large.bin", folderId);
+```

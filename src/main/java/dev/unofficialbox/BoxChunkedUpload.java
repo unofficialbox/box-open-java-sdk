@@ -14,16 +14,15 @@ import dev.unofficialbox.model.schemas.UploadedPart;
  * Chunked upload orchestrator (Box's three-step protocol): create an upload
  * session, slice the content, PUT every part with its byte range + per-part
  * SHA-1 digest, then commit with the whole-file digest and the ordered part
- * list. The parts upload <b>in parallel</b> via structured concurrency (JEP 505):
- * one subtask per part, joined so the first failure cancels the rest. Wraps the
- * error-prone glue a caller shouldn't hand-write (cf. the Apex D-136 orchestrator).
+ * list. The parts upload <b>in parallel</b> on virtual threads, and the first
+ * failure cancels the parts still in flight. Wraps the error-prone glue a
+ * caller shouldn't hand-write (cf. the Apex D-136 orchestrator). Needs no
+ * preview flag; {@link BoxStructuredChunkedUpload} is the opt-in structured
+ * concurrency variant.
  */
-// StructuredTaskScope is a preview API; suppress the mandatory preview warning so
-// the SDK still compiles under the -Xlint:all -Werror gate (with --enable-preview).
-@SuppressWarnings("preview")
-public final class BoxChunkedUpload {
+public class BoxChunkedUpload {
     /** Max part uploads in flight at once, bounding peak buffer memory. */
-    private static final int MAX_CONCURRENT_PARTS = 4;
+    static final int MAX_CONCURRENT_PARTS = 4;
 
     private final Client client;
 
@@ -56,41 +55,59 @@ public final class BoxChunkedUpload {
         // step fits an int once bounded by content.length — narrow *after* the min
         // so a huge part_size can't overflow to a negative step.
         int step = (int) Math.min(partSize, (long) content.length);
-        // Cap in-flight part uploads so a many-part file doesn't buffer every part
-        // (its slice + the runtime's copy) at once — bounds peak memory.
-        Semaphore window = new Semaphore(MAX_CONCURRENT_PARTS);
-        List<UploadPart> parts;
-        try (var scope = StructuredTaskScope.open(
-                StructuredTaskScope.Joiner.<UploadPart>awaitAllSuccessfulOrThrow())) {
-            List<StructuredTaskScope.Subtask<UploadPart>> subtasks = new ArrayList<>();
-            for (int offset = 0; offset < content.length; offset += step) {
-                int start = offset;
-                int len = Math.min(step, content.length - offset);
-                subtasks.add(scope.fork(() -> {
-                    window.acquire();
-                    try {
-                        return uploadPart(id, content, start, len);
-                    } finally {
-                        window.release();
-                    }
-                }));
-            }
-            scope.join();
-            // Read results in fork order so the committed part list is ordered.
-            parts = new ArrayList<>();
-            for (var subtask : subtasks) {
-                parts.add(subtask.get());
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new dev.unofficialbox.runtime.Runtime.BoxApiException("chunked upload interrupted: " + e);
-        }
+        List<UploadPart> parts = uploadParts(id, content, step);
         String digest = "sha=" + sha1(content, 0, content.length);
         return client.chunkedUploads.commitFileUploadSession(
                 id, digest, new CommitFileUploadSessionRequest(parts), null);
     }
 
-    private UploadPart uploadPart(String id, byte[] content, int start, int len) {
+    /** One part's result, tagged with its position so the list stays ordered. */
+    private record Uploaded(int index, UploadPart part) {}
+
+    /**
+     * Upload every part concurrently, at most {@link #MAX_CONCURRENT_PARTS} at a
+     * time (bounding peak memory), returning them in part order.
+     */
+    List<UploadPart> uploadParts(String id, byte[] content, int step) {
+        Semaphore window = new Semaphore(MAX_CONCURRENT_PARTS);
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            CompletionService<Uploaded> done = new ExecutorCompletionService<>(executor);
+            List<Future<Uploaded>> inFlight = new ArrayList<>();
+            int count = 0;
+            for (int offset = 0; offset < content.length; offset += step, count++) {
+                int index = count;
+                int start = offset;
+                int len = Math.min(step, content.length - offset);
+                inFlight.add(done.submit(() -> {
+                    window.acquire();
+                    try {
+                        return new Uploaded(index, uploadPart(id, content, start, len));
+                    } finally {
+                        window.release();
+                    }
+                }));
+            }
+            UploadPart[] parts = new UploadPart[count];
+            for (int i = 0; i < count; i++) {
+                try {
+                    Uploaded uploaded = done.take().get();
+                    parts[uploaded.index()] = uploaded.part();
+                } catch (ExecutionException e) {
+                    // The first failure cancels the parts still in flight.
+                    inFlight.forEach(future -> future.cancel(true));
+                    throw e.getCause() instanceof RuntimeException failure
+                            ? failure
+                            : fail("part upload failed: " + e.getCause());
+                }
+            }
+            return List.of(parts);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new dev.unofficialbox.runtime.Runtime.BoxApiException("chunked upload interrupted: " + e);
+        }
+    }
+
+    UploadPart uploadPart(String id, byte[] content, int start, int len) {
         byte[] part = Arrays.copyOfRange(content, start, start + len);
         String digest = "sha=" + sha1(part, 0, part.length);
         String range = "bytes " + start + "-" + (start + len - 1) + "/" + content.length;

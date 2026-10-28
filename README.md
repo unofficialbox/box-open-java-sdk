@@ -21,7 +21,7 @@ API area behind a single `dev.unofficialbox.Client`, over a dependency-free
 <dependency>
   <groupId>dev.unofficialbox</groupId>
   <artifactId>box-open-sdk</artifactId>
-  <version>0.4.4</version>
+  <version>0.5.0</version>
 </dependency>
 ```
 
@@ -97,22 +97,40 @@ public final class Quickstart {
 }
 ```
 
-## Parallel chunked upload (opt-in)
+## Parallel chunked upload
 
-The core SDK compiles and runs on a plain JDK 26. `BoxChunkedUpload` uploads a
-large file's parts **in parallel** using structured concurrency, a Java 26
-**preview** API — so it is a preview-marked class, and code that calls it must
-pass `--enable-preview` at **both** compile and run time (with `--release 26` for
-`javac`) to unlock the parallel path:
+`BoxChunkedUpload` uploads a large file's parts **in parallel** on virtual
+threads — no flags needed:
 
 ```java
-// compile: javac --release 26 --enable-preview ...
-// run:     java --enable-preview ...
 var file = new dev.unofficialbox.BoxChunkedUpload(client)
         .upload(bytes, "large.bin", folderId);
 ```
 
-Everything else compiles and runs without the flag.
+### Structured concurrency (opt-in preview)
+
+`BoxStructuredChunkedUpload` does the same with structured concurrency, a Java
+**preview** API. Code that uses it passes `--enable-preview` at **both** compile
+and run time (`javac --release 26 --enable-preview …`, `java --enable-preview …`).
+A preview class only loads on the JDK release it was compiled for (26); the
+default class has no such limit.
+
+## HTTP versions
+
+API requests prefer HTTP/3: the first request goes over HTTP/2 and later ones
+upgrade once Box advertises HTTP/3 (`Alt-Svc`), falling back to HTTP/2 or
+HTTP/1.1. Pick another preference on a configured session:
+
+```java
+var session = Runtime.Session.builder(auth)
+    .httpVersion(java.net.http.HttpClient.Version.HTTP_2)
+    .build();
+var client = new Client(session);
+```
+
+The builder also takes `maxRetries`, default headers, base URLs, or your own
+`HttpClient` (which carries its own version — set one or the other). Token
+requests keep their own client.
 
 ## Documentation
 

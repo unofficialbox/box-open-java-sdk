@@ -113,6 +113,24 @@ Paginated — `listFileUploadSessionParts(...)` returns an auto-paging `Iterable
 loop with `for (var item : …)`, threading the cursor for you. See
 the [pagination guide](../pagination.md).
 
+## createFileUploadSessionPlan
+
+`POST /files/upload_sessions/{upload_session_id}/plan`
+
+| Parameter | In | Type | Required |
+|---|---|---|---|
+| `upload_session_id` | path | `String` | yes |
+
+**Request body** (`application/json`): `UploadSessionPlanRequest`
+
+**Returns:** `UploadSessionPlanResponse`
+
+**Example**
+
+```java
+var result = client.chunkedUploads.createFileUploadSessionPlan("UPLOAD_SESSION_ID", new UploadSessionPlanRequest(/* … */));
+```
+
 ## commitFileUploadSession
 
 `POST /files/upload_sessions/{upload_session_id}/commit`

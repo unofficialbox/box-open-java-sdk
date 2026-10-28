@@ -22,7 +22,7 @@ One resource manager per Box API tag, reached through the single
 | [AuthorizationManager](managers/AuthorizationManager.md) | `client.authorization` | 4 |
 | [AutomateWorkflowsManager](managers/AutomateWorkflowsManager.md) | `client.automateWorkflows` | 2 |
 | [AvatarsManager](managers/AvatarsManager.md) | `client.avatars` | 3 |
-| [ChunkedUploadsManager](managers/ChunkedUploadsManager.md) | `client.chunkedUploads` | 7 |
+| [ChunkedUploadsManager](managers/ChunkedUploadsManager.md) | `client.chunkedUploads` | 8 |
 | [ClassificationsManager](managers/ClassificationsManager.md) | `client.classifications` | 4 |
 | [CollaborationAllowlistEntriesManager](managers/CollaborationAllowlistEntriesManager.md) | `client.collaborationAllowlistEntries` | 4 |
 | [CollaborationAllowlistExemptTargetsManager](managers/CollaborationAllowlistExemptTargetsManager.md) | `client.collaborationAllowlistExemptTargets` | 4 |
@@ -31,6 +31,7 @@ One resource manager per Box API tag, reached through the single
 | [DevicePinnersManager](managers/DevicePinnersManager.md) | `client.devicePinners` | 3 |
 | [DocgenManager](managers/DocgenManager.md) | `client.docgen` | 4 |
 | [DocgenTemplateManager](managers/DocgenTemplateManager.md) | `client.docgenTemplate` | 6 |
+| [DocumentSplitManager](managers/DocumentSplitManager.md) | `client.documentSplit` | 3 |
 | [DownloadsManager](managers/DownloadsManager.md) | `client.downloads` | 1 |
 | [EmailAliasesManager](managers/EmailAliasesManager.md) | `client.emailAliases` | 3 |
 | [EnterpriseConfigurationsManager](managers/EnterpriseConfigurationsManager.md) | `client.enterpriseConfigurations` | 1 |
@@ -80,6 +81,7 @@ One resource manager per Box API tag, reached through the single
 | [ShieldInformationBarrierSegmentsManager](managers/ShieldInformationBarrierSegmentsManager.md) | `client.shieldInformationBarrierSegments` | 5 |
 | [ShieldInformationBarriersManager](managers/ShieldInformationBarriersManager.md) | `client.shieldInformationBarriers` | 4 |
 | [ShieldListsManager](managers/ShieldListsManager.md) | `client.shieldLists` | 5 |
+| [ShuttleManager](managers/ShuttleManager.md) | `client.shuttle` | 39 |
 | [SignRequestsManager](managers/SignRequestsManager.md) | `client.signRequests` | 5 |
 | [SignTemplatesManager](managers/SignTemplatesManager.md) | `client.signTemplates` | 2 |
 | [SkillsManager](managers/SkillsManager.md) | `client.skills` | 5 |

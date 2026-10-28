@@ -163,5 +163,32 @@ public final class GeneratedTests {
             dev.unofficialbox.model.schemas.ShieldListContentRequest _unk = dev.unofficialbox.model.schemas.ShieldListContentRequest.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
             check(_unk instanceof dev.unofficialbox.model.schemas.ShieldListContentRequest.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShieldListContentRequest");
         }
+        {
+            dev.unofficialbox.model.schemas.DocumentSplitPageSelectionSegment _unk = dev.unofficialbox.model.schemas.DocumentSplitPageSelectionSegment.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.DocumentSplitPageSelectionSegment.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.DocumentSplitPageSelectionSegment");
+        }
+        {
+            dev.unofficialbox.model.schemas.ShuttleJobScheduleTrigger _unk = dev.unofficialbox.model.schemas.ShuttleJobScheduleTrigger.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.ShuttleJobScheduleTrigger.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShuttleJobScheduleTrigger");
+        }
+        {
+            dev.unofficialbox.model.schemas.ShuttlePathEntryScope _u = dev.unofficialbox.model.schemas.ShuttlePathEntryScope.fromJson(parse("{\"type\":\"account\"}"));
+            check(_u instanceof dev.unofficialbox.model.schemas.ShuttlePathEntryAccountScope, "known-tag dispatch: dev.unofficialbox.model.schemas.ShuttlePathEntryScope");
+            check("account".equals(dev.unofficialbox.core.Json.asString(dev.unofficialbox.core.Json.asObject(_u.toJson()).get("type"))), "discriminator survives: dev.unofficialbox.model.schemas.ShuttlePathEntryScope");
+            dev.unofficialbox.model.schemas.ShuttlePathEntryScope _unk = dev.unofficialbox.model.schemas.ShuttlePathEntryScope.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.ShuttlePathEntryScope.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShuttlePathEntryScope");
+        }
+        {
+            dev.unofficialbox.model.schemas.ShuttlePathMappingLocation _unk = dev.unofficialbox.model.schemas.ShuttlePathMappingLocation.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.ShuttlePathMappingLocation.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShuttlePathMappingLocation");
+        }
+        {
+            dev.unofficialbox.model.schemas.ShuttlePathMappingLocationInput _unk = dev.unofficialbox.model.schemas.ShuttlePathMappingLocationInput.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.ShuttlePathMappingLocationInput.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShuttlePathMappingLocationInput");
+        }
+        {
+            dev.unofficialbox.model.schemas.ShuttlePathMappingTargetLocationInput _unk = dev.unofficialbox.model.schemas.ShuttlePathMappingTargetLocationInput.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.ShuttlePathMappingTargetLocationInput.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.ShuttlePathMappingTargetLocationInput");
+        }
     }
 }
