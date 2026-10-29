@@ -59,6 +59,7 @@ public final class Runtime {
         private final List<String[]> query = new ArrayList<>();
         private byte[] body;
         private String contentType;
+        private Duration timeout;
 
         private Request(String method, String url) {
             this.method = method;
@@ -202,6 +203,143 @@ public final class Runtime {
         }
     }
 
+    /**
+     * Checks that a webhook delivery came from Box, unaltered and recent, by
+     * Box's v2 signature scheme: each {@code BOX-SIGNATURE-*} header is the
+     * base64 HMAC-SHA256, under that signature key, of the body followed by the
+     * {@code BOX-DELIVERY-TIMESTAMP} header.
+     */
+    public static final class WebhookVerifier {
+        /** How old a delivery may be before it's rejected as a possible replay:
+         * Box's ten minutes. */
+        public static final Duration DEFAULT_MAX_AGE = Duration.ofMinutes(10);
+
+        private final String primaryKey;
+        private final String secondaryKey;
+        private final Duration maxAge;
+
+        /** The app's signature keys from the Developer Console; either may be
+         * null. A delivery is genuine when the signature of any configured key
+         * matches, so a key can be rotated while the other keeps verifying. */
+        public WebhookVerifier(String primaryKey, String secondaryKey) {
+            this(primaryKey, secondaryKey, DEFAULT_MAX_AGE);
+        }
+
+        /** As above, accepting deliveries up to {@code maxAge} old. */
+        public WebhookVerifier(String primaryKey, String secondaryKey, Duration maxAge) {
+            this.primaryKey = primaryKey;
+            this.secondaryKey = secondaryKey;
+            this.maxAge = maxAge;
+        }
+
+        /** Whether {@code body} and {@code headers} are a genuine, recent
+         * delivery from Box. Pass the body exactly as received; header names
+         * match in any case. */
+        public boolean verify(byte[] body, Map<String, String> headers) {
+            return verify(body, headers, java.time.Instant.now());
+        }
+
+        /** {@link #verify(byte[], Map)} against the clock reading {@code now}.
+         * It is false for an unknown signature version or algorithm, a delivery
+         * older than the maximum age or timestamped in the future, and a
+         * signature no configured key produces. */
+        public boolean verify(byte[] body, Map<String, String> headers, java.time.Instant now) {
+            if (!"1".equals(header(headers, "box-signature-version"))
+                    || !"HmacSHA256".equals(header(headers, "box-signature-algorithm"))) {
+                return false;
+            }
+            String timestamp = header(headers, "box-delivery-timestamp");
+            long sent;
+            try {
+                sent = java.time.OffsetDateTime.parse(timestamp).toEpochSecond();
+            } catch (RuntimeException unparseable) {
+                return false;
+            }
+            // Whole seconds, as Box's own SDKs compare them.
+            long at = now.getEpochSecond();
+            if (sent > at || at - sent > maxAge.toSeconds()) {
+                return false;
+            }
+
+            List<byte[]> bodies = new ArrayList<>(List.of(body));
+            byte[] escaped = escapeNonAscii(body);
+            if (escaped != null) {
+                bodies.add(escaped);
+            }
+            String[][] signed = {
+                {primaryKey, "box-signature-primary"},
+                {secondaryKey, "box-signature-secondary"},
+            };
+            for (String[] pair : signed) {
+                String received = header(headers, pair[1]);
+                if (pair[0] == null || pair[0].isEmpty() || received == null) {
+                    continue;
+                }
+                byte[] signature;
+                try {
+                    signature = java.util.Base64.getDecoder().decode(received);
+                } catch (IllegalArgumentException notBase64) {
+                    continue;
+                }
+                for (byte[] candidate : bodies) {
+                    if (java.security.MessageDigest.isEqual(
+                            hmac(pair[0], candidate, timestamp), signature)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private static String header(Map<String, String> headers, String name) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                if (entry.getKey() != null && entry.getKey().equalsIgnoreCase(name)) {
+                    return entry.getValue();
+                }
+            }
+            return null;
+        }
+
+        private static byte[] hmac(String key, byte[] body, String timestamp) {
+            try {
+                javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+                mac.init(new javax.crypto.spec.SecretKeySpec(
+                    key.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+                mac.update(body);
+                return mac.doFinal(timestamp.getBytes(StandardCharsets.UTF_8));
+            } catch (java.security.GeneralSecurityException missing) {
+                // Every Java platform is required to provide HmacSHA256.
+                throw new IllegalStateException("HmacSHA256 is unavailable", missing);
+            }
+        }
+
+        /** {@code body} with every character from U+007F up written as a JSON
+         * unicode escape (UTF-16, lowercase hex) — the form Box signs. A body
+         * re-encoded as raw UTF-8 on its way to the caller verifies through it.
+         * Null when {@code body} is already all ASCII, or is not UTF-8. */
+        private static byte[] escapeNonAscii(byte[] body) {
+            String text;
+            try {
+                text = StandardCharsets.UTF_8.newDecoder()
+                    .decode(java.nio.ByteBuffer.wrap(body)).toString();
+            } catch (java.nio.charset.CharacterCodingException notUtf8) {
+                return null;
+            }
+            StringBuilder out = new StringBuilder(text.length() + 16);
+            boolean escaped = false;
+            for (int i = 0; i < text.length(); i++) {
+                char unit = text.charAt(i);
+                if (unit < 0x7f) {
+                    out.append(unit);
+                } else {
+                    escaped = true;
+                    out.append(String.format("\\u%04x", (int) unit));
+                }
+            }
+            return escaped ? out.toString().getBytes(StandardCharsets.UTF_8) : null;
+        }
+    }
+
     /** A source of access tokens for the configured auth flow. */
     public interface Auth {
         /** A valid access token, acquired or refreshed as needed. */
@@ -342,7 +480,7 @@ public final class Runtime {
 
         private Response send(Request request, String token) throws IOException, InterruptedException {
             HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create(buildUrl(request)))
-                    .timeout(API_TIMEOUT);
+                    .timeout(request.timeout != null ? request.timeout : API_TIMEOUT);
             HttpRequest.BodyPublisher body = request.body == null
                     ? HttpRequest.BodyPublishers.noBody()
                     : HttpRequest.BodyPublishers.ofByteArray(request.body);
@@ -567,6 +705,206 @@ public final class Runtime {
     /** The response status code. */
     public static long statusCode(Response response) {
         return response.status;
+    }
+
+    /** Return the request with its own timeout, in place of the session's, for
+     * a call meant to wait longer (a long poll). */
+    public static Request withTimeout(Request request, Duration timeout) {
+        request.timeout = timeout;
+        return request;
+    }
+
+    // ---------------------------------------------------------- event stream
+
+    /**
+     * One of Box's real-time servers, as {@code OPTIONS /events} lists them. A
+     * non-positive {@code maxRetries} or a null/zero {@code retryTimeout} takes
+     * Box's documented default.
+     */
+    public record LongPollServer(String url, int maxRetries, Duration retryTimeout) {
+        /** A server from the listing's raw fields: {@code max_retries} is a
+         * string, {@code retry_timeout} seconds; either may be absent. */
+        public static LongPollServer of(String url, String maxRetries, Long retryTimeoutSeconds) {
+            int retries = 0;
+            if (maxRetries != null) {
+                try {
+                    retries = Integer.parseInt(maxRetries.trim());
+                } catch (NumberFormatException unparsable) {
+                    // The default applies.
+                }
+            }
+            Duration timeout = retryTimeoutSeconds == null ? null : Duration.ofSeconds(retryTimeoutSeconds);
+            return new LongPollServer(url, retries, timeout);
+        }
+    }
+
+    /** A page of events, and the position to wait from next (null keeps the current one). */
+    public record EventPage<E>(List<E> events, String next) {}
+
+    /**
+     * What {@link EventStream} drives: the typed calls a generated events
+     * manager supplies. {@code server} lists a real-time server (null when Box
+     * lists none); {@code page} fetches the events after a stream position;
+     * {@code id} names an event so a repeat can be dropped (null when it has none).
+     */
+    public interface EventSource<E> {
+        LongPollServer server();
+
+        EventPage<E> page(String position);
+
+        String id(E event);
+    }
+
+    /**
+     * Box's long-poll event stream from a position ({@code "now"} for events
+     * from here on): iterating yields the events after it, each once, then
+     * blocks on a real-time server until Box reports a change and yields those.
+     * A {@code reconnect} answer, or exhausting the server's retries, lists a
+     * fresh server. A long poll that times out or fails in transit is retried;
+     * an error response from Box is thrown. {@link #close} (from any thread)
+     * stops it: a blocked {@code hasNext} then returns false.
+     */
+    public static final class EventStream<E> implements java.util.Iterator<E>, AutoCloseable {
+        private static final int DEFAULT_LONG_POLL_RETRIES = 10;
+        private static final Duration DEFAULT_LONG_POLL_TIMEOUT = Duration.ofSeconds(610);
+        /** Box may deliver an event twice; this many recent event ids are kept
+         * to drop the repeats (the bound Box's own SDKs use). */
+        private static final int MAX_SEEN_EVENTS = 1000;
+
+        private final Session session;
+        private final EventSource<E> source;
+        private final java.util.ArrayDeque<E> pending = new java.util.ArrayDeque<>();
+        private java.util.Set<String> seen = new java.util.HashSet<>();
+        private String position;
+        private LongPollServer server;
+        private int retries;
+        private boolean fetched;
+        private volatile boolean closed;
+        private volatile Thread waiter;
+
+        public EventStream(Session session, String position, EventSource<E> source) {
+            this.session = session;
+            this.position = position;
+            this.source = source;
+        }
+
+        @Override
+        public boolean hasNext() {
+            waiter = Thread.currentThread();
+            try {
+                while (pending.isEmpty()) {
+                    if (closed || (fetched && !waitForChange())) {
+                        return false;
+                    }
+                    fetch();
+                }
+                return !closed;
+            } finally {
+                waiter = null;
+                if (closed) {
+                    // Clear the interrupt close() used to wake this thread.
+                    Thread.interrupted();
+                }
+            }
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException("the event stream is closed");
+            }
+            return pending.poll();
+        }
+
+        /** Stop the stream, waking a thread blocked in {@code hasNext}. */
+        @Override
+        public void close() {
+            closed = true;
+            Thread blocked = waiter;
+            if (blocked != null) {
+                blocked.interrupt();
+            }
+        }
+
+        /** Fetch the events after the position, queue the unseen ones, advance. */
+        private void fetch() {
+            EventPage<E> page = source.page(position);
+            fetched = true;
+            for (E event : page.events()) {
+                String id = source.id(event);
+                if (id == null || seen.add(id)) {
+                    pending.add(event);
+                }
+            }
+            if (seen.size() >= MAX_SEEN_EVENTS) {
+                // Repeats arrive close together: keep only this page's ids.
+                seen = new java.util.HashSet<>();
+                for (E event : page.events()) {
+                    String id = source.id(event);
+                    if (id != null) {
+                        seen.add(id);
+                    }
+                }
+            }
+            if (page.next() != null && !page.next().isEmpty()) {
+                position = page.next();
+            }
+        }
+
+        /** Long-poll until Box reports a change after the position; false once closed. */
+        private boolean waitForChange() {
+            while (!closed) {
+                if (server == null || retries >= server.maxRetries()) {
+                    LongPollServer listed = source.server();
+                    if (listed == null) {
+                        throw new BoxApiException("box: no real-time server to long-poll");
+                    }
+                    server = new LongPollServer(
+                            listed.url(),
+                            listed.maxRetries() > 0 ? listed.maxRetries() : DEFAULT_LONG_POLL_RETRIES,
+                            listed.retryTimeout() == null || listed.retryTimeout().isZero()
+                                    ? DEFAULT_LONG_POLL_TIMEOUT
+                                    : listed.retryTimeout());
+                    retries = 0;
+                }
+                retries++;
+                String message;
+                try {
+                    message = longPoll(server);
+                } catch (BoxApiException err) {
+                    if (closed) {
+                        return false;
+                    }
+                    if (err.statusCode() != 0) {
+                        throw err;
+                    }
+                    // Timed out or failed in transit: poll again.
+                    continue;
+                }
+                switch (message) {
+                    case "new_change" -> {
+                        return true;
+                    }
+                    case "reconnect", "max_retries" -> server = null;
+                    default -> {
+                        // Anything else: poll again.
+                    }
+                }
+            }
+            return false;
+        }
+
+        /** Wait on a real-time server for Box's next message about the stream
+         * after the position: {@code new_change}, {@code reconnect}, or
+         * {@code max_retries}. */
+        private String longPoll(LongPollServer server) {
+            Request request = withTimeout(
+                    withQuery(session.newRequest("GET", server.url()), "stream_position", position),
+                    server.retryTimeout());
+            Map<String, Object> answer =
+                    JsonLite.parseObject(new String(session.fetch(request).body, StandardCharsets.UTF_8));
+            return answer.get("message") instanceof String message ? message : "";
+        }
     }
 
     // ------------------------------------------------------------ auth flows

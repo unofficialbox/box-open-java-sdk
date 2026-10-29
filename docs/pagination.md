@@ -15,3 +15,19 @@ Pass an options object (or `null`) as the final argument. The paginator stops
 when the last page is reached. It is re-iterable: each `iterator()` runs an
 independent pass over a private copy of your options, so your options object is
 never mutated.
+
+## Events
+
+`client.events.stream` follows Box's long-poll event stream: iterating yields the
+events after `streamPosition` (`"now"` when null), each once — Box may deliver
+an event twice — blocking on a real-time server until Box reports a change. It
+lists a fresh server when Box asks it to reconnect, and retries a long poll that
+times out; a failed call throws. `close()`, from any thread, stops it:
+
+```java
+var events = client.events.stream(null);
+while (events.hasNext()) {
+    var event = events.next();
+    // use event; events.close() (from any thread) to stop
+}
+```

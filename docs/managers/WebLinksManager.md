@@ -27,6 +27,7 @@ var result = client.webLinks.create(new CreateWebLinkRequest(/* … */));
 |---|---|---|---|
 | `web_link_id` | path | `String` | yes |
 | `boxapi` | header | `String` | no |
+| `if-none-match` | header | `String` | no |
 
 **Returns:** `WebLink`
 
@@ -43,6 +44,7 @@ var result = client.webLinks.get("WEB_LINK_ID", null);
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `web_link_id` | path | `String` | yes |
+| `if-match` | header | `String` | no |
 
 **Request body** (`application/json`): `UpdateWebLinkRequest`
 
@@ -51,7 +53,7 @@ var result = client.webLinks.get("WEB_LINK_ID", null);
 **Example**
 
 ```java
-var result = client.webLinks.update("WEB_LINK_ID", new UpdateWebLinkRequest(/* … */));
+var result = client.webLinks.update("WEB_LINK_ID", new UpdateWebLinkRequest(/* … */), null);
 ```
 
 ## delete
@@ -61,12 +63,13 @@ var result = client.webLinks.update("WEB_LINK_ID", new UpdateWebLinkRequest(/* �
 | Parameter | In | Type | Required |
 |---|---|---|---|
 | `web_link_id` | path | `String` | yes |
+| `if-match` | header | `String` | no |
 
 **Returns:** no content (`void`)
 
 **Example**
 
 ```java
-client.webLinks.delete("WEB_LINK_ID");
+client.webLinks.delete("WEB_LINK_ID", null);
 ```
 

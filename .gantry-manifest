@@ -94,6 +94,7 @@ docs/managers/WebhooksManager.md
 docs/managers/WorkflowsManager.md
 docs/managers/ZipDownloadsManager.md
 docs/pagination.md
+docs/webhooks.md
 pom.xml
 src/main/java/dev/unofficialbox/BoxChunkedUpload.java
 src/main/java/dev/unofficialbox/BoxStructuredChunkedUpload.java
