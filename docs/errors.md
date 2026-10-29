@@ -30,18 +30,26 @@ guide):
 - **Writes** — pass the etag as `ifMatch` on a file or folder update or
   delete, or a new file version upload. Box answers `412 Precondition
   Failed` (code `precondition_failed`) when the item changed since you read
-  it: read it again, reapply your change, retry. `If-Match` can't block a move.
+  it, and `e.isPreconditionFailed()` reports it: read it again, reapply your
+  change, retry. `If-Match` can't block a move.
 
 ```java
 var file = client.files.getIfModified(fileId, etag, null);
 if (file.isEmpty()) {
     // unchanged since etag
 }
+
+// Re-read and retry: the update lands only on the version it was made from.
 var guarded = new FilesManager.UpdateOptions();
 guarded.ifMatch = etag;
-try {
-    client.files.update(fileId, body, guarded);
-} catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
-    if (e.statusCode() != 412) throw e; // 412: changed since etag, re-read and retry
+for (int attempt = 1; ; attempt++) {
+    try {
+        client.files.update(fileId, body, guarded);
+        break;
+    } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
+        if (!e.isPreconditionFailed() || attempt == 3) throw e;
+        var current = client.files.get(fileId, null);
+        guarded.ifMatch = current.etag().value(); // reapply your change to current here
+    }
 }
 ```
