@@ -51,10 +51,10 @@ public record ShuttleJobSettings(
     }
 
     public static final class Builder {
-        private Tristate<Long> bandwidthLimitBytesPerSec;
+        private Tristate<Long> bandwidthLimitBytesPerSec = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> areDeletionsMirrored = java.util.Optional.empty();
         private Optional<Boolean> areFileVersionsSynced = java.util.Optional.empty();
-        private Tristate<Long> maxFileVersions;
+        private Tristate<Long> maxFileVersions = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> isOverwriteEnabled = java.util.Optional.empty();
         private Optional<Boolean> areCompletedMappingsSkippedOnRerun = java.util.Optional.empty();
         private Optional<Boolean> isContentScanningEnabled = java.util.Optional.empty();

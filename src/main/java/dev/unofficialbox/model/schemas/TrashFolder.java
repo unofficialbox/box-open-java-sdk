@@ -96,25 +96,25 @@ public record TrashFolder(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private FolderType type;
         private Optional<String> sequenceId = java.util.Optional.empty();
         private String name;
-        private Tristate<OffsetDateTime> createdAt;
-        private Tristate<OffsetDateTime> modifiedAt;
+        private Tristate<OffsetDateTime> createdAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> modifiedAt = dev.unofficialbox.core.Tristate.absent();
         private String description;
         private Long size;
         private TrashFilePathCollection pathCollection;
         private UserMini createdBy;
         private UserMini modifiedBy;
-        private Tristate<OffsetDateTime> trashedAt;
-        private Tristate<OffsetDateTime> purgedAt;
-        private Tristate<OffsetDateTime> contentCreatedAt;
-        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Tristate<OffsetDateTime> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> purgedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentCreatedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentModifiedAt = dev.unofficialbox.core.Tristate.absent();
         private UserMini ownedBy;
-        private Tristate<String> sharedLink;
-        private Tristate<String> folderUploadEmail;
-        private Tristate<FolderMini> parent;
+        private Tristate<String> sharedLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> folderUploadEmail = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FolderMini> parent = dev.unofficialbox.core.Tristate.absent();
         private FileItemStatus itemStatus;
 
         public Builder id(String id) {

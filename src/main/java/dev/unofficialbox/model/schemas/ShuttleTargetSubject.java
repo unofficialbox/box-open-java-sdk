@@ -37,9 +37,9 @@ public record ShuttleTargetSubject(
 
     public static final class Builder {
         private ShuttleSubjectType type;
-        private Tristate<String> id;
-        private Tristate<String> email;
-        private Tristate<String> name;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(ShuttleSubjectType type) {
             this.type = type;

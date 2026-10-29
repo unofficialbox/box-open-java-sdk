@@ -30,7 +30,7 @@ public record AcceptanceRequirementsStatusTwoFactorAuthenticationRequirement(
 
     public static final class Builder {
         private Optional<Boolean> enterpriseHasTwoFactorAuthEnabled = java.util.Optional.empty();
-        private Tristate<Boolean> userHasTwoFactorAuthenticationEnabled;
+        private Tristate<Boolean> userHasTwoFactorAuthenticationEnabled = dev.unofficialbox.core.Tristate.absent();
 
         public Builder enterpriseHasTwoFactorAuthEnabled(Boolean enterpriseHasTwoFactorAuthEnabled) {
             this.enterpriseHasTwoFactorAuthEnabled = java.util.Optional.ofNullable(enterpriseHasTwoFactorAuthEnabled);

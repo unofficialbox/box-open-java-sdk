@@ -37,9 +37,9 @@ public record AiLlmEndpointParamsGoogle(
 
     public static final class Builder {
         private AiLlmEndpointParamsGoogleType type;
-        private Tristate<Double> temperature;
-        private Tristate<Double> topP;
-        private Tristate<Double> topK;
+        private Tristate<Double> temperature = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> topP = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> topK = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(AiLlmEndpointParamsGoogleType type) {
             this.type = type;

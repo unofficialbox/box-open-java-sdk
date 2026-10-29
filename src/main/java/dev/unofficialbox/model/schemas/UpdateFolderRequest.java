@@ -63,10 +63,10 @@ public record UpdateFolderRequest(
         private Optional<Boolean> canNonOwnersInvite = java.util.Optional.empty();
         private Optional<PutIdParent> parent = java.util.Optional.empty();
         private Optional<PutIdSharedLink> sharedLink = java.util.Optional.empty();
-        private Tristate<PutIdFolderUploadEmail> folderUploadEmail;
+        private Tristate<PutIdFolderUploadEmail> folderUploadEmail = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> tags = java.util.Optional.empty();
         private Optional<Boolean> isCollaborationRestrictedToEnterprise = java.util.Optional.empty();
-        private Tristate<List<CommentItem>> collections;
+        private Tristate<List<CommentItem>> collections = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> canNonOwnersViewCollaborators = java.util.Optional.empty();
 
         public Builder name(String name) {

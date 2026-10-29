@@ -29,7 +29,7 @@ public record RetentionPolicyAssignmentAssignedTo(
     }
 
     public static final class Builder {
-        private Tristate<String> id;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
         private Optional<AssignedToType> type = java.util.Optional.empty();
 
         public Builder id(Tristate<String> id) {

@@ -44,7 +44,7 @@ public record AiStudioAgentTextGenResponse(
         private AiAgentTextGenType type;
         private String accessState;
         private String description;
-        private Tristate<String> customInstructions;
+        private Tristate<String> customInstructions = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> suggestedQuestions = java.util.Optional.empty();
         private Optional<AiStudioAgentBasicGenToolResponse> basicGen = java.util.Optional.empty();
 

@@ -71,19 +71,19 @@ public record SignRequestCreateSigner(
     }
 
     public static final class Builder {
-        private Tristate<String> email;
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
         private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
         private Optional<Boolean> isInPerson = java.util.Optional.empty();
         private Optional<Long> order = java.util.Optional.empty();
-        private Tristate<String> embedUrlExternalUserId;
-        private Tristate<String> redirectUrl;
-        private Tristate<String> declinedRedirectUrl;
-        private Tristate<Boolean> loginRequired;
-        private Tristate<String> verificationPhoneNumber;
-        private Tristate<String> password;
-        private Tristate<String> signerGroupId;
-        private Tristate<Boolean> suppressNotifications;
-        private Tristate<String> language;
+        private Tristate<String> embedUrlExternalUserId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> redirectUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> declinedRedirectUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> loginRequired = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> verificationPhoneNumber = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> password = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> signerGroupId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> suppressNotifications = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> language = dev.unofficialbox.core.Tristate.absent();
 
         public Builder email(Tristate<String> email) {
             this.email = email;

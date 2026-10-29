@@ -54,8 +54,8 @@ public record ShuttlePathEntry(
         private ShuttlePathEntryType type;
         private String name;
         private String path;
-        private Tristate<String> pathId;
-        private Tristate<String> parentPath;
+        private Tristate<String> pathId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> parentPath = dev.unofficialbox.core.Tristate.absent();
         private ShuttlePathEntryScope scope;
         private Boolean isDirectory;
         private Boolean canMap;

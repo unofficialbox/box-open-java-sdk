@@ -50,12 +50,12 @@ public record KeysafeSettings(
 
     public static final class Builder {
         private Optional<Boolean> keysafeEnabled = java.util.Optional.empty();
-        private Tristate<String> cloudProvider;
-        private Tristate<String> keyId;
-        private Tristate<String> accountId;
-        private Tristate<String> locationId;
-        private Tristate<String> projectId;
-        private Tristate<String> keyringId;
+        private Tristate<String> cloudProvider = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> keyId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> accountId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> locationId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> projectId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> keyringId = dev.unofficialbox.core.Tristate.absent();
 
         public Builder keysafeEnabled(Boolean keysafeEnabled) {
             this.keysafeEnabled = java.util.Optional.ofNullable(keysafeEnabled);

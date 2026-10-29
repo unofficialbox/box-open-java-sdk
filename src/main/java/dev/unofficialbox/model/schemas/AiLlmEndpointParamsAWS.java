@@ -33,8 +33,8 @@ public record AiLlmEndpointParamsAWS(
 
     public static final class Builder {
         private AiLlmEndpointParamsAWSType type;
-        private Tristate<Double> temperature;
-        private Tristate<Double> topP;
+        private Tristate<Double> temperature = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> topP = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(AiLlmEndpointParamsAWSType type) {
             this.type = type;

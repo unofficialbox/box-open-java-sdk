@@ -59,7 +59,7 @@ public record ShuttleJob(
         private String id;
         private ShuttleJobType type;
         private String name;
-        private Tristate<String> comment;
+        private Tristate<String> comment = dev.unofficialbox.core.Tristate.absent();
         private ShuttleJobJobType jobType;
         private String state;
         private String mappingState;

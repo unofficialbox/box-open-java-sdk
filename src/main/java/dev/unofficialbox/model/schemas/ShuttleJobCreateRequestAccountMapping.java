@@ -36,7 +36,7 @@ public record ShuttleJobCreateRequestAccountMapping(
 
     public static final class Builder {
         private Optional<Boolean> isEnabled = java.util.Optional.empty();
-        private Tristate<ShuttleJobPermissionConflictStrategy> permissionConflictStrategy;
+        private Tristate<ShuttleJobPermissionConflictStrategy> permissionConflictStrategy = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> areExternalSharesMapped = java.util.Optional.empty();
         private Optional<Boolean> arePermissionsMapped = java.util.Optional.empty();
 

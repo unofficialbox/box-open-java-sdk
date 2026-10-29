@@ -30,7 +30,7 @@ public record UpdateGroupMembershipRequest(
 
     public static final class Builder {
         private Optional<GroupMembershipRole> role = java.util.Optional.empty();
-        private Tristate<Map<String, Boolean>> configurablePermissions;
+        private Tristate<Map<String, Boolean>> configurablePermissions = dev.unofficialbox.core.Tristate.absent();
 
         public Builder role(GroupMembershipRole role) {
             this.role = java.util.Optional.ofNullable(role);

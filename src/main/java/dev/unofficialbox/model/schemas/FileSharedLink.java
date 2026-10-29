@@ -66,13 +66,13 @@ public record FileSharedLink(
 
     public static final class Builder {
         private String url;
-        private Tristate<String> downloadUrl;
-        private Tristate<String> vanityUrl;
-        private Tristate<String> vanityName;
+        private Tristate<String> downloadUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> vanityUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> vanityName = dev.unofficialbox.core.Tristate.absent();
         private Optional<SharedLinkAccess> access = java.util.Optional.empty();
         private SharedLinkAccess effectiveAccess;
         private SharedLinkEffectivePermission effectivePermission;
-        private Tristate<OffsetDateTime> unsharedAt;
+        private Tristate<OffsetDateTime> unsharedAt = dev.unofficialbox.core.Tristate.absent();
         private Boolean isPasswordEnabled;
         private Optional<SharedLinkPermissions> permissions = java.util.Optional.empty();
         private Long downloadCount;

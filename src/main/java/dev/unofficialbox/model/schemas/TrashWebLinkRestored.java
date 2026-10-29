@@ -90,12 +90,12 @@ public record TrashWebLinkRestored(
         private FilePathCollection pathCollection;
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
-        private Tristate<String> trashedAt;
-        private Tristate<String> purgedAt;
+        private Tristate<String> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> purgedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private Optional<UserMini> modifiedBy = java.util.Optional.empty();
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
-        private Tristate<String> sharedLink;
+        private Tristate<String> sharedLink = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
 
         public Builder type(TrashWebLinkType type) {

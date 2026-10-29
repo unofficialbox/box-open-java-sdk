@@ -38,8 +38,8 @@ public record ShuttleDiscoveredSubjects(
     public static final class Builder {
         private List<ShuttleDiscoveredSubject> entries;
         private Optional<Long> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
-        private Tristate<String> prevMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> prevMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<ShuttleDiscoveredSubject> entries) {
             this.entries = entries;

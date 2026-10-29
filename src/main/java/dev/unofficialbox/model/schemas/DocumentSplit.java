@@ -68,13 +68,13 @@ public record DocumentSplit(
         private FileReference sourceFile;
         private DocumentSplitStatus status;
         private DocumentSplitCreateRequestType splitInput;
-        private Tristate<DocumentSplitOutput> output;
+        private Tristate<DocumentSplitOutput> output = dev.unofficialbox.core.Tristate.absent();
         private FolderReference destinationFolder;
         private DocumentSplitInputSource inputSource;
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private Optional<EnterpriseReference> enterprise = java.util.Optional.empty();
-        private Tristate<DocumentFailures> failures;
+        private Tristate<DocumentFailures> failures = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> externalId = java.util.Optional.empty();
 
         public Builder id(String id) {

@@ -24,7 +24,7 @@ public record UpdateFileVersionRequest(Tristate<String> trashedAt) {
     }
 
     public static final class Builder {
-        private Tristate<String> trashedAt;
+        private Tristate<String> trashedAt = dev.unofficialbox.core.Tristate.absent();
 
         public Builder trashedAt(Tristate<String> trashedAt) {
             this.trashedAt = trashedAt;

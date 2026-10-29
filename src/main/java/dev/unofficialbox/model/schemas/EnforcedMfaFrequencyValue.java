@@ -27,8 +27,8 @@ public record EnforcedMfaFrequencyValue(Tristate<Long> days, Tristate<Long> hour
     }
 
     public static final class Builder {
-        private Tristate<Long> days;
-        private Tristate<Long> hours;
+        private Tristate<Long> days = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Long> hours = dev.unofficialbox.core.Tristate.absent();
 
         public Builder days(Tristate<Long> days) {
             this.days = days;

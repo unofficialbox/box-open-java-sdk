@@ -55,11 +55,11 @@ public record UpdateFileRequest(
         private Optional<String> name = java.util.Optional.empty();
         private Optional<String> description = java.util.Optional.empty();
         private Optional<PutIdParent> parent = java.util.Optional.empty();
-        private Tristate<PutIdSharedLink> sharedLink;
-        private Tristate<PutIdLock> lock;
+        private Tristate<PutIdSharedLink> sharedLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<PutIdLock> lock = dev.unofficialbox.core.Tristate.absent();
         private Optional<OffsetDateTime> dispositionAt = java.util.Optional.empty();
         private Optional<PutIdPermissions> permissions = java.util.Optional.empty();
-        private Tristate<List<CommentItem>> collections;
+        private Tristate<List<CommentItem>> collections = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> tags = java.util.Optional.empty();
 
         public Builder name(String name) {

@@ -46,10 +46,10 @@ public record EnterpriseConfiguration(
     public static final class Builder {
         private Optional<String> id = java.util.Optional.empty();
         private Optional<EnterpriseConfigurationType> type = java.util.Optional.empty();
-        private Tristate<EnterpriseConfigurationSecurity> security;
-        private Tristate<EnterpriseConfigurationContentAndSharing> contentAndSharing;
-        private Tristate<EnterpriseConfigurationUserSettings> userSettings;
-        private Tristate<EnterpriseConfigurationShield> shield;
+        private Tristate<EnterpriseConfigurationSecurity> security = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<EnterpriseConfigurationContentAndSharing> contentAndSharing = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<EnterpriseConfigurationUserSettings> userSettings = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<EnterpriseConfigurationShield> shield = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = java.util.Optional.ofNullable(id);

@@ -64,11 +64,11 @@ public record DocGenJob(
         private DocGenBatchBase batch;
         private FileReference templateFile;
         private FileVersionBase templateFileVersion;
-        private Tristate<FileReference> outputFile;
-        private Tristate<FileVersionBase> outputFileVersion;
+        private Tristate<FileReference> outputFile = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FileVersionBase> outputFileVersion = dev.unofficialbox.core.Tristate.absent();
         private DocGenJobStatus status;
         private String outputType;
-        private Tristate<DocGenJobFailures> failures;
+        private Tristate<DocGenJobFailures> failures = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

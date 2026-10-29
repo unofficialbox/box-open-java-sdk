@@ -48,7 +48,7 @@ public record ClientError(
         private Optional<Long> status = java.util.Optional.empty();
         private Optional<ClientErrorCode> code = java.util.Optional.empty();
         private Optional<String> message = java.util.Optional.empty();
-        private Tristate<Map<String, Object>> contextInfo;
+        private Tristate<Map<String, Object>> contextInfo = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> helpUrl = java.util.Optional.empty();
         private Optional<String> requestId = java.util.Optional.empty();
 

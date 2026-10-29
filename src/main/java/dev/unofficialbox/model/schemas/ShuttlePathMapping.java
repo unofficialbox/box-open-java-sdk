@@ -45,7 +45,7 @@ public record ShuttlePathMapping(
         private String jobId;
         private Boolean isPathSkipped;
         private ShuttlePathMappingLocation source;
-        private Tristate<ShuttlePathMappingLocation> target;
+        private Tristate<ShuttlePathMappingLocation> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

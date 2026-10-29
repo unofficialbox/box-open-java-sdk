@@ -45,7 +45,7 @@ public record FileMini(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private AiCitationType type;
         private Optional<String> sequenceId = java.util.Optional.empty();
         private Optional<String> name = java.util.Optional.empty();

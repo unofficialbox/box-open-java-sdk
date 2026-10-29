@@ -34,7 +34,7 @@ public record FolderLocks(
     public static final class Builder {
         private Optional<List<FolderLock>> entries = java.util.Optional.empty();
         private Optional<String> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<FolderLock> entries) {
             this.entries = java.util.Optional.ofNullable(entries);

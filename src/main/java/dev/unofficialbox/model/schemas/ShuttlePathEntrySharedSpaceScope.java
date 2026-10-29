@@ -29,7 +29,7 @@ public record ShuttlePathEntrySharedSpaceScope(
 
     public static final class Builder {
         private ShuttlePathEntrySharedSpaceScopeType type;
-        private Tristate<String> space;
+        private Tristate<String> space = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(ShuttlePathEntrySharedSpaceScopeType type) {
             this.type = type;

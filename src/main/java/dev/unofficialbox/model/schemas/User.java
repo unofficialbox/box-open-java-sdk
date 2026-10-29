@@ -90,7 +90,7 @@ public record User(
         private Optional<String> phone = java.util.Optional.empty();
         private Optional<String> address = java.util.Optional.empty();
         private Optional<String> avatarUrl = java.util.Optional.empty();
-        private Tristate<UserNotificationEmail> notificationEmail;
+        private Tristate<UserNotificationEmail> notificationEmail = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

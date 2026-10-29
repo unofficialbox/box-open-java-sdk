@@ -40,10 +40,10 @@ public record ShuttlePathMappingSharedSpaceLocation(
 
     public static final class Builder {
         private ShuttlePathEntrySharedSpaceScopeType type;
-        private Tristate<String> space;
+        private Tristate<String> space = dev.unofficialbox.core.Tristate.absent();
         private String path;
-        private Tristate<String> pathId;
-        private Tristate<Boolean> isDirectory;
+        private Tristate<String> pathId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> isDirectory = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(ShuttlePathEntrySharedSpaceScopeType type) {
             this.type = type;

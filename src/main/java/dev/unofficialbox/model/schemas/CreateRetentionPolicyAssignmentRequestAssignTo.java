@@ -27,7 +27,7 @@ public record CreateRetentionPolicyAssignmentRequestAssignTo(AssignToType type, 
 
     public static final class Builder {
         private AssignToType type;
-        private Tristate<String> id;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(AssignToType type) {
             this.type = type;

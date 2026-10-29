@@ -50,7 +50,7 @@ public record FileFullLock(
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> expiredAt = java.util.Optional.empty();
         private Optional<Boolean> isDownloadPrevented = java.util.Optional.empty();
-        private Tristate<LockAppType> appType;
+        private Tristate<LockAppType> appType = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = java.util.Optional.ofNullable(id);

@@ -39,7 +39,7 @@ public record ShuttleJobUpdateRequest(
 
     public static final class Builder {
         private Optional<String> name = java.util.Optional.empty();
-        private Tristate<String> comment;
+        private Tristate<String> comment = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> tags = java.util.Optional.empty();
         private Optional<ShuttleJobCreateRequestAccountMapping> accountMapping = java.util.Optional.empty();
         private Optional<ShuttleJobSettings> settings = java.util.Optional.empty();

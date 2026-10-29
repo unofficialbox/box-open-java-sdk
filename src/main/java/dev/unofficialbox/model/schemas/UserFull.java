@@ -129,7 +129,7 @@ public record UserFull(
         private Optional<String> phone = java.util.Optional.empty();
         private Optional<String> address = java.util.Optional.empty();
         private Optional<String> avatarUrl = java.util.Optional.empty();
-        private Tristate<UserNotificationEmail> notificationEmail;
+        private Tristate<UserNotificationEmail> notificationEmail = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserFullRole> role = java.util.Optional.empty();
         private Optional<List<TrackingCode>> trackingCodes = java.util.Optional.empty();
         private Optional<Boolean> canSeeManagedUsers = java.util.Optional.empty();

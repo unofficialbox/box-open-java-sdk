@@ -32,7 +32,7 @@ public record FolderBase(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private FolderType type;
 
         public Builder id(String id) {

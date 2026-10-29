@@ -36,7 +36,7 @@ public record HubDocumentPage(
     public static final class Builder {
         private String id;
         private String type;
-        private Tristate<String> parentId;
+        private Tristate<String> parentId = dev.unofficialbox.core.Tristate.absent();
         private String titleFragment;
 
         public Builder id(String id) {

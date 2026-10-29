@@ -96,21 +96,21 @@ public record SignRequestSigner(
         private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
         private Optional<Boolean> isInPerson = java.util.Optional.empty();
         private Optional<Long> order = java.util.Optional.empty();
-        private Tristate<String> embedUrlExternalUserId;
-        private Tristate<String> redirectUrl;
-        private Tristate<String> declinedRedirectUrl;
-        private Tristate<Boolean> loginRequired;
-        private Tristate<String> verificationPhoneNumber;
-        private Tristate<String> password;
-        private Tristate<String> signerGroupId;
-        private Tristate<Boolean> suppressNotifications;
-        private Tristate<String> language;
+        private Tristate<String> embedUrlExternalUserId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> redirectUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> declinedRedirectUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> loginRequired = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> verificationPhoneNumber = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> password = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> signerGroupId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> suppressNotifications = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> language = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> hasViewedDocument = java.util.Optional.empty();
-        private Tristate<SignRequestSignerDecision> signerDecision;
+        private Tristate<SignRequestSignerDecision> signerDecision = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<SignRequestSignerInput>> inputs = java.util.Optional.empty();
-        private Tristate<String> embedUrl;
-        private Tristate<String> iframeableEmbedUrl;
-        private Tristate<List<SignRequestSignerAttachment>> attachments;
+        private Tristate<String> embedUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> iframeableEmbedUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<SignRequestSignerAttachment>> attachments = dev.unofficialbox.core.Tristate.absent();
 
         public Builder email(String email) {
             this.email = email;

@@ -38,7 +38,7 @@ public record ShuttlePathMappingCreateRequest(
         private String jobId;
         private Optional<Boolean> isPathSkipped = java.util.Optional.empty();
         private ShuttlePathMappingLocationInput source;
-        private Tristate<ShuttlePathMappingTargetLocationInput> target;
+        private Tristate<ShuttlePathMappingTargetLocationInput> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder jobId(String jobId) {
             this.jobId = jobId;

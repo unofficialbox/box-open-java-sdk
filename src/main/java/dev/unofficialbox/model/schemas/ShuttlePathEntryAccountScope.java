@@ -37,9 +37,9 @@ public record ShuttlePathEntryAccountScope(
 
     public static final class Builder {
         private ShuttlePathEntryAccountScopeType type;
-        private Tristate<String> id;
-        private Tristate<String> email;
-        private Tristate<String> name;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(ShuttlePathEntryAccountScopeType type) {
             this.type = type;

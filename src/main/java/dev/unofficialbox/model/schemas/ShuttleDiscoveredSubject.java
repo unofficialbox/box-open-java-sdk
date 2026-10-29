@@ -45,7 +45,7 @@ public record ShuttleDiscoveredSubject(
         private String jobId;
         private Long revision;
         private ShuttleSubject source;
-        private Tristate<ShuttleTargetSubject> suggestedTarget;
+        private Tristate<ShuttleTargetSubject> suggestedTarget = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

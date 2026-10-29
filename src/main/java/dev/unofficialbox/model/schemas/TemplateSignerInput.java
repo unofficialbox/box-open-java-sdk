@@ -79,22 +79,22 @@ public record TemplateSignerInput(
     }
 
     public static final class Builder {
-        private Tristate<String> documentTagId;
-        private Tristate<String> textValue;
-        private Tristate<Boolean> checkboxValue;
-        private Tristate<LocalDate> dateValue;
+        private Tristate<String> documentTagId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> textValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> checkboxValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<LocalDate> dateValue = dev.unofficialbox.core.Tristate.absent();
         private Optional<TemplateSignerInputType> type = java.util.Optional.empty();
         private Optional<SignRequestSignerInputContentType> contentType = java.util.Optional.empty();
         private Optional<Boolean> isRequired = java.util.Optional.empty();
         private Long pageIndex;
-        private Tristate<String> documentId;
-        private Tristate<List<String>> dropdownChoices;
-        private Tristate<String> groupId;
+        private Tristate<String> documentId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<String>> dropdownChoices = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> groupId = dev.unofficialbox.core.Tristate.absent();
         private Optional<TemplateSignerInputCoordinates> coordinates = java.util.Optional.empty();
         private Optional<TemplateSignerInputDimensions> dimensions = java.util.Optional.empty();
-        private Tristate<String> label;
+        private Tristate<String> label = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> readOnly = java.util.Optional.empty();
-        private Tristate<SignRequestSignerInputValidation> validation;
+        private Tristate<SignRequestSignerInputValidation> validation = dev.unofficialbox.core.Tristate.absent();
 
         public Builder documentTagId(Tristate<String> documentTagId) {
             this.documentTagId = documentTagId;

@@ -99,25 +99,25 @@ public record Folder(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private FolderType type;
         private Optional<String> sequenceId = java.util.Optional.empty();
         private Optional<String> name = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> createdAt;
-        private Tristate<OffsetDateTime> modifiedAt;
+        private Tristate<OffsetDateTime> createdAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> modifiedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> description = java.util.Optional.empty();
         private Optional<Long> size = java.util.Optional.empty();
         private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private Optional<UserMini> modifiedBy = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> trashedAt;
-        private Tristate<OffsetDateTime> purgedAt;
-        private Tristate<OffsetDateTime> contentCreatedAt;
-        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Tristate<OffsetDateTime> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> purgedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentCreatedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentModifiedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
-        private Tristate<FileSharedLink> sharedLink;
-        private Tristate<FolderUploadEmail> folderUploadEmail;
-        private Tristate<FolderMini> parent;
+        private Tristate<FileSharedLink> sharedLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FolderUploadEmail> folderUploadEmail = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FolderMini> parent = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
         private Optional<Items> itemCollection = java.util.Optional.empty();
 

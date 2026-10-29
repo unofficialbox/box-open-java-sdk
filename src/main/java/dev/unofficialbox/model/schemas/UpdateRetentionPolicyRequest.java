@@ -59,16 +59,16 @@ public record UpdateRetentionPolicyRequest(
     }
 
     public static final class Builder {
-        private Tristate<String> policyName;
-        private Tristate<String> description;
+        private Tristate<String> policyName = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
         private Optional<PutIdDispositionAction> dispositionAction = java.util.Optional.empty();
-        private Tristate<String> retentionType;
+        private Tristate<String> retentionType = dev.unofficialbox.core.Tristate.absent();
         private Optional<PostRetentionLength> retentionLength = java.util.Optional.empty();
-        private Tristate<String> status;
-        private Tristate<Boolean> canOwnerExtendRetention;
+        private Tristate<String> status = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> canOwnerExtendRetention = dev.unofficialbox.core.Tristate.absent();
         private Optional<RetentionPolicyMaxExtensionLengthRequest> maxExtensionLength = java.util.Optional.empty();
-        private Tristate<Boolean> areOwnersNotified;
-        private Tristate<List<UserBase>> customNotificationRecipients;
+        private Tristate<Boolean> areOwnersNotified = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<UserBase>> customNotificationRecipients = dev.unofficialbox.core.Tristate.absent();
 
         public Builder policyName(Tristate<String> policyName) {
             this.policyName = policyName;

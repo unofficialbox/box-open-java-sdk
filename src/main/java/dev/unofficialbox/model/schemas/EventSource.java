@@ -45,7 +45,7 @@ public record EventSource(
         private String itemId;
         private String itemName;
         private Optional<EventSourceClassification> classification = java.util.Optional.empty();
-        private Tristate<FolderMini> parent;
+        private Tristate<FolderMini> parent = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
 
         public Builder itemType(EventSourceItemType itemType) {

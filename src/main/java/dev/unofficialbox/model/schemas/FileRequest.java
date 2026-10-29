@@ -72,14 +72,14 @@ public record FileRequest(
         private String id;
         private FileRequestType type;
         private Optional<String> title = java.util.Optional.empty();
-        private Tristate<String> description;
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileRequestStatus> status = java.util.Optional.empty();
         private Optional<Boolean> isEmailRequired = java.util.Optional.empty();
         private Optional<Boolean> isDescriptionRequired = java.util.Optional.empty();
         private Optional<OffsetDateTime> expiresAt = java.util.Optional.empty();
         private FolderMini folder;
         private Optional<String> url = java.util.Optional.empty();
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private OffsetDateTime createdAt;
         private Optional<UserMini> updatedBy = java.util.Optional.empty();

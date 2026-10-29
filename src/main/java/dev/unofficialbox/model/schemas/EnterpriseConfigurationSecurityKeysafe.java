@@ -30,7 +30,7 @@ public record EnterpriseConfigurationSecurityKeysafe(
 
     public static final class Builder {
         private Optional<Boolean> isUsed = java.util.Optional.empty();
-        private Tristate<KeysafeSettings> value;
+        private Tristate<KeysafeSettings> value = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isUsed(Boolean isUsed) {
             this.isUsed = java.util.Optional.ofNullable(isUsed);

@@ -45,11 +45,11 @@ public record AiLlmEndpointParamsOpenAi(
 
     public static final class Builder {
         private AiLlmEndpointParamsOpenAiType type;
-        private Tristate<Double> temperature;
-        private Tristate<Double> topP;
-        private Tristate<Double> frequencyPenalty;
-        private Tristate<Double> presencePenalty;
-        private Tristate<String> stop;
+        private Tristate<Double> temperature = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> topP = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> frequencyPenalty = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Double> presencePenalty = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> stop = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(AiLlmEndpointParamsOpenAiType type) {
             this.type = type;

@@ -37,7 +37,7 @@ public record ShuttleJobScheduleUpdateRequest(
     public static final class Builder {
         private Optional<ShuttleJobScheduleState> state = java.util.Optional.empty();
         private Optional<ShuttleJobScheduleRunMode> runMode = java.util.Optional.empty();
-        private Tristate<String> description;
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
         private Optional<ShuttleJobScheduleTrigger> trigger = java.util.Optional.empty();
 
         public Builder state(ShuttleJobScheduleState state) {

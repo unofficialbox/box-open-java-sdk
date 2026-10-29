@@ -96,7 +96,7 @@ public record TrashFileRestored(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private AiCitationType type;
         private String sequenceId;
         private Optional<String> name = java.util.Optional.empty();
@@ -107,15 +107,15 @@ public record TrashFileRestored(
         private FilePathCollection pathCollection;
         private OffsetDateTime createdAt;
         private OffsetDateTime modifiedAt;
-        private Tristate<String> trashedAt;
-        private Tristate<String> purgedAt;
-        private Tristate<OffsetDateTime> contentCreatedAt;
-        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Tristate<String> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> purgedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentCreatedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentModifiedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private UserMini modifiedBy;
         private UserMini ownedBy;
-        private Tristate<String> sharedLink;
-        private Tristate<FolderMini> parent;
+        private Tristate<String> sharedLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FolderMini> parent = dev.unofficialbox.core.Tristate.absent();
         private FileItemStatus itemStatus;
 
         public Builder id(String id) {

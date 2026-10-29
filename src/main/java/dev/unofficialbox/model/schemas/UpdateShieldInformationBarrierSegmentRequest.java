@@ -30,7 +30,7 @@ public record UpdateShieldInformationBarrierSegmentRequest(
 
     public static final class Builder {
         private Optional<String> name = java.util.Optional.empty();
-        private Tristate<String> description;
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
 
         public Builder name(String name) {
             this.name = java.util.Optional.ofNullable(name);

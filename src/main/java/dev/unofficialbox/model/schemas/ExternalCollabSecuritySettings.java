@@ -54,10 +54,10 @@ public record ExternalCollabSecuritySettings(
         private Optional<List<String>> denylistEmails = java.util.Optional.empty();
         private Optional<List<String>> allowlistDomains = java.util.Optional.empty();
         private Optional<List<String>> allowlistEmails = java.util.Optional.empty();
-        private Tristate<String> state;
-        private Tristate<String> scheduledStatus;
-        private Tristate<OffsetDateTime> scheduledAt;
-        private Tristate<String> factorTypeSettings;
+        private Tristate<String> state = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> scheduledStatus = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> scheduledAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> factorTypeSettings = dev.unofficialbox.core.Tristate.absent();
 
         public Builder denylistDomains(List<String> denylistDomains) {
             this.denylistDomains = java.util.Optional.ofNullable(denylistDomains);

@@ -35,7 +35,7 @@ public record HubCalloutBoxTextBlock(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> parentId;
+        private Tristate<String> parentId = dev.unofficialbox.core.Tristate.absent();
         private HubCalloutBoxTextBlockType type;
         private String fragment;
 

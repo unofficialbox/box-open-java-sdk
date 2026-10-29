@@ -53,8 +53,8 @@ public record ShuttleJobSchedule(
         private String jobId;
         private ShuttleJobScheduleState state;
         private ShuttleJobScheduleRunMode runMode;
-        private Tristate<String> description;
-        private Tristate<OffsetDateTime> lastAttemptAt;
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> lastAttemptAt = dev.unofficialbox.core.Tristate.absent();
         private ShuttleJobScheduleTrigger trigger;
 
         public Builder id(String id) {

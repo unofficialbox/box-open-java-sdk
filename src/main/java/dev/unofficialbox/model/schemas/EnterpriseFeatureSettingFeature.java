@@ -24,7 +24,7 @@ public record EnterpriseFeatureSettingFeature(Tristate<String> id) {
     }
 
     public static final class Builder {
-        private Tristate<String> id;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(Tristate<String> id) {
             this.id = id;

@@ -28,7 +28,7 @@ public record DocGenTemplate(Optional<FileReference> file, Tristate<String> file
 
     public static final class Builder {
         private Optional<FileReference> file = java.util.Optional.empty();
-        private Tristate<String> fileName;
+        private Tristate<String> fileName = dev.unofficialbox.core.Tristate.absent();
 
         public Builder file(FileReference file) {
             this.file = java.util.Optional.ofNullable(file);

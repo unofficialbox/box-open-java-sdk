@@ -32,7 +32,7 @@ public record HubItemListBlock(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> parentId;
+        private Tristate<String> parentId = dev.unofficialbox.core.Tristate.absent();
         private HubItemListBlockType type;
 
         public Builder id(String id) {

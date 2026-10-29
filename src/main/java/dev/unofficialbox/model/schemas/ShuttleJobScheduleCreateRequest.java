@@ -41,7 +41,7 @@ public record ShuttleJobScheduleCreateRequest(
         private String jobId;
         private ShuttleJobScheduleRunMode runMode;
         private Optional<ShuttleJobScheduleState> state = java.util.Optional.empty();
-        private Tristate<String> description;
+        private Tristate<String> description = dev.unofficialbox.core.Tristate.absent();
         private ShuttleJobScheduleTrigger trigger;
 
         public Builder jobId(String jobId) {

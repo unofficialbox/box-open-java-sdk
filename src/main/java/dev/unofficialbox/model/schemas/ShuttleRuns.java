@@ -38,8 +38,8 @@ public record ShuttleRuns(
     public static final class Builder {
         private List<ShuttleRun> entries;
         private Optional<Long> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
-        private Tristate<String> prevMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> prevMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<ShuttleRun> entries) {
             this.entries = entries;

@@ -34,7 +34,7 @@ public record RetentionPolicyAssignments(
     public static final class Builder {
         private Optional<List<RetentionPolicyAssignment>> entries = java.util.Optional.empty();
         private Optional<Long> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<RetentionPolicyAssignment> entries) {
             this.entries = java.util.Optional.ofNullable(entries);

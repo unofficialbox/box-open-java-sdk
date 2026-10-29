@@ -90,7 +90,7 @@ public record UpdateUserRequest(
     }
 
     public static final class Builder {
-        private Tristate<String> enterprise;
+        private Tristate<String> enterprise = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> notify_ = java.util.Optional.empty();
         private Optional<String> name = java.util.Optional.empty();
         private Optional<String> login = java.util.Optional.empty();
@@ -110,7 +110,7 @@ public record UpdateUserRequest(
         private Optional<Boolean> isCollaboratedContentAvailableWhenOwnerInactive = java.util.Optional.empty();
         private Optional<UserStatus> status = java.util.Optional.empty();
         private Optional<Long> spaceAmount = java.util.Optional.empty();
-        private Tristate<PutIdNotificationEmail> notificationEmail;
+        private Tristate<PutIdNotificationEmail> notificationEmail = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> externalAppUserId = java.util.Optional.empty();
 
         public Builder enterprise(Tristate<String> enterprise) {

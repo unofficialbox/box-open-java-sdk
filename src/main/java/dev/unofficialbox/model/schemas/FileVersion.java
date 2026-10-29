@@ -75,11 +75,11 @@ public record FileVersion(
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
         private Optional<UserMini> modifiedBy = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> trashedAt;
+        private Tristate<OffsetDateTime> trashedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> trashedBy = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> restoredAt;
+        private Tristate<OffsetDateTime> restoredAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> restoredBy = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> purgedAt;
+        private Tristate<OffsetDateTime> purgedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> uploaderDisplayName = java.util.Optional.empty();
 
         public Builder id(String id) {

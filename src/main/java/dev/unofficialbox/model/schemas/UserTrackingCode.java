@@ -27,8 +27,8 @@ public record UserTrackingCode(Tristate<Long> id, Tristate<String> name) {
     }
 
     public static final class Builder {
-        private Tristate<Long> id;
-        private Tristate<String> name;
+        private Tristate<Long> id = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(Tristate<Long> id) {
             this.id = id;

@@ -51,11 +51,11 @@ public record ShuttleSubjectMapping(
         private String id;
         private ShuttleSubjectMappingType type;
         private String jobId;
-        private Tristate<String> discoveredSubjectId;
-        private Tristate<Long> revision;
+        private Tristate<String> discoveredSubjectId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Long> revision = dev.unofficialbox.core.Tristate.absent();
         private Boolean isSubjectSkipped;
         private ShuttleSubject source;
-        private Tristate<ShuttleTargetSubject> target;
+        private Tristate<ShuttleTargetSubject> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

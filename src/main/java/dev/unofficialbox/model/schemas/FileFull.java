@@ -179,7 +179,7 @@ public record FileFull(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private AiCitationType type;
         private Optional<String> sequenceId = java.util.Optional.empty();
         private Optional<String> name = java.util.Optional.empty();
@@ -190,21 +190,21 @@ public record FileFull(
         private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> trashedAt;
-        private Tristate<OffsetDateTime> purgedAt;
-        private Tristate<OffsetDateTime> contentCreatedAt;
-        private Tristate<OffsetDateTime> contentModifiedAt;
+        private Tristate<OffsetDateTime> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> purgedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentCreatedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> contentModifiedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private Optional<UserMini> modifiedBy = java.util.Optional.empty();
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
-        private Tristate<FileSharedLink> sharedLink;
-        private Tristate<FolderMini> parent;
+        private Tristate<FileSharedLink> sharedLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<FolderMini> parent = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
         private Optional<String> versionNumber = java.util.Optional.empty();
         private Optional<Long> commentCount = java.util.Optional.empty();
         private Optional<FileFullPermissions> permissions = java.util.Optional.empty();
         private Optional<List<String>> tags = java.util.Optional.empty();
-        private Tristate<FileFullLock> lock;
+        private Tristate<FileFullLock> lock = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> extension = java.util.Optional.empty();
         private Optional<Boolean> isPackage = java.util.Optional.empty();
         private Optional<FileFullExpiringEmbedLink> expiringEmbedLink = java.util.Optional.empty();
@@ -214,12 +214,12 @@ public record FileFull(
         private Optional<Boolean> isExternallyOwned = java.util.Optional.empty();
         private Optional<Boolean> hasCollaborations = java.util.Optional.empty();
         private Optional<Map<String, Map<String, MetadataFull>>> metadata = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> expiresAt;
+        private Tristate<OffsetDateTime> expiresAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileFullRepresentations> representations = java.util.Optional.empty();
-        private Tristate<FileFullClassification> classification;
+        private Tristate<FileFullClassification> classification = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> uploaderDisplayName = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> dispositionAt;
-        private Tristate<List<FileFullSharedLinkPermissionOptions>> sharedLinkPermissionOptions;
+        private Tristate<OffsetDateTime> dispositionAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<FileFullSharedLinkPermissionOptions>> sharedLinkPermissionOptions = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> isAssociatedWithAppItem = java.util.Optional.empty();
         private Optional<List<Collection>> collections = java.util.Optional.empty();
         private Optional<Boolean> isDownloadAvailable = java.util.Optional.empty();

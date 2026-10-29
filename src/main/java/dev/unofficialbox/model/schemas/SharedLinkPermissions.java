@@ -50,10 +50,10 @@ public record SharedLinkPermissions(
         private Optional<Boolean> canDownload = java.util.Optional.empty();
         private Optional<Boolean> canPreview = java.util.Optional.empty();
         private Optional<Boolean> canEdit = java.util.Optional.empty();
-        private Tristate<String> sharedLinksOption;
-        private Tristate<String> defaultSharedLinkType;
-        private Tristate<String> notesSharedLinkOption;
-        private Tristate<String> defaultNotesSharedLinkType;
+        private Tristate<String> sharedLinksOption = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> defaultSharedLinkType = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> notesSharedLinkOption = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> defaultNotesSharedLinkType = dev.unofficialbox.core.Tristate.absent();
 
         public Builder canDownload(Boolean canDownload) {
             this.canDownload = java.util.Optional.ofNullable(canDownload);

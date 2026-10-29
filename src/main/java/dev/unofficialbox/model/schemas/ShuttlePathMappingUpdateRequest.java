@@ -34,7 +34,7 @@ public record ShuttlePathMappingUpdateRequest(
     public static final class Builder {
         private Optional<Boolean> isPathSkipped = java.util.Optional.empty();
         private Optional<ShuttlePathMappingLocationInput> source = java.util.Optional.empty();
-        private Tristate<ShuttlePathMappingTargetLocationInput> target;
+        private Tristate<ShuttlePathMappingTargetLocationInput> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isPathSkipped(Boolean isPathSkipped) {
             this.isPathSkipped = java.util.Optional.ofNullable(isPathSkipped);

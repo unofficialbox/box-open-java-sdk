@@ -37,8 +37,8 @@ public record IntegrationMappingPartnerItemSlack(
     public static final class Builder {
         private IntegrationMappingPartnerItemSlackType type;
         private String id;
-        private Tristate<String> slackWorkspaceId;
-        private Tristate<String> slackOrgId;
+        private Tristate<String> slackWorkspaceId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> slackOrgId = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(IntegrationMappingPartnerItemSlackType type) {
             this.type = type;

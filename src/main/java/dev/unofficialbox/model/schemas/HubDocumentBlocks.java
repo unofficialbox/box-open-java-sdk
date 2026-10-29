@@ -38,7 +38,7 @@ public record HubDocumentBlocks(
         private List<HubDocumentBlockEntry> entries;
         private HubDocumentBlocksType type;
         private Optional<Long> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<HubDocumentBlockEntry> entries) {
             this.entries = entries;

@@ -42,7 +42,7 @@ public record ShuttleSubjectMappingCreateRequest(
         private String discoveredSubjectId;
         private Optional<Long> revision = java.util.Optional.empty();
         private Optional<Boolean> isSubjectSkipped = java.util.Optional.empty();
-        private Tristate<ShuttleTargetSubjectInput> target;
+        private Tristate<ShuttleTargetSubjectInput> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder jobId(String jobId) {
             this.jobId = jobId;

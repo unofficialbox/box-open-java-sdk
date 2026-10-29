@@ -30,7 +30,7 @@ public record EnterpriseConfigurationSecurityExternalCollabMultiFactorAuthSettin
 
     public static final class Builder {
         private Optional<Boolean> isUsed = java.util.Optional.empty();
-        private Tristate<ExternalCollabSecuritySettings> value;
+        private Tristate<ExternalCollabSecuritySettings> value = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isUsed(Boolean isUsed) {
             this.isUsed = java.util.Optional.ofNullable(isUsed);

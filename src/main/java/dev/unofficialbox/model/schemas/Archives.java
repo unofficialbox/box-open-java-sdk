@@ -34,7 +34,7 @@ public record Archives(
     public static final class Builder {
         private Optional<List<Archive>> entries = java.util.Optional.empty();
         private Optional<Long> limit = java.util.Optional.empty();
-        private Tristate<String> nextMarker;
+        private Tristate<String> nextMarker = dev.unofficialbox.core.Tristate.absent();
 
         public Builder entries(List<Archive> entries) {
             this.entries = java.util.Optional.ofNullable(entries);

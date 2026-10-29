@@ -25,7 +25,7 @@ public record UpdateFileRemoveSharedLinkRequest(Tristate<Map<String, Object>> sh
     }
 
     public static final class Builder {
-        private Tristate<Map<String, Object>> sharedLink;
+        private Tristate<Map<String, Object>> sharedLink = dev.unofficialbox.core.Tristate.absent();
 
         public Builder sharedLink(Tristate<Map<String, Object>> sharedLink) {
             this.sharedLink = sharedLink;

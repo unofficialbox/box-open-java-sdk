@@ -42,7 +42,7 @@ public record PutFileIdAddSharedLink(
 
     public static final class Builder {
         private Optional<SharedLinkAccess> access = java.util.Optional.empty();
-        private Tristate<String> password;
+        private Tristate<String> password = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> vanityName = java.util.Optional.empty();
         private Optional<OffsetDateTime> unsharedAt = java.util.Optional.empty();
         private Optional<UpdateFileAddSharedLinkRequestSharedLinkPermissions> permissions = java.util.Optional.empty();

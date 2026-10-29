@@ -28,7 +28,7 @@ public record EnterpriseConfigurationItemInteger(Optional<Boolean> isUsed, Trist
 
     public static final class Builder {
         private Optional<Boolean> isUsed = java.util.Optional.empty();
-        private Tristate<Long> value;
+        private Tristate<Long> value = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isUsed(Boolean isUsed) {
             this.isUsed = java.util.Optional.ofNullable(isUsed);

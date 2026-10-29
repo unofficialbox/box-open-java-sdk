@@ -27,8 +27,8 @@ public record RetentionPolicyAssignmentFilterFields(Tristate<String> field, Tris
     }
 
     public static final class Builder {
-        private Tristate<String> field;
-        private Tristate<String> value;
+        private Tristate<String> field = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> value = dev.unofficialbox.core.Tristate.absent();
 
         public Builder field(Tristate<String> field) {
             this.field = field;

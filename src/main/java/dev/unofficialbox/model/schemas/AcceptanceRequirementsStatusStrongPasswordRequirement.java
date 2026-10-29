@@ -30,7 +30,7 @@ public record AcceptanceRequirementsStatusStrongPasswordRequirement(
 
     public static final class Builder {
         private Optional<Boolean> enterpriseHasStrongPasswordRequiredForExternalUsers = java.util.Optional.empty();
-        private Tristate<Boolean> userHasStrongPassword;
+        private Tristate<Boolean> userHasStrongPassword = dev.unofficialbox.core.Tristate.absent();
 
         public Builder enterpriseHasStrongPasswordRequiredForExternalUsers(Boolean enterpriseHasStrongPasswordRequiredForExternalUsers) {
             this.enterpriseHasStrongPasswordRequiredForExternalUsers = java.util.Optional.ofNullable(enterpriseHasStrongPasswordRequiredForExternalUsers);

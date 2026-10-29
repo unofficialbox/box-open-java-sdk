@@ -27,7 +27,7 @@ public record HubDocumentBlock(String id, Tristate<String> parentId) {
 
     public static final class Builder {
         private String id;
-        private Tristate<String> parentId;
+        private Tristate<String> parentId = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(String id) {
             this.id = id;

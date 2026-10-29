@@ -32,7 +32,7 @@ public record FileBase(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> etag;
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private AiCitationType type;
 
         public Builder id(String id) {

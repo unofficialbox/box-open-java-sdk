@@ -51,7 +51,7 @@ public record RetentionPolicyAssignment(
         private RetentionPolicyAssignmentType type;
         private Optional<RetentionPolicyMini> retentionPolicy = java.util.Optional.empty();
         private Optional<RetentionPolicyAssignmentAssignedTo> assignedTo = java.util.Optional.empty();
-        private Tristate<List<RetentionPolicyAssignmentFilterFields>> filterFields;
+        private Tristate<List<RetentionPolicyAssignmentFilterFields>> filterFields = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> assignedBy = java.util.Optional.empty();
         private Optional<OffsetDateTime> assignedAt = java.util.Optional.empty();
         private Optional<String> startDateField = java.util.Optional.empty();

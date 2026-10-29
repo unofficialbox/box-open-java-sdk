@@ -85,10 +85,10 @@ public record SignTemplate(
     public static final class Builder {
         private Optional<SignTemplateType> type = java.util.Optional.empty();
         private Optional<String> id = java.util.Optional.empty();
-        private Tristate<String> name;
-        private Tristate<String> emailSubject;
-        private Tristate<String> emailMessage;
-        private Tristate<Long> daysValid;
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> emailSubject = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> emailMessage = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Long> daysValid = dev.unofficialbox.core.Tristate.absent();
         private Optional<FolderMini> parentFolder = java.util.Optional.empty();
         private Optional<List<FileMini>> sourceFiles = java.util.Optional.empty();
         private Optional<Boolean> areFieldsLocked = java.util.Optional.empty();
@@ -98,9 +98,9 @@ public record SignTemplate(
         private Optional<Boolean> areFilesLocked = java.util.Optional.empty();
         private Optional<List<TemplateSigner>> signers = java.util.Optional.empty();
         private Optional<SignTemplateAdditionalInfo> additionalInfo = java.util.Optional.empty();
-        private Tristate<SignTemplateReadySignLink> readySignLink;
-        private Tristate<SignTemplateCustomBranding> customBranding;
-        private Tristate<String> requestFlow;
+        private Tristate<SignTemplateReadySignLink> readySignLink = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<SignTemplateCustomBranding> customBranding = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> requestFlow = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(SignTemplateType type) {
             this.type = java.util.Optional.ofNullable(type);

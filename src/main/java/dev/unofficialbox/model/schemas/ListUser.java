@@ -30,9 +30,9 @@ public record ListUser(Tristate<Long> id, Tristate<String> name, Tristate<String
     }
 
     public static final class Builder {
-        private Tristate<Long> id;
-        private Tristate<String> name;
-        private Tristate<String> email;
+        private Tristate<Long> id = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(Tristate<Long> id) {
             this.id = id;

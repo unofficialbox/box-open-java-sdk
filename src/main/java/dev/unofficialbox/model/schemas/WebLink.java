@@ -96,12 +96,12 @@ public record WebLink(
         private Optional<FilePathCollection> pathCollection = java.util.Optional.empty();
         private Optional<OffsetDateTime> createdAt = java.util.Optional.empty();
         private Optional<OffsetDateTime> modifiedAt = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> trashedAt;
-        private Tristate<OffsetDateTime> purgedAt;
+        private Tristate<OffsetDateTime> trashedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<OffsetDateTime> purgedAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<UserMini> createdBy = java.util.Optional.empty();
         private Optional<UserMini> modifiedBy = java.util.Optional.empty();
         private Optional<UserMini> ownedBy = java.util.Optional.empty();
-        private Tristate<FileSharedLink> sharedLink;
+        private Tristate<FileSharedLink> sharedLink = dev.unofficialbox.core.Tristate.absent();
         private Optional<FileItemStatus> itemStatus = java.util.Optional.empty();
         private Optional<List<Collection>> collections = java.util.Optional.empty();
         private Optional<List<SharedLinkAccess>> allowedSharedLinkAccessLevels = java.util.Optional.empty();

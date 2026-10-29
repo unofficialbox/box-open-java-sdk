@@ -64,10 +64,10 @@ public record ShuttleRun(
         private String runMode;
         private String state;
         private Optional<OffsetDateTime> startedAt = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> endedAt;
-        private Tristate<Long> durationSeconds;
+        private Tristate<OffsetDateTime> endedAt = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Long> durationSeconds = dev.unofficialbox.core.Tristate.absent();
         private Optional<ShuttleRunStats> stats = java.util.Optional.empty();
-        private Tristate<UserBase> createdBy;
+        private Tristate<UserBase> createdBy = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> availableReportSections = java.util.Optional.empty();
 
         public Builder id(String id) {

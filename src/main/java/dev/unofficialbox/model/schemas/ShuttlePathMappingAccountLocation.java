@@ -41,9 +41,9 @@ public record ShuttlePathMappingAccountLocation(
     public static final class Builder {
         private ShuttlePathEntryAccountScopeType type;
         private String path;
-        private Tristate<String> pathId;
+        private Tristate<String> pathId = dev.unofficialbox.core.Tristate.absent();
         private Optional<ShuttlePathMappingAccount> account = java.util.Optional.empty();
-        private Tristate<Boolean> isDirectory;
+        private Tristate<Boolean> isDirectory = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(ShuttlePathEntryAccountScopeType type) {
             this.type = type;

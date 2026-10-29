@@ -47,7 +47,7 @@ public record AiStudioAgentExtractResponse(
         private AiAgentExtractType type;
         private String accessState;
         private String description;
-        private Tristate<String> customInstructions;
+        private Tristate<String> customInstructions = dev.unofficialbox.core.Tristate.absent();
         private Optional<AiStudioAgentLongTextToolResponse> longText = java.util.Optional.empty();
         private Optional<AiStudioAgentBasicTextToolResponse> basicText = java.util.Optional.empty();
         private Optional<AiStudioAgentBasicTextToolResponse> basicImage = java.util.Optional.empty();

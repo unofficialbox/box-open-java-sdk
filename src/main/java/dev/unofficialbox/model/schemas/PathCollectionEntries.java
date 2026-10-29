@@ -41,8 +41,8 @@ public record PathCollectionEntries(
     public static final class Builder {
         private Optional<FolderType> type = java.util.Optional.empty();
         private Optional<String> id = java.util.Optional.empty();
-        private Tristate<String> sequenceId;
-        private Tristate<String> etag;
+        private Tristate<String> sequenceId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> etag = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> name = java.util.Optional.empty();
 
         public Builder type(FolderType type) {

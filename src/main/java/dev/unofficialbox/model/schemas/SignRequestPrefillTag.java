@@ -38,10 +38,10 @@ public record SignRequestPrefillTag(
     }
 
     public static final class Builder {
-        private Tristate<String> documentTagId;
-        private Tristate<String> textValue;
-        private Tristate<Boolean> checkboxValue;
-        private Tristate<LocalDate> dateValue;
+        private Tristate<String> documentTagId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> textValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> checkboxValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<LocalDate> dateValue = dev.unofficialbox.core.Tristate.absent();
 
         public Builder documentTagId(Tristate<String> documentTagId) {
             this.documentTagId = documentTagId;

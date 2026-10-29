@@ -62,7 +62,7 @@ public record AiStudioAgentAskResponse(
         private AiAgentAskType type;
         private String accessState;
         private String description;
-        private Tristate<String> customInstructions;
+        private Tristate<String> customInstructions = dev.unofficialbox.core.Tristate.absent();
         private Optional<List<String>> suggestedQuestions = java.util.Optional.empty();
         private Optional<AiStudioAgentLongTextToolResponse> longText = java.util.Optional.empty();
         private Optional<AiStudioAgentBasicTextToolResponse> basicText = java.util.Optional.empty();

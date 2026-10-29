@@ -44,9 +44,9 @@ public record SignTemplateReadySignLink(
 
     public static final class Builder {
         private Optional<String> url = java.util.Optional.empty();
-        private Tristate<String> name;
-        private Tristate<String> instructions;
-        private Tristate<String> folderId;
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> instructions = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> folderId = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> isNotificationDisabled = java.util.Optional.empty();
         private Optional<Boolean> isActive = java.util.Optional.empty();
 

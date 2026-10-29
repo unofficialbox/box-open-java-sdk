@@ -74,19 +74,19 @@ public record SignRequestBase(
 
     public static final class Builder {
         private Optional<Boolean> isDocumentPreparationNeeded = java.util.Optional.empty();
-        private Tristate<String> redirectUrl;
-        private Tristate<String> declinedRedirectUrl;
+        private Tristate<String> redirectUrl = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> declinedRedirectUrl = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> areTextSignaturesEnabled = java.util.Optional.empty();
-        private Tristate<String> emailSubject;
-        private Tristate<String> emailMessage;
+        private Tristate<String> emailSubject = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> emailMessage = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> areRemindersEnabled = java.util.Optional.empty();
         private Optional<String> name = java.util.Optional.empty();
         private Optional<List<SignRequestPrefillTag>> prefillTags = java.util.Optional.empty();
-        private Tristate<Long> daysValid;
-        private Tristate<String> externalId;
-        private Tristate<String> templateId;
-        private Tristate<String> externalSystemName;
-        private Tristate<String> requestFlow;
+        private Tristate<Long> daysValid = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> externalId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> templateId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> externalSystemName = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> requestFlow = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isDocumentPreparationNeeded(Boolean isDocumentPreparationNeeded) {
             this.isDocumentPreparationNeeded = java.util.Optional.ofNullable(isDocumentPreparationNeeded);

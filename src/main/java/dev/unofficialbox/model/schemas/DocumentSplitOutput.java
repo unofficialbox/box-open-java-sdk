@@ -30,7 +30,7 @@ public record DocumentSplitOutput(
 
     public static final class Builder {
         private Optional<List<FileReference>> generatedFiles = java.util.Optional.empty();
-        private Tristate<List<DocumentSplitPageRange>> splitDefinition;
+        private Tristate<List<DocumentSplitPageRange>> splitDefinition = dev.unofficialbox.core.Tristate.absent();
 
         public Builder generatedFiles(List<FileReference> generatedFiles) {
             this.generatedFiles = java.util.Optional.ofNullable(generatedFiles);

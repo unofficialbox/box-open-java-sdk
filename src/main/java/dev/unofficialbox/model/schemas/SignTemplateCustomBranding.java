@@ -37,10 +37,10 @@ public record SignTemplateCustomBranding(
     }
 
     public static final class Builder {
-        private Tristate<String> companyName;
-        private Tristate<String> logoUri;
-        private Tristate<String> brandingColor;
-        private Tristate<String> emailFooterText;
+        private Tristate<String> companyName = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> logoUri = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> brandingColor = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> emailFooterText = dev.unofficialbox.core.Tristate.absent();
 
         public Builder companyName(Tristate<String> companyName) {
             this.companyName = companyName;

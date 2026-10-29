@@ -30,7 +30,7 @@ public record ShuttleSubjectMappingUpdateRequest(
 
     public static final class Builder {
         private Optional<Boolean> isSubjectSkipped = java.util.Optional.empty();
-        private Tristate<ShuttleTargetSubjectInput> target;
+        private Tristate<ShuttleTargetSubjectInput> target = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isSubjectSkipped(Boolean isSubjectSkipped) {
             this.isSubjectSkipped = java.util.Optional.ofNullable(isSubjectSkipped);

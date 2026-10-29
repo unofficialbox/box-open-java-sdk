@@ -29,7 +29,7 @@ public record AcceptanceRequirementsStatusTermsOfServiceRequirement(
     }
 
     public static final class Builder {
-        private Tristate<Boolean> isAccepted;
+        private Tristate<Boolean> isAccepted = dev.unofficialbox.core.Tristate.absent();
         private Optional<TermsOfServiceBase> termsOfService = java.util.Optional.empty();
 
         public Builder isAccepted(Tristate<Boolean> isAccepted) {

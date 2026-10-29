@@ -33,9 +33,9 @@ public record ShuttlePathMappingAccount(
     }
 
     public static final class Builder {
-        private Tristate<String> id;
-        private Tristate<String> email;
-        private Tristate<String> name;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> name = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(Tristate<String> id) {
             this.id = id;

@@ -35,7 +35,7 @@ public record HubSectionTitleTextBlock(
 
     public static final class Builder {
         private String id;
-        private Tristate<String> parentId;
+        private Tristate<String> parentId = dev.unofficialbox.core.Tristate.absent();
         private HubSectionTitleTextBlockType type;
         private String fragment;
 

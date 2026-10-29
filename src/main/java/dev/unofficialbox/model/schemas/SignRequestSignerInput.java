@@ -62,17 +62,17 @@ public record SignRequestSignerInput(
     }
 
     public static final class Builder {
-        private Tristate<String> documentTagId;
-        private Tristate<String> textValue;
-        private Tristate<Boolean> checkboxValue;
-        private Tristate<LocalDate> dateValue;
+        private Tristate<String> documentTagId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> textValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> checkboxValue = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<LocalDate> dateValue = dev.unofficialbox.core.Tristate.absent();
         private Optional<SignRequestSignerInputType> type = java.util.Optional.empty();
         private Optional<SignRequestSignerInputContentType> contentType = java.util.Optional.empty();
         private Long pageIndex;
         private Optional<Boolean> readOnly = java.util.Optional.empty();
-        private Tristate<SignRequestSignerInputValidation> validation;
-        private Tristate<String> reason;
-        private Tristate<Boolean> isValidated;
+        private Tristate<SignRequestSignerInputValidation> validation = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> reason = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> isValidated = dev.unofficialbox.core.Tristate.absent();
 
         public Builder documentTagId(Tristate<String> documentTagId) {
             this.documentTagId = documentTagId;

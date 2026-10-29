@@ -49,13 +49,13 @@ public record EnterpriseFeatureSetting(
     }
 
     public static final class Builder {
-        private Tristate<String> id;
+        private Tristate<String> id = dev.unofficialbox.core.Tristate.absent();
         private Optional<EnterpriseFeatureSettingFeature> feature = java.util.Optional.empty();
-        private Tristate<String> state;
-        private Tristate<Boolean> canConfigure;
-        private Tristate<Boolean> isConfigured;
-        private Tristate<List<UserOrGroupReference>> allowlist;
-        private Tristate<List<UserOrGroupReference>> denylist;
+        private Tristate<String> state = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> canConfigure = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> isConfigured = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<UserOrGroupReference>> allowlist = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<List<UserOrGroupReference>> denylist = dev.unofficialbox.core.Tristate.absent();
 
         public Builder id(Tristate<String> id) {
             this.id = id;

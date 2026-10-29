@@ -38,7 +38,7 @@ public record CreateGroupMembershipRequest(
         private AttributesParent user;
         private AttributesParent group;
         private Optional<GroupMembershipRole> role = java.util.Optional.empty();
-        private Tristate<Map<String, Boolean>> configurablePermissions;
+        private Tristate<Map<String, Boolean>> configurablePermissions = dev.unofficialbox.core.Tristate.absent();
 
         public Builder user(AttributesParent user) {
             this.user = user;

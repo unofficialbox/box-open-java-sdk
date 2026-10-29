@@ -30,7 +30,7 @@ public record EnterpriseConfigurationSecurityLastPasswordResetAt(
 
     public static final class Builder {
         private Optional<Boolean> isUsed = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> value;
+        private Tristate<OffsetDateTime> value = dev.unofficialbox.core.Tristate.absent();
 
         public Builder isUsed(Boolean isUsed) {
             this.isUsed = java.util.Optional.ofNullable(isUsed);

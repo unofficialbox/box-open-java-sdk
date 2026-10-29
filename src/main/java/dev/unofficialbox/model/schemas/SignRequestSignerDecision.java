@@ -34,7 +34,7 @@ public record SignRequestSignerDecision(
     public static final class Builder {
         private Optional<SignerDecisionType> type = java.util.Optional.empty();
         private Optional<OffsetDateTime> finalizedAt = java.util.Optional.empty();
-        private Tristate<String> additionalInfo;
+        private Tristate<String> additionalInfo = dev.unofficialbox.core.Tristate.absent();
 
         public Builder type(SignerDecisionType type) {
             this.type = java.util.Optional.ofNullable(type);

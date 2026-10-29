@@ -73,12 +73,12 @@ public record Collaboration(
     public static final class Builder {
         private String id;
         private CollaborationType type;
-        private Tristate<CollaborationItem> item;
-        private Tristate<AppItem> appItem;
+        private Tristate<CollaborationItem> item = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<AppItem> appItem = dev.unofficialbox.core.Tristate.absent();
         private Optional<CollaborationAccessGrantee> accessibleBy = java.util.Optional.empty();
-        private Tristate<String> inviteEmail;
+        private Tristate<String> inviteEmail = dev.unofficialbox.core.Tristate.absent();
         private Optional<CollaborationRole> role = java.util.Optional.empty();
-        private Tristate<OffsetDateTime> expiresAt;
+        private Tristate<OffsetDateTime> expiresAt = dev.unofficialbox.core.Tristate.absent();
         private Optional<Boolean> isAccessOnly = java.util.Optional.empty();
         private Optional<CollaborationStatus> status = java.util.Optional.empty();
         private Optional<OffsetDateTime> acknowledgedAt = java.util.Optional.empty();

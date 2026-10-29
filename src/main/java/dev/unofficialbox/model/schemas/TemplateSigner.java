@@ -62,16 +62,16 @@ public record TemplateSigner(
 
     public static final class Builder {
         private Optional<List<TemplateSignerInput>> inputs = java.util.Optional.empty();
-        private Tristate<String> email;
+        private Tristate<String> email = dev.unofficialbox.core.Tristate.absent();
         private Optional<SignRequestCreateSignerRole> role = java.util.Optional.empty();
         private Optional<Boolean> isInPerson = java.util.Optional.empty();
         private Optional<Long> order = java.util.Optional.empty();
-        private Tristate<String> signerGroupId;
-        private Tristate<String> label;
+        private Tristate<String> signerGroupId = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<String> label = dev.unofficialbox.core.Tristate.absent();
         private Optional<String> publicId = java.util.Optional.empty();
-        private Tristate<Boolean> isPasswordRequired;
-        private Tristate<Boolean> isPhoneNumberRequired;
-        private Tristate<Boolean> loginRequired;
+        private Tristate<Boolean> isPasswordRequired = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> isPhoneNumberRequired = dev.unofficialbox.core.Tristate.absent();
+        private Tristate<Boolean> loginRequired = dev.unofficialbox.core.Tristate.absent();
 
         public Builder inputs(List<TemplateSignerInput> inputs) {
             this.inputs = java.util.Optional.ofNullable(inputs);
