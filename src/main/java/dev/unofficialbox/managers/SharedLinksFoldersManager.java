@@ -28,6 +28,26 @@ public final class SharedLinksFoldersManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.FolderFull.fromJson(_tree));
     }
 
+    /**
+     * {@link #getSharedItemsFolders} with {@code If-None-Match} set to {@code etag}: empty when
+     * the item is unchanged since {@code etag} (Box answers 304 Not Modified).
+     */
+    public java.util.Optional<dev.unofficialbox.model.schemas.FolderFull> getSharedItemsIfModifiedFolders(String boxapi, String etag, GetSharedItemsFoldersOptions options) {
+        GetSharedItemsFoldersOptions _conditional = new GetSharedItemsFoldersOptions();
+        if (options != null) {
+            _conditional.fields = options.fields;
+        }
+        _conditional.ifNoneMatch = etag;
+        try {
+            return java.util.Optional.of(getSharedItemsFolders(boxapi, _conditional));
+        } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
+            if (e.statusCode() == 304) {
+                return java.util.Optional.empty();
+            }
+            throw e;
+        }
+    }
+
     /** GET /folders/{folder_id}. */
     public dev.unofficialbox.model.schemas.FolderFull getFolderGetSharedLink(String folderId, String fields) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));

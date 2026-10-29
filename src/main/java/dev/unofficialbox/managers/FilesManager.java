@@ -36,6 +36,28 @@ public final class FilesManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.FileFull.fromJson(_tree));
     }
 
+    /**
+     * {@link #get} with {@code If-None-Match} set to {@code etag}: empty when
+     * the item is unchanged since {@code etag} (Box answers 304 Not Modified).
+     */
+    public java.util.Optional<dev.unofficialbox.model.schemas.FileFull> getIfModified(String fileId, String etag, GetOptions options) {
+        GetOptions _conditional = new GetOptions();
+        if (options != null) {
+            _conditional.fields = options.fields;
+            _conditional.boxapi = options.boxapi;
+            _conditional.xRepHints = options.xRepHints;
+        }
+        _conditional.ifNoneMatch = etag;
+        try {
+            return java.util.Optional.of(get(fileId, _conditional));
+        } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
+            if (e.statusCode() == 304) {
+                return java.util.Optional.empty();
+            }
+            throw e;
+        }
+    }
+
     /** PUT /files/{file_id}. */
     public dev.unofficialbox.model.schemas.FileFull update(String fileId, dev.unofficialbox.model.schemas.UpdateFileRequest body, UpdateOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));

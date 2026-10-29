@@ -48,6 +48,31 @@ public final class FoldersManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.FolderFull.fromJson(_tree));
     }
 
+    /**
+     * {@link #get} with {@code If-None-Match} set to {@code etag}: empty when
+     * the item is unchanged since {@code etag} (Box answers 304 Not Modified).
+     */
+    public java.util.Optional<dev.unofficialbox.model.schemas.FolderFull> getIfModified(String folderId, String etag, GetOptions options) {
+        GetOptions _conditional = new GetOptions();
+        if (options != null) {
+            _conditional.fields = options.fields;
+            _conditional.boxapi = options.boxapi;
+            _conditional.sort = options.sort;
+            _conditional.direction = options.direction;
+            _conditional.offset = options.offset;
+            _conditional.limit = options.limit;
+        }
+        _conditional.ifNoneMatch = etag;
+        try {
+            return java.util.Optional.of(get(folderId, _conditional));
+        } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
+            if (e.statusCode() == 304) {
+                return java.util.Optional.empty();
+            }
+            throw e;
+        }
+    }
+
     /** PUT /folders/{folder_id}. */
     public dev.unofficialbox.model.schemas.FolderFull update(String folderId, dev.unofficialbox.model.schemas.UpdateFolderRequest body, UpdateOptions options) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));

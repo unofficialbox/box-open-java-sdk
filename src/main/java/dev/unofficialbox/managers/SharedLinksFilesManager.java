@@ -28,6 +28,26 @@ public final class SharedLinksFilesManager {
         return (_tree == null ? null : dev.unofficialbox.model.schemas.FileFull.fromJson(_tree));
     }
 
+    /**
+     * {@link #getSharedItems} with {@code If-None-Match} set to {@code etag}: empty when
+     * the item is unchanged since {@code etag} (Box answers 304 Not Modified).
+     */
+    public java.util.Optional<dev.unofficialbox.model.schemas.FileFull> getSharedItemsIfModified(String boxapi, String etag, GetSharedItemsOptions options) {
+        GetSharedItemsOptions _conditional = new GetSharedItemsOptions();
+        if (options != null) {
+            _conditional.fields = options.fields;
+        }
+        _conditional.ifNoneMatch = etag;
+        try {
+            return java.util.Optional.of(getSharedItems(boxapi, _conditional));
+        } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
+            if (e.statusCode() == 304) {
+                return java.util.Optional.empty();
+            }
+            throw e;
+        }
+    }
+
     /** GET /files/{file_id}. */
     public dev.unofficialbox.model.schemas.FileFull getFileGetSharedLink(String fileId, String fields) {
         StringBuilder _url = new StringBuilder(session.baseUrl("api"));
