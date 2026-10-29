@@ -11,6 +11,7 @@ transport failure or a non-2xx response after the network layer's retries
 try {
 var file = client.files.getById(fileId, null);
 } catch (dev.unofficialbox.runtime.Runtime.BoxApiException e) {
-// inspect e.getMessage(); the body carries the Box error schema
+// a non-2xx response: e.statusCode(), e.code(), e.boxMessage(),
+// e.requestId(), e.body(); statusCode() is 0 for any other failure
 }
 ```

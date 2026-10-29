@@ -103,16 +103,95 @@ public final class Runtime {
         }
     }
 
-    /** A runtime error: a failed request, auth acquisition, or body decode. */
+    /**
+     * A runtime error: a failed request, auth acquisition, body decode, or a
+     * non-2xx response from Box. {@link Session#fetch} throws it for a non-2xx
+     * response once the retry budget and the single 401 refresh are spent, so a
+     * caller never mistakes an error body for a result; that error carries the
+     * {@linkplain #statusCode() status}, Box's error fields when the body is a
+     * Box error object, and the raw {@linkplain #body() body}.
+     */
     public static final class BoxApiException extends RuntimeException {
         private static final long serialVersionUID = 1L;
 
+        private final int statusCode;
+        private final String code;
+        private final String boxMessage;
+        private final String requestId;
+        private final byte[] body;
+
         public BoxApiException(String message) {
-            super(message);
+            this(message, (Throwable) null);
         }
 
         public BoxApiException(String message, Throwable cause) {
             super(message, cause);
+            this.statusCode = 0;
+            this.code = null;
+            this.boxMessage = null;
+            this.requestId = null;
+            this.body = null;
+        }
+
+        private BoxApiException(String message, int statusCode, String code, String boxMessage,
+                String requestId, byte[] body) {
+            super(message);
+            this.statusCode = statusCode;
+            this.code = code;
+            this.boxMessage = boxMessage;
+            this.requestId = requestId;
+            this.body = body;
+        }
+
+        /** The error for a non-2xx response, with Box's error fields read from
+         * the body when it is a Box error object. */
+        static BoxApiException fromResponse(Response response) {
+            Map<String, Object> payload;
+            try {
+                payload = JsonLite.parseObject(new String(response.body, StandardCharsets.UTF_8));
+            } catch (RuntimeException notABoxError) {
+                payload = Map.of();
+            }
+            String code = payload.get("code") instanceof String v ? v : null;
+            String boxMessage = payload.get("message") instanceof String v ? v : null;
+            String requestId = payload.get("request_id") instanceof String v ? v : null;
+            StringBuilder message = new StringBuilder("box: status ").append(response.status);
+            if (code != null) {
+                message.append(' ').append(code);
+            }
+            if (boxMessage != null) {
+                message.append(": ").append(boxMessage);
+            }
+            if (requestId != null) {
+                message.append(" (request_id ").append(requestId).append(')');
+            }
+            return new BoxApiException(message.toString(), response.status, code, boxMessage,
+                    requestId, response.body.clone());
+        }
+
+        /** The HTTP status of a non-2xx response; 0 for any other failure. */
+        public int statusCode() {
+            return statusCode;
+        }
+
+        /** Box's error {@code code} (e.g. {@code not_found}), or null. */
+        public String code() {
+            return code;
+        }
+
+        /** Box's error {@code message}, or null. */
+        public String boxMessage() {
+            return boxMessage;
+        }
+
+        /** Box's {@code request_id} — quote it to Box support — or null. */
+        public String requestId() {
+            return requestId;
+        }
+
+        /** The raw body of a non-2xx response, or null for any other failure. */
+        public byte[] body() {
+            return body == null ? null : body.clone();
         }
     }
 
@@ -246,6 +325,9 @@ public final class Runtime {
                     sleep(retryDelay(response, attempt));
                     continue;
                 }
+                if (response.status / 100 != 2) {
+                    throw BoxApiException.fromResponse(response);
+                }
                 return response;
             }
             throw new BoxApiException("gantryruntime: retries exhausted");
@@ -310,10 +392,16 @@ public final class Runtime {
          * does), transparently falling back to HTTP/2 or HTTP/1.1 when it
          * doesn't — so no request ever fails for lack of HTTP/3. {@link
          * Builder#httpVersion} picks another preference.
+         *
+         * <p>Follows redirects, as the Go, Rust, and TypeScript runtimes do:
+         * Box answers a file download with a 302 to its download host, and
+         * {@link HttpClient}'s default ({@code NEVER}) would hand back that
+         * redirect's empty body as the file.
          */
         private static HttpClient defaultHttpClient(HttpClient.Version version) {
             return HttpClient.newBuilder()
                     .version(version)
+                    .followRedirects(HttpClient.Redirect.NORMAL)
                     .connectTimeout(API_TIMEOUT)
                     .build();
         }
@@ -338,7 +426,9 @@ public final class Runtime {
             }
 
             /** Inject the HTTP client used for API requests. Defaults to an
-             * HTTP/3-preferring {@link HttpClient} built internally. */
+             * HTTP/3-preferring {@link HttpClient} built internally. An injected
+             * client should follow redirects ({@code Redirect.NORMAL}): file
+             * downloads arrive as a 302 to Box's download host. */
             public Builder httpClient(HttpClient http) {
                 this.http = http;
                 return this;
