@@ -17,6 +17,7 @@ package dev.unofficialbox.runtime;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -381,7 +382,7 @@ public final class Runtime {
             this.auth = builder.auth;
             this.http = builder.http != null
                     ? builder.http
-                    : defaultHttpClient(builder.httpVersion != null ? builder.httpVersion : HttpClient.Version.HTTP_3);
+                    : defaultHttpClient(builder.httpVersion, builder.proxy);
             this.maxRetries = builder.maxRetries;
             this.baseUrls = defaultBaseUrls();
             this.baseUrlOverrides = Map.copyOf(builder.baseUrlOverrides);
@@ -567,19 +568,27 @@ public final class Runtime {
          * subsequent requests once the origin advertises it via Alt-Svc (Box
          * does), transparently falling back to HTTP/2 or HTTP/1.1 when it
          * doesn't — so no request ever fails for lack of HTTP/3. {@link
-         * Builder#httpVersion} picks another preference.
+         * Builder#httpVersion} picks another preference. With a {@link
+         * Builder#proxy} and no explicit version it prefers HTTP/2 instead:
+         * HTTP/3 runs over QUIC (UDP), which an HTTP proxy can't carry.
          *
          * <p>Follows redirects, as the Go, Rust, and TypeScript runtimes do:
          * Box answers a file download with a 302 to its download host, and
          * {@link HttpClient}'s default ({@code NEVER}) would hand back that
          * redirect's empty body as the file.
          */
-        private static HttpClient defaultHttpClient(HttpClient.Version version) {
-            return HttpClient.newBuilder()
+        private static HttpClient defaultHttpClient(HttpClient.Version version, ProxySelector proxy) {
+            if (version == null) {
+                version = proxy != null ? HttpClient.Version.HTTP_2 : HttpClient.Version.HTTP_3;
+            }
+            HttpClient.Builder builder = HttpClient.newBuilder()
                     .version(version)
                     .followRedirects(HttpClient.Redirect.NORMAL)
-                    .connectTimeout(API_TIMEOUT)
-                    .build();
+                    .connectTimeout(API_TIMEOUT);
+            if (proxy != null) {
+                builder.proxy(proxy);
+            }
+            return builder.build();
         }
 
         /**
@@ -593,6 +602,7 @@ public final class Runtime {
             private final Auth auth;
             private HttpClient http;
             private HttpClient.Version httpVersion;
+            private ProxySelector proxy;
             private int maxRetries = DEFAULT_MAX_RETRIES;
             private final Map<String, String> baseUrlOverrides = new LinkedHashMap<>();
             private final Map<String, String> defaultHeaders = new LinkedHashMap<>();
@@ -617,6 +627,20 @@ public final class Runtime {
              * requests keep their own client. */
             public Builder httpVersion(HttpClient.Version version) {
                 this.httpVersion = java.util.Objects.requireNonNull(version, "version");
+                return this;
+            }
+
+            /** Send API requests through a proxy, e.g. {@code
+             * ProxySelector.of(new InetSocketAddress("proxy.internal", 3128))},
+             * instead of the JVM default selector (the {@code https.proxyHost}
+             * / {@code http.nonProxyHosts} system properties). Without an
+             * explicit {@link #httpVersion} the built-in client then prefers
+             * HTTP/2, since HTTP/3 can't go through an HTTP proxy. An injected
+             * {@link #httpClient} carries its own proxy, so setting both is an
+             * error at {@link #build()}. Token requests take their proxy from
+             * the auth config's {@code proxy}. */
+            public Builder proxy(ProxySelector proxy) {
+                this.proxy = java.util.Objects.requireNonNull(proxy, "proxy");
                 return this;
             }
 
@@ -656,6 +680,11 @@ public final class Runtime {
                     throw new IllegalStateException(
                             "gantryruntime: httpVersion applies to the built-in client; "
                                     + "set the version on the injected HttpClient instead");
+                }
+                if (http != null && proxy != null) {
+                    throw new IllegalStateException(
+                            "gantryruntime: proxy applies to the built-in client; "
+                                    + "set the proxy on the injected HttpClient instead");
                 }
                 return new Session(this);
             }
@@ -1038,6 +1067,7 @@ public final class Runtime {
         private final String subjectType;
         private final String subjectId;
         private String tokenUrl = DEFAULT_TOKEN_URL;
+        private HttpClient tokenHttp = TOKEN_HTTP;
 
         private CcgConfig(String clientId, String clientSecret, String subjectType, String subjectId) {
             this.clientId = clientId;
@@ -1059,6 +1089,13 @@ public final class Runtime {
         /** Override the token endpoint (custom deployments). */
         public CcgConfig tokenUrl(String url) {
             this.tokenUrl = url;
+            return this;
+        }
+
+        /** Send token requests through a proxy instead of the JVM default
+         * selector (the {@code https.proxyHost} system properties). */
+        public CcgConfig proxy(ProxySelector proxy) {
+            this.tokenHttp = tokenHttpClient(proxy);
             return this;
         }
     }
@@ -1087,6 +1124,7 @@ public final class Runtime {
         private final String clientId;
         private final String clientSecret;
         private String tokenUrl = DEFAULT_TOKEN_URL;
+        private HttpClient tokenHttp = TOKEN_HTTP;
 
         public OAuthConfig(String clientId, String clientSecret) {
             this.clientId = clientId;
@@ -1096,6 +1134,13 @@ public final class Runtime {
         /** Override the token endpoint (custom deployments). */
         public OAuthConfig tokenUrl(String url) {
             this.tokenUrl = url;
+            return this;
+        }
+
+        /** Send token requests through a proxy instead of the JVM default
+         * selector (the {@code https.proxyHost} system properties). */
+        public OAuthConfig proxy(ProxySelector proxy) {
+            this.tokenHttp = tokenHttpClient(proxy);
             return this;
         }
 
@@ -1115,7 +1160,7 @@ public final class Runtime {
             form.put("client_id", clientId);
             form.put("client_secret", clientSecret);
             form.put("redirect_uri", redirectUri);
-            TokenResult result = postTokenForm(tokenUrl, form);
+            TokenResult result = postTokenForm(tokenHttp, tokenUrl, form);
             if (result.refreshToken() == null) {
                 throw new BoxApiException("gantryruntime: code exchange returned no refresh_token");
             }
@@ -1140,6 +1185,7 @@ public final class Runtime {
         private final String subjectType;
         private final String subjectId;
         private String tokenUrl;
+        private HttpClient tokenHttp = TOKEN_HTTP;
 
         private JwtConfig(String clientId, String clientSecret, String publicKeyId, String privateKeyPem,
                 String passphrase, String subjectType, String subjectId) {
@@ -1169,6 +1215,13 @@ public final class Runtime {
         /** Override the token endpoint (custom deployments). */
         public JwtConfig tokenUrl(String url) {
             this.tokenUrl = url;
+            return this;
+        }
+
+        /** Send token requests through a proxy instead of the JVM default
+         * selector (the {@code https.proxyHost} system properties). */
+        public JwtConfig proxy(ProxySelector proxy) {
+            this.tokenHttp = tokenHttpClient(proxy);
             return this;
         }
 
@@ -1258,6 +1311,16 @@ public final class Runtime {
                     .connectTimeout(TOKEN_TIMEOUT)
                     .build();
 
+    /** A token client through {@code proxy}: HTTP/2, since HTTP/3 can't go
+     * through an HTTP proxy. */
+    private static HttpClient tokenHttpClient(ProxySelector proxy) {
+        return HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .connectTimeout(TOKEN_TIMEOUT)
+                .proxy(java.util.Objects.requireNonNull(proxy, "proxy"))
+                .build();
+    }
+
     private static TokenResult postCcgToken(CcgConfig config) {
         Map<String, String> form = new LinkedHashMap<>();
         form.put("grant_type", "client_credentials");
@@ -1265,10 +1328,10 @@ public final class Runtime {
         form.put("client_secret", config.clientSecret);
         form.put("box_subject_type", config.subjectType);
         form.put("box_subject_id", config.subjectId);
-        return postTokenForm(config.tokenUrl, form);
+        return postTokenForm(config.tokenHttp, config.tokenUrl, form);
     }
 
-    private static TokenResult postTokenForm(String tokenUrl, Map<String, String> form) {
+    private static TokenResult postTokenForm(HttpClient http, String tokenUrl, Map<String, String> form) {
         StringBuilder body = new StringBuilder();
         for (Map.Entry<String, String> entry : form.entrySet()) {
             if (body.length() > 0) {
@@ -1284,7 +1347,7 @@ public final class Runtime {
                 .build();
         HttpResponse<String> response;
         try {
-            response = TOKEN_HTTP.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+            response = http.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
         } catch (IOException | InterruptedException err) {
             if (err instanceof InterruptedException) {
                 Thread.currentThread().interrupt();
@@ -1364,7 +1427,7 @@ public final class Runtime {
             form.put("refresh_token", refreshToken);
             form.put("client_id", config.clientId);
             form.put("client_secret", config.clientSecret);
-            TokenResult result = postTokenForm(config.tokenUrl, form);
+            TokenResult result = postTokenForm(config.tokenHttp, config.tokenUrl, form);
             if (result.refreshToken() != null && !result.refreshToken().equals(refreshToken)) {
                 refreshToken = result.refreshToken();
                 refreshTokenPersisted = false;
@@ -1432,7 +1495,7 @@ public final class Runtime {
         form.put("assertion", signer.assertion(tokenUrl));
         form.put("client_id", config.clientId);
         form.put("client_secret", config.clientSecret);
-        return postTokenForm(tokenUrl, form);
+        return postTokenForm(config.tokenHttp, tokenUrl, form);
     }
 
     // Decode a PEM RSA key: encrypted PKCS#8 when a passphrase is present (Box's
