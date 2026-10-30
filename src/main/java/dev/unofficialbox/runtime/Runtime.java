@@ -145,7 +145,8 @@ public final class Runtime {
         }
 
         /** The error for a non-2xx response, with Box's error fields read from
-         * the body when it is a Box error object. */
+         * the body when it is a Box error object — or, from the token endpoint,
+         * an OAuth 2.0 error ({@code error}, {@code error_description}). */
         static BoxApiException fromResponse(Response response) {
             Map<String, Object> payload;
             try {
@@ -153,8 +154,10 @@ public final class Runtime {
             } catch (RuntimeException notABoxError) {
                 payload = Map.of();
             }
-            String code = payload.get("code") instanceof String v ? v : null;
-            String boxMessage = payload.get("message") instanceof String v ? v : null;
+            String code = payload.get("code") instanceof String v ? v
+                    : payload.get("error") instanceof String v ? v : null;
+            String boxMessage = payload.get("message") instanceof String v ? v
+                    : payload.get("error_description") instanceof String v ? v : null;
             String requestId = payload.get("request_id") instanceof String v ? v : null;
             StringBuilder message = new StringBuilder("box: status ").append(response.status);
             if (code != null) {
@@ -383,6 +386,34 @@ public final class Runtime {
             this.baseUrls = defaultBaseUrls();
             this.baseUrlOverrides = Map.copyOf(builder.baseUrlOverrides);
             this.defaultHeaders = Map.copyOf(builder.defaultHeaders);
+        }
+
+        private Session(Session base, Map<String, String> defaultHeaders) {
+            this.auth = base.auth;
+            this.http = base.http;
+            this.maxRetries = base.maxRetries;
+            this.baseUrls = base.baseUrls;
+            this.baseUrlOverrides = base.baseUrlOverrides;
+            this.defaultHeaders = Map.copyOf(defaultHeaders);
+        }
+
+        /**
+         * A new session that sends {@code As-User: userId} with every API
+         * request, so Box acts as that user (an admin, or a service account
+         * whose app may "make API calls using the as-user header"). It shares
+         * this session's auth flow and token cache, HTTP client, base URLs,
+         * and retry policy; this session is unchanged. Token requests never
+         * carry the header.
+         */
+        public Session withAsUserHeader(String userId) {
+            Map<String, String> headers = new LinkedHashMap<>();
+            defaultHeaders.forEach((name, value) -> {
+                if (!name.equalsIgnoreCase("As-User")) {
+                    headers.put(name, value);
+                }
+            });
+            headers.put("As-User", userId);
+            return new Session(this, headers);
         }
 
         /**

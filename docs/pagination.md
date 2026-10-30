@@ -7,7 +7,7 @@ with an enhanced `for`:
 
 ```java
 for (var item : client.folders.listItems(folderId, null)) {
-// use item
+    // use item
 }
 ```
 

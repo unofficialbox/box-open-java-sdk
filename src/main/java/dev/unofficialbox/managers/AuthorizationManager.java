@@ -143,6 +143,24 @@ public final class AuthorizationManager {
         session.fetch(_req);
     }
 
+    /**
+     * Exchange the session's current access token for one limited to {@code scopes} and,
+     * when given (non-null), to one item ({@code resource}: its API URL, e.g.
+     * {@code https://api.box.com/2.0/files/123}) or a shared link. The result is a plain
+     * access token with no refresh token: build a client from it with
+     * {@code Runtime.developerToken}.
+     */
+    public dev.unofficialbox.model.schemas.AccessToken downscopeToken(java.util.List<String> scopes, String resource, String sharedLink) {
+        return createOauth2Token(dev.unofficialbox.model.schemas.PostOAuth2Token.builder()
+                .grantType(new dev.unofficialbox.model.schemas.PostOAuth2TokenGrantType("urn:ietf:params:oauth:grant-type:token-exchange"))
+                .subjectToken(session.accessToken())
+                .subjectTokenType(new dev.unofficialbox.model.schemas.AccessTokenIssuedTokenType("urn:ietf:params:oauth:token-type:access_token"))
+                .scope(String.join(" ", scopes))
+                .resource(resource)
+                .boxSharedLink(sharedLink)
+                .build());
+    }
+
     /** Optional parameters for authorize. */
     public static final class AuthorizeOptions {
         /** The redirect_uri parameter. */

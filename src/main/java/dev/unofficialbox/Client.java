@@ -179,6 +179,7 @@ public final class Client {
     public final dev.unofficialbox.managers.WorkflowsManager workflows;
     /** The zipDownloads API. */
     public final dev.unofficialbox.managers.ZipDownloadsManager zipDownloads;
+    private final dev.unofficialbox.runtime.Runtime.Session session;
 
     /** Build a client for an authentication flow. */
     public Client(dev.unofficialbox.runtime.Runtime.Auth auth) {
@@ -189,6 +190,7 @@ public final class Client {
      * injected HTTP client or HTTP version, default headers, base URLs
      * ({@code Session.builder(auth)}). */
     public Client(dev.unofficialbox.runtime.Runtime.Session session) {
+        this.session = session;
         this.ai = new dev.unofficialbox.managers.AiManager(session);
         this.aiStudio = new dev.unofficialbox.managers.AiStudioManager(session);
         this.appItemAssociations = new dev.unofficialbox.managers.AppItemAssociationsManager(session);
@@ -277,5 +279,12 @@ public final class Client {
         this.webhooks = new dev.unofficialbox.managers.WebhooksManager(session);
         this.workflows = new dev.unofficialbox.managers.WorkflowsManager(session);
         this.zipDownloads = new dev.unofficialbox.managers.ZipDownloadsManager(session);
+    }
+
+    /** A new client whose every API call acts as the user {@code userId}
+     * (Box's {@code As-User} header). It shares this client's auth and
+     * configuration; this client is unchanged. */
+    public Client withAsUserHeader(String userId) {
+        return new Client(session.withAsUserHeader(userId));
     }
 }

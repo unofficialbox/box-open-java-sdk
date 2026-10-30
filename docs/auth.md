@@ -17,7 +17,7 @@ Client client = new Client(Auth.developerToken("DEVELOPER_TOKEN"));
 
 ```java
 Client client = new Client(Auth.clientCredentials(
-Runtime.CcgConfig.enterprise("CLIENT_ID", "CLIENT_SECRET", "ENTERPRISE_ID")));
+        Runtime.CcgConfig.enterprise("CLIENT_ID", "CLIENT_SECRET", "ENTERPRISE_ID")));
 // or Runtime.CcgConfig.user("CLIENT_ID", "CLIENT_SECRET", "USER_ID")
 ```
 
@@ -28,8 +28,8 @@ Runtime.CcgConfig.enterprise("CLIENT_ID", "CLIENT_SECRET", "ENTERPRISE_ID")));
 Client client = new Client(Auth.jwt(Runtime.JwtConfig.fromBoxConfig(boxConfigJson)));
 // or build it explicitly:
 Runtime.JwtConfig config = Runtime.JwtConfig.enterprise(
-"CLIENT_ID", "CLIENT_SECRET", "PUBLIC_KEY_ID",
-privateKeyPem, keyPassphrase, "ENTERPRISE_ID");
+        "CLIENT_ID", "CLIENT_SECRET", "PUBLIC_KEY_ID",
+        privateKeyPem, keyPassphrase, "ENTERPRISE_ID");
 Client client = new Client(Auth.jwt(config));
 ```
 
@@ -44,4 +44,29 @@ Runtime.OAuthConfig oauth = new Runtime.OAuthConfig("CLIENT_ID", "CLIENT_SECRET"
 // Auth auth = oauth.exchangeCode(code, redirectUri);
 // later runs: rebuild from the stored refresh token.
 Client client = new Client(Auth.oauth(oauth, storedRefreshToken));
+```
+
+## Acting as another user
+
+An admin, or a service account whose app may *make API calls using the as-user
+header*, can act as another user. `withAsUserHeader` returns a new client whose
+every call sends Box's `As-User` header; it shares the original's auth (and
+token cache) and configuration, and the original is unchanged:
+
+```java
+Client userClient = client.withAsUserHeader("USER_ID");
+var me = userClient.users.getMe(null); // the user USER_ID
+```
+
+## Downscoping a token
+
+Exchange the session's access token for one limited to `scopes` and,
+optionally, to one item (its API URL) or shared link (pass `null` to skip
+either) — e.g. to hand a browser-side preview a narrow token. The result has
+no refresh token; build a client from it as a developer token:
+
+```java
+AccessToken down = client.authorization.downscopeToken(
+        List.of("item_preview"), "https://api.box.com/2.0/files/123", null);
+Client preview = new Client(Auth.developerToken(down.accessToken().orElseThrow()));
 ```
