@@ -41,4 +41,18 @@ public final class ZipDownloadsManager {
         Object _tree = dev.unofficialbox.core.Json.parse(new String(dev.unofficialbox.runtime.Runtime.responseBytes(session.fetch(_req)), java.nio.charset.StandardCharsets.UTF_8));
         return (_tree == null ? null : dev.unofficialbox.model.schemas.ZipDownloadStatus.fromJson(_tree));
     }
+
+    /**
+     * Pack the items in {@code body} into one zip archive ({@link #create}) and stream
+     * it from the download URL Box answers with, through this session (auth, retries,
+     * As-User). {@link #getContent} fetches the same archive by id.
+     */
+    public dev.unofficialbox.runtime.Runtime.Stream downloadZip(dev.unofficialbox.model.schemas.ZipDownloadRequest body) {
+        var _zip = create(body);
+        if (_zip == null || _zip.downloadUrl().isEmpty()) {
+            throw new dev.unofficialbox.runtime.Runtime.BoxApiException("box: the zip download has no download_url");
+        }
+        dev.unofficialbox.runtime.Runtime.Request _req = session.newRequest("GET", _zip.downloadUrl().get());
+        return dev.unofficialbox.runtime.Runtime.responseStream(session.fetch(_req));
+    }
 }

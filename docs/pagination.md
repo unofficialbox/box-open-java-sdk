@@ -31,3 +31,17 @@ while (events.hasNext()) {
     // use event; events.close() (from any thread) to stop
 }
 ```
+
+## Representations (PDF, text, thumbnails)
+
+`client.files.getRepresentationContent` downloads a rendering of a file that Box
+generates on demand — a PDF, its extracted text, page images. `repHints` names it
+as Box's `X-Rep-Hints` header does; `assetPath` picks one asset of a multi-asset
+representation (`"1.png"` for a page) and is `""` for a single-file one. It
+blocks while Box generates the representation, up to `maxWait`
+(`Runtime.DEFAULT_REPRESENTATION_WAIT` with the three-argument overload), and
+throws if Box fails to:
+
+```java
+var text = client.files.getRepresentationContent(fileId, "[extracted_text]", "");
+```

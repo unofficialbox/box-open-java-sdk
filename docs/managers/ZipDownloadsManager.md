@@ -51,3 +51,17 @@ var result = client.zipDownloads.getContent("ZIP_DOWNLOAD_ID");
 var result = client.zipDownloads.getStatus("ZIP_DOWNLOAD_ID");
 ```
 
+
+## downloadZip: downloading several items as a zip
+
+`downloadZip` packs files and folders into one zip archive (`create`) and
+streams it from the `download_url` Box answers with, through the client's
+session, so auth, retries, and As-User apply:
+
+**Example**
+
+```java
+Runtime.Stream archive = client.zipDownloads.downloadZip(body); // body: ZipDownloadRequest
+```
+
+`getStatus` reports progress and skipped items while the download runs.

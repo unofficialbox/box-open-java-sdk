@@ -136,6 +136,31 @@ public final class FilesManager {
         return dev.unofficialbox.runtime.Runtime.responseStream(session.fetch(_req));
     }
 
+    /**
+     * Download a representation of the item — a PDF, its extracted text, page
+     * images. {@code repHints} names it as {@code X-Rep-Hints} does
+     * ({@code "[pdf]"}, {@code "[extracted_text]"},
+     * {@code "[jpg?dimensions=320x320]"}); {@code assetPath} picks one asset of a
+     * multi-asset representation ({@code "1.png"}) and is {@code ""} for a
+     * single-file one. It waits while Box generates the representation, up to
+     * {@code maxWait} ({@link dev.unofficialbox.runtime.Runtime#DEFAULT_REPRESENTATION_WAIT} when null).
+     */
+    public dev.unofficialbox.runtime.Runtime.Stream getRepresentationContent(String fileId, String repHints, String assetPath, java.time.Duration maxWait) {
+        StringBuilder _url = new StringBuilder(session.baseUrl("api"));
+        _url.append("/files");
+        _url.append("/").append(dev.unofficialbox.internal.Internal.pathEscape(fileId));
+        dev.unofficialbox.runtime.Runtime.Request _req = session.newRequest("GET", _url.toString());
+        _req = dev.unofficialbox.runtime.Runtime.withQuery(_req, "fields", "representations");
+        _req = dev.unofficialbox.runtime.Runtime.withHeader(_req, "x-rep-hints", repHints);
+        return dev.unofficialbox.runtime.Runtime.representationContent(session, _req, "representations", assetPath, maxWait);
+    }
+
+    /** {@link #getRepresentationContent(String, String, String, java.time.Duration)}
+     * with the default wait. */
+    public dev.unofficialbox.runtime.Runtime.Stream getRepresentationContent(String fileId, String repHints, String assetPath) {
+        return getRepresentationContent(fileId, repHints, assetPath, null);
+    }
+
     /** Optional parameters for get. */
     public static final class GetOptions {
         /** The fields parameter. */
