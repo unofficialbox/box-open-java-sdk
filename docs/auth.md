@@ -35,16 +35,38 @@ Client client = new Client(Auth.jwt(config));
 
 ## OAuth 2.0 (authorization code)
 
-Redirect the user to the consent URL, exchange the returned code, then reuse the
-stored (rotated) refresh token on later runs:
+Redirect the user to the consent URL and exchange the returned code. Box
+rotates the refresh token on every refresh and rejects the old one, so pass a
+`RefreshTokenStore` that writes it somewhere durable; it is called with the
+token the exchange issues and with every rotation after. Later runs resume from
+the newest saved token:
 
 ```java
 Runtime.OAuthConfig oauth = new Runtime.OAuthConfig("CLIENT_ID", "CLIENT_SECRET");
 // first run: redirect to oauth.authorizeUrl(redirectUri, state), then
-// Auth auth = oauth.exchangeCode(code, redirectUri);
-// later runs: rebuild from the stored refresh token.
-Client client = new Client(Auth.oauth(oauth, storedRefreshToken));
+// Auth auth = oauth.exchangeCode(code, redirectUri, tokenStore);
+// later runs: resume from the newest saved refresh token.
+Client client = new Client(Auth.oauthWithStore(oauth, newestSavedRefreshToken, tokenStore));
 ```
+
+## Revoking a token
+
+For logout or uninstall, `revokeToken()` revokes the token a CCG, JWT, or OAuth
+flow holds — with the flow's own client credentials, at the revoke endpoint
+beside its token URL, through its proxy — and clears it from the cache:
+
+```java
+Runtime.Auth auth = Auth.oauth(oauth, storedRefreshToken);
+Client client = new Client(auth);
+// … on logout:
+auth.revokeToken();
+```
+
+A CCG or JWT flow acquires a fresh token on its next use. OAuth revokes the
+whole grant: every later call throws, so discard the stored refresh token and
+run the authorization-code flow again. A developer token has no client
+credentials to revoke with (`revokeToken()` throws) — pass them yourself to
+`client.authorization.revokeOauth2`.
 
 ## Acting as another user
 

@@ -32,6 +32,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /** The hand-written runtime surface (FR-5). */
@@ -40,10 +41,11 @@ public final class Runtime {
 
     /** A token within this margin of expiry is treated as stale and refreshed. */
     private static final long REFRESH_MARGIN_MS = 60_000L;
-    /** Exponential-backoff base and cap (before jitter). */
-    private static final long BACKOFF_BASE_MS = 500L;
-    private static final long BACKOFF_CAP_MS = 30_000L;
-    /** Ceiling on the post-Retry-After delay (a two-tier cap, mirroring Rust). */
+    /** The default exponential backoff (see {@link Session.Builder#retryBackoff}):
+     * the wait before retry n is uniform in [0, min(base·2^n, max)]. */
+    public static final Duration DEFAULT_RETRY_BASE_DELAY = Duration.ofMillis(500);
+    public static final Duration DEFAULT_RETRY_MAX_DELAY = Duration.ofSeconds(30);
+    /** Ceiling on a server-sent Retry-After (mirroring Rust). */
     private static final long MAX_RETRY_DELAY_MS = 300_000L;
     private static final int DEFAULT_MAX_RETRIES = 5;
     private static final String DEFAULT_TOKEN_URL = "https://api.box.com/oauth2/token";
@@ -344,6 +346,25 @@ public final class Runtime {
         }
     }
 
+    /**
+     * One HTTP attempt as {@link Session#fetch} is about to send it, for a
+     * {@link Session.Builder#onRequest} hook. The headers are those sent,
+     * except that the {@code Authorization} value reads {@code REDACTED}, so a
+     * hook that records every header never captures the access token. {@code
+     * attempt} counts from 1: each retry, and the resend after a 401 token
+     * refresh, is its own attempt.
+     */
+    public record RequestInfo(String method, String url, Map<String, List<String>> headers, int attempt) {}
+
+    /**
+     * How one HTTP attempt ended, for a {@link Session.Builder#onResponse}
+     * hook: the response's status and headers, or the transport {@code error}
+     * when none arrived ({@code status} is then 0). {@code elapsed} runs from
+     * sending the request to reading the whole body.
+     */
+    public record ResponseInfo(
+            RequestInfo request, int status, Map<String, List<String>> headers, Duration elapsed, Throwable error) {}
+
     /** A source of access tokens for the configured auth flow. */
     public interface Auth {
         /** A valid access token, acquired or refreshed as needed. */
@@ -355,6 +376,20 @@ public final class Runtime {
          * returned instead of hitting the network (single-flight).
          */
         String forceRefresh(String stale);
+
+        /**
+         * Revoke the held token at Box's revoke endpoint, with the flow's own
+         * client credentials, and clear it from the cache — for logout and
+         * uninstall. CCG and JWT acquire a fresh token on their next use; OAuth
+         * revokes the whole grant, so every later call throws rather than
+         * refreshing a dead grant. A developer token has no client credentials
+         * to revoke with (revoke it through the generated {@code authorization}
+         * manager), so by default this throws.
+         */
+        default void revokeToken() {
+            throw new BoxApiException("gantryruntime: this auth flow can't revoke its token"
+                    + " (a developer token has no client credentials)");
+        }
     }
 
     // --------------------------------------------------------------- session
@@ -367,9 +402,13 @@ public final class Runtime {
         private final Auth auth;
         private final HttpClient http;
         private final int maxRetries;
+        private final long retryBaseMs;
+        private final long retryMaxMs;
         private final Map<String, String> baseUrls;
         private final Map<String, String> baseUrlOverrides;
         private final Map<String, String> defaultHeaders;
+        private final List<Consumer<RequestInfo>> requestHooks;
+        private final List<Consumer<ResponseInfo>> responseHooks;
 
         /** Build a runtime session for an authentication flow, with the default
          * HTTP client, retry policy, and base URLs. Equivalent to
@@ -384,18 +423,26 @@ public final class Runtime {
                     ? builder.http
                     : defaultHttpClient(builder.httpVersion, builder.proxy);
             this.maxRetries = builder.maxRetries;
+            this.retryBaseMs = builder.retryBase.toMillis();
+            this.retryMaxMs = builder.retryMax.toMillis();
             this.baseUrls = defaultBaseUrls();
             this.baseUrlOverrides = Map.copyOf(builder.baseUrlOverrides);
             this.defaultHeaders = Map.copyOf(builder.defaultHeaders);
+            this.requestHooks = List.copyOf(builder.requestHooks);
+            this.responseHooks = List.copyOf(builder.responseHooks);
         }
 
         private Session(Session base, Map<String, String> defaultHeaders) {
             this.auth = base.auth;
             this.http = base.http;
             this.maxRetries = base.maxRetries;
+            this.retryBaseMs = base.retryBaseMs;
+            this.retryMaxMs = base.retryMaxMs;
             this.baseUrls = base.baseUrls;
             this.baseUrlOverrides = base.baseUrlOverrides;
             this.defaultHeaders = Map.copyOf(defaultHeaders);
+            this.requestHooks = base.requestHooks;
+            this.responseHooks = base.responseHooks;
         }
 
         /**
@@ -480,7 +527,7 @@ public final class Runtime {
             for (int attempt = 0; attempt <= maxRetries; attempt++) {
                 Response response;
                 try {
-                    response = send(request, token);
+                    response = send(request, token, attempt + 1);
                 } catch (IOException | InterruptedException err) {
                     if (err instanceof InterruptedException) {
                         Thread.currentThread().interrupt();
@@ -490,7 +537,7 @@ public final class Runtime {
                     if (attempt == maxRetries || !idempotent) {
                         throw new BoxApiException("gantryruntime: request failed: " + err.getMessage(), err);
                     }
-                    sleep(backoff(attempt));
+                    sleep(backoff(attempt, retryBaseMs, retryMaxMs));
                     continue;
                 }
                 if (response.status == 401 && !refreshed && attempt < maxRetries) {
@@ -499,7 +546,7 @@ public final class Runtime {
                     continue;
                 }
                 if (shouldRetry(response.status, idempotent) && attempt < maxRetries) {
-                    sleep(retryDelay(response, attempt));
+                    sleep(retryDelay(response, backoff(attempt, retryBaseMs, retryMaxMs)));
                     continue;
                 }
                 if (response.status / 100 != 2) {
@@ -510,7 +557,7 @@ public final class Runtime {
             throw new BoxApiException("gantryruntime: retries exhausted");
         }
 
-        private Response send(Request request, String token) throws IOException, InterruptedException {
+        private Response send(Request request, String token, int attempt) throws IOException, InterruptedException {
             HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create(buildUrl(request)))
                     .timeout(request.timeout != null ? request.timeout : API_TIMEOUT);
             HttpRequest.BodyPublisher body = request.body == null
@@ -532,7 +579,17 @@ public final class Runtime {
             for (String[] header : request.headers) {
                 builder.header(header[0], header[1]);
             }
-            HttpResponse<byte[]> response = http.send(builder.build(), HttpResponse.BodyHandlers.ofByteArray());
+            HttpRequest httpRequest = builder.build();
+            RequestInfo info = observeRequest(httpRequest, attempt);
+            long started = System.nanoTime();
+            HttpResponse<byte[]> response;
+            try {
+                response = http.send(httpRequest, HttpResponse.BodyHandlers.ofByteArray());
+            } catch (IOException | InterruptedException | RuntimeException err) {
+                observeResponse(info, 0, Map.of(), started, err);
+                throw err;
+            }
+            observeResponse(info, response.statusCode(), response.headers().map(), started, null);
             List<String[]> headers = new ArrayList<>();
             response.headers().map().forEach((name, values) -> {
                 for (String value : values) {
@@ -540,6 +597,36 @@ public final class Runtime {
                 }
             });
             return new Response(response.statusCode(), headers, response.body());
+        }
+
+        /** Run the request hooks for one attempt, returning what they saw for
+         * the response hooks to carry along ({@code null} with no hooks). */
+        private RequestInfo observeRequest(HttpRequest request, int attempt) {
+            if (requestHooks.isEmpty() && responseHooks.isEmpty()) {
+                return null;
+            }
+            Map<String, List<String>> headers = new java.util.TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+            headers.putAll(request.headers().map());
+            headers.put("Authorization", List.of("REDACTED"));
+            RequestInfo info = new RequestInfo(
+                    request.method(), request.uri().toString(), java.util.Collections.unmodifiableMap(headers), attempt);
+            for (Consumer<RequestInfo> hook : requestHooks) {
+                hook.accept(info);
+            }
+            return info;
+        }
+
+        /** Run the response hooks for one attempt. */
+        private void observeResponse(
+                RequestInfo request, int status, Map<String, List<String>> headers, long startedNanos, Throwable error) {
+            if (request == null || responseHooks.isEmpty()) {
+                return;
+            }
+            ResponseInfo info = new ResponseInfo(
+                    request, status, headers, Duration.ofNanos(System.nanoTime() - startedNanos), error);
+            for (Consumer<ResponseInfo> hook : responseHooks) {
+                hook.accept(info);
+            }
         }
 
         private static String buildUrl(Request request) {
@@ -604,8 +691,12 @@ public final class Runtime {
             private HttpClient.Version httpVersion;
             private ProxySelector proxy;
             private int maxRetries = DEFAULT_MAX_RETRIES;
+            private Duration retryBase = DEFAULT_RETRY_BASE_DELAY;
+            private Duration retryMax = DEFAULT_RETRY_MAX_DELAY;
             private final Map<String, String> baseUrlOverrides = new LinkedHashMap<>();
             private final Map<String, String> defaultHeaders = new LinkedHashMap<>();
+            private final List<Consumer<RequestInfo>> requestHooks = new ArrayList<>();
+            private final List<Consumer<ResponseInfo>> responseHooks = new ArrayList<>();
 
             private Builder(Auth auth) {
                 this.auth = auth;
@@ -654,6 +745,24 @@ public final class Runtime {
                 return this;
             }
 
+            /** The exponential backoff between retries: the wait before
+             * retry n is uniform (full jitter) in [0, min(base·2^n, max)],
+             * from {@link Runtime#DEFAULT_RETRY_BASE_DELAY} and {@link
+             * Runtime#DEFAULT_RETRY_MAX_DELAY}, to the millisecond. A
+             * Retry-After from Box still raises the wait, up to its own
+             * ceiling. */
+            public Builder retryBackoff(Duration base, Duration max) {
+                if (base.isNegative() || max.isNegative()) {
+                    throw new IllegalArgumentException("gantryruntime: retry delays must be non-negative");
+                }
+                // Fail here, not at the first retry, on a delay too long for millis.
+                base.toMillis();
+                max.toMillis();
+                this.retryBase = base;
+                this.retryMax = max;
+                return this;
+            }
+
             /** Override a base-URL class for this session only — takes
              * precedence over the {@code -Dbox.baseUrl.<name>} system
              * property and the built-in default (see {@link Session#baseUrl}). */
@@ -672,6 +781,43 @@ public final class Runtime {
                 defaultHeaders.keySet().removeIf(key -> key.equalsIgnoreCase(name));
                 defaultHeaders.put(name, value);
                 return this;
+            }
+
+            /** Call {@code hook} before every HTTP attempt {@link
+             * Session#fetch} makes, retries included. Hooks observe; they
+             * can't change the request. Call again to add more hooks, which
+             * run in order. Token requests are not observed. This is the way
+             * in for instrumentation, since {@link HttpClient} has no
+             * interceptors to wrap. */
+            public Builder onRequest(Consumer<RequestInfo> hook) {
+                requestHooks.add(java.util.Objects.requireNonNull(hook, "hook"));
+                return this;
+            }
+
+            /** Call {@code hook} after every HTTP attempt {@link
+             * Session#fetch} makes — a retried 429 or 5xx, the 401 before a
+             * token refresh, and the final answer alike — and after an
+             * attempt that failed in transport. Like {@link #onRequest} it
+             * observes only, and adds to any hooks already set. */
+            public Builder onResponse(Consumer<ResponseInfo> hook) {
+                responseHooks.add(java.util.Objects.requireNonNull(hook, "hook"));
+                return this;
+            }
+
+            /** Log one line per HTTP attempt to {@code logger} at {@code
+             * DEBUG} — e.g. {@code System.getLogger("dev.unofficialbox")}:
+             * the method, the URL with secret-looking query values redacted,
+             * the status or transport error, the elapsed time, and the
+             * attempt number. It never logs the {@code Authorization} header,
+             * a token, or a body. Like {@link #onResponse} it adds to any
+             * hooks already set. */
+            public Builder debugLogging(System.Logger logger) {
+                java.util.Objects.requireNonNull(logger, "logger");
+                return onResponse(response -> {
+                    if (logger.isLoggable(System.Logger.Level.DEBUG)) {
+                        logger.log(System.Logger.Level.DEBUG, debugLogLine(response));
+                    }
+                });
             }
 
             /** Build the configured session. */
@@ -1057,7 +1203,8 @@ public final class Runtime {
 
     /** Client-credentials-grant (CCG) server auth, caching the token to expiry. */
     public static Auth clientCredentials(CcgConfig config) {
-        return new CachedToken(() -> postCcgToken(config));
+        return new CachedToken(() -> postCcgToken(config), token -> postRevokeForm(
+                config.tokenHttp, config.tokenUrl, config.clientId, config.clientSecret, token));
     }
 
     /** CCG configuration: client credentials + the enterprise/user subject. */
@@ -1152,8 +1299,20 @@ public final class Runtime {
                     + "&state=" + encode(state);
         }
 
-        /** Exchange an authorization code for auth (seeded with the returned refresh token). */
+        /** Exchange an authorization code for auth (seeded with the returned
+         * refresh token). The refresh token stays in memory; use {@link
+         * #exchangeCode(String, String, RefreshTokenStore)} to persist it and
+         * every rotation, so a restarted app can resume with {@link
+         * Runtime#oauthWithStore}. */
         public Auth exchangeCode(String code, String redirectUri) {
+            return exchangeCode(code, redirectUri, null);
+        }
+
+        /** Like {@link #exchangeCode(String, String)}, but saves the refresh
+         * token Box issues through {@code store} before returning, then each
+         * rotation as {@link Runtime#oauthWithStore} does. If that first save
+         * throws, so does this, and the user goes through consent again. */
+        public Auth exchangeCode(String code, String redirectUri, RefreshTokenStore store) {
             Map<String, String> form = new LinkedHashMap<>();
             form.put("grant_type", "authorization_code");
             form.put("code", code);
@@ -1164,7 +1323,10 @@ public final class Runtime {
             if (result.refreshToken() == null) {
                 throw new BoxApiException("gantryruntime: code exchange returned no refresh_token");
             }
-            return new OAuthSource(this, result.refreshToken(), null);
+            if (store != null) {
+                store.save(result.refreshToken());
+            }
+            return new OAuthSource(this, result.refreshToken(), store);
         }
     }
 
@@ -1172,7 +1334,8 @@ public final class Runtime {
     public static Auth jwt(JwtConfig config) {
         Signer signer = new Signer(config);
         String tokenUrl = config.tokenUrl == null ? DEFAULT_TOKEN_URL : config.tokenUrl;
-        return new CachedToken(() -> postJwtToken(signer, config, tokenUrl));
+        return new CachedToken(() -> postJwtToken(signer, config, tokenUrl), token -> postRevokeForm(
+                config.tokenHttp, tokenUrl, config.clientId, config.clientSecret, token));
     }
 
     /** JWT configuration — the fields Box's `box_config.json` carries. */
@@ -1262,12 +1425,30 @@ public final class Runtime {
 
     private static final class CachedToken implements Auth {
         private final Supplier<TokenResult> refresh;
+        private final Consumer<String> revoke;
         private final ReentrantLock lock = new ReentrantLock();
         private String token = "";
         private long expiryMillis;
 
-        CachedToken(Supplier<TokenResult> refresh) {
+        CachedToken(Supplier<TokenResult> refresh, Consumer<String> revoke) {
             this.refresh = refresh;
+            this.revoke = revoke;
+        }
+
+        /** A missing or already-expired token is simply dropped; on a failed
+         * revoke it stays cached. */
+        @Override
+        public void revokeToken() {
+            lock.lock();
+            try {
+                if (!token.isEmpty() && System.currentTimeMillis() < expiryMillis) {
+                    revoke.accept(token);
+                }
+                token = "";
+                expiryMillis = 0;
+            } finally {
+                lock.unlock();
+            }
         }
 
         @Override
@@ -1368,9 +1549,50 @@ public final class Runtime {
     }
 
     /**
+     * The revoke endpoint beside {@code tokenUrl}: Box serves both under
+     * {@code /oauth2}, so a custom token URL ending in {@code /token} gets its
+     * sibling {@code /revoke}. Any other token URL is an error, not a guess.
+     */
+    private static String revokeUrl(String tokenUrl) {
+        if (!tokenUrl.endsWith("/token")) {
+            throw new BoxApiException("gantryruntime: can't derive a revoke endpoint from token URL "
+                    + tokenUrl + " (it doesn't end in /token)");
+        }
+        return tokenUrl.substring(0, tokenUrl.length() - "/token".length()) + "/revoke";
+    }
+
+    /** POST {@code token} with the client credentials to the revoke endpoint
+     * beside {@code tokenUrl}; Box answers an empty 200. */
+    private static void postRevokeForm(HttpClient http, String tokenUrl, String clientId,
+            String clientSecret, String token) {
+        String body = "client_id=" + encode(clientId)
+                + "&client_secret=" + encode(clientSecret)
+                + "&token=" + encode(token);
+        HttpRequest request = HttpRequest.newBuilder(URI.create(revokeUrl(tokenUrl)))
+                .timeout(TOKEN_TIMEOUT)
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8))
+                .build();
+        HttpResponse<String> response;
+        try {
+            response = http.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+        } catch (IOException | InterruptedException err) {
+            if (err instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
+            throw new BoxApiException("gantryruntime: revoke request failed: " + err.getMessage(), err);
+        }
+        if (response.statusCode() / 100 != 2) {
+            throw new BoxApiException(
+                    "gantryruntime: revoke endpoint returned " + response.statusCode() + ": " + response.body().trim());
+        }
+    }
+
+    /**
      * The OAuth refresh-token source: caches the access token to expiry and
      * rotates the refresh token Box returns on every exchange, persisting each
-     * new one through the store so a restart never replays a dead token.
+     * new one through the store so a restart never replays a dead token. Once
+     * revoked it refuses to refresh: the grant is gone.
      */
     private static final class OAuthSource implements Auth {
         private final OAuthConfig config;
@@ -1381,6 +1603,7 @@ public final class Runtime {
         private String refreshToken;
         // The seed token is unpersisted until either saved or first successfully used.
         private boolean refreshTokenPersisted;
+        private boolean revoked;
 
         OAuthSource(OAuthConfig config, String refreshToken, RefreshTokenStore store) {
             this.config = config;
@@ -1415,7 +1638,36 @@ public final class Runtime {
             }
         }
 
+        /**
+         * Revoke the grant through its refresh token (or, without one, the
+         * cached access token): Box accepts either and revokes the whole grant,
+         * so no fresh access token is minted first. Revoking twice is a no-op.
+         */
+        @Override
+        public void revokeToken() {
+            lock.lock();
+            try {
+                if (revoked) {
+                    return;
+                }
+                String spent = refreshToken != null && !refreshToken.isEmpty() ? refreshToken : token;
+                if (!spent.isEmpty()) {
+                    postRevokeForm(config.tokenHttp, config.tokenUrl, config.clientId, config.clientSecret, spent);
+                }
+                revoked = true;
+                token = "";
+                expiryMillis = 0;
+                refreshToken = null;
+            } finally {
+                lock.unlock();
+            }
+        }
+
         private String exchange() {
+            if (revoked) {
+                throw new BoxApiException(
+                        "gantryruntime: the OAuth grant was revoked; run the authorization-code flow again");
+            }
             // Persist the current refresh token before spending it, so a crash
             // mid-exchange doesn't strand a token Box may already have rotated.
             if (!refreshTokenPersisted && store != null) {
@@ -1581,6 +1833,68 @@ public final class Runtime {
 
     // ---------------------------------------------------------------- helpers
 
+    /** Query parameters whose value the debug log redacts: any name
+     * containing one of these, case-insensitively. */
+    private static final List<String> SECRET_PARAM_HINTS =
+            List.of("token", "secret", "password", "code", "assertion", "key", "signature", "auth");
+
+    /** The debug log's line for one attempt (see {@link Session.Builder#debugLogging}). */
+    private static String debugLogLine(ResponseInfo response) {
+        RequestInfo request = response.request();
+        String url = redactUrl(request.url());
+        String outcome;
+        if (response.error() != null) {
+            String message = String.valueOf(response.error().getMessage());
+            outcome = "error: " + message.replace(request.url(), url);
+        } else {
+            outcome = Integer.toString(response.status());
+        }
+        return "box: " + request.method() + " " + url + " -> " + outcome
+                + " in " + response.elapsed().toMillis() + "ms (attempt " + request.attempt() + ")";
+    }
+
+    /** {@code raw} for a log line: any userinfo dropped, the fragment cut, and
+     * the value of every secret-looking query parameter replaced by {@code
+     * REDACTED}. */
+    private static String redactUrl(String raw) {
+        int hash = raw.indexOf('#');
+        String url = hash >= 0 ? raw.substring(0, hash) : raw;
+        int question = url.indexOf('?');
+        String base = question >= 0 ? url.substring(0, question) : url;
+        int scheme = base.indexOf("://");
+        if (scheme >= 0) {
+            int start = scheme + 3;
+            int slash = base.indexOf('/', start);
+            int end = slash >= 0 ? slash : base.length();
+            int at = base.lastIndexOf('@', end - 1);
+            if (at >= start) {
+                base = base.substring(0, start) + base.substring(at + 1);
+            }
+        }
+        if (question < 0) {
+            return base;
+        }
+        StringBuilder out = new StringBuilder(base).append('?');
+        String[] pairs = url.substring(question + 1).split("&", -1);
+        for (int i = 0; i < pairs.length; i++) {
+            if (i > 0) {
+                out.append('&');
+            }
+            int eq = pairs[i].indexOf('=');
+            String name = eq >= 0 ? pairs[i].substring(0, eq) : pairs[i];
+            String decoded;
+            try {
+                decoded = java.net.URLDecoder.decode(name, StandardCharsets.UTF_8);
+            } catch (IllegalArgumentException malformed) {
+                decoded = name;
+            }
+            String lower = decoded.toLowerCase(Locale.ROOT);
+            boolean secret = SECRET_PARAM_HINTS.stream().anyMatch(lower::contains);
+            out.append(secret ? name + "=REDACTED" : pairs[i]);
+        }
+        return out.toString();
+    }
+
     private static boolean isIdempotent(String method) {
         return switch (method.toUpperCase(Locale.ROOT)) {
             case "GET", "HEAD", "PUT", "DELETE", "OPTIONS", "TRACE" -> true;
@@ -1594,18 +1908,24 @@ public final class Runtime {
         return status == 429 || (status >= 500 && idempotent);
     }
 
-    private static long backoff(int attempt) {
-        long base = Math.min(BACKOFF_BASE_MS << Math.min(attempt, 20), BACKOFF_CAP_MS);
-        return ThreadLocalRandom.current().nextLong(base + 1);
+    // Full-jitter exponential backoff from baseMs, doubling per attempt up to maxMs.
+    private static long backoff(int attempt, long baseMs, long maxMs) {
+        long ceiling = Math.min(baseMs, maxMs);
+        for (int i = 0; i < attempt && ceiling < maxMs; i++) {
+            ceiling = ceiling > maxMs / 2 ? maxMs : ceiling * 2;
+        }
+        return ThreadLocalRandom.current().nextLong(Math.min(ceiling, Long.MAX_VALUE - 1) + 1);
     }
 
-    private static long retryDelay(Response response, int attempt) {
-        long delay = backoff(attempt);
+    // The backoff, raised to a server-sent Retry-After as a floor — that header
+    // clamped to MAX_RETRY_DELAY_MS so a hostile one can't stall the client.
+    private static long retryDelay(Response response, long backoffMs) {
+        long delay = backoffMs;
         String retryAfter = responseHeader(response, "Retry-After").trim();
         if (retryAfter.matches("\\d+")) {
-            delay = Math.max(delay, Long.parseLong(retryAfter) * 1000L);
+            delay = Math.max(delay, Math.min(Long.parseLong(retryAfter) * 1000L, MAX_RETRY_DELAY_MS));
         }
-        return Math.min(delay, MAX_RETRY_DELAY_MS);
+        return delay;
     }
 
     private static void sleep(long millis) {
