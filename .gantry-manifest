@@ -760,6 +760,7 @@ src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignedItemType.ja
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignment.java
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignmentBase.java
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignmentCounts.java
+src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignmentFilterField.java
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignmentType.java
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyAssignments.java
 src/main/java/dev/unofficialbox/model/schemas/LegalHoldPolicyMini.java
