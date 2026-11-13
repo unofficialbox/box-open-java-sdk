@@ -144,6 +144,20 @@ public final class GeneratedTests {
             check(_unk instanceof dev.unofficialbox.model.schemas.SearchResultWithSharedLinkItem.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.SearchResultWithSharedLinkItem");
         }
         {
+            dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod _u = dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod.fromJson(parse("{\"type\":\"login\"}"));
+            check(_u instanceof dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethodLogin, "known-tag dispatch: dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod");
+            check("login".equals(dev.unofficialbox.core.Json.asString(dev.unofficialbox.core.Json.asObject(_u.toJson()).get("type"))), "discriminator survives: dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod");
+            dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod _unk = dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.SignRequestSignerVerificationMethod");
+        }
+        {
+            dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod _u = dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod.fromJson(parse("{\"type\":\"login\"}"));
+            check(_u instanceof dev.unofficialbox.model.schemas.TemplateSignerVerificationMethodLogin, "known-tag dispatch: dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod");
+            check("login".equals(dev.unofficialbox.core.Json.asString(dev.unofficialbox.core.Json.asObject(_u.toJson()).get("type"))), "discriminator survives: dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod");
+            dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod _unk = dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
+            check(_unk instanceof dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.TemplateSignerVerificationMethod");
+        }
+        {
             dev.unofficialbox.model.schemas.HubAccessGrantee _unk = dev.unofficialbox.model.schemas.HubAccessGrantee.fromJson(parse("{\"type\":\"__gantry_unknown__\"}"));
             check(_unk instanceof dev.unofficialbox.model.schemas.HubAccessGrantee.Unknown, "open unknown retained: dev.unofficialbox.model.schemas.HubAccessGrantee");
         }

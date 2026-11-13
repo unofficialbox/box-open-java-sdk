@@ -1115,6 +1115,13 @@ src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerInputZIPJPValidat
 src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerInputZIPJPValidationType.java
 src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerInputZIPValidation.java
 src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerInputZIPValidationType.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethod.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodCacPiv.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodCacPivType.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodLogin.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodLoginType.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodPhoneSMS.java
+src/main/java/dev/unofficialbox/model/schemas/SignRequestSignerVerificationMethodPhoneSMSType.java
 src/main/java/dev/unofficialbox/model/schemas/SignRequestStatus.java
 src/main/java/dev/unofficialbox/model/schemas/SignRequestType.java
 src/main/java/dev/unofficialbox/model/schemas/SignRequests.java
@@ -1157,6 +1164,10 @@ src/main/java/dev/unofficialbox/model/schemas/TemplateSignerInput.java
 src/main/java/dev/unofficialbox/model/schemas/TemplateSignerInputCoordinates.java
 src/main/java/dev/unofficialbox/model/schemas/TemplateSignerInputDimensions.java
 src/main/java/dev/unofficialbox/model/schemas/TemplateSignerInputType.java
+src/main/java/dev/unofficialbox/model/schemas/TemplateSignerVerificationMethod.java
+src/main/java/dev/unofficialbox/model/schemas/TemplateSignerVerificationMethodCacPiv.java
+src/main/java/dev/unofficialbox/model/schemas/TemplateSignerVerificationMethodLogin.java
+src/main/java/dev/unofficialbox/model/schemas/TemplateSignerVerificationMethodPhoneSMS.java
 src/main/java/dev/unofficialbox/model/schemas/TermsOfService.java
 src/main/java/dev/unofficialbox/model/schemas/TermsOfServiceBase.java
 src/main/java/dev/unofficialbox/model/schemas/TermsOfServiceBaseType.java
